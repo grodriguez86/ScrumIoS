@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="150dp"
+    android:layout_margin="5dp"
+    android:background="@drawable/card_level"
+    android:orientation="horizontal"
+    android:padding="@dimen/lv_row_padding"
+    tools:ignore="UseCompoundDrawables">
+
+    <TextView
+        android:id="@+id/number"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight=".4"
+        android:ellipsize="end"
+        android:gravity="center_vertical"
+        android:singleLine="true"
+        android:textColor="@color/appWhite80Opacity"
+        android:textSize="@dimen/lv_row_level_number_text_size"
+        android:textStyle="bold"
+        app:fontFamily="@font/montserrat_regular" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight=".3"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:textColor="@color/appWhite80Opacity"
+            android:textSize="@dimen/lv_row_level_name_text_size"
+            android:textStyle="bold"
+            app:fontFamily="@font/montserrat_regular" />
+
+        <TextView
+            android:id="@+id/sublevels"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/appWhite80Opacity"
+            android:textSize="@dimen/lv_row_level_sub_levels_text_size"
+            android:textStyle="bold"
+            app:fontFamily="@font/montserrat_regular" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/progress"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="end"
+        android:layout_weight=".4"
+        android:textAlignment="viewEnd"
+        android:textColor="@color/appWhite80Opacity"
+        android:textSize="@dimen/lv_row_level_progress_text_size"
+        android:textStyle="bold"
+        app:fontFamily="@font/montserrat_regular" />
+
+</LinearLayout>

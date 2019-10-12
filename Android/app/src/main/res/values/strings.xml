@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Scrum Game</string>
+    <string name="exception_message_generic">Se ha producido un error, intente nuevamente</string>
+    <string name="exception_message_file_not_found">El archivo de niveles no se ha encontrado</string>
+    <string name="btn_text_retry">Reintentar</string>
+    <string name="login_sign_up">Regístrate!</string>
+    <string name="login_description">Aprende Scrum jugando!</string>
+    <string name="login_already_registered">¿Ya tienes una cuenta?</string>
+    <string name="login_login">Iniciar sesión</string>
+    <string name="menu_level_row_sublevels">%d subniveles</string>
+</resources>
