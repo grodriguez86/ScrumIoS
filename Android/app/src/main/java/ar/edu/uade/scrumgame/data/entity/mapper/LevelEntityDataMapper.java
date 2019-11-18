@@ -26,7 +26,7 @@ public class LevelEntityDataMapper {
     public LevelEntityDataMapper() {
     }
 
-    private Level convertLevelEntityToLevel(LevelEntity levelEntity) {
+    public Level convertLevelEntityToLevel(LevelEntity levelEntity) {
         Level level = new Level();
         level.setCode(levelEntity.getCode());
         level.setName(levelEntity.getName());
@@ -44,7 +44,7 @@ public class LevelEntityDataMapper {
         return subLevels;
     }
 
-    private SubLevel convertSubLevelEntityToSubLevel(SubLevelEntity subLevelEntity) {
+    public SubLevel convertSubLevelEntityToSubLevel(SubLevelEntity subLevelEntity) {
         SubLevel subLevel = new SubLevel();
         subLevel.setCode(subLevelEntity.getCode());
         subLevel.setName(subLevelEntity.getName());

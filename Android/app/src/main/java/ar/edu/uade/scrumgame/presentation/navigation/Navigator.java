@@ -7,6 +7,9 @@ import android.content.Intent;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
+import ar.edu.uade.scrumgame.presentation.models.SubLevelModel;
+import ar.edu.uade.scrumgame.presentation.view.activity.InfoTheoryActivity;
+import ar.edu.uade.scrumgame.presentation.view.activity.LevelActivity;
 import ar.edu.uade.scrumgame.presentation.view.activity.LoginActivity;
 import ar.edu.uade.scrumgame.presentation.view.activity.MenuActivity;
 import ar.edu.uade.scrumgame.presentation.view.activity.SplashScreen;
@@ -26,6 +29,16 @@ public class Navigator {
     }
 
     public void navigateToLevel(MenuActivity menuActivity, Integer code) {
+        Intent intent = new Intent(menuActivity, LevelActivity.class);
+        intent.putExtra("levelCode", code);
+        menuActivity.startActivity(intent);
+    }
+
+    public void navigateToSubLevel(LevelActivity levelActivity, String levelName,String subLevelCode) {
+        Intent intent = new Intent(levelActivity, InfoTheoryActivity.class);
+        intent.putExtra("levelName", levelName);
+        intent.putExtra("subLevelCode", subLevelCode);
+        levelActivity.startActivity(intent);
     }
 
     public void navigateToLogin(SplashScreen splashScreen) {

@@ -28,7 +28,7 @@ public class LevelModelDataMapper {
     LevelModelDataMapper() {
     }
 
-    private LevelModel transform(Level level) {
+    public LevelModel transform(Level level) {
         if (level == null) {
             throw new IllegalArgumentException("Level can't be null");
         }
@@ -39,11 +39,11 @@ public class LevelModelDataMapper {
         LevelModel levelModel = new LevelModel();
         levelModel.setCode(level.getCode());
         levelModel.setName(level.getName());
-        levelModel.setSublevels(convertSubLevelToSubLevelModel(level.getSublevels()));
+        levelModel.setSublevels(convertSubLevelCollectionToSubLevelModelCollection(level.getSublevels()));
         return levelModel;
     }
 
-    private List<SubLevelModel> convertSubLevelToSubLevelModel(List<SubLevel> subLevelList) {
+    public List<SubLevelModel> convertSubLevelCollectionToSubLevelModelCollection(List<SubLevel> subLevelList) {
         List<SubLevelModel> subLevels = new LinkedList<>();
         if (subLevelList != null) {
             for (SubLevel subLevel : subLevelList) {
@@ -53,7 +53,7 @@ public class LevelModelDataMapper {
         return subLevels;
     }
 
-    private SubLevelModel convertSubLevelEntityToSubLevelModel(SubLevel subLevel) {
+    public SubLevelModel convertSubLevelEntityToSubLevelModel(SubLevel subLevel) {
         SubLevelModel subLevelModel = new SubLevelModel();
         subLevelModel.setCode(subLevel.getCode());
         subLevelModel.setName(subLevel.getName());
