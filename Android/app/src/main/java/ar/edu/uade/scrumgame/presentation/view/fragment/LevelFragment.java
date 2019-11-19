@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.LinearSnapHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.Collection;
@@ -25,6 +26,7 @@ import ar.edu.uade.scrumgame.presentation.models.SubLevelModel;
 import ar.edu.uade.scrumgame.presentation.presenter.LevelPresenter;
 import ar.edu.uade.scrumgame.presentation.view.LevelView;
 import ar.edu.uade.scrumgame.presentation.view.adapter.SubLevelsAdapter;
+import ar.edu.uade.scrumgame.presentation.view.layoutManager.ZoomCenterCardLayoutManager;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -99,8 +101,10 @@ public class LevelFragment extends BaseFragment implements LevelView {
 
     private void setUpRecyclerView() {
         this.subLevelsAdapter.setOnItemClickListener(onItemClickListener);
-        LinearLayoutManager horizontalLayoutManager
-                = new LinearLayoutManager(context(), LinearLayoutManager.HORIZONTAL, false);
+        ZoomCenterCardLayoutManager horizontalLayoutManager
+                = new ZoomCenterCardLayoutManager(context(), LinearLayoutManager.HORIZONTAL, false);
+        LinearSnapHelper snapHelper  = new LinearSnapHelper();
+        snapHelper.attachToRecyclerView(subLevelsRecyclerView);
         this.subLevelsRecyclerView.setAdapter(subLevelsAdapter);
         this.subLevelsRecyclerView.setLayoutManager(horizontalLayoutManager);
     }

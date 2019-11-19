@@ -1,19 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/content"
-    android:layout_width="250dp"
+    android:layout_width="190dp"
     android:layout_height="match_parent"
-    android:layout_gravity="center"
-    android:layout_marginLeft="@dimen/activity_horizontal_margin"
-    android:layout_marginRight="@dimen/activity_horizontal_margin"
-    android:background="@color/white"
+    android:gravity="center"
     android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/subLevelText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="375dp"
             android:gravity="center"
-            android:text="TextView" />
+            android:orientation="vertical"
+            android:background="@color/white">
+
+                <TextView
+                    android:id="@+id/subLevelText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:gravity="center"
+                    android:text="TextView"
+                    android:textAlignment="center"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/progressText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:gravity="center"
+                    android:text="TODO: En curso"
+                    android:textAlignment="center"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+        </LinearLayout>
 
 </LinearLayout>

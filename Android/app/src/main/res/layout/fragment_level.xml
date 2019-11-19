@@ -4,10 +4,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:paddingStart="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingEnd="@dimen/activity_horizontal_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin"
     android:background="@color/levelOne">
 
     <TextView
@@ -30,7 +26,6 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
         android:layout_marginEnd="40dp"
-        android:layout_marginBottom="20dp"
         android:adjustViewBounds="true"
         android:contentDescription="@string/app_name"
         android:cropToPadding="false"
@@ -41,10 +36,12 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_subLevels"
         android:layout_width="match_parent"
-        android:layout_height="560dp"
-        android:orientation="horizontal"
+        android:layout_height="match_parent"
+        android:background="@color/levelOne"
         android:clipToPadding="false"
-        />
+        android:orientation="horizontal"
+        android:paddingLeft="110dp"
+        android:paddingRight="110dp" />
 
     <include layout="@layout/view_progress" />
 
