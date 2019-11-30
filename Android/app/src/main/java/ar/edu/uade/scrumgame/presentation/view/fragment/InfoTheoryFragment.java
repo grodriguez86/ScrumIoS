@@ -2,12 +2,17 @@ package ar.edu.uade.scrumgame.presentation.view.fragment;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -16,7 +21,10 @@ import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
+import java.util.Objects;
 
 import javax.inject.Inject;
 
@@ -31,7 +39,6 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-// TODO: implementar indicador de pagina
 public class InfoTheoryFragment extends BaseFragment implements InfoTheoryView {
 
     public interface PlaySubLevelListener {
@@ -64,6 +71,9 @@ public class InfoTheoryFragment extends BaseFragment implements InfoTheoryView {
     Button skipButton;
     @BindView(R.id.btn_play)
     Button playButton;
+    @BindView(R.id.pageIndicator)
+    LinearLayout pageIndicator;
+    List<ImageView> pageIndicatorItems;
 
     private Integer levelCode;
     private String subLevelCode;
@@ -114,6 +124,27 @@ public class InfoTheoryFragment extends BaseFragment implements InfoTheoryView {
             public boolean canScrollHorizontally() {
                 return false;
             }
+
+            @Override
+            public void onItemsChanged(@NonNull RecyclerView recyclerView) {
+                pageIndicator.removeAllViews();
+                pageIndicatorItems = new ArrayList<>();
+                int horizontalPadding = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,
+                        4, getResources().getDisplayMetrics());
+                for (int i = 0; i < this.getItemCount(); i++) {
+                    ImageView item = new ImageView(context());
+                    item.setImageDrawable(getResources().getDrawable(R.drawable.blue_progress));
+                    LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
+                            LinearLayout.LayoutParams.WRAP_CONTENT,
+                            LinearLayout.LayoutParams.WRAP_CONTENT
+                    );
+                    item.setAdjustViewBounds(true);
+                    item.setPadding(horizontalPadding, 0, horizontalPadding, 0);
+                    pageIndicator.addView(item, layoutParams);
+                    pageIndicatorItems.add(item);
+                }
+                updatePageIndicator();
+            }
         };
         this.infoTheoryRecyclerView.setAdapter(infoTheoryAdapter);
         this.infoTheoryRecyclerView.setLayoutManager(horizontalLayoutManager);
@@ -122,10 +153,25 @@ public class InfoTheoryFragment extends BaseFragment implements InfoTheoryView {
             public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
                 updateBottomButtons(horizontalLayoutManager);
+                updatePageIndicator();
             }
         });
         horizontalLayoutManager.findFirstVisibleItemPosition();
         this.updateBottomButtons(horizontalLayoutManager);
+    }
+
+    private void updatePageIndicator() {
+        LinearLayoutManager linearLayoutManager = (LinearLayoutManager) infoTheoryRecyclerView.getLayoutManager();
+        if (linearLayoutManager != null) {
+            Drawable selectedDrawable = getResources().getDrawable(R.drawable.page_indicator_item_white);
+            Drawable unselectedDrawable = getResources().getDrawable(R.drawable.page_indicator_item_blue);
+            for (int i = 0; i < pageIndicatorItems.size(); i++) {
+                if (i == linearLayoutManager.findFirstVisibleItemPosition())
+                    pageIndicatorItems.get(i).setImageDrawable(selectedDrawable);
+                else
+                    pageIndicatorItems.get(i).setImageDrawable(unselectedDrawable);
+            }
+        }
     }
 
     private void updateBottomButtons(LinearLayoutManager recyclerViewLayoutManager) {

@@ -85,7 +85,6 @@ public class SubLevelsAdapter extends RecyclerView.Adapter<SubLevelsAdapter.SubL
     static class SubLevelViewHolder extends RecyclerView.ViewHolder {
         @BindView(R.id.subLevelText)
         TextView text;
-        // TODO: progress indicator
 
         SubLevelViewHolder(View itemView) {
             super(itemView);
