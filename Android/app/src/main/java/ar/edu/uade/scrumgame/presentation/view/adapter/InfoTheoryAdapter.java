@@ -22,7 +22,6 @@ import javax.inject.Inject;
 
 import ar.edu.uade.scrumgame.R;
 import ar.edu.uade.scrumgame.presentation.models.InfoTheoryModel;
-import ar.edu.uade.scrumgame.presentation.models.SubLevelModel;
 import ar.edu.uade.scrumgame.presentation.models.ViewTypeModel;
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -83,7 +82,7 @@ public class InfoTheoryAdapter extends RecyclerView.Adapter<InfoTheoryAdapter.In
                     Picasso.get().load(infoTheoryItem.getData()).into(imageView);
                     break;
                 case "video":
-
+                    // TODO implementar item de youtube
                     break;
                 case "text":
                     TextView text = new TextView(context);

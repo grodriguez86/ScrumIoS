@@ -6,21 +6,17 @@ import java.util.Collection;
 
 import javax.inject.Inject;
 
-import ar.edu.uade.scrumgame.domain.Level;
 import ar.edu.uade.scrumgame.domain.SubLevel;
 import ar.edu.uade.scrumgame.domain.exception.DefaultErrorBundle;
 import ar.edu.uade.scrumgame.domain.exception.ErrorBundle;
 import ar.edu.uade.scrumgame.domain.interactor.DefaultObserver;
-import ar.edu.uade.scrumgame.domain.interactor.GetLevel;
 import ar.edu.uade.scrumgame.domain.interactor.GetSubLevel;
 import ar.edu.uade.scrumgame.presentation.di.PerActivity;
 import ar.edu.uade.scrumgame.presentation.exception.ErrorMessageFactory;
 import ar.edu.uade.scrumgame.presentation.mapper.LevelModelDataMapper;
 import ar.edu.uade.scrumgame.presentation.models.InfoTheoryModel;
-import ar.edu.uade.scrumgame.presentation.models.LevelModel;
 import ar.edu.uade.scrumgame.presentation.models.SubLevelModel;
 import ar.edu.uade.scrumgame.presentation.view.InfoTheoryView;
-import ar.edu.uade.scrumgame.presentation.view.LevelView;
 
 @PerActivity
 public class InfoTheoryPresenter implements Presenter {

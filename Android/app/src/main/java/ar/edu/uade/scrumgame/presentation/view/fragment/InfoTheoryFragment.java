@@ -7,10 +7,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.LinearLayout;
+import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -30,10 +31,11 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
+// TODO: implementar indicador de pagina
 public class InfoTheoryFragment extends BaseFragment implements InfoTheoryView {
 
-    public interface SubLevelListListener {
-        void onSubLevelClicked(SubLevelModel subLevelModel);
+    public interface PlaySubLevelListener {
+        void onPlayClicked(Integer levelCode, String subLevelCode);
     }
 
     @Inject
@@ -54,8 +56,19 @@ public class InfoTheoryFragment extends BaseFragment implements InfoTheoryView {
     Button retryButton;
     @BindView(R.id.bt_exit)
     Button exitButton;
+    @BindView(R.id.btn_back)
+    ImageButton backButton;
+    @BindView(R.id.btn_next)
+    ImageButton nextButton;
+    @BindView(R.id.btn_skip)
+    Button skipButton;
+    @BindView(R.id.btn_play)
+    Button playButton;
 
-    private SubLevelListListener subLevelListListener;
+    private Integer levelCode;
+    private String subLevelCode;
+
+    private PlaySubLevelListener playSubLevelListener;
 
     public InfoTheoryFragment() {
         this.setRetainInstance(true);
@@ -74,8 +87,8 @@ public class InfoTheoryFragment extends BaseFragment implements InfoTheoryView {
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
-        if (activity instanceof SubLevelListListener) {
-            this.subLevelListListener = (SubLevelListListener) activity;
+        if (activity instanceof PlaySubLevelListener) {
+            this.playSubLevelListener = (PlaySubLevelListener) activity;
         }
     }
 
@@ -96,11 +109,73 @@ public class InfoTheoryFragment extends BaseFragment implements InfoTheoryView {
 
     private void setUpRecyclerView() {
         LinearLayoutManager horizontalLayoutManager
-                = new LinearLayoutManager(context(), LinearLayoutManager.HORIZONTAL, false);
+                = new LinearLayoutManager(context(), LinearLayoutManager.HORIZONTAL, false) {
+            @Override
+            public boolean canScrollHorizontally() {
+                return false;
+            }
+        };
         this.infoTheoryRecyclerView.setAdapter(infoTheoryAdapter);
         this.infoTheoryRecyclerView.setLayoutManager(horizontalLayoutManager);
+        this.infoTheoryRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+                updateBottomButtons(horizontalLayoutManager);
+            }
+        });
         horizontalLayoutManager.findFirstVisibleItemPosition();
+        this.updateBottomButtons(horizontalLayoutManager);
+    }
 
+    private void updateBottomButtons(LinearLayoutManager recyclerViewLayoutManager) {
+        int currentPosition = recyclerViewLayoutManager.findFirstVisibleItemPosition();
+        if (currentPosition == 0)
+            backButton.setVisibility(View.INVISIBLE);
+        else
+            backButton.setVisibility(View.VISIBLE);
+        if (currentPosition == recyclerViewLayoutManager.getItemCount() - 1) {
+            nextButton.setVisibility(View.GONE);
+            playButton.setVisibility(View.VISIBLE);
+            skipButton.setVisibility(View.INVISIBLE);
+        } else {
+            playButton.setVisibility(View.GONE);
+            nextButton.setVisibility(View.VISIBLE);
+            skipButton.setVisibility(View.VISIBLE);
+        }
+    }
+
+    @OnClick(R.id.btn_next)
+    public void nextPage() {
+        LinearLayoutManager recyclerViewLayoutManager = (LinearLayoutManager) infoTheoryRecyclerView.getLayoutManager();
+        if (recyclerViewLayoutManager != null) {
+            int currentPosition = recyclerViewLayoutManager.findFirstVisibleItemPosition();
+            if (currentPosition < (recyclerViewLayoutManager.getItemCount() - 1))
+                infoTheoryRecyclerView.scrollToPosition(++currentPosition);
+            else
+                startPlaying();
+        }
+    }
+
+    @OnClick(R.id.btn_back)
+    public void previousPage() {
+        LinearLayoutManager recyclerViewLayoutManager = (LinearLayoutManager) infoTheoryRecyclerView.getLayoutManager();
+        if (recyclerViewLayoutManager != null) {
+            int currentPosition = recyclerViewLayoutManager.findFirstVisibleItemPosition();
+            if (currentPosition > 0)
+                infoTheoryRecyclerView.scrollToPosition(--currentPosition);
+        }
+    }
+
+    @OnClick(R.id.btn_skip)
+    public void skipTutorial() {
+        startPlaying();
+    }
+
+    @OnClick(R.id.btn_play)
+    public void startPlaying() {
+        if (levelCode != null && subLevelCode != null)
+            this.playSubLevel(levelCode, subLevelCode);
     }
 
     @Override
@@ -114,22 +189,23 @@ public class InfoTheoryFragment extends BaseFragment implements InfoTheoryView {
 
     private void loadSubLevel() {
         String levelName = getArguments().getString("levelName");
+        levelCode = getArguments().getInt("levelCode");
         levelTitle.setText(levelName);
-        String subLevelCode = getArguments().getString("subLevelCode");
+        subLevelCode = getArguments().getString("subLevelCode");
         this.infoTheoryPresenter.initialize(subLevelCode);
     }
 
     @Override
     public void renderInfoTheoryList(Collection<InfoTheoryModel> infoTheoryModelCollection) {
-        if (infoTheoryModelCollection!= null) {
+        if (infoTheoryModelCollection != null) {
             this.infoTheoryAdapter.setInfoTheoryCollection(infoTheoryModelCollection);
         }
     }
 
     @Override
-    public void enterSubLevel(SubLevelModel subLevelModel) {
-        if (this.subLevelListListener!= null) {
-            this.subLevelListListener.onSubLevelClicked(subLevelModel);
+    public void playSubLevel(Integer levelCode, String subLevelCode) {
+        if (this.playSubLevelListener != null) {
+            this.playSubLevelListener.onPlayClicked(levelCode, subLevelCode);
         }
     }
 
@@ -196,7 +272,7 @@ public class InfoTheoryFragment extends BaseFragment implements InfoTheoryView {
     @Override
     public void onDetach() {
         super.onDetach();
-        this.subLevelListListener = null;
+        this.playSubLevelListener = null;
     }
 
 }

@@ -11,7 +11,7 @@ import ar.edu.uade.scrumgame.presentation.di.components.DaggerLevelComponent;
 import ar.edu.uade.scrumgame.presentation.di.components.LevelComponent;
 import ar.edu.uade.scrumgame.presentation.view.fragment.InfoTheoryFragment;
 
-public class InfoTheoryActivity extends BaseActivity implements HasComponent<LevelComponent> {
+public class InfoTheoryActivity extends BaseActivity implements HasComponent<LevelComponent>, InfoTheoryFragment.PlaySubLevelListener {
 
     private LevelComponent levelComponent;
 
@@ -32,8 +32,10 @@ public class InfoTheoryActivity extends BaseActivity implements HasComponent<Lev
         this.setContentView(R.layout.activity_info_theory);
         this.initializeInjector();
         Bundle bundle = new Bundle();
-        levelName = (String) getIntent().getExtras().get("levelName");
-        subLevelCode = (String) getIntent().getExtras().get("subLevelCode");
+        levelCode = getIntent().getExtras().getInt("levelCode");
+        levelName = getIntent().getExtras().getString("levelName");
+        subLevelCode = getIntent().getExtras().getString("subLevelCode");
+        bundle.putInt("levelCode", levelCode);
         bundle.putString("levelName", levelName);
         bundle.putString("subLevelCode", subLevelCode);
         InfoTheoryFragment infoTheoryFragment = new InfoTheoryFragment();
@@ -56,4 +58,8 @@ public class InfoTheoryActivity extends BaseActivity implements HasComponent<Lev
         return levelComponent;
     }
 
+    @Override
+    public void onPlayClicked(Integer levelCode, String subLevelCode) {
+        this.navigator.navigateToPlaySubLevel(this, levelCode, subLevelCode);
+    }
 }

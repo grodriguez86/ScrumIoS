@@ -12,5 +12,5 @@ public interface InfoTheoryView extends LoadDataView {
 
     void renderInfoTheoryList(Collection<InfoTheoryModel> infoTheoryModelCollection);
 
-    void enterSubLevel(SubLevelModel subLevelModel);
+    void playSubLevel(Integer levelCode, String subLevelCode);
 }

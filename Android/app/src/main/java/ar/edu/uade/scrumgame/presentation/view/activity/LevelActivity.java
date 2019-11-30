@@ -53,6 +53,6 @@ public class LevelActivity extends BaseActivity implements HasComponent<LevelCom
 
     @Override
     public void onSubLevelClicked(String levelName, SubLevelModel subLevelModel) {
-        this.navigator.navigateToSubLevel(this, levelName, subLevelModel.getCode());
+        this.navigator.navigateToInfoTheory(this, levelCode, levelName, subLevelModel.getCode());
     }
 }

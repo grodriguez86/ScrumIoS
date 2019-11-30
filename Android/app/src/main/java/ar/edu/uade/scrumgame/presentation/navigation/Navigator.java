@@ -34,11 +34,17 @@ public class Navigator {
         menuActivity.startActivity(intent);
     }
 
-    public void navigateToSubLevel(LevelActivity levelActivity, String levelName,String subLevelCode) {
+    public void navigateToInfoTheory(LevelActivity levelActivity, Integer levelCode, String levelName, String subLevelCode) {
         Intent intent = new Intent(levelActivity, InfoTheoryActivity.class);
+        intent.putExtra("levelCode", levelCode);
         intent.putExtra("levelName", levelName);
         intent.putExtra("subLevelCode", subLevelCode);
         levelActivity.startActivity(intent);
+    }
+
+    public void navigateToPlaySubLevel(InfoTheoryActivity infoTheoryActivity, Integer levelCode, String subLevelCode) {
+        // TODO
+        System.out.println("TODO: implementar navegacion a JUGAR subnivel");
     }
 
     public void navigateToLogin(SplashScreen splashScreen) {
