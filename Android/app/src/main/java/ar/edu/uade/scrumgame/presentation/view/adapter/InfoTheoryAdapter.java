@@ -69,7 +69,7 @@ public class InfoTheoryAdapter extends RecyclerView.Adapter<InfoTheoryAdapter.In
                     TextView title = new TextView(context);
                     title.setText(infoTheoryItem.getData());
                     title.setTextSize(20);
-                    title.setPadding(16,4,16,4);
+                    title.setPadding(16,16,16,24);
                     title.setTypeface(title.getTypeface(), Typeface.BOLD);
                     holder.container.addView(title);
                     break;

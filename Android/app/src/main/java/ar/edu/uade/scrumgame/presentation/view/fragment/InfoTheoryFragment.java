@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -21,14 +22,10 @@ import javax.inject.Inject;
 import ar.edu.uade.scrumgame.R;
 import ar.edu.uade.scrumgame.presentation.di.components.LevelComponent;
 import ar.edu.uade.scrumgame.presentation.models.InfoTheoryModel;
-import ar.edu.uade.scrumgame.presentation.models.LevelModel;
 import ar.edu.uade.scrumgame.presentation.models.SubLevelModel;
 import ar.edu.uade.scrumgame.presentation.presenter.InfoTheoryPresenter;
-import ar.edu.uade.scrumgame.presentation.presenter.LevelPresenter;
 import ar.edu.uade.scrumgame.presentation.view.InfoTheoryView;
-import ar.edu.uade.scrumgame.presentation.view.LevelView;
 import ar.edu.uade.scrumgame.presentation.view.adapter.InfoTheoryAdapter;
-import ar.edu.uade.scrumgame.presentation.view.adapter.SubLevelsAdapter;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -55,10 +52,18 @@ public class InfoTheoryFragment extends BaseFragment implements InfoTheoryView {
     RelativeLayout retryLayout;
     @BindView(R.id.bt_retry)
     Button retryButton;
+    @BindView(R.id.bt_exit)
+    Button exitButton;
+
     private SubLevelListListener subLevelListListener;
 
     public InfoTheoryFragment() {
         this.setRetainInstance(true);
+    }
+
+    @OnClick(R.id.bt_exit)
+    public void goBack() {
+        this.getActivity().onBackPressed();
     }
 
     @Override
@@ -94,6 +99,8 @@ public class InfoTheoryFragment extends BaseFragment implements InfoTheoryView {
                 = new LinearLayoutManager(context(), LinearLayoutManager.HORIZONTAL, false);
         this.infoTheoryRecyclerView.setAdapter(infoTheoryAdapter);
         this.infoTheoryRecyclerView.setLayoutManager(horizontalLayoutManager);
+        horizontalLayoutManager.findFirstVisibleItemPosition();
+
     }
 
     @Override

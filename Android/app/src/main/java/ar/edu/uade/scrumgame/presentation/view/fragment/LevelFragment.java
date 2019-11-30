@@ -53,11 +53,18 @@ public class LevelFragment extends BaseFragment implements LevelView {
     RelativeLayout retryLayout;
     @BindView(R.id.bt_retry)
     Button retryButton;
+    @BindView(R.id.bt_exit)
+    Button exitButton;
     private SubLevelListListener subLevelListListener;
     private String currentLevelName;
 
     public LevelFragment() {
         this.setRetainInstance(true);
+    }
+
+    @OnClick(R.id.bt_exit)
+    public void goBack() {
+        this.getActivity().onBackPressed();
     }
 
     @Override
