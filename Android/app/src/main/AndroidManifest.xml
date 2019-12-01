@@ -22,7 +22,7 @@
         <activity android:name=".presentation.view.activity.MenuActivity" />
         <activity
             android:name=".presentation.view.activity.LevelActivity"
-            android:configChanges="screenLayout|orientation|screenSize" />
+            android:screenOrientation="portrait" />
         <activity
             android:name=".presentation.view.activity.InfoTheoryActivity"
             android:configChanges="screenLayout|orientation|screenSize" />
