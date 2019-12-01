@@ -8,4 +8,6 @@
     <string name="login_already_registered">¿Ya tienes una cuenta?</string>
     <string name="login_login">Iniciar sesión</string>
     <string name="menu_level_row_sublevels">%d subniveles</string>
+    <string name="info_theory_skip">SALTAR TUTORIAL</string>
+    <string name="info_theory_play">A JUGAR!</string>
 </resources>

@@ -5,7 +5,12 @@
     <color name="colorAccent">#D81B60</color>
     <color name="background">#efefef</color>
     <color name="appWhite80Opacity">#EEEDEDED</color>
+    <color name="darkBlue">#131eec</color>
     <color name="blue">#3e7ff6</color>
     <color name="lightBlue">#6f9ef5</color>
     <color name="levelOne">#FE9D20</color>
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="gray">#A8A8A8</color>
+    <color name="transparent">#00000000</color>
 </resources>
