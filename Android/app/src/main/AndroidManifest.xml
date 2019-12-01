@@ -20,8 +20,12 @@
         </activity>
         <activity android:name=".presentation.view.activity.LoginActivity" />
         <activity android:name=".presentation.view.activity.MenuActivity" />
-        <activity android:name=".presentation.view.activity.LevelActivity" />
-        <activity android:name=".presentation.view.activity.InfoTheoryActivity" />
+        <activity
+            android:name=".presentation.view.activity.LevelActivity"
+            android:configChanges="screenLayout|orientation|screenSize" />
+        <activity
+            android:name=".presentation.view.activity.InfoTheoryActivity"
+            android:configChanges="screenLayout|orientation|screenSize" />
     </application>
     <uses-permission android:name="android.permission.INTERNET"></uses-permission>
 
