@@ -47,7 +47,6 @@ public class InfoTheoryFragment extends BaseFragment implements InfoTheoryView {
 
     @Inject
     InfoTheoryPresenter infoTheoryPresenter;
-    @Inject
     InfoTheoryAdapter infoTheoryAdapter;
     @BindView(R.id.levelTitle)
     TextView levelTitle;
@@ -146,6 +145,7 @@ public class InfoTheoryFragment extends BaseFragment implements InfoTheoryView {
                 updatePageIndicator();
             }
         };
+        infoTheoryAdapter = new InfoTheoryAdapter(getActivity());
         this.infoTheoryRecyclerView.setAdapter(infoTheoryAdapter);
         this.infoTheoryRecyclerView.setLayoutManager(horizontalLayoutManager);
         this.infoTheoryRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
