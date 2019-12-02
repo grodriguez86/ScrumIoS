@@ -84,7 +84,7 @@ public class InfoTheoryAdapter extends RecyclerView.Adapter<InfoTheoryAdapter.In
                     imageView.setAdjustViewBounds(true);
                     imageView.setPadding(24,4,16,4);
                     holder.container.addView(imageView);
-                    Picasso.get().setIndicatorsEnabled(true);
+                    Picasso.get().setIndicatorsEnabled(false);
                     Picasso.get().load(infoTheoryItem.getData()).into(imageView);
                     break;
                 case "video":
