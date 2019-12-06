@@ -1,10 +1,13 @@
 package ar.edu.uade.scrumgame.presentation.view.adapter;
 
+import android.app.Activity;
+import android.app.FragmentTransaction;
 import android.content.Context;
 import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -12,6 +15,10 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.youtube.player.YouTubeInitializationResult;
+import com.google.android.youtube.player.YouTubePlayer;
+import com.google.android.youtube.player.YouTubePlayerFragment;
+import com.google.android.youtube.player.YouTubePlayerView;
 import com.squareup.picasso.Picasso;
 
 import java.util.Collection;
@@ -32,16 +39,15 @@ public class InfoTheoryAdapter extends RecyclerView.Adapter<InfoTheoryAdapter.In
     private List<InfoTheoryModel> infoTheoryCollection;
     private LayoutInflater layoutInflater;
 
-    Context context;
+    Activity context;
 
     @Override
     public void onAttachedToRecyclerView(RecyclerView recyclerView) {
         super.onAttachedToRecyclerView(recyclerView);
-        context = recyclerView.getContext();
     }
 
-    @Inject
-    InfoTheoryAdapter(Context context) {
+    public InfoTheoryAdapter(Activity activity) {
+        this.context = activity;
         this.layoutInflater =
                 (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         this.infoTheoryCollection = Collections.emptyList();
@@ -78,11 +84,26 @@ public class InfoTheoryAdapter extends RecyclerView.Adapter<InfoTheoryAdapter.In
                     imageView.setAdjustViewBounds(true);
                     imageView.setPadding(24,4,16,4);
                     holder.container.addView(imageView);
-                    Picasso.get().setIndicatorsEnabled(true);
+                    Picasso.get().setIndicatorsEnabled(false);
                     Picasso.get().load(infoTheoryItem.getData()).into(imageView);
                     break;
                 case "video":
-                    // TODO implementar item de youtube
+                    YouTubePlayerFragment youTubePlayerFragment = new YouTubePlayerFragment();
+                    youTubePlayerFragment.initialize("", new YouTubePlayer.OnInitializedListener() { // Insertar API key acá
+                        @Override
+                        public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer youTubePlayer, boolean b) {
+                            youTubePlayer.setFullscreenControlFlags(YouTubePlayer.FULLSCREEN_FLAG_CONTROL_SYSTEM_UI );
+                            youTubePlayer.cueVideo(infoTheoryItem.getData());
+                        }
+
+                        @Override
+                        public void onInitializationFailure(YouTubePlayer.Provider provider, YouTubeInitializationResult youTubeInitializationResult) {
+
+                        }
+                    } );
+                    final FragmentTransaction fragmentTransaction = context.getFragmentManager().beginTransaction();
+                    fragmentTransaction.add(R.id.container, youTubePlayerFragment);
+                    fragmentTransaction.commit();
                     break;
                 case "text":
                     TextView text = new TextView(context);

@@ -1,6 +1,7 @@
 package ar.edu.uade.scrumgame.presentation.view.layoutManager;
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.view.View;
 
@@ -44,6 +45,7 @@ public class ZoomCenterCardLayoutManager extends LinearLayoutManager {
             float scale = s0 + (s1 - s0) * (d - d0) / (d1 - d0);
             child.setScaleX(scale);
             child.setScaleY(scale);
+            child.setAlpha(scale);
         }
 
         return scrolled;
