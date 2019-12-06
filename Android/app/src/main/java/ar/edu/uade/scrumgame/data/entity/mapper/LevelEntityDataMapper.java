@@ -87,7 +87,7 @@ public class LevelEntityDataMapper {
         return viewType;
     }
 
-    private List<InfoGame> convertInfoGameEntityToInfoGame(List<InfoGameEntity> infoGameEntityList) {
+    public List<InfoGame> convertInfoGameEntityToInfoGame(List<InfoGameEntity> infoGameEntityList) {
         List<InfoGame> infoGames = new LinkedList<>();
         if (infoGameEntityList != null) {
             for (InfoGameEntity infoGameEntity : infoGameEntityList) {
@@ -101,6 +101,7 @@ public class LevelEntityDataMapper {
         InfoGame infoGame = new InfoGame();
         infoGame.setCode(infoGameEntity.getCode());
         infoGame.setType(infoGameEntity.getType());
+        infoGame.setTitle(infoGameEntity.getTitle());
         infoGame.setContent(convertGameEntityToGame(infoGameEntity.getContent()));
         return infoGame;
     }

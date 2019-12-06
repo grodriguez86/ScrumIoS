@@ -11,9 +11,9 @@ import java.util.List;
 import javax.inject.Inject;
 
 import ar.edu.uade.scrumgame.data.entity.ContentEntity;
+import ar.edu.uade.scrumgame.data.entity.InfoGameEntity;
 import ar.edu.uade.scrumgame.data.entity.LevelEntity;
 import ar.edu.uade.scrumgame.data.entity.SubLevelEntity;
-import ar.edu.uade.scrumgame.domain.Level;
 import io.reactivex.Observable;
 import io.reactivex.ObservableEmitter;
 
@@ -53,17 +53,38 @@ public class LocalLevelDataStore implements LevelDataStore {
     @Override
     public Observable<SubLevelEntity> subLevelByCode(String code) {
         return Observable.create(emitter -> {
-            int levelCode = Integer.parseInt(code.split("\\.")[0]);
-            LevelEntity level = this.levelByCode(levelCode).blockingFirst();
-            for (SubLevelEntity subLevelEntity : level.getSublevels()) {
-                if (subLevelEntity.getCode().equals(code)) {
-                    emitter.onNext(subLevelEntity);
-                    emitter.onComplete();
-                    return;
-                }
+            SubLevelEntity subLevelEntity = getSublevel(code);
+            if (subLevelEntity != null) {
+                emitter.onNext(subLevelEntity);
+                emitter.onComplete();
+                return;
             }
             emitter.onError(new RuntimeException("SubLevel not found."));
         });
+    }
+
+    @Override
+    public Observable<List<InfoGameEntity>> infoGamesBySubLevelCode(String subLevelCode) {
+        return Observable.create(emitter -> {
+            SubLevelEntity subLevelEntity = getSublevel(subLevelCode);
+            if (subLevelEntity != null) {
+                emitter.onNext(subLevelEntity.getInfoGame());
+                emitter.onComplete();
+                return;
+            }
+            emitter.onError(new RuntimeException("SubLevel not found."));
+        });
+    }
+
+    private SubLevelEntity getSublevel(String code) {
+        int levelCode = Integer.parseInt(code.split("\\.")[0]);
+        LevelEntity level = this.levelByCode(levelCode).blockingFirst();
+        for (SubLevelEntity subLevelEntity : level.getSublevels()) {
+            if (subLevelEntity.getCode().equals(code)) {
+                return subLevelEntity;
+            }
+        }
+        return null;
     }
 
     private String getAssetsFileContent(String levelsFileName, ObservableEmitter emitter) {
