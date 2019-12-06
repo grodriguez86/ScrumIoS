@@ -42,7 +42,7 @@ import butterknife.OnClick;
 public class InfoTheoryFragment extends BaseFragment implements InfoTheoryView {
 
     public interface PlaySubLevelListener {
-        void onPlayClicked(Integer levelCode, String subLevelCode);
+        void onPlayClicked(Integer levelCode, String levelTitle, String subLevelCode, String subLevelTitle);
     }
 
     @Inject
@@ -221,7 +221,7 @@ public class InfoTheoryFragment extends BaseFragment implements InfoTheoryView {
     @OnClick(R.id.btn_play)
     public void startPlaying() {
         if (levelCode != null && subLevelCode != null)
-            this.playSubLevel(levelCode, subLevelCode);
+            this.playSubLevel(levelCode, levelTitle.getText().toString(), subLevelCode, subLevelTitle.getText().toString());
     }
 
     @Override
@@ -249,9 +249,9 @@ public class InfoTheoryFragment extends BaseFragment implements InfoTheoryView {
     }
 
     @Override
-    public void playSubLevel(Integer levelCode, String subLevelCode) {
+    public void playSubLevel(Integer levelCode, String levelTitle, String subLevelCode, String subLevelTitle) {
         if (this.playSubLevelListener != null) {
-            this.playSubLevelListener.onPlayClicked(levelCode, subLevelCode);
+            this.playSubLevelListener.onPlayClicked(levelCode, levelTitle, subLevelCode, subLevelTitle);
         }
     }
 

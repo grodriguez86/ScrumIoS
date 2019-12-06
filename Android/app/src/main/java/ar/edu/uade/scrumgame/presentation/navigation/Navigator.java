@@ -7,7 +7,7 @@ import android.content.Intent;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
-import ar.edu.uade.scrumgame.presentation.models.SubLevelModel;
+import ar.edu.uade.scrumgame.presentation.view.activity.InfoGameActivity;
 import ar.edu.uade.scrumgame.presentation.view.activity.InfoTheoryActivity;
 import ar.edu.uade.scrumgame.presentation.view.activity.LevelActivity;
 import ar.edu.uade.scrumgame.presentation.view.activity.LoginActivity;
@@ -34,6 +34,13 @@ public class Navigator {
         menuActivity.startActivity(intent);
     }
 
+    public void navigateToLevelAfterGameFinished(InfoGameActivity infoGameActivity, Integer code) {
+        Intent intent = new Intent(infoGameActivity, LevelActivity.class);
+        intent.putExtra("levelCode", code);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        infoGameActivity.startActivity(intent);
+    }
+
     public void navigateToInfoTheory(LevelActivity levelActivity, Integer levelCode, String levelName, String subLevelCode) {
         Intent intent = new Intent(levelActivity, InfoTheoryActivity.class);
         intent.putExtra("levelCode", levelCode);
@@ -42,9 +49,11 @@ public class Navigator {
         levelActivity.startActivity(intent);
     }
 
-    public void navigateToPlaySubLevel(InfoTheoryActivity infoTheoryActivity, Integer levelCode, String subLevelCode) {
-        // TODO
-        System.out.println("TODO: implementar navegacion a JUGAR subnivel");
+    public void navigateToPlaySubLevel(InfoTheoryActivity infoTheoryActivity, Integer levelCode, String levelTitle, String subLevelCode, String subLevelTitle) {
+        if (infoTheoryActivity != null) {
+            Intent intent = InfoGameActivity.getCallingIntent(infoTheoryActivity, levelCode, levelTitle, subLevelCode, subLevelTitle);
+            infoTheoryActivity.startActivity(intent);
+        }
     }
 
     public void navigateToLogin(SplashScreen splashScreen) {

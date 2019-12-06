@@ -26,6 +26,7 @@
         <activity
             android:name=".presentation.view.activity.InfoTheoryActivity"
             android:configChanges="screenLayout|orientation|screenSize" />
+        <activity android:name=".presentation.view.activity.InfoGameActivity" />
     </application>
     <uses-permission android:name="android.permission.INTERNET"></uses-permission>
 

@@ -1,5 +1,6 @@
 package ar.edu.uade.scrumgame.data.repository;
 
+import java.util.Collection;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -8,6 +9,7 @@ import javax.inject.Singleton;
 import ar.edu.uade.scrumgame.data.entity.mapper.LevelEntityDataMapper;
 import ar.edu.uade.scrumgame.data.repository.datasource.LevelDataStore;
 import ar.edu.uade.scrumgame.data.repository.datasource.LevelDataStoreFactory;
+import ar.edu.uade.scrumgame.domain.InfoGame;
 import ar.edu.uade.scrumgame.domain.Level;
 import ar.edu.uade.scrumgame.domain.SubLevel;
 import ar.edu.uade.scrumgame.domain.repository.LevelRepository;
@@ -41,4 +43,12 @@ public class LevelDataRepository implements LevelRepository {
         LevelDataStore levelDataStore = levelDataStoreFactory.createLocalDataStore();
         return levelDataStore.subLevelByCode(code).map(this.levelEntityDataMapper::convertSubLevelEntityToSubLevel);
     }
+
+    @Override
+    public Observable<Collection<InfoGame>> getInfoGameBySubLevelCode(String subLevelCode) {
+        LevelDataStore levelDataStore = levelDataStoreFactory.createLocalDataStore();
+        return levelDataStore.infoGamesBySubLevelCode(subLevelCode).map(this.levelEntityDataMapper::convertInfoGameEntityToInfoGame);
+    }
+
+
 }

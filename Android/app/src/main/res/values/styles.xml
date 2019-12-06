@@ -1,7 +1,7 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="android:Theme.Holo.Light.NoActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
     </style>
 
     <style name="AppTheme.ProgressBar">
@@ -12,12 +12,39 @@
         <item name="android:visibility">visible</item>
     </style>
 
-    <style name="AppTheme.Button">
+    <style name="CenteredView">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_centerVertical">true</item>
         <item name="android:layout_centerHorizontal">true</item>
         <item name="android:layout_gravity">center</item>
+    </style>
+
+    <style name="TextView.Title" parent="CenteredView">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="TextView.Indication" parent="CenteredView">
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="TextView.RadioButtonText" parent="CenteredView">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="Button.SendAnswer" parent="@style/CenteredView">
+        <item name="android:textColor">@color/blue</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:background">@android:color/transparent</item>
+    </style>
+
+    <style name="Button.Choice" parent="@style/CenteredView">
+        <item name="android:textColor">@color/blue</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">16sp</item>
     </style>
 
 

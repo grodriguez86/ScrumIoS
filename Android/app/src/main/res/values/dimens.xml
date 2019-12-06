@@ -10,4 +10,17 @@
   <dimen name="lv_row_level_sub_levels_text_size">20sp</dimen>
   <dimen name="lv_row_level_progress_text_size">18sp</dimen>
 
+  <!--Text view-->
+  <dimen name="title_text_view_margin_vertical">10dp</dimen>
+  <dimen name="indication_text_view_margin_vertical">15dp</dimen>
+
+  <!--Game container-->
+  <dimen name="game_container_margin">10dp</dimen>
+
+  <!--Button-->
+  <dimen name="button_margin">20dp</dimen>
+  <!--Radio button-->
+
+  <dimen name="radio_button_margin">5dp</dimen>
+
 </resources>
