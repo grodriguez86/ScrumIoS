@@ -5,6 +5,7 @@ import java.util.List;
 public class InfoGame {
     private String code;
     private String type;
+    private String title;
     private List<GameContent> content;
 
     public InfoGame() {
@@ -24,6 +25,14 @@ public class InfoGame {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public List<GameContent> getContent() {
