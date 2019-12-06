@@ -269,7 +269,7 @@ public class InfoGameFragment extends BaseFragment implements InfoGamesContentVi
             sendAnswerButton.setVisibility(View.GONE);
         }
         //TODO tutorial
-        indicationsTextView.setText(infoGameModel.getTitle());
+        indicationsTextView.setText("");
     }
 
     private boolean shouldHideSendAnswerButton(String type) {
