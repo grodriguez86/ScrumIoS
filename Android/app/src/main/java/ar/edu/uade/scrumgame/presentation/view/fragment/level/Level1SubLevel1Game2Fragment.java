@@ -19,6 +19,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class Level1SubLevel1Game2Fragment extends GameFragment {
+    private static final Integer DRAGGABLE_VIEWS = 5;
     @BindView(R.id.productBacklogContainer)
     ImageView productBacklogContainer;
     @BindView(R.id.productBacklog)
@@ -87,7 +88,7 @@ public class Level1SubLevel1Game2Fragment extends GameFragment {
     }
 
     private boolean hasCompletedGame() {
-        return this.correctDrags == 5;
+        return this.correctDrags.equals(DRAGGABLE_VIEWS);
     }
 
     private void showTooltip(View view, ViewTooltip.ListenerHide onHideListener) {

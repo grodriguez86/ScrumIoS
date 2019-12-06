@@ -24,6 +24,7 @@ import butterknife.ButterKnife;
 public class Level1SubLevel1Game1Fragment extends GameFragment implements GameContentView {
 
     private static final String BUNDLE_EXTRA_PARAM_INFO_GAME = "ar.edu.uade.scrumgame.BUNDLE_EXTRA_PARAM_INFO_GAME";
+    private static final int REQUIRED_CHOICES = 4;
     @BindView(R.id.rg_choices_1)
     RadioGroup choices1;
     @BindView(R.id.rg_choices_2)
@@ -76,10 +77,10 @@ public class Level1SubLevel1Game1Fragment extends GameFragment implements GameCo
         if (infoGameModel != null) {
             this.gameCode = infoGameModel.getCode();
             List<GameContentModel> gameContent = infoGameModel.getContent();
-            if (gameContent == null || gameContent.size() != 4) {
+            if (gameContent == null || gameContent.size() != REQUIRED_CHOICES) {
                 throw new IllegalArgumentException("Choices must be 4");
             }
-            for (int index = 0; index < 4; index++) {
+            for (int index = 0; index < REQUIRED_CHOICES; index++) {
                 RadioButton radioButton = choices[index];
                 GameContentModel gameContentModel = gameContent.get(index);
                 radioButton.setText(gameContentModel.getData());
