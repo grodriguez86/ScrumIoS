@@ -22,6 +22,7 @@
         <activity android:name=".presentation.view.activity.MenuActivity" />
         <activity android:name=".presentation.view.activity.LevelActivity" />
         <activity android:name=".presentation.view.activity.InfoTheoryActivity" />
+        <activity android:name=".presentation.view.activity.InfoGameActivity" />
     </application>
     <uses-permission android:name="android.permission.INTERNET"></uses-permission>
 
