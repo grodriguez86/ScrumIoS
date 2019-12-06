@@ -9,6 +9,16 @@
     <color name="blue">#3e7ff6</color>
     <color name="lightBlue">#6f9ef5</color>
     <color name="levelOne">#FE9D20</color>
+    <color name="kiwi">#7AC70C</color>
+    <color name="blueberry">#1CB0F6</color>
+    <color name="raspberry">#D33131</color>
+    <color name="banana">#FFB020</color>
+    <color name="pumpkin">#FA811B</color>
+    <color name="jelly">#8549BA</color>
+    <color name="cocoa">#864E1B</color>
+    <color name="licorice">#4C4C4C</color>
+    <color name="cloud">#CFCFCF</color>
+    <color name="creme">#FFFFFF</color>
     <color name="white">#FFFFFF</color>
     <color name="black">#000000</color>
     <color name="transparent">#00000000</color>

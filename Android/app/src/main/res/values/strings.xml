@@ -10,4 +10,26 @@
     <string name="menu_level_row_sublevels">%d subniveles</string>
     <string name="info_theory_skip">SALTAR TUTORIAL</string>
     <string name="info_theory_play">A JUGAR!</string>
+    <string name="product_backlog_tag">Excelente! El Product Backlog es el lugar donde figuran todas las tareas que el producto requiere desarrollar.</string>
+    <string name="sprint_backlog_tag">Perfecto! El Sprint Backlog es el lugar donde figuran todas las tareas que el equipo decidió que realizarán en esta iteración.</string>
+    <string name="arrow_iv_cd">arrow</string>
+    <string name="arrow2_iv_cd">arrow2</string>
+    <string name="increment_tag">Bien ahí! El producto incrementable es lo que se puede entregar al final de cada iteración.</string>
+    <string name="curvedArrow2_iv_cd">curvedArrow2</string>
+    <string name="curvedArrow_iv_cd">curvedArrow</string>
+    <string name="sprint_tag">Buenísimo! El Sprint es la iteración en sí. Esta puede durar de 2 a 4 semanas y es el tiempo en el que el equipo desarrolla las tareas que definió en el Sprint Backlog.</string>
+    <string name="daily_meetup_tag">Genial! La Daily Scrum Meeting es la reunion diaria donde se sincroniza el equipo sobre el estado de cada uno de sus miembros. Aprenderás sobre ella más adelante! 😊</string>
+    <string name="game_send_answer">Enviar respuesta</string>
+    <string name="game_choice_true">Verdadero</string>
+    <string name="game_choice_false">Falso</string>
+    <string name="correct_answer_button_text">Ok</string>
+    <string name="correct_answer_title">Excelente!</string>
+    <string name="correct_answer">La respuesta es correcta &#129299;</string>
+    <string name="incorrect_answer_title">Incorrecto!</string>
+    <string name="incorrect_answer">La respuesta es incorrecta &#128169;\nInténtalo de nuevo</string>
+    <string name="incorrect_answer_button_text">Aceptar</string>
+    <string-array name="no_send_button_games">
+        <item>draggable</item>
+    </string-array>
+    <string name="progress_label">%1$d%%</string>
 </resources>
