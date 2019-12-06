@@ -54,7 +54,6 @@
             android:layout_weight="1"
             android:background="@drawable/gradient_background_3"
             android:gravity="center"
-            app:buttonTint="@color/cloud"
             app:fontFamily="@font/museo_sans_rounded_100" />
 
         <RadioButton
