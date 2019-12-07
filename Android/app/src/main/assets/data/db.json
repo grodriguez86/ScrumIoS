@@ -1,310 +1,397 @@
 {
-    "levels": [
+  "levels": [
+    {
+      "name": "¿Scrum?",
+      "code": 1,
+      "sublevels": [
         {
-            "name": "¿Scrum?",
-            "code": 1,
-            "sublevels": [
+          "name": "Lo tradicional: Cascada",
+          "code": "1.1",
+          "info_theory": [
+            {
+              "code": "1.1.1",
+              "content": [
                 {
-                    "name": "Lo tradicional: Cascada",
-                    "code": "1.1",
-                    "info_theory": [
-                        {
-                            "code": "1.1.1",
-                            "content": [
-                                {
-                                    "type": "title",
-                                    "data": "Desarrollo en cascada"
-                                },
-                                {
-                                    "type": "text",
-                                    "data": "El desarrollo en cascada es el enfoque más antiguo que se basa en la ejecución de tareas. Sigue roles específicos, modelos, buenas prácticas y un plan que se ejecuta sin muchos cambios. "
-                                },
-                                {
-                                    "type": "text",
-                                    "data": "Este se divide en fases conectadas entre sí, donde la salida de una etapa es la entrada de la siguiente. Se debe realizar el todo el análisis de requerimientos, para luego empezar el diseño. Cuando este esté listo, se continua con el desarrollo y así sucesivamente."
-                                },
-                                {
-                                    "type": "image",
-                                    "data": "https://i.imgur.com/AUqZVy3.png"
-                                },
-                                {
-                                    "type": "text",
-                                    "data": "Al final de cada etapa, el modelo está diseñado para llevar a cabo una revisión final, que se encarga de determinar si el proyecto está listo para avanzar a la siguiente fase."
-                                }
-                            ]
-                        },
-                        {
-                            "code": "1.1.2",
-                            "content": [
-                                {
-                                    "type": "title",
-                                    "data": "Problemas! 😩"
-                                },
-                                {
-                                    "type": "text",
-                                    "data": "El desarrollo tradicional es bueno cuando se tiene un perfecto conocimiento de que se quiere lograr, y el equipo de trabajo no comete errores."
-                                },
-                                {
-                                    "type": "text",
-                                    "data": "Debido a su rigidez, es un modelo que no se adapta a desarrollos donde el requerimiento cambia constantemente, ya sea por falta de entendimiento, definición o simplemente decisiones de negocio."
-                                }
-                            ]
-                        }
-                    ],
-                    "info_games": [
-                        {
-                            "code": "1.1.1",
-                            "title": "¿Quien es el encargado de dar las ordenes en el equipo?",
-                            "type": "textQuiz",
-                            "content": [
-                                {
-                                    "type": "textAnswer",
-                                    "isCorrect": false,
-                                    "data": "Ambos"
-                                },
-                                {
-                                    "type": "textAnswer",
-                                    "isCorrect": false,
-                                    "data": "Ninguno"
-                                },
-                                {
-                                    "type": "textAnswer",
-                                    "isCorrect": false,
-                                    "data": "Scrum Master"
-                                },
-                                {
-                                    "type": "textAnswer",
-                                    "isCorrect": true,
-                                    "data": "Product Owner"
-                                }
-                            ]
-                        },
-                        {
-                            "code": "1.1.2",
-                            "title": "¿Quien es el encargado de dar las ordenes en el equipo?",
-                            "type": "draggable"
-                        }
-                    ]
+                  "type": "title",
+                  "data": "Desarrollo en cascada"
                 },
                 {
-                    "name": "La alternativa: Scrum",
-                    "code": "1.2",
-                    "info_theory": [
-                        {
-                            "code": "1.2.1",
-                            "content": [
-                                {
-                                    "type": "title",
-                                    "data": "¿Scrum?"
-                                },
-                                {
-                                    "type": "text",
-                                    "data": "En vez de separar cada actividad y dividirlas en fases, Scrum mezcla todas las fases y las divide en distintas iteraciones que llama Sprints. Cada Sprint contiene en alguna medida Análisis, Diseño, Implementación, Testing, aprendizaje sobre lo que el cliente quiere y planes para el futuro, es decir, combina todos los aspectos del desarrollo."
-                                },
-                                {
-                                    "type": "image",
-                                    "data": "https://i.imgur.com/hGxJEou.png "
-                                },
-                                {
-                                    "type": "text",
-                                    "data": "Desde el primer Sprint, Scrum busca lograr versiones entregables del proyecto, aun cuando sea algo muy pequeño. Este entregable es mostrado a todos los involucrados, dando lugar al feedback temprano, realizar mejoras iteración a iteración y así lograr el producto correcto."
-                                }
-                            ]
-                        },
-                        {
-                            "code": "1.2.2",
-                            "content": [
-                                {
-                                    "type": "title",
-                                    "data": "Entonces, ¿cuando usar Scrum?"
-                                },
-                                {
-                                    "type": "text",
-                                    "data": "En el espectro de todos los posibles problemas que se requieren resolver, Scrum es aplicable cuando estos se clasifican como complejos, impredecibles y adaptativos (o siempre cambiantes). En estos casos, es prácticamente imposible realizar un plan bien definido y llevarlo a cabo. Es necesario utilizar un enfoque empírico, basado en observaciones y evidencias."
-                                },
-                                {
-                                    "type": "image",
-                                    "data": "https://i.imgur.com/QSR9JFJ.png"
-                                },
-                                {
-                                    "type": "text",
-                                    "data": "Scrum está basado en dicho enfoque, siendo transparente a través de dar visibilidad de sus eventos y artefactos; inspeccionando estos constantemente para detectar variables desfavorables; siendo adaptativo, ya que si algún proceso, plan o producto esta fuera del objetivo planteado, puede cambiarse."
-                                }
-                            ]
-                        }, {
-                            "code": "1.2.3",
-                            "content": [
-                                {
-                                    "type": "title",
-                                    "data": "Flujo"
-                                },
-                                {
-                                    "type": "text",
-                                    "data": "Scrum sigue una serie de pasos sistemáticos. En el Product Backlog figuran todas las tareas que se pretenden hacer durante el proyecto. De este, se alimenta el Sprint Backlog, que cumple la misma función que el anterior, pero sobre la iteración actual. Luego se produce la iteración en sí, que dura entre 2 y 4 semanas, retroalimentandose con reuniones diarias. El resultado de dicha iteración es un entregable, el cual es presentado a todos los interesados."
-                                },
-                                {
-                                    "type": "image",
-                                    "data": "https://i.imgur.com/rX23Rd5.png "
-                                }
-                            ]
-                        }
-                    ],
-                    "info_games": [
-                        {
-                            "code": "1.1.1",
-                            "title": "¿Quien es el encargado de dar las ordenes en el equipo?",
-                            "type": "textQuiz",
-                            "content": [
-                                {
-                                    "type": "textAnswer",
-                                    "isCorrect": false,
-                                    "data": "Ambos"
-                                },
-                                {
-                                    "type": "textAnswer",
-                                    "isCorrect": false,
-                                    "data": "Ninguno"
-                                },
-                                {
-                                    "type": "textAnswer",
-                                    "isCorrect": false,
-                                    "data": "Scrum Master"
-                                },
-                                {
-                                    "type": "textAnswer",
-                                    "isCorrect": true,
-                                    "data": "Product Owner"
-                                }
-                            ]
-                        },
-                        {
-                            "code": "1.1.2",
-                            "title": "¿Quien es el encargado de dar las ordenes en el equipo?",
-                            "type": "draggable"
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "name": "Roles",
-            "code": 2,
-            "sublevels": [
-                {
-                    "name": "Roles",
-                    "code": "2.1",
-                    "info_theory": [
-                        {
-                            "code": "2.1.1",
-                            "content": [
-                                {
-                                    "type": "title",
-                                    "data": "Product Owner"
-                                },
-                                {
-                                    "type": "text",
-                                    "data": "El Product Owner o PO es el responsable de maximizar el valor del producto resultante de trabajo del resto del equipo. La principal forma que tiene de hacerlo estableciendo el orden de importancia de las tareas en el Product Backlog (se verá más adelante en Artefactos), asegurándose que se entiendan claramente."
-                                },
-                                {
-                                    "type": "text",
-                                    "data": "Si bien puede ser que el resto del equipo también maneje el Product Backlog, es responsabilidad del Product Owner."
-                                },
-                                {
-                                    "type": "text",
-                                    "data": "Tiene la decisión final sobre cualquier duda que surja sobre los requerimientos. No siempre tendrá todos los detalles, pero tiene la última palabra."
-                                },
-                                {
-                                    "type": "text",
-                                    "data": "Si alguien necesita algo del equipo, tienen que hablar con el Product Owner."
-                                }
-                            ]
-                        },
-                        {
-                            "code": "2.1.2",
-                            "content": [
-                                {
-                                    "type": "title",
-                                    "data": "El Scrum Development Team"
-                                },
-                                {
-                                    "type": "text",
-                                    "data": "Es un grupo multifuncional que se autoorganiza para generar un entregable en cada sprint. En este no hay jerarquías, y si bien cada uno se enfoca en su área, la responsabilidad del desarrollo del entregable es del equipo."
-                                },
-                                {
-                                    "type": "text",
-                                    "data": "Es importante que sea un equipo pequeño, entre 3 y 9 personas. Menos de 3 puede resultar en un faltante de habilidades, y más de 9 resultaría muy complejo de coordinar y autoorganizarse."
-                                }
-                            ]
-                        },
-                        {
-                            "code": "2.1.3",
-                            "content": [
-                                {
-                                    "type": "title",
-                                    "data": "El Scrum Master"
-                                },
-                                {
-                                    "type": "text",
-                                    "data": "Es parte del equipo de Scrum. No es un puesto de autoridad, ni tiene un rol similar a un Project Manager. Su función es la de facilitar: proteger al equipo de distracciones e interrupciones, enseñar a usar Scrum, dar visibilidad, marcar tiempos en reuniones, mantener presente el objetivo del sprint, entre otras."
-                                }
-                            ]
-                        }
-                    ],
-                    "info_games": [
-                        
-                    ]
+                  "type": "text",
+                  "data": "El desarrollo en cascada es el enfoque más antiguo que se basa en la ejecución de tareas. Sigue roles específicos, modelos, buenas prácticas y un plan que se ejecuta sin muchos cambios. "
                 },
                 {
-                    "name": "Artefactos",
-                    "code": "2.2",
-                    "info_theory": [
-                        {
-                            "code": "2.2.1",
-                            "content": [
-                                {
-                                    "type": "title",
-                                    "data": "Product Backlog"
-                                },
-                                {
-                                    "type": "image",
-                                    "data": "https://i.imgur.com/RadNKuL.jpg"
-                                }
-                            ]
-                        },
-                        {
-                            "code": "2.2.2",
-                            "content": [
-                                {
-                                    "type": "title",
-                                    "data": "Sprint Backlog"
-                                },
-                                {
-                                    "type": "image",
-                                    "data": "https://i.imgur.com/BUD9CRH.jpg"
-                                }
-                            ]
-                        }
-                    ],
-                    "info_games": [
-                        
-                    ]
+                  "type": "text",
+                  "data": "Este se divide en fases conectadas entre sí, donde la salida de una etapa es la entrada de la siguiente. Se debe realizar el todo el análisis de requerimientos, para luego empezar el diseño. Cuando este esté listo, se continua con el desarrollo y así sucesivamente."
+                },
+                {
+                  "type": "image",
+                  "data": "https://i.imgur.com/AUqZVy3.png"
+                },
+                {
+                  "type": "text",
+                  "data": "Al final de cada etapa, el modelo está diseñado para llevar a cabo una revisión final, que se encarga de determinar si el proyecto está listo para avanzar a la siguiente fase."
                 }
-            ]
+              ]
+            },
+            {
+              "code": "1.1.2",
+              "content": [
+                {
+                  "type": "title",
+                  "data": "Problemas! 😩"
+                },
+                {
+                  "type": "text",
+                  "data": "El desarrollo tradicional es bueno cuando se tiene un perfecto conocimiento de que se quiere lograr, y el equipo de trabajo no comete errores."
+                },
+                {
+                  "type": "text",
+                  "data": "Debido a su rigidez, es un modelo que no se adapta a desarrollos donde el requerimiento cambia constantemente, ya sea por falta de entendimiento, definición o simplemente decisiones de negocio."
+                }
+              ]
+            }
+          ],
+          "info_games": [
+            {
+              "code": "1.1.1",
+              "title": "En cascada, ¿cuando se inicia una etapa?",
+              "type": "textChoiceQuiz",
+              "content": [
+                {
+                  "type": "textAnswer",
+                  "isCorrect": true,
+                  "data": "Cuando se finalizó la etapa anterior"
+                },
+                {
+                  "type": "textAnswer",
+                  "isCorrect": false,
+                  "data": "Cuando se revisó la etapa anterior"
+                },
+                {
+                  "type": "textAnswer",
+                  "isCorrect": false,
+                  "data": "Todas al inicio del proyecto"
+                },
+                {
+                  "type": "textAnswer",
+                  "isCorrect": false,
+                  "data": "Ninguna de las anteriores"
+                }
+              ]
+            },
+            {
+              "code": "1.1.2",
+              "title": "Cuando no se conoce el dominio o éste cambia constantemente, el desarrollo en cascada es ideal.",
+              "type": "trueFalseQuiz",
+              "content": [
+                {
+                  "type": "textAnswer",
+                  "isCorrect": false,
+                  "data": "Verdadero"
+                },
+                {
+                  "type": "textAnswer",
+                  "isCorrect": true,
+                  "data": "Falso"
+                }
+              ]
+            }
+          ]
         },
         {
-            "name": "Meetings",
-            "code": 3,
-            "sublevels": []
-        },
-        {
-            "name": "Graficos",
-            "code": 4,
-            "sublevels": []
-        },
-        {
-            "name": "Cosas de Scrum",
-            "code": 5,
-            "sublevels": []
+          "name": "La alternativa: Scrum",
+          "code": "1.2",
+          "info_theory": [
+            {
+              "code": "1.2.1",
+              "content": [
+                {
+                  "type": "title",
+                  "data": "¿Scrum?"
+                },
+                {
+                  "type": "text",
+                  "data": "En vez de separar cada actividad y dividirlas en fases, Scrum mezcla todas las fases y las divide en distintas iteraciones que llama Sprints. Cada Sprint contiene en alguna medida Análisis, Diseño, Implementación, Testing, aprendizaje sobre lo que el cliente quiere y planes para el futuro, es decir, combina todos los aspectos del desarrollo."
+                },
+                {
+                  "type": "image",
+                  "data": "https://i.imgur.com/hGxJEou.png "
+                },
+                {
+                  "type": "text",
+                  "data": "Desde el primer Sprint, Scrum busca lograr versiones entregables del proyecto, aun cuando sea algo muy pequeño. Este entregable es mostrado a todos los involucrados, dando lugar al feedback temprano, realizar mejoras iteración a iteración y así lograr el producto correcto."
+                }
+              ]
+            },
+            {
+              "code": "1.2.2",
+              "content": [
+                {
+                  "type": "title",
+                  "data": "Entonces, ¿cuando usar Scrum?"
+                },
+                {
+                  "type": "text",
+                  "data": "En el espectro de todos los posibles problemas que se requieren resolver, Scrum es aplicable cuando estos se clasifican como complejos, impredecibles y adaptativos (o siempre cambiantes). En estos casos, es prácticamente imposible realizar un plan bien definido y llevarlo a cabo. Es necesario utilizar un enfoque empírico, basado en observaciones y evidencias."
+                },
+                {
+                  "type": "image",
+                  "data": "https://i.imgur.com/QSR9JFJ.png"
+                },
+                {
+                  "type": "text",
+                  "data": "Scrum está basado en dicho enfoque, siendo transparente a través de dar visibilidad de sus eventos y artefactos; inspeccionando estos constantemente para detectar variables desfavorables; siendo adaptativo, ya que si algún proceso, plan o producto esta fuera del objetivo planteado, puede cambiarse."
+                }
+              ]
+            },
+            {
+              "code": "1.2.3",
+              "content": [
+                {
+                  "type": "title",
+                  "data": "Flujo"
+                },
+                {
+                  "type": "text",
+                  "data": "Scrum sigue una serie de pasos sistemáticos. En el Product Backlog figuran todas las tareas que se pretenden hacer durante el proyecto. De este, se alimenta el Sprint Backlog, que cumple la misma función que el anterior, pero sobre la iteración actual. Luego se produce la iteración en sí, que dura entre 2 y 4 semanas, retroalimentandose con reuniones diarias. El resultado de dicha iteración es un entregable, el cual es presentado a todos los interesados."
+                },
+                {
+                  "type": "image",
+                  "data": "https://i.imgur.com/rX23Rd5.png "
+                }
+              ]
+            }
+          ],
+          "info_games": [
+            {
+              "code": "1.2.1",
+              "title": "Conviene usar Scrum si el problema es … :",
+              "type": "textChoiceQuiz",
+              "content": [
+                {
+                  "type": "textAnswer",
+                  "isCorrect": false,
+                  "data": "Simple, predecible, estático"
+                },
+                {
+                  "type": "textAnswer",
+                  "isCorrect": true,
+                  "data": "Complejo, Impredecible, Cambiante"
+                }
+              ]
+            },
+            {
+              "code": "1.2.2",
+              "title": "¿Cuál es el flujo de scrum? ",
+              "type": "imageQuiz",
+              "content": [
+                {
+                  "type": "imageAnswer",
+                  "isCorrect": true,
+                  "data": "https://i.imgur.com/rX23Rd5.png"
+                },
+                {
+                  "type": "imageAnswer",
+                  "isCorrect": false,
+                  "data": "https://i.imgur.com/AUqZVy3.png"
+                }
+              ]
+            },
+            {
+              "code": "1.2.3",
+              "title": "¡Completa el flujo de Scrum!",
+              "type": "scrumFlowDraggable"
+            }
+          ]
         }
-    ]
+      ]
+    },
+    {
+      "name": "Roles",
+      "code": 2,
+      "sublevels": [
+        {
+          "name": "Roles",
+          "code": "2.1",
+          "info_theory": [
+            {
+              "code": "2.1.1",
+              "content": [
+                {
+                  "type": "title",
+                  "data": "Product Owner"
+                },
+                {
+                  "type": "text",
+                  "data": "El Product Owner o PO es el responsable de maximizar el valor del producto resultante de trabajo del resto del equipo. La principal forma que tiene de hacerlo estableciendo el orden de importancia de las tareas en el Product Backlog (se verá más adelante en Artefactos), asegurándose que se entiendan claramente."
+                },
+                {
+                  "type": "text",
+                  "data": "Si bien puede ser que el resto del equipo también maneje el Product Backlog, es responsabilidad del Product Owner."
+                },
+                {
+                  "type": "text",
+                  "data": "Tiene la decisión final sobre cualquier duda que surja sobre los requerimientos. No siempre tendrá todos los detalles, pero tiene la última palabra."
+                },
+                {
+                  "type": "text",
+                  "data": "Si alguien necesita algo del equipo, tienen que hablar con el Product Owner."
+                }
+              ]
+            },
+            {
+              "code": "2.1.2",
+              "content": [
+                {
+                  "type": "title",
+                  "data": "El Scrum Development Team"
+                },
+                {
+                  "type": "text",
+                  "data": "Es un grupo multifuncional que se autoorganiza para generar un entregable en cada sprint. En este no hay jerarquías, y si bien cada uno se enfoca en su área, la responsabilidad del desarrollo del entregable es del equipo."
+                },
+                {
+                  "type": "text",
+                  "data": "Es importante que sea un equipo pequeño, entre 3 y 9 personas. Menos de 3 puede resultar en un faltante de habilidades, y más de 9 resultaría muy complejo de coordinar y autoorganizarse."
+                }
+              ]
+            },
+            {
+              "code": "2.1.3",
+              "content": [
+                {
+                  "type": "title",
+                  "data": "El Scrum Master"
+                },
+                {
+                  "type": "text",
+                  "data": "Es parte del equipo de Scrum. No es un puesto de autoridad, ni tiene un rol similar a un Project Manager. Su función es la de facilitar: proteger al equipo de distracciones e interrupciones, enseñar a usar Scrum, dar visibilidad, marcar tiempos en reuniones, mantener presente el objetivo del sprint, entre otras."
+                }
+              ]
+            }
+          ],
+          "info_games": [
+            {
+              "code": "2.1.1",
+              "title": "El Scrum Master les indica a los integrantes del equipo que tienen que hacer. ",
+              "type": "trueFalseQuiz",
+              "content": [
+                {
+                  "type": "textAnswer",
+                  "isCorrect": false,
+                  "data": "Verdadero"
+                },
+                {
+                  "type": "textAnswer",
+                  "isCorrect": true,
+                  "data": "Falso"
+                }
+              ]
+            },
+            {
+              "code": "2.1.2",
+              "title": "¿Quién tiene la última decisión sobre el Product Backlog?",
+              "type": "textQuiz",
+              "content": [
+                {
+                  "type": "textAnswer",
+                  "isCorrect": false,
+                  "data": "Scrum Master"
+                },
+                {
+                  "type": "textAnswer",
+                  "isCorrect": false,
+                  "data": "Development Team"
+                },
+                {
+                  "type": "textAnswer",
+                  "isCorrect": false,
+                  "data": "El cliente"
+                },
+                {
+                  "type": "textAnswer",
+                  "isCorrect": true,
+                  "data": "Product Owner"
+                }
+              ]
+            },
+            {
+              "code": "2.1.3",
+              "title": "¿Quién es el responsable por el progreso del trabajo durante el Sprint?",
+              "type": "textQuiz",
+              "content": [
+                {
+                  "type": "textAnswer",
+                  "isCorrect": false,
+                  "data": "Scrum Master"
+                },
+                {
+                  "type": "textAnswer",
+                  "isCorrect": true,
+                  "data": "Development Team"
+                },
+                {
+                  "type": "textAnswer",
+                  "isCorrect": false,
+                  "data": "El cliente"
+                },
+                {
+                  "type": "textAnswer",
+                  "isCorrect": false,
+                  "data": "Product Owner"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Artefactos",
+          "code": "2.2",
+          "info_theory": [
+            {
+              "code": "2.2.1",
+              "content": [
+                {
+                  "type": "title",
+                  "data": "Product Backlog"
+                },
+                {
+                  "type": "image",
+                  "data": "https://i.imgur.com/RadNKuL.jpg"
+                }
+              ]
+            },
+            {
+              "code": "2.2.2",
+              "content": [
+                {
+                  "type": "title",
+                  "data": "Sprint Backlog"
+                },
+                {
+                  "type": "image",
+                  "data": "https://i.imgur.com/BUD9CRH.jpg"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Meetings",
+      "code": 3,
+      "sublevels": []
+    },
+    {
+      "name": "Graficos",
+      "code": 4,
+      "sublevels": []
+    },
+    {
+      "name": "Cosas de Scrum",
+      "code": 5,
+      "sublevels": []
+    }
+  ]
 }
