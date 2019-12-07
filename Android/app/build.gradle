@@ -1,17 +1,25 @@
 apply plugin: 'com.android.application'
 apply plugin: 'io.fabric'
 
+ext.versionMajor = 0
+ext.versionMinor = 0
+ext.versionPatch = 1
+ext.versionClassifier = null
+ext.isSnapshot = true
+ext.minimumSdkVersion = 16
 
 android {
     compileSdkVersion 28
     defaultConfig {
         applicationId "ar.edu.uade.scrumgame"
-        minSdkVersion 16
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
+        minSdkVersion project.ext.minimumSdkVersion
+        versionCode generateVersionCode()
+        versionName generateVersionName()
     }
     buildTypes {
         release {
@@ -63,3 +71,19 @@ dependencies {
 }
 
 apply plugin: 'com.google.gms.google-services'
+
+private Integer generateVersionCode() {
+    return ext.minimumSdkVersion * 10000000 + ext.versionMajor * 10000 + ext.versionMinor * 100 + ext.versionPatch
+}
+
+private String generateVersionName() {
+    String versionName = "${ext.versionMajor}.${ext.versionMinor}.${ext.versionPatch}"
+    if (ext.versionClassifier == null && ext.isSnapshot) {
+        ext.versionClassifier = "SNAPSHOT"
+    }
+
+    if (ext.versionClassifier != null) {
+        versionName += "-" + ext.versionClassifier
+    }
+    return versionName;
+}
