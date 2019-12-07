@@ -1,6 +1,9 @@
 package ar.edu.uade.scrumgame.presentation;
 
 import android.app.Application;
+import android.content.Context;
+
+import androidx.multidex.MultiDex;
 
 import ar.edu.uade.scrumgame.presentation.di.components.ApplicationComponent;
 import ar.edu.uade.scrumgame.presentation.di.components.DaggerApplicationComponent;
@@ -13,6 +16,12 @@ public class ScrumApplication extends Application {
     public void onCreate() {
         super.onCreate();
         this.initializeInjector();
+    }
+
+    @Override
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(base);
+        MultiDex.install(this);
     }
 
     private void initializeInjector() {
