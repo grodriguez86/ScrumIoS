@@ -10,11 +10,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
+
+import com.google.android.material.bottomsheet.BottomSheetBehavior;
 
 import java.util.List;
 
@@ -62,6 +65,10 @@ public class InfoGameFragment extends BaseFragment implements InfoGamesContentVi
     RelativeLayout retryLayout;
     @BindView(R.id.bt_retry)
     Button retryButton;
+    @BindView(R.id.bottom_sheet)
+    LinearLayout bottomSheetLayout;
+    @BindView(R.id.finish_game_btn)
+    Button finishGameButton;
     private Fragment gameFragment;
     @Inject
     InfoGamesContentPresenter infoGamesContentPresenter;
@@ -72,6 +79,7 @@ public class InfoGameFragment extends BaseFragment implements InfoGamesContentVi
     private String subLevelTitle;
     private Integer currentGame;
     private OnGamesCompletedListener onGamesCompletedListener;
+    private BottomSheetBehavior bottomSheetBehavior;
 
     public static InfoGameFragment newInstance(String levelTitle, String subLevelCode, String subLevelTitle, Integer currentGame) {
         InfoGameFragment fragment = new InfoGameFragment();
@@ -127,6 +135,8 @@ public class InfoGameFragment extends BaseFragment implements InfoGamesContentVi
         this.infoGamesContentPresenter.setView(this);
         this.levelTitleTextView.setText(levelTitle);
         this.subLevelTitleTextView.setText(subLevelTitle);
+        this.bottomSheetBehavior = BottomSheetBehavior.from(bottomSheetLayout);
+        bottomSheetBehavior.setState(BottomSheetBehavior.STATE_HIDDEN);
         if (savedInstanceState == null) {
             this.loadInfoGames();
         }
@@ -214,8 +224,8 @@ public class InfoGameFragment extends BaseFragment implements InfoGamesContentVi
         if (this.areGamesPendingToPlay()) {
             InfoGameModel currentGame = infoGameModelList.get(this.currentGame);
             this.loadGame(currentGame);
-        } else if (this.onGamesCompletedListener != null) {
-            this.onGamesCompletedListener.onGamesCompleted();
+        } else {
+            this.bottomSheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
         }
     }
 
@@ -245,7 +255,7 @@ public class InfoGameFragment extends BaseFragment implements InfoGamesContentVi
     }
 
     private void setFragment(InfoGameModel infoGameModel) {
-        String fragmentName = GameFragmentConstant.getFragmentNameForGame(infoGameModel.getCode());
+        String fragmentName = GameFragmentConstant.getFragmentNameForType(infoGameModel.getType());
         try {
             gameFragment = (Fragment) Class.forName(fragmentName).newInstance();
             Bundle bundle = new Bundle();
@@ -267,6 +277,8 @@ public class InfoGameFragment extends BaseFragment implements InfoGamesContentVi
         titleTextView.setText(infoGameModel.getTitle());
         if (this.shouldHideSendAnswerButton(infoGameModel.getType())) {
             sendAnswerButton.setVisibility(View.GONE);
+        } else {
+            sendAnswerButton.setVisibility(View.VISIBLE);
         }
         //TODO tutorial
         indicationsTextView.setText("");
@@ -293,5 +305,13 @@ public class InfoGameFragment extends BaseFragment implements InfoGamesContentVi
         if (this.getActivity() != null) {
             this.getActivity().onBackPressed();
         }
+    }
+
+    @OnClick(R.id.finish_game_btn)
+    public void finishGame() {
+        if (this.onGamesCompletedListener != null) {
+            this.onGamesCompletedListener.onGamesCompleted();
+        }
+        this.bottomSheetBehavior.setState(BottomSheetBehavior.STATE_HIDDEN);
     }
 }

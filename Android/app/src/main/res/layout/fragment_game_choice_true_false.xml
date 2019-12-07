@@ -7,24 +7,20 @@
     android:orientation="vertical">
 
     <Button
-        android:id="@+id/choice_true"
+        android:id="@+id/choice_1_btn"
         style="@style/Button.Choice"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/button_margin"
-        android:layout_marginBottom="@dimen/button_margin"
+        android:layout_margin="@dimen/button_margin"
         android:background="@drawable/button_outline"
-        android:text="@string/game_choice_true"
         android:textAllCaps="true" />
 
     <Button
-        android:id="@+id/choice_false"
+        android:id="@+id/choice_2_btn"
         style="@style/Button.Choice"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/button_margin"
-        android:layout_marginBottom="@dimen/button_margin"
+        android:layout_margin="@dimen/button_margin"
         android:background="@drawable/button_outline"
-        android:text="@string/game_choice_false"
         android:textAllCaps="true" />
 </LinearLayout>

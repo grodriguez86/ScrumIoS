@@ -1,24 +1,30 @@
 package ar.edu.uade.scrumgame.presentation.constants;
 
-import ar.edu.uade.scrumgame.presentation.view.fragment.level.Level1SubLevel1Game1Fragment;
-import ar.edu.uade.scrumgame.presentation.view.fragment.level.Level1SubLevel1Game2Fragment;
+import ar.edu.uade.scrumgame.presentation.view.fragment.games.ImageQuizGameFragment;
+import ar.edu.uade.scrumgame.presentation.view.fragment.games.TextQuizGameFragment;
+import ar.edu.uade.scrumgame.presentation.view.fragment.games.ScrumFlowDraggableGameFragment;
+import ar.edu.uade.scrumgame.presentation.view.fragment.games.TextChoicesGameFragment;
+import ar.edu.uade.scrumgame.presentation.view.fragment.games.TrueFalseGameFragment;
 
 public enum GameFragmentConstant {
-    LEVEL_1_SUB_LEVEL_1_GAME_1("1.1.1", Level1SubLevel1Game1Fragment.class.getName()),
-    LEVEL_1_SUB_LEVEL_1_GAME_2("1.1.2", Level1SubLevel1Game2Fragment.class.getName());
+    TEXT_QUIZ("textQuiz", TextQuizGameFragment.class.getName()),
+    SCRUM_FLOW_DRAGGABLE("scrumFlowDraggable", ScrumFlowDraggableGameFragment.class.getName()),
+    TEXT_CHOICES_QUIZ("textChoiceQuiz", TextChoicesGameFragment.class.getName()),
+    TRUE_FALSE_QUIZ("trueFalseQuiz", TrueFalseGameFragment.class.getName()),
+    IMAGE_QUIZ("imageQuiz", ImageQuizGameFragment.class.getName());
 
-    private String gameCode;
+    private String gameType;
     private String fragmentClassName;
 
-    GameFragmentConstant(String gameCode, String fragmentClassName) {
-        this.gameCode = gameCode;
+    GameFragmentConstant(String gameType, String fragmentClassName) {
+        this.gameType = gameType;
         this.fragmentClassName = fragmentClassName;
     }
 
-    public static String getFragmentNameForGame(String gameCode) {
+    public static String getFragmentNameForType(String gameType) {
         GameFragmentConstant[] games = GameFragmentConstant.values();
         for (GameFragmentConstant game : games) {
-            if (game.gameCode.equals(gameCode)) {
+            if (game.gameType.equals(gameType)) {
                 return game.fragmentClassName;
             }
         }

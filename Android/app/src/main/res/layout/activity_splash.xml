@@ -8,7 +8,7 @@
     tools:context=".presentation.view.activity.SplashScreen">
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/splash_iv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:scaleType="centerInside"
