@@ -68,6 +68,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-analytics:17.2.1'
     implementation 'com.crashlytics.sdk.android:crashlytics:2.10.1'
     implementation 'com.android.support:multidex:1.0.3'
+    implementation project(path: ':velocity')
 }
 
 apply plugin: 'com.google.gms.google-services'

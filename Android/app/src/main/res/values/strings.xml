@@ -31,9 +31,13 @@
     <string-array name="no_send_button_games">
         <item>scrumFlowDraggable</item>
         <item>trueFalseQuiz</item>
+        <item>velocity</item>
     </string-array>
     <string name="progress_label">%1$d%%</string>
     <string name="accept">Aceptar</string>
     <string name="complete">Completo</string>
     <string name="image_quiz_cd">Imagen</string>
+    <string name="invaders_description">Una invasión extraterrestre amenaza tu planeta. ¡Debes protegerlo!</string>
+    <string name="invaders_description_2">¿Cuántas amenazas crees poder derribar en 30 segundos?</string>
+    <string name="invaders_play_button">A jugar!</string>
 </resources>
