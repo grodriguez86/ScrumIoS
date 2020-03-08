@@ -1,9 +1,11 @@
 package ar.edu.uade.scrumgame.presentation.view.fragment.games;
 
+import android.graphics.Color;
 import android.widget.Button;
 
 import java.util.List;
 
+import androidx.core.content.ContextCompat;
 import ar.edu.uade.scrumgame.R;
 import ar.edu.uade.scrumgame.presentation.models.GameContentModel;
 import ar.edu.uade.scrumgame.presentation.view.GameContentView;
@@ -16,6 +18,7 @@ public class TrueFalseGameFragment extends GameFragment implements GameContentVi
     Button choice1Button;
     @BindView(R.id.choice_2_btn)
     Button choice2Button;
+    private Button[] choices;
     private Button choiceAttempt;
 
     @Override
@@ -25,7 +28,7 @@ public class TrueFalseGameFragment extends GameFragment implements GameContentVi
 
     @Override
     protected void doLoadGame() {
-        Button[] choices = new Button[]{choice1Button, choice2Button};
+        choices = new Button[]{choice1Button, choice2Button};
         List<GameContentModel> gameContent = infoGameModel.getContent();
         if (gameContent.size() != NUMBER_OF_CHOICES) {
             throw new IllegalArgumentException("True/false choices must be two");
@@ -34,9 +37,22 @@ public class TrueFalseGameFragment extends GameFragment implements GameContentVi
             choices[index].setText(gameContent.get(index).getData());
             choices[index].setTag(gameContent.get(index).getCorrect());
             choices[index].setOnClickListener(v -> {
+                TrueFalseGameFragment.this.unselectChoice();
+                v.setSelected(true);
+                ((Button) v).setTextColor(Color.WHITE);
                 this.choiceAttempt = (Button) v;
-                checkAttempt();
             });
+        }
+    }
+
+    private void unselectChoice() {
+        if (this.choices != null && this.choiceAttempt != null) {
+            for (Button button : this.choices) {
+                if (button.getTag().equals(this.choiceAttempt.getTag())) {
+                    button.setTextColor(ContextCompat.getColor(this.getActivity(), R.color.violet));
+                    button.setSelected(false);
+                }
+            }
         }
     }
 
