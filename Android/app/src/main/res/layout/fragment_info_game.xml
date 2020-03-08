@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
+                                                     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background"
     android:orientation="vertical">
@@ -11,87 +11,91 @@
         android:layout_height="match_parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/game_header"
-            android:layout_width="match_parent"
-            android:layout_height="71dp"
-            android:background="@color/jelly"
-            app:layout_constraintTop_toTopOf="parent">
+                android:id="@+id/game_header"
+                android:layout_width="match_parent"
+                android:layout_height="71dp"
+                android:background="@drawable/gradient_background_logo"
+                app:layout_constraintTop_toTopOf="parent">
 
             <TextView
-                android:id="@+id/subLevelTitle"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginLeft="8dp"
-                android:layout_marginTop="4dp"
-                android:layout_marginEnd="56dp"
-                android:layout_marginRight="56dp"
-                android:cropToPadding="false"
-                android:gravity="center"
-                android:textColor="@color/white"
-                android:textSize="14sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/bt_exit"
-                app:layout_constraintTop_toTopOf="parent" />
+                    android:id="@+id/subLevelTitle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginEnd="56dp"
+                    android:layout_marginRight="56dp"
+                    android:cropToPadding="false"
+                    android:gravity="center"
+                    android:textColor="@color/white"
+                    android:textSize="14sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/bt_exit"
+                    app:layout_constraintTop_toTopOf="parent" android:visibility="gone"/>
 
             <TextView
-                android:id="@+id/levelTitle"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginLeft="8dp"
-                android:layout_marginTop="4dp"
-                android:layout_marginEnd="56dp"
-                android:layout_marginRight="56dp"
-                android:cropToPadding="false"
-                android:gravity="center"
-                android:textColor="@color/white"
-                android:textSize="12sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/bt_exit"
-                app:layout_constraintTop_toBottomOf="@+id/subLevelTitle" />
+                    android:id="@+id/levelTitle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginEnd="56dp"
+                    android:layout_marginRight="56dp"
+                    android:cropToPadding="false"
+                    android:gravity="center"
+                    android:textColor="@color/white"
+                    android:textSize="12sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/bt_exit"
+                    app:layout_constraintTop_toBottomOf="@+id/subLevelTitle" android:visibility="gone"/>
 
             <TextView
-                android:id="@+id/progress_tv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginLeft="8dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginRight="8dp"
-                android:textColor="@color/white"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/levelTitle" />
+                    android:id="@+id/progress_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginRight="8dp"
+                    android:textColor="@color/white"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/levelTitle" android:visibility="gone"/>
 
             <Button
-                android:id="@+id/bt_exit"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:layout_margin="0dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginLeft="8dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp"
-                android:background="@color/transparent"
-                android:text="X"
-                android:textColor="@color/white"
-                android:textSize="14sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                    android:id="@+id/bt_exit"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_margin="0dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:background="@color/transparent"
+                    android:text="X"
+                    android:textColor="@color/white"
+                    android:textSize="24sp"
+                    app:layout_constraintEnd_toStartOf="@id/game_progress"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" android:fontFamily="@font/gotham_rounded_bold"/>
+            <ProgressBar
+                    android:id="@+id/game_progress"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="0dp"
+                    android:layout_height="20dp"
+                    android:progressDrawable="@drawable/gradient_progress"
+                    tools:progress="60"
+                    app:layout_constraintHorizontal_weight="1"
+                    app:layout_constraintBottom_toBottomOf="@id/game_header"
+                    app:layout_constraintStart_toEndOf="@+id/bt_exit" app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent" android:layout_marginRight="16dp"
+                    android:layout_marginEnd="16dp" android:layout_marginLeft="16dp" android:layout_marginStart="16dp"/>
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <ProgressBar
-            android:id="@+id/game_progress"
-            style="?android:attr/progressBarStyleHorizontal"
-            android:layout_width="match_parent"
-            android:layout_height="2dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/game_header" />
 
         <LinearLayout
             android:id="@+id/game_content_ll"
@@ -100,22 +104,23 @@
             android:layout_marginBottom="8dp"
             android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/game_progress">
+            app:layout_constraintTop_toBottomOf="@+id/game_header">
 
             <TextView
-                android:id="@+id/title"
-                style="@style/TextView.Title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/title_text_view_margin_vertical"
-                android:textAlignment="center" />
+                    android:id="@+id/title"
+                    style="@style/TextView.Title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/title_text_view_margin_vertical"
+                    android:textAlignment="center" android:fontFamily="@font/gotham_rounded_bold"
+                    android:textColor="@color/black" android:textSize="24sp"/>
 
             <TextView
-                android:id="@+id/indications"
-                style="@style/TextView.Indication"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:fontFamily="@font/museo_sans_rounded_1000" />
+                    android:id="@+id/indications"
+                    style="@style/TextView.Indication"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:fontFamily="@font/gotham_rounded_medium" android:textColor="@color/black"/>
 
             <FrameLayout
                 android:id="@+id/gameContainer"
@@ -125,13 +130,16 @@
                 android:background="@android:color/transparent" />
 
             <Button
-                android:id="@+id/sendAnswer"
-                style="@style/Button.SendAnswer"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/game_send_answer"
-                android:textAllCaps="false"
-                android:visibility="visible" />
+                    android:id="@+id/sendAnswer"
+                    style="@style/Button.SendAnswer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/game_send_answer"
+                    android:textAllCaps="false"
+                    android:visibility="visible" android:fontFamily="@font/gotham_rounded_bold"
+                    android:textColor="@color/white" android:background="@drawable/gradient_continue_button"
+                    android:paddingLeft="20dp" android:paddingTop="10dp" android:paddingRight="20dp"
+                    android:paddingBottom="10dp"/>
         </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -26,4 +26,7 @@
     <color name="black_50_opacity">#80000000</color>
     <color name="row_level_item">#E1E1E1</color>
     <color name="row_level_number">#CFCFCF</color>
+    <color name="violet">#AB31D4</color>
+    <color name="estimation_red">#EB5E37</color>
+    <color name="estimation_green">#23A052</color>
 </resources>

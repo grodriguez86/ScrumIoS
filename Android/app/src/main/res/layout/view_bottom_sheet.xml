@@ -28,7 +28,7 @@
             android:layout_gravity="center"
             android:layout_marginTop="10dp"
             android:layout_weight="1"
-            android:fontFamily="@font/museo_sans_rounded_500"
+            android:fontFamily="@font/gotham_rounded_medium"
             android:text="@string/complete"
             android:textAlignment="center"
             android:textColor="@color/white"

@@ -1,11 +1,15 @@
 package ar.edu.uade.scrumgame.presentation.view.fragment.games;
 
+import android.content.res.ColorStateList;
+import android.graphics.Color;
 import android.view.ViewGroup;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
 import java.util.List;
 
+import androidx.core.content.res.ResourcesCompat;
+import androidx.core.widget.CompoundButtonCompat;
 import ar.edu.uade.scrumgame.R;
 import ar.edu.uade.scrumgame.presentation.models.GameContentModel;
 import ar.edu.uade.scrumgame.presentation.view.GameContentView;
@@ -30,6 +34,9 @@ public class TextChoicesGameFragment extends GameFragment implements GameContent
             RadioButton radioButton = new RadioButton(this.getActivity());
             radioButton.setId(ViewIdGenerator.generateViewId());
             radioButton.setText(choice.getData());
+            radioButton.setTypeface(ResourcesCompat.getFont(this.getActivity(), R.font.gotham_rounded_medium));
+            ColorStateList colorStateList = new ColorStateList(new int[][]{new int[]{-android.R.attr.state_checked}, new int[]{android.R.attr.state_checked}}, new int[]{Color.DKGRAY, Color.BLACK});
+            CompoundButtonCompat.setButtonTintList(radioButton, colorStateList);
             radioButton.setTag(choice.getCorrect());
             radioButton.setLayoutParams(new RadioGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT, 1));
             choices.addView(radioButton);

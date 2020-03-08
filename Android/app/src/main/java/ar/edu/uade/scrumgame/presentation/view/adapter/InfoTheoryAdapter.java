@@ -3,6 +3,7 @@ package ar.edu.uade.scrumgame.presentation.view.adapter;
 import android.app.Activity;
 import android.app.FragmentTransaction;
 import android.content.Context;
+import android.graphics.Color;
 import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +14,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.res.ResourcesCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.youtube.player.YouTubeInitializationResult;
@@ -73,9 +75,10 @@ public class InfoTheoryAdapter extends RecyclerView.Adapter<InfoTheoryAdapter.In
                 case "title":
                     TextView title = new TextView(context);
                     title.setText(infoTheoryItem.getData());
-                    title.setTextSize(20);
+                    title.setTextSize(28);
                     title.setPadding(16,16,16,24);
-                    title.setTypeface(title.getTypeface(), Typeface.BOLD);
+                    title.setTextColor(Color.BLACK);
+                    title.setTypeface(ResourcesCompat.getFont(context,R.font.gotham_rounded_bold));
                     holder.container.addView(title);
                     break;
                 case "image":
@@ -108,8 +111,10 @@ public class InfoTheoryAdapter extends RecyclerView.Adapter<InfoTheoryAdapter.In
                 case "text":
                     TextView text = new TextView(context);
                     text.setText(infoTheoryItem.getData());
-                    text.setTextSize(14);
+                    text.setTextSize(18);
                     text.setPadding(16,4,16,4);
+                    text.setTextColor(Color.BLACK);
+                    text.setTypeface(ResourcesCompat.getFont(context,R.font.gotham_rounded_medium));
                     holder.container.addView(text);
                     break;
                 default:
