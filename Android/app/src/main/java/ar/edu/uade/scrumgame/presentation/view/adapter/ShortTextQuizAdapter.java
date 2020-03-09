@@ -1,14 +1,13 @@
 package ar.edu.uade.scrumgame.presentation.view.adapter;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 import android.widget.RadioButton;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.widget.AppCompatTextView;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -25,7 +24,6 @@ import butterknife.ButterKnife;
 
 
 public class ShortTextQuizAdapter extends RecyclerView.Adapter<ShortTextQuizAdapter.ShortTextQuizViewHolder> {
-    private final static Integer[] BACKGROUND_IDS = new Integer[]{R.drawable.gradient_background_1, R.drawable.gradient_background_2, R.drawable.gradient_background_3, R.drawable.gradient_background_4};
     private final static Integer MAXIMUM_NUMBER_OF_OPTIONS = 4;
 
     public interface OnItemClickListener {
@@ -61,14 +59,15 @@ public class ShortTextQuizAdapter extends RecyclerView.Adapter<ShortTextQuizAdap
     @Override
     public void onBindViewHolder(@NonNull ShortTextQuizViewHolder holder, final int position) {
         GameContentModel gameContentModel = this.gameContentModels.get(position);
-        holder.container.setBackground(ContextCompat.getDrawable(this.context, BACKGROUND_IDS[position]));
-        holder.option.setText(gameContentModel.getData());
+        holder.selected.setText(gameContentModel.getData());
         holder.selected.setTag(gameContentModel.getCorrect());
         holder.selected.setOnClickListener(v -> {
             if (lastSelectedOption != null) {
+                lastSelectedOption.selected.setTextColor(ContextCompat.getColor(this.context,R.color.violet));
                 lastSelectedOption.selected.setChecked(false);
             }
             lastSelectedOption = holder;
+            lastSelectedOption.selected.setTextColor(Color.WHITE);
             if (ShortTextQuizAdapter.this.onItemClickListener != null) {
                 ShortTextQuizAdapter.this.onItemClickListener.onOptionSelected(gameContentModel);
             }
@@ -100,10 +99,6 @@ public class ShortTextQuizAdapter extends RecyclerView.Adapter<ShortTextQuizAdap
     }
 
     static class ShortTextQuizViewHolder extends RecyclerView.ViewHolder {
-        @BindView(R.id.container_ll)
-        LinearLayout container;
-        @BindView(R.id.option_tv)
-        AppCompatTextView option;
         @BindView(R.id.selected_rb)
         RadioButton selected;
 
