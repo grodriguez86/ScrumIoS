@@ -8,12 +8,11 @@ import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.widget.AppCompatTextView;
 import androidx.core.content.res.ResourcesCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -73,7 +72,7 @@ public class InfoTheoryAdapter extends RecyclerView.Adapter<InfoTheoryAdapter.In
         for (ViewTypeModel infoTheoryItem : infoTheoryModel.getInfoTheory()) {
             switch (infoTheoryItem.getType()) {
                 case "title":
-                    TextView title = new TextView(context);
+                    AppCompatTextView title = new AppCompatTextView(context);
                     title.setText(infoTheoryItem.getData());
                     title.setTextSize(28);
                     title.setPadding(16,16,16,24);
@@ -109,7 +108,7 @@ public class InfoTheoryAdapter extends RecyclerView.Adapter<InfoTheoryAdapter.In
                     fragmentTransaction.commit();
                     break;
                 case "text":
-                    TextView text = new TextView(context);
+                    AppCompatTextView text = new AppCompatTextView(context);
                     text.setText(infoTheoryItem.getData());
                     text.setTextSize(18);
                     text.setPadding(16,4,16,4);

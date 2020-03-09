@@ -14,7 +14,7 @@
             android:layout_weight="1"
             android:layout_margin="@dimen/button_margin"
             android:background="@drawable/button_selector"
-            android:textAllCaps="false"/>
+            android:textAllCaps="false" android:fontFamily="@font/gotham_rounded_medium"/>
 
     <Button
             android:id="@+id/choice_2_btn"
@@ -24,5 +24,5 @@
             android:layout_weight="1"
             android:layout_margin="@dimen/button_margin"
             android:background="@drawable/button_selector"
-            android:textAllCaps="false"/>
+            android:textAllCaps="false" android:fontFamily="@font/gotham_rounded_medium"/>
 </LinearLayout>

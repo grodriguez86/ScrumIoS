@@ -6,8 +6,8 @@ import android.os.Bundle;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
-import android.widget.TextView;
 
+import androidx.appcompat.widget.AppCompatTextView;
 import ar.edu.uade.scrumgame.R;
 import ar.edu.uade.scrumgame.presentation.view.activity.BaseActivity;
 import ar.edu.uade.scrumgame.velocity.UnityPlayerActivity;
@@ -18,7 +18,7 @@ import butterknife.OnClick;
 public class VelocityActivity extends BaseActivity {
     private static int ON_GAME_COMPLETED_CODE = 90;
     @BindView(R.id.expectedScoreTv)
-    TextView expectedScore;
+    AppCompatTextView expectedScore;
     @BindView(R.id.playBtn)
     Button playButton;
 

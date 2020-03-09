@@ -35,16 +35,16 @@
         <item name="android:layout_gravity">center</item>
     </style>
 
-    <style name="TextView.Title" parent="CenteredView">
+    <style name="androidx.appcompat.widget.AppCompatTextView.Title" parent="CenteredView">
         <item name="android:textSize">20sp</item>
         <item name="android:textStyle">bold</item>
     </style>
 
-    <style name="TextView.Indication" parent="CenteredView">
+    <style name="androidx.appcompat.widget.AppCompatTextView.Indication" parent="CenteredView">
         <item name="android:textSize">14sp</item>
     </style>
 
-    <style name="TextView.RadioButtonText" parent="CenteredView">
+    <style name="androidx.appcompat.widget.AppCompatTextView.RadioButtonText" parent="CenteredView">
         <item name="android:textSize">18sp</item>
         <item name="android:textColor">@android:color/white</item>
         <item name="android:textStyle">bold</item>

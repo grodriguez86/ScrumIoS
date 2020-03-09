@@ -4,9 +4,9 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.widget.AppCompatTextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.Collection;
@@ -84,7 +84,7 @@ public class SubLevelsAdapter extends RecyclerView.Adapter<SubLevelsAdapter.SubL
 
     static class SubLevelViewHolder extends RecyclerView.ViewHolder {
         @BindView(R.id.subLevelText)
-        TextView text;
+        AppCompatTextView text;
 
         SubLevelViewHolder(View itemView) {
             super(itemView);

@@ -16,7 +16,7 @@
 
         <RadioButton
                 android:id="@+id/rb_choice_2"
-                style="@style/TextView.RadioButtonText"
+                style="@style/androidx.appcompat.widget.AppCompatTextView.RadioButtonText"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_margin="@dimen/radio_button_margin"
@@ -28,7 +28,7 @@
 
         <RadioButton
                 android:id="@+id/rb_choice_1"
-                style="@style/TextView.RadioButtonText"
+                style="@style/androidx.appcompat.widget.AppCompatTextView.RadioButtonText"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_margin="@dimen/radio_button_margin"
@@ -49,7 +49,7 @@
 
         <RadioButton
                 android:id="@+id/rb_choice_3"
-                style="@style/TextView.RadioButtonText"
+                style="@style/androidx.appcompat.widget.AppCompatTextView.RadioButtonText"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_margin="@dimen/radio_button_margin"
@@ -61,7 +61,7 @@
 
         <RadioButton
                 android:id="@+id/rb_choice_4"
-                style="@style/TextView.RadioButtonText"
+                style="@style/androidx.appcompat.widget.AppCompatTextView.RadioButtonText"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_margin="@dimen/radio_button_margin"

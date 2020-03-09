@@ -4,9 +4,9 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.widget.AppCompatTextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import ar.edu.uade.scrumgame.R;
@@ -31,9 +31,11 @@ public class LevelsAdapter extends RecyclerView.Adapter<LevelsAdapter.LevelViewH
     private LayoutInflater layoutInflater;
     private OnItemClickListener onItemClickListener;
     private String subLevelsText;
+    private Context context;
 
     @Inject
     LevelsAdapter(Context context) {
+        this.context = context;
         this.layoutInflater =
                 (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         this.subLevelsText = context.getString(R.string.menu_level_row_sublevels);
@@ -58,6 +60,7 @@ public class LevelsAdapter extends RecyclerView.Adapter<LevelsAdapter.LevelViewH
         holder.number.setText(String.valueOf(levelModel.getCode()));
         holder.name.setText(levelModel.getName());
         holder.sublevels.setText(String.format(subLevelsText, levelModel.getSublevels().size()));
+        holder.action.setText(context.getString(R.string.play_now));
         holder.itemView.setOnClickListener(v -> {
             if (LevelsAdapter.this.onItemClickListener != null) {
                 LevelsAdapter.this.onItemClickListener.onLevelItemClicked(levelModel);
@@ -88,11 +91,13 @@ public class LevelsAdapter extends RecyclerView.Adapter<LevelsAdapter.LevelViewH
 
     static class LevelViewHolder extends RecyclerView.ViewHolder {
         @BindView(R.id.number)
-        TextView number;
+        AppCompatTextView number;
         @BindView(R.id.name)
-        TextView name;
+        AppCompatTextView name;
         @BindView(R.id.sublevels)
-        TextView sublevels;
+        AppCompatTextView sublevels;
+        @BindView(R.id.action)
+        AppCompatTextView action;
 
         LevelViewHolder(View itemView) {
             super(itemView);

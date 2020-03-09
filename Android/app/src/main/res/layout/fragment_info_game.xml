@@ -17,7 +17,7 @@
                 android:background="@drawable/gradient_background_logo"
                 app:layout_constraintTop_toTopOf="parent">
 
-            <TextView
+            <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/subLevelTitle"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -34,7 +34,7 @@
                     app:layout_constraintStart_toEndOf="@+id/bt_exit"
                     app:layout_constraintTop_toTopOf="parent" android:visibility="gone"/>
 
-            <TextView
+            <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/levelTitle"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -51,7 +51,7 @@
                     app:layout_constraintStart_toEndOf="@+id/bt_exit"
                     app:layout_constraintTop_toBottomOf="@+id/subLevelTitle" android:visibility="gone"/>
 
-            <TextView
+            <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/progress_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -106,18 +106,18 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/game_header">
 
-            <TextView
+            <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/title"
-                    style="@style/TextView.Title"
+                    style="@style/androidx.appcompat.widget.AppCompatTextView.Title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/title_text_view_margin_vertical"
                     android:textAlignment="center" android:fontFamily="@font/gotham_rounded_bold"
                     android:textColor="@color/black" android:textSize="24sp"/>
 
-            <TextView
+            <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/indications"
-                    style="@style/TextView.Indication"
+                    style="@style/androidx.appcompat.widget.AppCompatTextView.Indication"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     app:fontFamily="@font/gotham_rounded_medium" android:textColor="@color/black"/>

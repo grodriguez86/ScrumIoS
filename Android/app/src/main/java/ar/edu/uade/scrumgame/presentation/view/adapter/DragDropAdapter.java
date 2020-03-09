@@ -6,9 +6,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.widget.AppCompatTextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.Collection;
@@ -59,7 +59,7 @@ public class DragDropAdapter extends RecyclerView.Adapter<DragDropAdapter.DragDr
             return true;
         });
         holder.optionLinearLayout.setOnDragListener(new DragToListListener());
-        holder.optionTextView.setText(gameContentModel.getData());
+        holder.optionAppCompatTextView.setText(gameContentModel.getData());
     }
 
     @Override
@@ -107,7 +107,7 @@ public class DragDropAdapter extends RecyclerView.Adapter<DragDropAdapter.DragDr
         @BindView(R.id.option_ll)
         LinearLayout optionLinearLayout;
         @BindView(R.id.option_tv)
-        TextView optionTextView;
+        AppCompatTextView optionAppCompatTextView;
 
         DragDropViewHolder(View itemView) {
             super(itemView);

@@ -15,9 +15,9 @@
             android:padding="0dp"
             android:text="X"
             android:textColor="@color/white"
-            android:textStyle="bold"/>
+            android:textStyle="bold" android:textSize="30sp" android:fontFamily="@font/gotham_rounded_bold"/>
 
-    <TextView
+    <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/levelTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -31,7 +31,7 @@
             android:textSize="36sp"
             android:textColor="@color/white" android:fontFamily="@font/gotham_rounded_bold" tools:text="¿Scrum?"/>
 
-    <TextView
+    <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/levelSubtitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -42,7 +42,8 @@
             android:cropToPadding="false"
             android:gravity="center"
             android:textSize="24sp"
-            android:textColor="@color/white" tools:text="2 subniveles"/>
+            android:textColor="@color/white" tools:text="2 subniveles"
+            android:fontFamily="@font/gotham_rounded_medium" android:layout_marginTop="5dp"/>
 
     <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_subLevels"

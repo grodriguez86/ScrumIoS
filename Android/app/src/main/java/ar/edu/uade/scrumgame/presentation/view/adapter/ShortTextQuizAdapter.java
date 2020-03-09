@@ -6,9 +6,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.widget.AppCompatTextView;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -103,7 +103,7 @@ public class ShortTextQuizAdapter extends RecyclerView.Adapter<ShortTextQuizAdap
         @BindView(R.id.container_ll)
         LinearLayout container;
         @BindView(R.id.option_tv)
-        TextView option;
+        AppCompatTextView option;
         @BindView(R.id.selected_rb)
         RadioButton selected;
 
