@@ -113,7 +113,7 @@ public class InfoTheoryAdapter extends RecyclerView.Adapter<InfoTheoryAdapter.In
                     text.setTextSize(18);
                     text.setPadding(16,4,16,4);
                     text.setTextColor(Color.BLACK);
-                    text.setTypeface(ResourcesCompat.getFont(context,R.font.gotham_rounded_medium));
+                    text.setTypeface(ResourcesCompat.getFont(context,R.font.gotham_rounded_light));
                     holder.container.addView(text);
                     break;
                 default:
