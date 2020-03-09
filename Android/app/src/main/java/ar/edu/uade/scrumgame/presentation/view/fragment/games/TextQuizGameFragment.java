@@ -52,10 +52,12 @@ public class TextQuizGameFragment extends GameFragment implements GameContentVie
     }
 
     private void saveCheckedButtonAndClearCheck(RadioGroup radioGroup, int checkedId, RadioGroup otherRadioGroup) {
-        TextQuizGameFragment.this.choiceAttempt = radioGroup.findViewById(checkedId);
-        TextQuizGameFragment.this.choiceAttempt.setTextColor(Color.WHITE);
+        if (this.choiceAttempt != null) {
+            this.choiceAttempt.setTextColor(ContextCompat.getColor(this.getActivity(), R.color.violet));
+        }
+        this.choiceAttempt = radioGroup.findViewById(checkedId);
+        this.choiceAttempt.setTextColor(Color.WHITE);
         if (otherRadioGroup.getCheckedRadioButtonId() != -1) {
-            ((RadioButton) otherRadioGroup.findViewById(otherRadioGroup.getCheckedRadioButtonId())).setTextColor(ContextCompat.getColor(this.getActivity(), R.color.violet));
             otherRadioGroup.setOnCheckedChangeListener(null);
             otherRadioGroup.clearCheck();
             otherRadioGroup.setOnCheckedChangeListener((group, newCheckedId) -> saveCheckedButtonAndClearCheck(group, newCheckedId, radioGroup));
