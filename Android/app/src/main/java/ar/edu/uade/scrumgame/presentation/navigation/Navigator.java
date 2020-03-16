@@ -7,11 +7,14 @@ import android.content.Intent;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
+import ar.edu.uade.scrumgame.presentation.view.activity.BaseActivity;
 import ar.edu.uade.scrumgame.presentation.view.activity.InfoGameActivity;
 import ar.edu.uade.scrumgame.presentation.view.activity.InfoTheoryActivity;
 import ar.edu.uade.scrumgame.presentation.view.activity.LevelActivity;
 import ar.edu.uade.scrumgame.presentation.view.activity.LoginActivity;
 import ar.edu.uade.scrumgame.presentation.view.activity.MenuActivity;
+import ar.edu.uade.scrumgame.presentation.view.activity.SignupActivity;
+import ar.edu.uade.scrumgame.presentation.view.activity.SignupDetailsActivity;
 import ar.edu.uade.scrumgame.presentation.view.activity.SplashScreen;
 
 @Singleton
@@ -56,11 +59,26 @@ public class Navigator {
         }
     }
 
-    public void navigateToLogin(SplashScreen splashScreen) {
-        if (splashScreen != null) {
-            Intent intent = new Intent(splashScreen.getApplicationContext(), LoginActivity.class);
-            splashScreen.startActivity(intent);
-            splashScreen.finish();
+    public void navigateToLogin(BaseActivity baseActivity) {
+        if (baseActivity != null) {
+            Intent intent = new Intent(baseActivity.getApplicationContext(), LoginActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+            baseActivity.startActivity(intent);
+            baseActivity.finish();
+        }
+    }
+
+    public void navigateToSignup(LoginActivity loginActivity) {
+        if (loginActivity != null) {
+            Intent intent = new Intent(loginActivity.getApplicationContext(), SignupActivity.class);
+            loginActivity.startActivity(intent);
+        }
+    }
+
+    public void navigateToSignupDetails(SignupActivity signupActivity) {
+        if (signupActivity != null) {
+            Intent intent = new Intent(signupActivity.getApplicationContext(), SignupDetailsActivity.class);
+            signupActivity.startActivity(intent);
         }
     }
 }

@@ -8,6 +8,7 @@ import androidx.multidex.MultiDex;
 import ar.edu.uade.scrumgame.presentation.di.components.ApplicationComponent;
 import ar.edu.uade.scrumgame.presentation.di.components.DaggerApplicationComponent;
 import ar.edu.uade.scrumgame.presentation.di.modules.ApplicationModule;
+import io.realm.Realm;
 
 public class ScrumApplication extends Application {
     private ApplicationComponent applicationComponent;
@@ -16,6 +17,7 @@ public class ScrumApplication extends Application {
     public void onCreate() {
         super.onCreate();
         this.initializeInjector();
+        Realm.init(this);
     }
 
     @Override

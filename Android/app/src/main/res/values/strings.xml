@@ -36,4 +36,15 @@
     <string name="accept">Aceptar</string>
     <string name="complete">Completo</string>
     <string name="image_quiz_cd">Imagen</string>
+    <string-array name="genders">
+        <item>Masculino</item>
+        <item>Femenino</item>
+    </string-array>
+    <string-array name="tasteLevels">
+        <item>Nada</item>
+        <item>Poco</item>
+        <item>Le da igual</item>
+        <item>Mucho</item>
+        <item>Fanático</item>
+    </string-array>
 </resources>
