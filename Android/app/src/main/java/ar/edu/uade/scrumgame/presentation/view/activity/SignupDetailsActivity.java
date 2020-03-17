@@ -134,9 +134,10 @@ public class SignupDetailsActivity extends BaseActivity {
         try {
             FirebaseFirestore firebaseFirestore = FirebaseFirestore.getInstance();
             firebaseFirestore.collection("users")
-                    .add(user)
+                    .document(user.getMail())
+                    .set(user)
                     .addOnSuccessListener(documentReference -> {
-                        Log.d("SIGNUP", "DocumentSnapshot written with ID: " + documentReference.getId());
+                        Log.d("SIGNUP", "DocumentSnapshot written");
                         // TODO updateLevel()
                         navigateToMenu();
                     })
