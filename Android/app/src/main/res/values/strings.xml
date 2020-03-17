@@ -47,4 +47,31 @@
         <item>Mucho</item>
         <item>Fanático</item>
     </string-array>
+    <string name="signup_title">Registro</string>
+    <string name="signup_page_text">1 de 2</string>
+    <string name="signup_subtitle">Ingresa tu información de sesión</string>
+    <string name="signup_password_subtext">La contraseña debe tener al menos 6 caracteres.</string>
+    <string name="signup_email">Mail</string>
+    <string name="signup_password">Contraseña</string>
+    <string name="button_continue">Continuar</string>
+    <string name="signup_details_page_text">2 de 2</string>
+    <string name="signup_details_subtitle">Ingresa tu información personal</string>
+    <string name="signup_details_name">Nombre</string>
+    <string name="signup_details_age">Edad</string>
+    <string name="signup_details_sex">Sexo</string>
+    <string name="signup_details_profession">Profesión</string>
+    <string name="signup_details_city">Ciudad</string>
+    <string name="signup_details_province">Provincia</string>
+    <string name="signup_details_country">País</string>
+    <string name="signup_details_gamesTasteLevel">Nivel de gusto por los juegos</string>
+    <string name="signup_details_gamesTime">Tiempo dedicado a juegos</string>
+    <string name="button_done">Listo!</string>
+    <!-- Errors -->
+    <string name="form_incomplete_alert_title">Datos incompletos</string>
+    <string name="form_incomplete_alert_message">Todos los campos deben estar completos!</string>
+    <string name="form_error_age_nan">Edad inválida! Ingresa un número!</string>
+    <string name="unknown_error">Ocurrió un error desconocido</string>
+    <string name="error_user_not_found">No se encontró el usuario</string>
+    <string name="error_creating_remote_user">Ocurrió un error creando el usuario remoto</string>
+    <string name="error_email_already_in_use">Ya existe un usuario con ese email</string>
 </resources>
