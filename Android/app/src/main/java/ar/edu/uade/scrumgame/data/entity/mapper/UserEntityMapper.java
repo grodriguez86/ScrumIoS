@@ -7,9 +7,9 @@ import ar.edu.uade.scrumgame.data.entity.UserEntity;
 import ar.edu.uade.scrumgame.domain.User;
 
 @Singleton
-public class UserMapper {
+public class UserEntityMapper {
     @Inject
-    public UserMapper() {
+    public UserEntityMapper() {
 
     }
 

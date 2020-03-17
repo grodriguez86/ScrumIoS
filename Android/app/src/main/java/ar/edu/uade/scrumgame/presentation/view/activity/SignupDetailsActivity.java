@@ -11,13 +11,15 @@ import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import ar.edu.uade.scrumgame.R;
 import ar.edu.uade.scrumgame.data.entity.ProgressEntity;
 import ar.edu.uade.scrumgame.data.entity.UserEntity;
 import ar.edu.uade.scrumgame.data.entity.UserOverallDataEntity;
+import ar.edu.uade.scrumgame.data.entity.mapper.UserEntityMapper;
+import ar.edu.uade.scrumgame.domain.User;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -58,14 +60,14 @@ public class SignupDetailsActivity extends BaseActivity {
     @BindView(R.id.inputGamesTime)
     Spinner inputGamesTime;
 
-    private FirebaseAuth mAuth;
-
     private FirebaseUser loggedUser;
 
     @OnClick(R.id.btBack)
     public void goBack() {
         this.onBackPressed();
     }
+
+    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,7 +78,7 @@ public class SignupDetailsActivity extends BaseActivity {
         loggedUser = mAuth.getCurrentUser();
         if (loggedUser == null) {
             Toast.makeText(this, "No se pudo encontrar el usuario", Toast.LENGTH_SHORT).show();
-//            this.navigator.navigateToLogin(this);
+            this.navigator.navigateToLogin(this);
         }
     }
 
@@ -84,36 +86,22 @@ public class SignupDetailsActivity extends BaseActivity {
     public void signupDoneClicked() {
         try {
             if (validateForm()) {
-                UserEntity newUser = new UserEntity(
+                User newUser = new User(
                         inputName.getText().toString(),
-//                        loggedUser.getEmail(),
-                        "pepe@pepe.com",
+                        loggedUser.getEmail(),
                         Integer.parseInt(inputAge.getText().toString()),
                         inputProfession.getText().toString(),
-//                        loggedUser.getUid(),
-                        "1",
+                        loggedUser.getUid(),
                         inputCity.getText().toString(),
                         inputSex.getSelectedItem().toString(),
                         inputProvince.getText().toString(),
                         inputCountry.getText().toString(),
                         inputGamesTasteLevel.getSelectedItem().toString(),
                         inputGamesTime.getSelectedItem().toString());
-                // TODO create local and remote progress document
-                Realm realm = Realm.getDefaultInstance();
-                realm.beginTransaction();
-                realm.copyToRealm(newUser);
-                realm.commitTransaction();
-                realm.beginTransaction();
-                realm.copyToRealmOrUpdate(new UserOverallDataEntity(1));
-                realm.commitTransaction();
-                realm.beginTransaction();
-                realm.copyToRealmOrUpdate(ProgressEntity.buildInitialProgress());
-                realm.commitTransaction();
-                System.out.println("asd");
-                // TODO guardar en firebase
-                // TODO go to level select
+                saveToRealm(newUser);
+                createRemoteUserDocument(newUser);
             } else {
-                // TODO mostrar alert
+                // TODO strings de alert
                 MaterialDialog.Builder builder = new MaterialDialog.Builder(this);
                 builder.title("Error");
                 builder.content("Completa to2 los campos");
@@ -124,6 +112,37 @@ public class SignupDetailsActivity extends BaseActivity {
             Toast.makeText(this, "La edad debe ser un número entero", Toast.LENGTH_SHORT).show();
         } catch (Exception e) {
             Toast.makeText(this, "Ocurrió un error desconocido", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private void saveToRealm(User user) {
+        UserEntityMapper userEntityMapper = new UserEntityMapper();
+        UserEntity newUserEntity = userEntityMapper.userToUserEntity(user);
+        Realm realm = Realm.getDefaultInstance();
+        realm.beginTransaction();
+        realm.copyToRealmOrUpdate(newUserEntity);
+        realm.commitTransaction();
+        realm.beginTransaction();
+        realm.copyToRealmOrUpdate(new UserOverallDataEntity(1));
+        realm.commitTransaction();
+        realm.beginTransaction();
+        realm.copyToRealmOrUpdate(ProgressEntity.buildInitialProgress());
+        realm.commitTransaction();
+    }
+
+    private void createRemoteUserDocument(User user) {
+        try {
+            FirebaseFirestore firebaseFirestore = FirebaseFirestore.getInstance();
+            firebaseFirestore.collection("users")
+                    .add(user)
+                    .addOnSuccessListener(documentReference -> {
+                        Log.d("SIGNUP", "DocumentSnapshot written with ID: " + documentReference.getId());
+                        // TODO updateLevel()
+                        navigateToMenu();
+                    })
+                    .addOnFailureListener(e -> Log.w("SIGNUP", "Error adding document", e));
+        } catch (Exception e) {
+            Toast.makeText(this, "Ocurrió un error creando el usuario remoto", Toast.LENGTH_SHORT).show();
         }
     }
 

@@ -8,18 +8,12 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.gson.Gson;
 
 import ar.edu.uade.scrumgame.R;
-import ar.edu.uade.scrumgame.domain.User;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -33,31 +27,6 @@ public class LoginActivity extends BaseActivity {
     Button loginButton;
 
     private FirebaseAuth mAuth;
-
-    // REFACTOR
-    FirebaseFirestore db = FirebaseFirestore.getInstance();
-
-    // REFACTOR
-    private void createUserDocument(String mail) {
-        User user = new User();
-        user.setMail(mail);
-        db.collection("users")
-                .add(user)
-                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-            @Override
-            public void onSuccess(DocumentReference documentReference) {
-//                Log.d(TAG, "DocumentSnapshot written with ID: " + documentReference.getId());
-                System.out.println("asd");
-            }
-        })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-//                        Log.w(TAG, "Error adding document", e);
-                        System.out.println("asd2");
-                    }
-                });
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,7 +46,6 @@ public class LoginActivity extends BaseActivity {
         //DEBUG
         Realm realm = Realm.getDefaultInstance();
     }
-
 
     @OnClick(R.id.button)
     public void signupClicked() {
