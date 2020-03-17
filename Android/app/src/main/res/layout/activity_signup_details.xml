@@ -112,10 +112,27 @@
             android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
             android:ems="10"
+            android:imeOptions="actionNext"
+            android:singleLine="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView4" />
+
+        <EditText
+            android:id="@+id/inputCity"
+            android:layout_width="0dp"
+            android:layout_height="44dp"
+            android:layout_marginStart="@dimen/signup_input_left_margin"
+            android:layout_marginLeft="@dimen/signup_input_left_margin"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:ems="10"
+            android:imeOptions="actionNext"
+            android:singleLine="true"
+            app:layout_constraintEnd_toStartOf="@+id/guideline3"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txCity" />
 
         <EditText
             android:id="@+id/inputProvince"
@@ -126,6 +143,8 @@
             android:layout_marginEnd="@dimen/signup_input_left_margin"
             android:layout_marginRight="@dimen/signup_input_left_margin"
             android:ems="10"
+            android:imeOptions="actionNext"
+            android:singleLine="true"
             app:layout_constraintEnd_toStartOf="@+id/guideline4"
             app:layout_constraintStart_toStartOf="@+id/guideline3"
             app:layout_constraintTop_toBottomOf="@+id/txProvince" />
@@ -139,6 +158,8 @@
             android:layout_marginEnd="16dp"
             android:layout_marginRight="16dp"
             android:ems="10"
+            android:imeOptions="actionDone"
+            android:singleLine="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="@+id/guideline4"
@@ -153,6 +174,8 @@
             android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
             android:ems="10"
+            android:imeOptions="actionNext"
+            android:singleLine="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -168,6 +191,8 @@
             android:layout_marginEnd="16dp"
             android:layout_marginRight="16dp"
             android:ems="10"
+            android:imeOptions="actionNext"
+            android:singleLine="true"
             app:layout_constraintEnd_toStartOf="@+id/guideline3"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/inputName" />
@@ -288,11 +313,13 @@
             android:id="@+id/txProfession"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/signup_input_label_left_margin"
+            android:layout_marginLeft="@dimen/signup_input_label_left_margin"
             android:layout_marginTop="8dp"
             android:text="Profesión"
             android:textSize="18sp"
-            app:layout_constraintTop_toBottomOf="@+id/inputAge"
-            tools:layout_editor_absoluteX="16dp" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/inputAge" />
 
         <TextView
             android:id="@+id/txCity"
@@ -342,19 +369,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/guideline3"
             app:layout_constraintTop_toBottomOf="@+id/txSex" />
-
-        <EditText
-            android:id="@+id/inputCity"
-            android:layout_width="0dp"
-            android:layout_height="44dp"
-            android:layout_marginStart="@dimen/signup_input_left_margin"
-            android:layout_marginLeft="@dimen/signup_input_left_margin"
-            android:layout_marginEnd="16dp"
-            android:layout_marginRight="16dp"
-            android:ems="10"
-            app:layout_constraintEnd_toStartOf="@+id/guideline3"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txCity" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
