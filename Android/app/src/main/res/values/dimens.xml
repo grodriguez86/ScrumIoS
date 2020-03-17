@@ -23,4 +23,8 @@
 
   <dimen name="radio_button_margin">5dp</dimen>
 
+  <!-- Signup inputs -->
+  <dimen name="signup_input_label_left_margin">24dp</dimen>
+  <dimen name="signup_input_left_margin">16dp</dimen>
+
 </resources>
