@@ -15,7 +15,9 @@ import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.FirebaseUser;
 
 import ar.edu.uade.scrumgame.R;
+import ar.edu.uade.scrumgame.data.entity.ProgressEntity;
 import ar.edu.uade.scrumgame.data.entity.UserEntity;
+import ar.edu.uade.scrumgame.data.entity.UserOverallDataEntity;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -101,7 +103,13 @@ public class SignupDetailsActivity extends BaseActivity {
                 realm.beginTransaction();
                 realm.copyToRealm(newUser);
                 realm.commitTransaction();
-                // TODO guardar en realm
+                realm.beginTransaction();
+                realm.copyToRealmOrUpdate(new UserOverallDataEntity(1));
+                realm.commitTransaction();
+                realm.beginTransaction();
+                realm.copyToRealmOrUpdate(ProgressEntity.buildInitialProgress());
+                realm.commitTransaction();
+                System.out.println("asd");
                 // TODO guardar en firebase
                 // TODO go to level select
             } else {

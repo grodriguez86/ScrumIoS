@@ -7,10 +7,13 @@ import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 
 public class ProgressEntity extends RealmObject {
+
+    @PrimaryKey
+    private String pK = "level_id";
+
     /**
      * Id del nivel. Si no hay Progress para el nivel, está bloqueado
      */
-    @PrimaryKey
     @SerializedName("level_number")
     private int levelId;
     /**
@@ -30,6 +33,8 @@ public class ProgressEntity extends RealmObject {
     private int actualGame;
     @SerializedName("total_games")
     private int totalGames;
+    private boolean blocked;
+    private String status;
 
     public ProgressEntity() {
     }
@@ -82,5 +87,40 @@ public class ProgressEntity extends RealmObject {
 
     public void setTotalGames(int totalGames) {
         this.totalGames = totalGames;
+    }
+
+    public boolean isBlocked() {
+        return blocked;
+    }
+
+    public void setBlocked(boolean blocked) {
+        this.blocked = blocked;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getpK() {
+        return pK;
+    }
+
+    public void setpK(String pK) {
+        this.pK = pK;
+    }
+
+    public static ProgressEntity buildInitialProgress() {
+     ProgressEntity initialProgress = new ProgressEntity();
+     initialProgress.setLevelId(1);
+     initialProgress.setBlocked(false);
+     initialProgress.setStatus(LevelStatusConstants.NOT_STARTED);
+     initialProgress.setTutorialCompleted(false);
+     initialProgress.setSublevelID(0);
+     initialProgress.setActualGame(0);
+     return initialProgress;
     }
 }

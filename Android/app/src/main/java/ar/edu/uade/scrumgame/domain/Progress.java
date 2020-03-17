@@ -2,6 +2,7 @@ package ar.edu.uade.scrumgame.domain;
 
 
 public class Progress {
+    private String pK;
     /**
      * Id del nivel. Si no hay Progress para el nivel, está bloqueado
      */
@@ -20,6 +21,10 @@ public class Progress {
     private int actualGame;
 
     private int totalGames;
+
+    private String status;
+
+    private boolean blocked;
 
     public int getLevelId() {
         return levelId;
@@ -59,5 +64,29 @@ public class Progress {
 
     public void setTotalGames(int totalGames) {
         this.totalGames = totalGames;
+    }
+
+    public String getpK() {
+        return pK;
+    }
+
+    public void setpK(String pK) {
+        this.pK = pK;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public boolean isBlocked() {
+        return blocked;
+    }
+
+    public void setBlocked(boolean blocked) {
+        this.blocked = blocked;
     }
 }

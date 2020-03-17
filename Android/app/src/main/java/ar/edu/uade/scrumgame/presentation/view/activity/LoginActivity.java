@@ -76,7 +76,6 @@ public class LoginActivity extends BaseActivity {
         }
         //DEBUG
         Realm realm = Realm.getDefaultInstance();
-        System.out.println("asd");
     }
 
 
