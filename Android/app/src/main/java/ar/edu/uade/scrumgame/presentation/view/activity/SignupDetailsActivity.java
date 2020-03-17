@@ -18,6 +18,7 @@ import ar.edu.uade.scrumgame.R;
 import ar.edu.uade.scrumgame.data.entity.ProgressEntity;
 import ar.edu.uade.scrumgame.data.entity.UserEntity;
 import ar.edu.uade.scrumgame.data.entity.UserOverallDataEntity;
+import ar.edu.uade.scrumgame.data.entity.mapper.ProgressEntityMapper;
 import ar.edu.uade.scrumgame.data.entity.mapper.UserEntityMapper;
 import ar.edu.uade.scrumgame.domain.User;
 import butterknife.BindView;
@@ -136,12 +137,20 @@ public class SignupDetailsActivity extends BaseActivity {
             firebaseFirestore.collection("users")
                     .document(user.getMail())
                     .set(user)
-                    .addOnSuccessListener(documentReference -> {
-                        Log.d("SIGNUP", "DocumentSnapshot written");
-                        // TODO updateLevel()
+                    .addOnSuccessListener(userSaveSuccess -> {
+                        Log.d("SIGNUP", "User DocumentSnapshot written");
+                        firebaseFirestore.collection(String.format("users/%s/levels", user.getMail()))
+                                .document("level_1")
+                                .set(new ProgressEntityMapper()
+                                        .progressEntityToProgress(ProgressEntity.buildInitialProgress()))
+                                .addOnSuccessListener(userProgressInitSuccess -> {
+                                    Log.d("SIGNUP", "UserProgress DocumentSnapshot written");
+                                    navigateToMenu();
+                                })
+                                .addOnFailureListener(e -> Log.w("SIGNUP", "Error adding progress document", e));
                         navigateToMenu();
                     })
-                    .addOnFailureListener(e -> Log.w("SIGNUP", "Error adding document", e));
+                    .addOnFailureListener(e -> Log.w("SIGNUP", "Error adding user document", e));
         } catch (Exception e) {
             Toast.makeText(this, "Ocurrió un error creando el usuario remoto", Toast.LENGTH_SHORT).show();
         }
