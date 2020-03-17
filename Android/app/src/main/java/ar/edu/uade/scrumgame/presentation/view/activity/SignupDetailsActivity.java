@@ -70,6 +70,8 @@ public class SignupDetailsActivity extends BaseActivity {
 
     private FirebaseAuth mAuth;
 
+    private static final String LOG_TAG = "SIGNUP_DETAILS";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -78,7 +80,7 @@ public class SignupDetailsActivity extends BaseActivity {
         mAuth = FirebaseAuth.getInstance();
         loggedUser = mAuth.getCurrentUser();
         if (loggedUser == null) {
-            Toast.makeText(this, "No se pudo encontrar el usuario", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.error_user_not_found, Toast.LENGTH_SHORT).show();
             this.navigator.navigateToLogin(this);
         }
     }
@@ -103,15 +105,15 @@ public class SignupDetailsActivity extends BaseActivity {
                 createRemoteUserDocument(newUser);
             } else {
                 MaterialDialog.Builder builder = new MaterialDialog.Builder(this);
-                builder.title("Error");
-                builder.content("Tenés campos incompletos!");
+                builder.title(R.string.form_incomplete_alert_title);
+                builder.content(R.string.form_incomplete_alert_message);
                 builder.positiveText("OK");
                 builder.show();
             }
         } catch (NumberFormatException nfe) {
-            Toast.makeText(this, "La edad debe ser un número entero", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.form_error_age_nan, Toast.LENGTH_SHORT).show();
         } catch (Exception e) {
-            Toast.makeText(this, "Ocurrió un error desconocido", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.unknown_error, Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -137,21 +139,21 @@ public class SignupDetailsActivity extends BaseActivity {
                     .document(user.getMail())
                     .set(user)
                     .addOnSuccessListener(userSaveSuccess -> {
-                        Log.d("SIGNUP", "User DocumentSnapshot written");
+                        Log.d(LOG_TAG, "User DocumentSnapshot written");
                         firebaseFirestore.collection(String.format("users/%s/levels", user.getMail()))
                                 .document("level_1")
                                 .set(new ProgressEntityMapper()
                                         .progressEntityToProgress(ProgressEntity.buildInitialProgress()))
                                 .addOnSuccessListener(userProgressInitSuccess -> {
-                                    Log.d("SIGNUP", "UserProgress DocumentSnapshot written");
+                                    Log.d(LOG_TAG, "UserProgress DocumentSnapshot written");
                                     navigateToMenu();
                                 })
-                                .addOnFailureListener(e -> Log.w("SIGNUP", "Error adding progress document", e));
+                                .addOnFailureListener(e -> Log.w(LOG_TAG, "Error adding progress document", e));
                         navigateToMenu();
                     })
-                    .addOnFailureListener(e -> Log.w("SIGNUP", "Error adding user document", e));
+                    .addOnFailureListener(e -> Log.w(LOG_TAG, "Error adding user document", e));
         } catch (Exception e) {
-            Toast.makeText(this, "Ocurrió un error creando el usuario remoto", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.error_creating_remote_user, Toast.LENGTH_SHORT).show();
         }
     }
 
