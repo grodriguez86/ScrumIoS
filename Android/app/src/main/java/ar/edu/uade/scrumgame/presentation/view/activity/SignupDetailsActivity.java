@@ -102,10 +102,9 @@ public class SignupDetailsActivity extends BaseActivity {
                 saveToRealm(newUser);
                 createRemoteUserDocument(newUser);
             } else {
-                // TODO strings de alert
                 MaterialDialog.Builder builder = new MaterialDialog.Builder(this);
                 builder.title("Error");
-                builder.content("Completa to2 los campos");
+                builder.content("Tenés campos incompletos!");
                 builder.positiveText("OK");
                 builder.show();
             }
