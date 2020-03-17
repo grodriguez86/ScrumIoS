@@ -1,8 +1,5 @@
 package ar.edu.uade.scrumgame.data.entity;
 
-
-import com.google.gson.annotations.SerializedName;
-
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 
