@@ -1,11 +1,6 @@
-package ar.edu.uade.scrumgame.data.entity;
+package ar.edu.uade.scrumgame.presentation.models;
 
-import io.realm.RealmModel;
-import io.realm.annotations.PrimaryKey;
-import io.realm.annotations.RealmClass;
-
-@RealmClass
-public class UserEntity implements RealmModel {
+public class UserModel {
 
     private String name;
 
@@ -15,7 +10,6 @@ public class UserEntity implements RealmModel {
 
     private String profession;
 
-    @PrimaryKey
     private String uid;
 
     private String city;
@@ -70,7 +64,7 @@ public class UserEntity implements RealmModel {
         this.uid = uid;
     }
 
-    public UserEntity(String name, String mail, int age, String profession, String uid, String city, String gender, String state, String country, String gameTasteLevel, String gameTimeLevel) {
+    public UserModel(String name, String mail, int age, String profession, String uid, String city, String gender, String state, String country, String gameTasteLevel, String gameTimeLevel) {
         this.name = name;
         this.mail = mail;
         this.age = age;
@@ -84,7 +78,7 @@ public class UserEntity implements RealmModel {
         this.gameTimeLevel = gameTimeLevel;
     }
 
-    public UserEntity() {
+    public UserModel() {
 
     }
 
@@ -135,4 +129,5 @@ public class UserEntity implements RealmModel {
     public void setGameTimeLevel(String gameTimeLevel) {
         this.gameTimeLevel = gameTimeLevel;
     }
+
 }

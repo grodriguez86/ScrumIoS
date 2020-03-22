@@ -1,9 +1,11 @@
 package ar.edu.uade.scrumgame.data.entity;
 
-import io.realm.RealmObject;
+import io.realm.RealmModel;
 import io.realm.annotations.PrimaryKey;
+import io.realm.annotations.RealmClass;
 
-public class UserOverallDataEntity extends RealmObject {
+@RealmClass
+public class UserOverallDataEntity implements RealmModel {
 
     @PrimaryKey
     private String pK = "currentAvailableLevel";
