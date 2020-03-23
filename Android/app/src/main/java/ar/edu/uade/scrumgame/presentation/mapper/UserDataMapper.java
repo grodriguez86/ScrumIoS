@@ -11,11 +11,13 @@ import ar.edu.uade.scrumgame.domain.GameContent;
 import ar.edu.uade.scrumgame.domain.InfoGame;
 import ar.edu.uade.scrumgame.domain.Progress;
 import ar.edu.uade.scrumgame.domain.User;
+import ar.edu.uade.scrumgame.domain.UserOverallData;
 import ar.edu.uade.scrumgame.presentation.di.PerActivity;
 import ar.edu.uade.scrumgame.presentation.models.GameContentModel;
 import ar.edu.uade.scrumgame.presentation.models.InfoGameModel;
 import ar.edu.uade.scrumgame.presentation.models.ProgressModel;
 import ar.edu.uade.scrumgame.presentation.models.UserModel;
+import ar.edu.uade.scrumgame.presentation.models.UserOverallDataModel;
 
 @PerActivity
 public class UserDataMapper {
@@ -80,5 +82,19 @@ public class UserDataMapper {
         progressModel.setLevelId(progress.getLevelId());
         progressModel.setTotalGames(progress.getTotalGames());
         return progressModel;
+    }
+
+    public UserOverallData userOverallDataModelToUserOverallData(UserOverallDataModel userOverallDataModel) {
+        UserOverallData userOverallData = new UserOverallData();
+        userOverallData.setCurrentAvailableLevel(userOverallDataModel.getCurrentAvailableLevel());
+        userOverallData.setpK(userOverallDataModel.getpK());
+        return userOverallData;
+    }
+
+    public UserOverallDataModel userOverallDataToUserOverallDataModel(UserOverallData userOverallData) {
+        UserOverallDataModel userOverallDataModel = new UserOverallDataModel();
+        userOverallDataModel.setCurrentAvailableLevel(userOverallData.getCurrentAvailableLevel());
+        userOverallDataModel.setpK(userOverallData.getpK());
+        return userOverallDataModel;
     }
 }

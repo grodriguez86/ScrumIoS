@@ -214,8 +214,6 @@ public class SignupDetailsFragment extends BaseFragment implements SignupDetails
         }
     }
 
-//       TODO realm.copyToRealmOrUpdate(new UserOverallDataEntity(1));
-
     /**
      * @return Returns whether the form is valid
      */

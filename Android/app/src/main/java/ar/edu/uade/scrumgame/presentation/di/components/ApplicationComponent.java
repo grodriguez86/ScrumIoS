@@ -9,6 +9,7 @@ import ar.edu.uade.scrumgame.domain.repository.LocalProgressRepository;
 import ar.edu.uade.scrumgame.domain.repository.LocalUserRepository;
 import ar.edu.uade.scrumgame.domain.repository.RemoteProgressRepository;
 import ar.edu.uade.scrumgame.domain.repository.RemoteUserRepository;
+import ar.edu.uade.scrumgame.domain.repository.UserOverallDataRepository;
 import ar.edu.uade.scrumgame.presentation.di.modules.ApplicationModule;
 import ar.edu.uade.scrumgame.presentation.view.activity.BaseActivity;
 import dagger.Component;
@@ -35,4 +36,6 @@ public interface ApplicationComponent {
     LocalUserRepository localUserRepository();
 
     RemoteUserRepository remoteUserRepository();
+
+    UserOverallDataRepository userOverallDataRepository();
 }
