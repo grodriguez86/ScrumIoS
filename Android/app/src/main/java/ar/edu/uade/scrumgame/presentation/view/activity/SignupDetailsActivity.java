@@ -1,189 +1,58 @@
 package ar.edu.uade.scrumgame.presentation.view.activity;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
-import android.text.TextUtils;
-import android.util.Log;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageButton;
-import android.widget.Spinner;
-import android.widget.Toast;
-
-import com.afollestad.materialdialogs.MaterialDialog;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.firestore.FirebaseFirestore;
+import android.view.Window;
 
 import ar.edu.uade.scrumgame.R;
-import ar.edu.uade.scrumgame.data.entity.ProgressEntity;
-import ar.edu.uade.scrumgame.data.entity.UserEntity;
-import ar.edu.uade.scrumgame.data.entity.UserOverallDataEntity;
-import ar.edu.uade.scrumgame.data.entity.mapper.ProgressEntityMapper;
-import ar.edu.uade.scrumgame.data.entity.mapper.UserEntityMapper;
-import ar.edu.uade.scrumgame.domain.User;
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
-import io.realm.Realm;
+import ar.edu.uade.scrumgame.presentation.di.HasComponent;
+import ar.edu.uade.scrumgame.presentation.di.components.DaggerLevelComponent;
+import ar.edu.uade.scrumgame.presentation.di.components.LevelComponent;
+import ar.edu.uade.scrumgame.presentation.view.fragment.SignupDetailsFragment;
 
-public class SignupDetailsActivity extends BaseActivity {
+public class SignupDetailsActivity extends BaseActivity implements HasComponent<LevelComponent>, SignupDetailsFragment.SignupDetailsListener{
 
-    @BindView(R.id.btBack)
-    ImageButton backButton;
+    private LevelComponent levelComponent;
 
-    @BindView(R.id.btnDone)
-    Button doneButton;
-
-    @BindView(R.id.inputName)
-    EditText inputName;
-
-    @BindView(R.id.inputAge)
-    EditText inputAge;
-
-    @BindView(R.id.inputSex)
-    Spinner inputSex;
-
-    @BindView(R.id.inputProfession)
-    EditText inputProfession;
-
-    @BindView(R.id.inputCity)
-    EditText inputCity;
-
-    @BindView(R.id.inputProvince)
-    EditText inputProvince;
-
-    @BindView(R.id.inputCountry)
-    EditText inputCountry;
-
-    @BindView(R.id.inputGamesTasteLevel)
-    Spinner inputGamesTasteLevel;
-
-    @BindView(R.id.inputGamesTime)
-    Spinner inputGamesTime;
-
-    private FirebaseUser loggedUser;
-
-    @OnClick(R.id.btBack)
-    public void goBack() {
-        this.onBackPressed();
+    public static Intent getCallingIntent(Context context) {
+        return new Intent(context, SignupActivity.class);
     }
 
-    private FirebaseAuth mAuth;
-
-    private static final String LOG_TAG = "SIGNUP_DETAILS";
+    public SignupDetailsActivity() {
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        this.requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
         setContentView(R.layout.activity_signup_details);
-        ButterKnife.bind(this);
-        mAuth = FirebaseAuth.getInstance();
-        loggedUser = mAuth.getCurrentUser();
-        if (loggedUser == null) {
-            Toast.makeText(this, R.string.error_user_not_found, Toast.LENGTH_SHORT).show();
-            this.navigator.navigateToLogin(this);
+        this.initializeInjector();
+        SignupDetailsFragment signupDetailsFragment = new SignupDetailsFragment();
+        if (savedInstanceState == null) {
+            addFragment(R.id.fragmentContainer, signupDetailsFragment);
         }
     }
 
-    @OnClick(R.id.btnDone)
-    public void signupDoneClicked() {
-        try {
-            if (validateForm()) {
-                User newUser = new User(
-                        inputName.getText().toString(),
-                        loggedUser.getEmail(),
-                        Integer.parseInt(inputAge.getText().toString()),
-                        inputProfession.getText().toString(),
-                        loggedUser.getUid(),
-                        inputCity.getText().toString(),
-                        inputSex.getSelectedItem().toString(),
-                        inputProvince.getText().toString(),
-                        inputCountry.getText().toString(),
-                        inputGamesTasteLevel.getSelectedItem().toString(),
-                        inputGamesTime.getSelectedItem().toString());
-                saveToRealm(newUser);
-                createRemoteUserDocument(newUser);
-            } else {
-                MaterialDialog.Builder builder = new MaterialDialog.Builder(this);
-                builder.title(R.string.form_incomplete_alert_title);
-                builder.content(R.string.form_incomplete_alert_message);
-                builder.positiveText("OK");
-                builder.show();
-            }
-        } catch (NumberFormatException nfe) {
-            Toast.makeText(this, R.string.form_error_age_nan, Toast.LENGTH_SHORT).show();
-        } catch (Exception e) {
-            Toast.makeText(this, R.string.unknown_error, Toast.LENGTH_SHORT).show();
-        }
+    private void initializeInjector() {
+        this.levelComponent = DaggerLevelComponent.builder()
+                .applicationComponent(getApplicationComponent())
+                .activityModule(getActivityModule())
+                .build();
     }
 
-    private void saveToRealm(User user) {
-        UserEntityMapper userEntityMapper = new UserEntityMapper();
-        UserEntity newUserEntity = userEntityMapper.userToUserEntity(user);
-        Realm realm = Realm.getDefaultInstance();
-        realm.beginTransaction();
-        realm.copyToRealmOrUpdate(newUserEntity);
-        realm.commitTransaction();
-        realm.beginTransaction();
-        realm.copyToRealmOrUpdate(new UserOverallDataEntity(1));
-        realm.commitTransaction();
-        realm.beginTransaction();
-        realm.copyToRealmOrUpdate(ProgressEntity.buildInitialProgress());
-        realm.commitTransaction();
+    @Override
+    public LevelComponent getComponent() {
+        return levelComponent;
     }
 
-    private void createRemoteUserDocument(User user) {
-        try {
-            FirebaseFirestore firebaseFirestore = FirebaseFirestore.getInstance();
-            firebaseFirestore.collection("users")
-                    .document(user.getMail())
-                    .set(user)
-                    .addOnSuccessListener(userSaveSuccess -> {
-                        Log.d(LOG_TAG, "User DocumentSnapshot written");
-                        firebaseFirestore.collection(String.format("users/%s/levels", user.getMail()))
-                                .document("level_1")
-                                .set(new ProgressEntityMapper()
-                                        .progressEntityToProgress(ProgressEntity.buildInitialProgress()))
-                                .addOnSuccessListener(userProgressInitSuccess -> {
-                                    Log.d(LOG_TAG, "UserProgress DocumentSnapshot written");
-                                    navigateToMenu();
-                                })
-                                .addOnFailureListener(e -> Log.w(LOG_TAG, "Error adding progress document", e));
-                        navigateToMenu();
-                    })
-                    .addOnFailureListener(e -> Log.w(LOG_TAG, "Error adding user document", e));
-        } catch (Exception e) {
-            Toast.makeText(this, R.string.error_creating_remote_user, Toast.LENGTH_SHORT).show();
-        }
-    }
-
-    /**
-     * @return Returns whether the form is valid
-     */
-    public boolean validateForm() {
-        if (TextUtils.isEmpty(inputName.getText().toString()))
-            return false;
-        if (TextUtils.isEmpty(inputAge.getText().toString()))
-            return false;
-        if (inputSex.getSelectedItem() == null)
-            return false;
-        if (TextUtils.isEmpty(inputProfession.getText().toString()))
-            return false;
-        if (TextUtils.isEmpty(inputCity.getText().toString()))
-            return false;
-        if (TextUtils.isEmpty(inputProvince.getText().toString()))
-            return false;
-        if (TextUtils.isEmpty(inputCountry.getText().toString()))
-            return false;
-        if (inputGamesTasteLevel.getSelectedItem() == null)
-            return false;
-        if (inputGamesTime.getSelectedItem() == null)
-            return false;
-        return true;
-    }
-
-    public void navigateToMenu() {
+    @Override
+    public void onSignupDetailsCompleted() {
         this.navigator.navigateToMenu(this);
     }
 
+    @Override
+    public void onSignupDetailsFailed() {
+        this.navigator.navigateToLogin(this);
+    }
 }

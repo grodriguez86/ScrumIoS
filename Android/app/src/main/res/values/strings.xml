@@ -73,5 +73,8 @@
     <string name="unknown_error">Ocurrió un error desconocido</string>
     <string name="error_user_not_found">No se encontró el usuario</string>
     <string name="error_creating_remote_user">Ocurrió un error creando el usuario remoto</string>
+    <string name="error_saving_user">No se pudieron guardar los datos del usuario</string>
+    <string name="error_saving_progress">No se pudieron guardar los datos de progreso</string>
+    <string name="error_saving_remote_data">Ocurrió un error al guardar los datos remotos</string>
     <string name="error_email_already_in_use">Ya existe un usuario con ese email</string>
 </resources>

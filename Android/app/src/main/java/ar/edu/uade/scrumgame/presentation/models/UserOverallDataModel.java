@@ -1,13 +1,6 @@
-package ar.edu.uade.scrumgame.data.entity;
+package ar.edu.uade.scrumgame.presentation.models;
 
-import io.realm.RealmModel;
-import io.realm.annotations.PrimaryKey;
-import io.realm.annotations.RealmClass;
-
-@RealmClass
-public class UserOverallDataEntity implements RealmModel {
-
-    @PrimaryKey
+public class UserOverallDataModel {
     private String pK = "currentAvailableLevel";
 
     private int currentAvailableLevel = 1;
@@ -28,9 +21,9 @@ public class UserOverallDataEntity implements RealmModel {
         this.currentAvailableLevel = currentAvailableLevel;
     }
 
-    public UserOverallDataEntity(int currentAvailableLevel) {
+    public UserOverallDataModel(int currentAvailableLevel) {
         this.currentAvailableLevel = currentAvailableLevel;
     }
 
-    public UserOverallDataEntity() { }
+    public UserOverallDataModel() { }
 }
