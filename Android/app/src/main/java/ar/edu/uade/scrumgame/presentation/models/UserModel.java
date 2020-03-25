@@ -130,4 +130,7 @@ public class UserModel {
         this.gameTimeLevel = gameTimeLevel;
     }
 
+    public boolean isNull() {
+        return this.uid == null;
+    }
 }

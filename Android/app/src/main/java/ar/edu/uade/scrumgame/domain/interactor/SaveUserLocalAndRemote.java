@@ -12,7 +12,7 @@ import ar.edu.uade.scrumgame.domain.repository.RemoteProgressRepository;
 import ar.edu.uade.scrumgame.domain.repository.RemoteUserRepository;
 import io.reactivex.Observable;
 
-public class SaveUser extends UseCase<String, User> {
+public class SaveUserLocalAndRemote extends UseCase<String, User> {
 
     public static final class USER_SAVE_OUTCOMES {
         public static final String COMPLETE = "complete";
@@ -24,8 +24,8 @@ public class SaveUser extends UseCase<String, User> {
     private final RemoteUserRepository remoteUserRepository;
 
     @Inject
-    public SaveUser(ThreadExecutor threadExecutor, PostExecutionThread postExecutionThread,
-                    LocalUserRepository localUserRepository, RemoteUserRepository remoteUserRepository) {
+    public SaveUserLocalAndRemote(ThreadExecutor threadExecutor, PostExecutionThread postExecutionThread,
+                                  LocalUserRepository localUserRepository, RemoteUserRepository remoteUserRepository) {
         super(threadExecutor, postExecutionThread);
         this.localUserRepository = localUserRepository;
         this.remoteUserRepository = remoteUserRepository;

@@ -19,4 +19,20 @@ class RealmOverallDataDataStore implements UserOverallDataDataStore {
             }
         });
     }
+
+    @Override
+    public Observable<UserOverallDataEntity> getUserOverallData() {
+        return Observable.create(emitter -> {
+            try {
+                Realm realm = Realm.getDefaultInstance();
+                realm.beginTransaction();
+                UserOverallDataEntity userOverallDataEntity = realm.where(UserOverallDataEntity.class).findFirst();
+                realm.commitTransaction();
+                emitter.onNext(userOverallDataEntity);
+                emitter.onComplete();
+            } catch (Exception e) {
+                emitter.onError(e);
+            }
+        });
+    }
 }

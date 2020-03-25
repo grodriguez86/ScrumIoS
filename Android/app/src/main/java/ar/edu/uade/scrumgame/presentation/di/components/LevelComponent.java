@@ -7,6 +7,7 @@ import ar.edu.uade.scrumgame.presentation.view.fragment.GameFragment;
 import ar.edu.uade.scrumgame.presentation.view.fragment.InfoGameFragment;
 import ar.edu.uade.scrumgame.presentation.view.fragment.InfoTheoryFragment;
 import ar.edu.uade.scrumgame.presentation.view.fragment.LevelFragment;
+import ar.edu.uade.scrumgame.presentation.view.fragment.LoginFragment;
 import ar.edu.uade.scrumgame.presentation.view.fragment.MenuFragment;
 import ar.edu.uade.scrumgame.presentation.view.fragment.SignupDetailsFragment;
 import ar.edu.uade.scrumgame.presentation.view.fragment.SignupFragment;
@@ -28,4 +29,6 @@ public interface LevelComponent extends ActivityComponent {
     void inject(SignupFragment signupFragment);
 
     void inject(SignupDetailsFragment signupDetailsFragment);
+
+    void inject(LoginFragment loginFragment);
 }

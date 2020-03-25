@@ -6,4 +6,6 @@ import io.reactivex.Observable;
 
 public interface UserOverallDataRepository {
     Observable<Void> saveUserOverallData(UserOverallData userOverallData);
+
+    Observable<UserOverallData> getUserOverallData();
 }

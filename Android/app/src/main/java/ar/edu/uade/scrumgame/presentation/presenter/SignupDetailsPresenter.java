@@ -8,7 +8,7 @@ import ar.edu.uade.scrumgame.R;
 import ar.edu.uade.scrumgame.domain.exception.ErrorBundle;
 import ar.edu.uade.scrumgame.domain.interactor.DefaultObserver;
 import ar.edu.uade.scrumgame.domain.interactor.SaveProgress;
-import ar.edu.uade.scrumgame.domain.interactor.SaveUser;
+import ar.edu.uade.scrumgame.domain.interactor.SaveUserLocalAndRemote;
 import ar.edu.uade.scrumgame.domain.interactor.SaveUserOverallData;
 import ar.edu.uade.scrumgame.presentation.di.PerActivity;
 import ar.edu.uade.scrumgame.presentation.exception.ErrorMessageFactory;
@@ -18,25 +18,25 @@ import ar.edu.uade.scrumgame.presentation.models.UserModel;
 import ar.edu.uade.scrumgame.presentation.models.UserOverallDataModel;
 import ar.edu.uade.scrumgame.presentation.view.SignupDetailsView;
 import ar.edu.uade.scrumgame.domain.interactor.SaveProgress.PROGRESS_SAVE_OUTCOMES;
-import ar.edu.uade.scrumgame.domain.interactor.SaveUser.USER_SAVE_OUTCOMES;
+import ar.edu.uade.scrumgame.domain.interactor.SaveUserLocalAndRemote.USER_SAVE_OUTCOMES;
 
 @PerActivity
 public class SignupDetailsPresenter implements Presenter {
 
     private SaveProgress saveProgressUseCase;
-    private SaveUser saveUserUseCase;
+    private SaveUserLocalAndRemote saveUserLocalAndRemoteUseCase;
     private SaveUserOverallData saveUserOverallDataUseCase;
     private SignupDetailsView signupDetailsView;
     private UserDataMapper userDataMapper;
 
     @Inject
     SignupDetailsPresenter(SaveProgress saveProgressUseCase,
-                           SaveUser saveUserUseCase,
+                           SaveUserLocalAndRemote saveUserLocalAndRemoteUseCase,
                            SaveUserOverallData saveUserOverallDataUseCase,
                            UserDataMapper userDataMapper
     ) {
         this.saveProgressUseCase = saveProgressUseCase;
-        this.saveUserUseCase = saveUserUseCase;
+        this.saveUserLocalAndRemoteUseCase = saveUserLocalAndRemoteUseCase;
         this.saveUserOverallDataUseCase = saveUserOverallDataUseCase;
         this.userDataMapper = userDataMapper;
     }
@@ -58,7 +58,7 @@ public class SignupDetailsPresenter implements Presenter {
         this.signupDetailsView = null;
         this.saveProgressUseCase.dispose();
         this.saveUserOverallDataUseCase.dispose();
-        this.saveUserUseCase.dispose();
+        this.saveUserLocalAndRemoteUseCase.dispose();
     }
 
     public void initialize() {
@@ -67,7 +67,7 @@ public class SignupDetailsPresenter implements Presenter {
 
     public void onDoneClicked(UserModel userDetails, ProgressModel initialProgress) {
         SignupDetailsPresenter.this.showViewLoading();
-        saveUserUseCase.execute(new DefaultObserver<String>() {
+        saveUserLocalAndRemoteUseCase.execute(new DefaultObserver<String>() {
             @Override
             public void onNext(String saveUserOutcome) {
                 switch (saveUserOutcome) {

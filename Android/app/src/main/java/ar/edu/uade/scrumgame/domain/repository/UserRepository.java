@@ -5,4 +5,6 @@ import io.reactivex.Observable;
 
 public interface UserRepository {
     Observable<Void> saveUser(User user);
+
+    Observable<User> getUser(String userEmail);
 }

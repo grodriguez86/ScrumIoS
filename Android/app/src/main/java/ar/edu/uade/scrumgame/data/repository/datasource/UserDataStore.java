@@ -6,4 +6,6 @@ import io.reactivex.Observable;
 
 public interface UserDataStore {
     Observable<Void> saveUser(UserEntity userEntity);
+
+    Observable<UserEntity> getUser(String userEmail);
 }

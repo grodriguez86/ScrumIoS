@@ -19,16 +19,27 @@ public class UserOverallDataDataRepository implements UserOverallDataRepository 
     private UserOverallDataDataStoreFactory userOverallDataDataStoreFactory;
 
     @Inject
-    public UserOverallDataDataRepository(UserOverallDataEntityMapper userOverallDataEntityMapper, UserOverallDataDataStoreFactory userOverallDataDataStoreFactory) {
+    public UserOverallDataDataRepository(UserOverallDataEntityMapper userOverallDataEntityMapper,
+                                         UserOverallDataDataStoreFactory userOverallDataDataStoreFactory) {
         this.userOverallDataEntityMapper = userOverallDataEntityMapper;
         this.userOverallDataDataStoreFactory = userOverallDataDataStoreFactory;
     }
 
     @Override
     public Observable<Void> saveUserOverallData(UserOverallData userOverallData) {
-        UserOverallDataDataStore userOverallDataDataStore = this.userOverallDataDataStoreFactory.createUserOverallDataDataStore();
-        UserOverallDataEntity userOverallDataEntity = userOverallDataEntityMapper.userOverallDataToUserOverallDataEntity(userOverallData);
+        UserOverallDataDataStore userOverallDataDataStore = this.userOverallDataDataStoreFactory
+                .createUserOverallDataDataStore();
+        UserOverallDataEntity userOverallDataEntity = userOverallDataEntityMapper
+                .userOverallDataToUserOverallDataEntity(userOverallData);
         return userOverallDataDataStore.saveUserOverallData(userOverallDataEntity);
+    }
+
+    @Override
+    public Observable<UserOverallData> getUserOverallData() {
+        UserOverallDataDataStore userOverallDataDataStore = this.userOverallDataDataStoreFactory
+                .createUserOverallDataDataStore();
+        return userOverallDataDataStore.getUserOverallData()
+                .map(userOverallDataEntityMapper::userOverallDataEntityToUserOverallData);
     }
 }
 

@@ -75,10 +75,10 @@ public class Navigator {
         }
     }
 
-    public void navigateToSignupDetails(SignupActivity signupActivity) {
-        if (signupActivity != null) {
-            Intent intent = new Intent(signupActivity.getApplicationContext(), SignupDetailsActivity.class);
-            signupActivity.startActivity(intent);
+    public void navigateToSignupDetails(BaseActivity baseActivity) {
+        if (baseActivity != null) {
+            Intent intent = new Intent(baseActivity.getApplicationContext(), SignupDetailsActivity.class);
+            baseActivity.startActivity(intent);
         }
     }
 }
