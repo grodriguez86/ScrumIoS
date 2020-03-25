@@ -2,13 +2,19 @@ package ar.edu.uade.scrumgame.data.repository.datasource;
 
 import android.util.Log;
 
+import androidx.annotation.NonNull;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QuerySnapshot;
+
+import java.util.List;
 
 import ar.edu.uade.scrumgame.data.entity.ProgressEntity;
 import io.reactivex.Observable;
-import io.realm.Realm;
 
 class FirestoreProgressDataStore implements RemoteProgressDataStore {
 
@@ -42,5 +48,46 @@ class FirestoreProgressDataStore implements RemoteProgressDataStore {
                 emitter.onError(e);
             }
         });
+    }
+
+    @Override
+    public Observable<List<ProgressEntity>> getProgressList() {
+        return Observable.create(emitter -> {
+            try {
+                FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+                FirebaseUser currentUser = firebaseAuth.getCurrentUser();
+                if (currentUser == null) {
+                    emitter.onError(new RuntimeException("TODO"));
+                    return;
+                }
+                String currentUserEmail = currentUser.getEmail();
+                FirebaseFirestore firebaseFirestore = FirebaseFirestore.getInstance();
+                firebaseFirestore.collection("users")
+                        .document(currentUserEmail)
+                        .collection("levels")
+                        .get()
+                        .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                            @Override
+                            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                                if (task.isSuccessful()) {
+                                    List<ProgressEntity> progressEntityList = task.getResult()
+                                            .toObjects(ProgressEntity.class);
+                                    emitter.onNext(progressEntityList);
+                                    emitter.onComplete();
+                                } else {
+                                    Log.d(LOG_TAG, "Error getting documents: ", task.getException());
+                                    emitter.onError(task.getException());
+                                }
+                            }
+                        });
+            } catch (Exception e) {
+                emitter.onError(e);
+            }
+        });
+    }
+
+    @Override
+    public Observable<Void> saveProgressList(List<ProgressEntity> progressEntityList) {
+        throw new RuntimeException("NOT IMPLEMENTED"); // TODO
     }
 }

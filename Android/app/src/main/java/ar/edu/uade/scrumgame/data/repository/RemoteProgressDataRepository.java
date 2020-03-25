@@ -1,5 +1,8 @@
 package ar.edu.uade.scrumgame.data.repository;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
@@ -29,5 +32,21 @@ public class RemoteProgressDataRepository implements RemoteProgressRepository {
         RemoteProgressDataStore remoteProgressDataStore = this.progressDataStoreFactory.createRemoteProgressDataStore();
         ProgressEntity progressEntity = progressEntityMapper.progressToProgressEntity(progress);
         return remoteProgressDataStore.saveProgress(progressEntity);
+    }
+
+    @Override
+    public Observable<List<Progress>> getProgressList() {
+        RemoteProgressDataStore remoteProgressDataStore = this.progressDataStoreFactory.createRemoteProgressDataStore();
+        return remoteProgressDataStore.getProgressList().map(progressEntityList -> {
+            List<Progress> progressList = new ArrayList<>();
+            for (ProgressEntity progressEntity : progressEntityList)
+                progressList.add(progressEntityMapper.progressEntityToProgress(progressEntity));
+            return progressList;
+        });
+    }
+
+    @Override
+    public Observable<Void> saveProgressList(List<Progress> progressList) {
+        throw new RuntimeException("NOT IMPLEMENTED"); // TODO
     }
 }

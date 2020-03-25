@@ -6,6 +6,7 @@ import javax.inject.Singleton;
 import ar.edu.uade.scrumgame.data.entity.UserEntity;
 import ar.edu.uade.scrumgame.data.entity.mapper.UserEntityMapper;
 import ar.edu.uade.scrumgame.data.repository.datasource.LocalUserDataStore;
+import ar.edu.uade.scrumgame.data.repository.datasource.RemoteUserDataStore;
 import ar.edu.uade.scrumgame.data.repository.datasource.UserDataStoreFactory;
 import ar.edu.uade.scrumgame.domain.Progress;
 import ar.edu.uade.scrumgame.domain.User;
@@ -30,6 +31,12 @@ public class LocalUserDataRepository implements LocalUserRepository {
         LocalUserDataStore localUserDataStore = this.userDataStoreFactory.createLocalUserDataStore();
         UserEntity userEntity = userEntityMapper.userToUserEntity(user);
         return localUserDataStore.saveUser(userEntity);
+    }
+
+    @Override
+    public Observable<User> getUser(String userEmail) {
+        LocalUserDataStore localUserDataStore = this.userDataStoreFactory.createLocalUserDataStore();
+        return localUserDataStore.getUser(userEmail).map(userEntityMapper::userEntityToUser);
     }
 }
 

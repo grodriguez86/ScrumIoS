@@ -30,6 +30,12 @@ public class RemoteUserDataRepository implements RemoteUserRepository {
         UserEntity userEntity = userEntityMapper.userToUserEntity(user);
         return remoteUserDataStore.saveUser(userEntity);
     }
+
+    @Override
+    public Observable<User> getUser(String userEmail) {
+        RemoteUserDataStore remoteUserDataStore = this.userDataStoreFactory.createRemoteUserDataStore();
+        return remoteUserDataStore.getUser(userEmail).map(userEntityMapper::userEntityToUser);
+    }
 }
 
 

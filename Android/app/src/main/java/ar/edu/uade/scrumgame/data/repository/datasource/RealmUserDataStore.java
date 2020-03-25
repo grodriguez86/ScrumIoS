@@ -20,4 +20,24 @@ class RealmUserDataStore implements LocalUserDataStore {
             }
         });
     }
+
+    @Override
+    public Observable<UserEntity> getUser(String userEmail) {
+        return Observable.create(emitter -> {
+            try {
+                Realm realm = Realm.getDefaultInstance();
+                realm.beginTransaction();
+                UserEntity userEntity = realm.where(UserEntity.class).equalTo("mail", userEmail).findFirst();
+                realm.commitTransaction();
+                if (userEntity == null)
+                    emitter.onError(new RuntimeException("TODO user not found"));
+                else {
+                    emitter.onNext(userEntity);
+                    emitter.onComplete();
+                }
+            } catch (Exception e) {
+                emitter.onError(e);
+            }
+        });
+    }
 }

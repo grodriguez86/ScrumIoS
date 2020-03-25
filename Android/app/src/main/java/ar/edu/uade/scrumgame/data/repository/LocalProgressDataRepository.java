@@ -1,5 +1,8 @@
 package ar.edu.uade.scrumgame.data.repository;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
@@ -31,6 +34,25 @@ public class LocalProgressDataRepository implements LocalProgressRepository {
         return localProgressDataStore.saveProgress(progressEntity);
     }
 
+    @Override
+    public Observable<List<Progress>> getProgressList() {
+        LocalProgressDataStore localProgressDataStore = this.progressDataStoreFactory.createLocalProgressDataStore();
+        return localProgressDataStore.getProgressList().map(progressEntityList -> {
+            List<Progress> progressList = new ArrayList<>();
+            for (ProgressEntity progressEntity: progressEntityList)
+                progressList.add(progressEntityMapper.progressEntityToProgress(progressEntity));
+            return progressList;
+        });
+    }
+
+    @Override
+    public Observable<Void> saveProgressList(List<Progress> progressList) {
+        LocalProgressDataStore localProgressDataStore = this.progressDataStoreFactory.createLocalProgressDataStore();
+        List<ProgressEntity> progressEntityList = new ArrayList<>();
+        for (Progress progress: progressList)
+            progressEntityList.add(progressEntityMapper.progressToProgressEntity(progress));
+        return localProgressDataStore.saveProgressList(progressEntityList);
+    }
 }
 
 
