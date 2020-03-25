@@ -48,7 +48,7 @@ public class LevelsAdapter extends RecyclerView.Adapter<LevelsAdapter.LevelViewH
     @NonNull
     @Override
     public LevelViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = this.layoutInflater.inflate(R.layout.row_level, parent, false);
+        View view = this.layoutInflater.inflate(R.layout.row_level_unlocked, parent, false);
         return new LevelViewHolder(view);
     }
 
