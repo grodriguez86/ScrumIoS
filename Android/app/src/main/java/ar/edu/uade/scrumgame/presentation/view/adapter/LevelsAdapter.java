@@ -91,7 +91,7 @@ public class LevelsAdapter extends RecyclerView.Adapter<LevelsAdapter.LevelViewH
                 });
             } else { // Level completed
                 holder.statusImage.setBackgroundResource(R.mipmap.level_status_completed_foreground);
-                holder.statusImage.setVisibility(View.INVISIBLE);
+                holder.statusImage.setVisibility(View.VISIBLE);
                 holder.playLabel.setText(R.string.menu_play_completed);
                 holder.progressLabel.setText("100%");
             }
