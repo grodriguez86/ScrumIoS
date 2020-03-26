@@ -15,26 +15,28 @@
         android:orientation="horizontal">
 
         <RadioButton
-            android:id="@+id/rb_choice_2"
-            style="@style/TextView.RadioButtonText"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_margin="@dimen/radio_button_margin"
-            android:layout_weight="1"
-            android:background="@drawable/gradient_background_2"
-            android:gravity="center"
-            app:fontFamily="@font/museo_sans_rounded_100" />
+                android:id="@+id/rb_choice_2"
+                style="@style/androidx.appcompat.widget.AppCompatTextView.RadioButtonText"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_margin="@dimen/radio_button_margin"
+                android:layout_weight="1"
+                android:background="@drawable/radio_button_selector"
+                android:gravity="center"
+                android:button="@color/transparent"
+                app:fontFamily="@font/gotham_rounded_bold" android:textColor="@color/violet"/>
 
         <RadioButton
-            android:id="@+id/rb_choice_1"
-            style="@style/TextView.RadioButtonText"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_margin="@dimen/radio_button_margin"
-            android:layout_weight="1"
-            android:background="@drawable/gradient_background_1"
-            android:gravity="center"
-            app:fontFamily="@font/museo_sans_rounded_100" />
+                android:id="@+id/rb_choice_1"
+                style="@style/androidx.appcompat.widget.AppCompatTextView.RadioButtonText"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_margin="@dimen/radio_button_margin"
+                android:layout_weight="1"
+                android:background="@drawable/radio_button_selector"
+                android:button="@color/transparent"
+                android:gravity="center"
+                app:fontFamily="@font/gotham_rounded_bold" android:textColor="@color/violet"/>
 
     </RadioGroup>
 
@@ -46,26 +48,28 @@
         android:orientation="horizontal">
 
         <RadioButton
-            android:id="@+id/rb_choice_3"
-            style="@style/TextView.RadioButtonText"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_margin="@dimen/radio_button_margin"
-            android:layout_weight="1"
-            android:background="@drawable/gradient_background_3"
-            android:gravity="center"
-            app:fontFamily="@font/museo_sans_rounded_100" />
+                android:id="@+id/rb_choice_3"
+                style="@style/androidx.appcompat.widget.AppCompatTextView.RadioButtonText"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_margin="@dimen/radio_button_margin"
+                android:layout_weight="1"
+                android:background="@drawable/radio_button_selector"
+                android:button="@color/transparent"
+                android:gravity="center"
+                app:fontFamily="@font/gotham_rounded_bold" android:textColor="@color/violet"/>
 
         <RadioButton
-            android:id="@+id/rb_choice_4"
-            style="@style/TextView.RadioButtonText"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_margin="@dimen/radio_button_margin"
-            android:layout_weight="1"
-            android:background="@drawable/gradient_background_4"
-            android:gravity="center"
-            app:fontFamily="@font/museo_sans_rounded_100" />
+                android:id="@+id/rb_choice_4"
+                style="@style/androidx.appcompat.widget.AppCompatTextView.RadioButtonText"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_margin="@dimen/radio_button_margin"
+                android:layout_weight="1"
+                android:background="@drawable/radio_button_selector"
+                android:button="@color/transparent"
+                android:gravity="center"
+                app:fontFamily="@font/gotham_rounded_bold" android:textColor="@color/violet"/>
     </RadioGroup>
 
 </LinearLayout>

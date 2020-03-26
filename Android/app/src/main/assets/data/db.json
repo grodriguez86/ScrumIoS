@@ -157,7 +157,7 @@
                 },
                 {
                   "type": "image",
-                  "data": "https://i.imgur.com/rX23Rd5.png "
+                  "data": "https://i.imgur.com/rX23Rd5.png"
                 }
               ]
             }
@@ -245,6 +245,10 @@
                 {
                   "type": "title",
                   "data": "El Scrum Development Team"
+                },
+                {
+                  "type": "image",
+                  "data": "https://i.imgur.com/hBYKf02m.jpg"
                 },
                 {
                   "type": "text",
@@ -356,8 +360,20 @@
                   "data": "Product Backlog"
                 },
                 {
+                  "type": "text",
+                  "data": "Es una lista de todo lo que quizá se haga en el proyecto. Si no está en esta lista, no existe"
+                },
+                {
+                  "type": "text",
+                  "data": "Está compuesto por Product Backlog Items, que pueden estar escritos en forma de User Stories o escenarios de Casos de Uso."
+                },
+                {
                   "type": "image",
                   "data": "https://i.imgur.com/RadNKuL.jpg"
+                },
+                {
+                  "type": "text",
+                  "data": "Cualquier miembro del equipo puede agregar items al Product Backlog, pero el Product Owner tiene que ordenarlos por prioridad. De allí se tomarán los ítems que el equipo se comprometerá a resolver durante el Sprint. Para tomar esta decisión, es necesario que todas las entradas del Backlog estén estimadas en Story Points."
                 }
               ]
             },
@@ -366,11 +382,178 @@
               "content": [
                 {
                   "type": "title",
+                  "data": "Product Backlog Item"
+                },
+                {
+                  "type": "text",
+                  "data": "Un Product Backlog Item ó PBI son funcionalidades, requisitos, mejoras y correcciones que se encuentran dentro del Product Backlog."
+                },
+                {
+                  "type": "image",
+                  "data": "https://i.imgur.com/CD0tx2w.png"
+                },
+                {
+                  "type": "text",
+                  "data": "Cada PBI tiene:"
+                },
+                {
+                  "type": "text",
+                  "data": "Descripción: Clara y concisa para facilitar la comunicación entre negocio y desarrollo, normalmente los equipos Scrum utilizan el formato de Historia de Usuario (User Story). El responsable de la descripción de los PBI’s es el Product Owner."
+                },
+                {
+                  "type": "text",
+                  "data": "Orden: Según el criterio que el Product Owner. Las más importantes primero."
+                },
+                {
+                  "type": "text",
+                  "data": "Estimación: El Development Team es el responsable de estimar cuánto esfuerzo llevará convertir cada PBI en parte del incremento."
+                }
+              ]
+            },
+            {
+              "code": "2.2.3",
+              "content": [
+                {
+                  "type": "title",
                   "data": "Sprint Backlog"
                 },
                 {
                   "type": "image",
                   "data": "https://i.imgur.com/BUD9CRH.jpg"
+                },
+                {
+                  "type": "text",
+                  "data": "Es un set de Product Backlog Items, seleccionados para el Sprint, sumados a un plan de cómo entregarlos, siguiendo el objetivo del Sprint. Es un compromiso que hace el equipo, respecto a qué funcionalidad será entregada."
+                },
+                {
+                  "type": "image",
+                  "data": "https://i.imgur.com/PYAw8t5.png"
+                },
+                {
+                  "type": "text",
+                  "data": "Este Backlog se llena en la reunión de Planificación y se modifica durante el Sprint. El equipo va modificándolo de acuerdo al desarrollo de las tareas, lo que lo conforma como una foto en tiempo real del estado del Sprint."
+                }
+              ]
+            }
+          ],
+          "info_games": [
+            {
+              "code": "2.2.1",
+              "title": "¿Quién tiene la última decisión en el orden del Product Backlog?",
+              "type": "textQuiz",
+              "content": [
+                {
+                  "type": "textAnswer",
+                  "isCorrect": false,
+                  "data": "Scrum Master"
+                },
+                {
+                  "type": "textAnswer",
+                  "isCorrect": false,
+                  "data": "Development Team"
+                },
+                {
+                  "type": "textAnswer",
+                  "isCorrect": false,
+                  "data": "Product Owner"
+                },
+                {
+                  "type": "textAnswer",
+                  "isCorrect": true,
+                  "data": "El CEO"
+                }
+              ]
+            },
+            {
+              "code": "2.2.2",
+              "title": "¿Por qué criterio se ordena al Product Backlog?",
+              "type": "textChoiceQuiz",
+              "content": [
+                {
+                  "type": "textAnswer",
+                  "isCorrect": false,
+                  "data": "Riesgo: lo más riesgoso al final"
+                },
+                {
+                  "type": "textAnswer",
+                  "isCorrect": false,
+                  "data": "Valor, lo menos importante al final"
+                },
+                {
+                  "type": "textAnswer",
+                  "isCorrect": false,
+                  "data": "Tamaño, lo más grande al final"
+                },
+                {
+                  "type": "textAnswer",
+                  "isCorrect": true,
+                  "data": "Por el criterio que el Product Owner considere apropiado"
+                },
+                {
+                  "type": "textAnswer",
+                  "isCorrect": false,
+                  "data": "Aleatoriamente"
+                }
+              ]
+            },
+            {
+              "code": "2.2.3",
+              "title": "Todas los Product Backlog Items presentes en el Product Backlog están estimados.",
+              "type": "trueFalseQuiz",
+              "content": [
+                {
+                  "type": "textAnswer",
+                  "isCorrect": true,
+                  "data": "Verdadero"
+                },
+                {
+                  "type": "textAnswer",
+                  "isCorrect": false,
+                  "data": "Falso"
+                }
+              ]
+            },
+            {
+              "code": "2.2.4",
+              "title": "¿Quién es el responsable de manejar el progreso de trabajo durante el Sprint?",
+              "type": "textQuiz",
+              "content": [
+                {
+                  "type": "textAnswer",
+                  "isCorrect": false,
+                  "data": "Scrum Master"
+                },
+                {
+                  "type": "textAnswer",
+                  "isCorrect": true,
+                  "data": "Development Team"
+                },
+                {
+                  "type": "textAnswer",
+                  "isCorrect": false,
+                  "data": "Product Owner"
+                },
+                {
+                  "type": "textAnswer",
+                  "isCorrect": false,
+                  "data": "Un miembro designado del Dev Team"
+                }
+              ]
+            },
+            {
+              "code": "2.2.5",
+              "title": "El Product Owner puede agregar una tarea al Sprint Backlog que no estaba en el Product Backlog.",
+              "type": "trueFalseQuiz",
+              "content": [
+                {
+                  "type": "textAnswer",
+                  "isCorrect": false,
+                  "data": "Verdadero"
+                },
+                {
+                  "type": "textAnswer",
+                  "isCorrect": true,
+                  "data": "Falso"
                 }
               ]
             }
@@ -381,7 +564,736 @@
     {
       "name": "Meetings",
       "code": 3,
-      "sublevels": []
+      "sublevels": [
+        {
+          "name": "Backlog Estimation",
+          "code": "3.1",
+          "info_theory": [
+            {
+              "code": "3.1.1",
+              "content": [
+                {
+                  "type": "title",
+                  "data": "Backlog Estimation"
+                },
+                {
+                  "type": "text",
+                  "data": "Esta reunión (también llamada \"Refinamiento del Backlog\") no se toma como parte de Scrum, pero suele ser muy utilizada en la práctica. Tiene una duración aproximada de 2 horas y participan el Product Owner, el Scrum Master y el Development Team."
+                },
+                {
+                  "type": "image",
+                  "data": "https://i.imgur.com/rnm9AAq.jpg"
+                },
+                {
+                  "type": "text",
+                  "data": "Tiene como propósitos: ayudar al PO a armar PBIs para que los priorice, estimar esfuerzos, clarificar contenidos y desarmar PBIs grandes en pequeñas."
+                }
+              ]
+            },
+            {
+              "code": "3.1.2",
+              "content": [
+                {
+                  "type": "text",
+                  "data": "Una vez definidas las prioridades de los Ítems del Product Backlog, se toman los primeros y se estiman. Para esto utilizan la técnica del Planning Poker, donde todos sugieren un valor para el costo de realizar una tarea a partir del cual, luego de debates se logra clarificar el desarrollo y consensuar un valor para ese esfuerzo, medido en Story Points."
+                },
+                {
+                  "type": "image",
+                  "data": "https://i.imgur.com/58XGWsE.png"
+                },
+                {
+                  "type": "text",
+                  "data": "Es posible que al intentar estimarla se encuentre que en realidad el PBI es una EPIC, que sería una User Story demasiado grande, que no puede ser entregada en una sola iteración y es posible dividirla en User Stories más pequeñas."
+                }
+              ]
+            },
+            {
+              "code": "3.1.3",
+              "content": [
+                {
+                  "type": "text",
+                  "data": "Este procedimiento no se hace con todas los PIBs del Product Backlog, sino que se realizará por las más importantes, generando claridad para uno o dos Sprints."
+                },
+                {
+                  "type": "text",
+                  "data": "Finalmente, esta reunión deberá realizarse una vez por Sprint, en algún momento a decidir con el equipo."
+                }
+              ]
+            }
+          ],
+          "info_games": [
+            {
+              "code": "3.1.1",
+              "type": "pokerPlanning"
+            },
+            {
+              "code": "3.1.2",
+              "title": "En la reunión de refinamiento del Backlog se decide el trabajo que se va a realizar durante el Sprint.",
+              "type": "trueFalseQuiz",
+              "content": [
+                {
+                  "type": "textAnswer",
+                  "isCorrect": false,
+                  "data": "Verdadero"
+                },
+                {
+                  "type": "textAnswer",
+                  "isCorrect": true,
+                  "data": "Falso"
+                }
+              ]
+            },
+            {
+              "code": "3.1.3",
+              "title": "¿Cuál es el objetivo más importante de la reunión de refinamiento del Backlog?",
+              "type": "textChoiceQuiz",
+              "content": [
+                {
+                  "type": "textAnswer",
+                  "isCorrect": false,
+                  "data": "Tener PBIs estimados de alta precisión"
+                },
+                {
+                  "type": "textAnswer",
+                  "isCorrect": false,
+                  "data": "Tener un mejor entendimiento del trabajo y combinar los PBIs para generar ítems más grandes"
+                },
+                {
+                  "type": "textAnswer",
+                  "isCorrect": true,
+                  "data": "Tener un mejor entendimiento del trabajo y dividir los PBIs para generar ítems más pequeños"
+                },
+                {
+                  "type": "textAnswer",
+                  "isCorrect": false,
+                  "data": "Tener un mejor entendimiento del trabajo y crear un documento de diseño"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Daily",
+          "code": "3.2",
+          "info_theory": [
+            {
+              "code": "3.2.1",
+              "content": [
+                {
+                  "type": "title",
+                  "data": "Daily Meeting"
+                },
+                {
+                  "type": "text",
+                  "data": "Como su nombre lo indica, esta reunión se celebra todos los dias durante el desarrollo del Sprint. Se realiza en el mismo lugar y a la misma hora, para reducir la complejidad de organizarla, y generar una costumbre. El objetivo es definir el contexto del cada uno de los integrantes del equipo y dar visibilidad a su estado actual."
+                },
+                {
+                  "type": "image",
+                  "data": "https://i.imgur.com/Xi54o9w.png"
+                },
+                {
+                  "type": "text",
+                  "data": "Es necesario que asistan el Development Team y el Scrum Master para facilitarla, al menos al principio. Una vez que se logre el acostumbramiento y la dinámica de la reunión, el propio equipo suele conducirla."
+                }
+              ]
+            },
+            {
+              "code": "3.2.2",
+              "content": [
+                {
+                  "type": "text",
+                  "data": "Durante la Daily, cada miembro responderá las siguientes preguntas:"
+                },
+                {
+                  "type": "text",
+                  "data": "¿Qué hice ayer?"
+                },
+                {
+                  "type": "text",
+                  "data": "¿Que haré hoy?"
+                },
+                {
+                  "type": "text",
+                  "data": "¿Hay impedimentos en mi camino?"
+                },
+                {
+                  "type": "text",
+                  "data": "Al responder esas preguntas, cada miembro deja en claro en qué está trabajando al resto del equipo y si tiene algún problema. Esto se toma no como un informe de estado a un superior, sino un compromiso con el equipo."
+                },
+                {
+                  "type": "text",
+                  "data": "Cualquier impedimento que se plantee en esta reunión debe ser resuelto tan pronto como sea posible; y esto es responsabilidad del Scrum Master. Si surgiera algún problema a resolver, estos deben ser tratados por fuera de la reunión."
+                },
+                {
+                  "type": "text",
+                  "data": "Su duración es de 15 minutos y una buena práctica para que no se extienda, es realizarla todos parados."
+                }
+              ]
+            }
+          ],
+          "info_games": [
+            {
+              "code": "3.2.1",
+              "title": "¿Por que la Daily se celebra siempre en el mismo lugar y a la misma hora?",
+              "type": "textChoiceQuiz",
+              "content": [
+                {
+                  "type": "textAnswer",
+                  "isCorrect": true,
+                  "data": "Para evitar la complejidad de organizarla y generar costumbre"
+                },
+                {
+                  "type": "textAnswer",
+                  "isCorrect": false,
+                  "data": "Es un requerimiento del Scrum Master"
+                },
+                {
+                  "type": "textAnswer",
+                  "isCorrect": false,
+                  "data": "Para no olvidarse"
+                }
+              ]
+            },
+            {
+              "code": "3.2.2",
+              "title": "¿Cuál es la duración de la Daily?",
+              "type": "textQuiz",
+              "content": [
+                {
+                  "type": "textAnswer",
+                  "isCorrect": false,
+                  "data": "30 minutos"
+                },
+                {
+                  "type": "textAnswer",
+                  "isCorrect": true,
+                  "data": "15 minutos"
+                },
+                {
+                  "type": "textAnswer",
+                  "isCorrect": false,
+                  "data": "Lo que sea necesario"
+                },
+                {
+                  "type": "textAnswer",
+                  "isCorrect": false,
+                  "data": "2 minutos por persona"
+                }
+              ]
+            },
+            {
+              "code": "3.2.3",
+              "title": "Los problemas que surjan durante la Daily se resuelven en el momento, aprovechando la presencia del equipo. ",
+              "type": "trueFalseQuiz",
+              "content": [
+                {
+                  "type": "textAnswer",
+                  "isCorrect": false,
+                  "data": "Verdadero"
+                },
+                {
+                  "type": "textAnswer",
+                  "isCorrect": true,
+                  "data": "Falso"
+                }
+              ]
+            },
+            {
+              "code": "3.2.4",
+              "title": "¿Quienes asisten/pueden asistir a la Daily Meeting?",
+              "type": "dragDrop",
+              "content": [
+                {
+                  "type": "textAnswer",
+                  "isCorrect": false,
+                  "data": "Product Owner"
+                },
+                {
+                  "type": "textAnswer",
+                  "isCorrect": true,
+                  "data": "Development Team"
+                },
+                {
+                  "type": "textAnswer",
+                  "isCorrect": false,
+                  "data": "Cualquier persona interesada"
+                },
+                {
+                  "type": "textAnswer",
+                  "isCorrect": true,
+                  "data": "Scrum Master"
+                },
+                {
+                  "type": "textAnswer",
+                  "isCorrect": false,
+                  "data": "El cliente"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Sprint Planning",
+          "code": "3.3",
+          "info_theory": [
+            {
+              "code": "3.3.1",
+              "content": [
+                {
+                  "type": "title",
+                  "data": "Sprint Planning Meeting"
+                },
+                {
+                  "type": "text",
+                  "data": "Es la reunión donde se organizan los PBIs que el equipo se comprometerá a entregar durante el Sprint. Para ello es necesario la presencia del Product Owner, del Scrum Master y del Development Team."
+                },
+                {
+                  "type": "image",
+                  "data": "https://i.imgur.com/ufq0NDb.png"
+                },
+                {
+                  "type": "text",
+                  "data": "El Scrum Master debe facilitarla, la cuál suele durar unas 2 horas por semana de desarrollo. Es decir, unas 4 horas para un Sprint de 2 semanas."
+                }
+              ]
+            },
+            {
+              "code": "3.3.2",
+              "content": [
+                {
+                  "type": "text",
+                  "data": "El PO describe los PBI de más alta prioridad al equipo y este realiza todas las preguntas que necesita para entenderlos y para poder dividirlos en tareas más detalladas."
+                },
+                {
+                  "type": "text",
+                  "data": "Se define un Sprint Goal, que es una descripción de una o dos oraciones del objetivo del Sprint. El equipo debe conocer este objetivo ya que determinará el éxito del Sprint. Debe ser alcanzable mediante la realización de un conjunto “coherente” de ítems del Product Backlog."
+                },
+                {
+                  "type": "text",
+                  "data": "El equipo selecciona los PBIs del Product Backlog que considera que podrá resolver durante este Sprint, teniendo en cuenta las priorizaciones del PO. Estos se listan en el Sprint Backlog, y se agregan una lista de tareas necesarias para entregar dichos ítems. Cada una de estas tareas se estima en horas."
+                }
+              ]
+            }
+          ],
+          "info_games": [
+            {
+              "code": "3.3.1",
+              "title": "¿Cuál es la labor del Product Owner durante la Sprint Planning?",
+              "type": "textChoiceQuiz",
+              "content": [
+                {
+                  "type": "textAnswer",
+                  "isCorrect": true,
+                  "data": "Decidir junto al Scrum Master que tareas son prioritarias."
+                },
+                {
+                  "type": "textAnswer",
+                  "isCorrect": false,
+                  "data": "Describir las tareas con mayor prioridad al resto del equipo y responder las preguntas que este tenga"
+                },
+                {
+                  "type": "textAnswer",
+                  "isCorrect": false,
+                  "data": "Revisar el desarrollo del Sprint anterior y dar feedback al equipo"
+                },
+                {
+                  "type": "textAnswer",
+                  "isCorrect": false,
+                  "data": "No participa"
+                }
+              ]
+            },
+            {
+              "code": "3.3.2",
+              "title": "¿Quienes asisten/pueden asistir a la Sprint Planning?",
+              "type": "dragDrop",
+              "content": [
+                {
+                  "type": "textAnswer",
+                  "isCorrect": true,
+                  "data": "Product Owner"
+                },
+                {
+                  "type": "textAnswer",
+                  "isCorrect": true,
+                  "data": "Development Team"
+                },
+                {
+                  "type": "textAnswer",
+                  "isCorrect": false,
+                  "data": "Cualquier persona interesada"
+                },
+                {
+                  "type": "textAnswer",
+                  "isCorrect": true,
+                  "data": "Scrum Master"
+                },
+                {
+                  "type": "textAnswer",
+                  "isCorrect": false,
+                  "data": "El cliente"
+                }
+              ]
+            },
+            {
+              "code": "3.3.3",
+              "title": "En un Sprint de 2 semanas,¿cuál es la duración de la Sprint Planning?",
+              "type": "textQuiz",
+              "content": [
+                {
+                  "type": "textAnswer",
+                  "isCorrect": true,
+                  "data": "4 horas"
+                },
+                {
+                  "type": "textAnswer",
+                  "isCorrect": false,
+                  "data": "1 hora"
+                },
+                {
+                  "type": "textAnswer",
+                  "isCorrect": false,
+                  "data": "Lo que sea necesario"
+                },
+                {
+                  "type": "textAnswer",
+                  "isCorrect": false,
+                  "data": "Todo el dia"
+                }
+              ]
+            },
+            {
+              "code": "3.3.4",
+              "title": "El Product Owner selecciona las tareas que el Development Team deberá realizar durante el Sprint.",
+              "type": "trueFalseQuiz",
+              "content": [
+                {
+                  "type": "textAnswer",
+                  "isCorrect": false,
+                  "data": "Verdadero"
+                },
+                {
+                  "type": "textAnswer",
+                  "isCorrect": true,
+                  "data": "Falso"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Sprint Review",
+          "code": "3.4",
+          "info_theory": [
+            {
+              "code": "3.4.1",
+              "content": [
+                {
+                  "type": "title",
+                  "data": "Sprint Planning Meeting"
+                },
+                {
+                  "type": "text",
+                  "data": "Ocurre al final del sprint, y tiene como objetivos principales revisar el incremento y adaptar el Product Backlog con nuevos items en caso de que sea necesario. También es una gran oportunidad para poder recibir feedback sobre el desarrollo del producto."
+                },
+                {
+                  "type": "image",
+                  "data": "https://i.imgur.com/NWnbNrhm.jpg"
+                },
+                {
+                  "type": "text",
+                  "data": "Tiene una duración de 1 hora por semana de sprint, por lo que suele durar 2 horas para un Sprints de 2 semanas. A ella deben asistir el Scrum Master, el Development Team, el Product Owner y todos aquellos interesados que quieran presenciarla."
+                }
+              ]
+            },
+            {
+              "code": "3.4.2",
+              "content": [
+                {
+                  "type": "text",
+                  "data": "Se inicia con una demostración por parte del Development Team del posible incremento desarrollado durante el Sprint."
+                },
+                {
+                  "type": "text",
+                  "data": "Una vez finalizada la demostración, el Product Owner analiza que PBIs del Sprint Backlog son considerados como \"finalizados\". Aquellos que no están terminados son devueltos al Product Backlog y re-priorizados."
+                },
+                {
+                  "type": "text",
+                  "data": "Los considerados \"finalizados\" son usados para medir la Velocity del equipo."
+                },
+                {
+                  "type": "text",
+                  "data": "Luego, los presentes pueden dar feedback de lo desarrollado, sugiriendo nuevas funcionalidades o mejoras, que el Product Owner agregara al Product Backlog con su prioridad correspondiente."
+                }
+              ]
+            }
+          ],
+          "info_games": [
+            {
+              "code": "3.4.1",
+              "type": "velocity"
+            },
+            {
+              "code": "3.4.2",
+              "title": "¿Que se realiza primero en una Sprint Review?",
+              "type": "textChoiceQuiz",
+              "content": [
+                {
+                  "type": "textAnswer",
+                  "isCorrect": false,
+                  "data": "Una presentación del estado del proyecto según el Product Owner"
+                },
+                {
+                  "type": "textAnswer",
+                  "isCorrect": true,
+                  "data": "Una demostración en vivo del posible incremento desarrollado"
+                },
+                {
+                  "type": "textAnswer",
+                  "isCorrect": false,
+                  "data": "Novedades respecto del proyecto por parte del cliente y otros interesados"
+                },
+                {
+                  "type": "textAnswer",
+                  "isCorrect": false,
+                  "data": "Un reporte de todo lo que pasó en el Sprint"
+                }
+              ]
+            },
+            {
+              "code": "3.4.3",
+              "title": "Si surge una queja de parte de algún participante externo sobre las prioridades, ¿a quién debería estar dirigida?",
+              "type": "shortTextQuiz",
+              "content": [
+                {
+                  "type": "textAnswer",
+                  "isCorrect": true,
+                  "data": "Product Owner"
+                },
+                {
+                  "type": "textAnswer",
+                  "isCorrect": false,
+                  "data": "Development Team"
+                }
+              ]
+            },
+            {
+              "code": "3.4.4",
+              "title": "¿Cuándo es el mejor momento de la reunión para dar feedback?",
+              "type": "textQuiz",
+              "content": [
+                {
+                  "type": "textAnswer",
+                  "isCorrect": false,
+                  "data": "Al principio"
+                },
+                {
+                  "type": "textAnswer",
+                  "isCorrect": false,
+                  "data": "Cuando se necesite"
+                },
+                {
+                  "type": "textAnswer",
+                  "isCorrect": false,
+                  "data": "Cuando el Scrum Master diga"
+                },
+                {
+                  "type": "textAnswer",
+                  "isCorrect": true,
+                  "data": "Al final"
+                }
+              ]
+            },
+            {
+              "code": "3.4.5",
+              "title": "¿Para qué sirve la Velocity?",
+              "type": "textChoiceQuiz",
+              "content": [
+                {
+                  "type": "textAnswer",
+                  "isCorrect": false,
+                  "data": "Para especificar cuánto trabajo debe hacer el equipo en el próximo Sprint."
+                },
+                {
+                  "type": "textAnswer",
+                  "isCorrect": true,
+                  "data": "Para ayudar al Product Owner a realizar pronósticos sobre qué podría estar listo para la fecha del release."
+                },
+                {
+                  "type": "textAnswer",
+                  "isCorrect": false,
+                  "data": "Para dar recompensas a los miembros del equipo."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Retrospective",
+          "code": "3.5",
+          "info_theory": [
+            {
+              "code": "3.5.1",
+              "content": [
+                {
+                  "type": "title",
+                  "data": "Sprint Retrospective Meeting"
+                },
+                {
+                  "type": "text",
+                  "data": "Es un evento que se realiza posterior a la Sprint Review, y es utilizado por el equipo para inspeccionarse a si mismo, y crear planes de mejora"
+                },
+                {
+                  "type": "image",
+                  "data": "https://i.imgur.com/4ZTFz2jm.png"
+                },
+                {
+                  "type": "text",
+                  "data": "Busca mejorar la productividad, habilidades del equipo, calidad del producto, y la aplicación de Scrum."
+                },
+                {
+                  "type": "text",
+                  "data": "En esta reunión participan el Scrum Master y el Development Team. Suele durar una hora o dos para un sprint de 2 semanas."
+                }
+              ]
+            },
+            {
+              "code": "3.5.2",
+              "content": [
+                {
+                  "type": "text",
+                  "data": "Es necesario que durante esta reunión, cada miembro de su opinión sobre las cosas que pasaron durante el Sprint, ya sean positivas o negativas y se logren recomendaciones para progresar en los siguientes."
+                },
+                {
+                  "type": "text",
+                  "data": "Existen muchas formas variadas de lograr que el equipo emita sus opiniones. Una de las formas más comunes es a través de notas adhesivas. Todos los miembros escriben sobre que anduvo bien en el Sprint y que podría ser mejorado."
+                },
+                {
+                  "type": "image",
+                  "data": "https://i.imgur.com/7vxty99.png"
+                }
+              ]
+            },
+            {
+              "code": "3.5.3",
+              "content": [
+                {
+                  "type": "text",
+                  "data": "Una vez que se clasifican en una u otra categoría, el Scrum Master (o algún otro miembro del equipo) empieza a leerlas. Esto servirá de disparador para que el equipo discuta sobre formas de mejorar."
+                },
+                {
+                  "type": "text",
+                  "data": "Así, se deciden algunas ideas o sugerencias para mejorar el próximo Sprint, y se comprometen entre ellos para que así sea. "
+                },
+                {
+                  "type": "text",
+                  "data": "Aunque la Retrospective se realice al final del Sprint, no es necesario que se espere al final del mismo para mejorar algún proceso si puede hacerse antes."
+                }
+              ]
+            }
+          ],
+          "info_games": [
+            {
+              "code": "3.5.1",
+              "title": "La Sprint Retrospective es una reunión que se utiliza para clasificar el rendimiento del cada uno de los miembros del Equipo.",
+              "type": "trueFalseQuiz",
+              "content": [
+                {
+                  "type": "textAnswer",
+                  "isCorrect": false,
+                  "data": "Verdadero"
+                },
+                {
+                  "type": "textAnswer",
+                  "isCorrect": true,
+                  "data": "Falso"
+                }
+              ]
+            },
+            {
+              "code": "3.5.2",
+              "title": "¿Cúal es el objetivo principal de la Retrospective?",
+              "type": "textChoiceQuiz",
+              "content": [
+                {
+                  "type": "textAnswer",
+                  "isCorrect": true,
+                  "data": "La mejora continua de los miembros del equipo"
+                },
+                {
+                  "type": "textAnswer",
+                  "isCorrect": false,
+                  "data": "Documentar los aspectos positivos y negativos, para ser transmitidos a los directivos de la empresa."
+                },
+                {
+                  "type": "textAnswer",
+                  "isCorrect": false,
+                  "data": "Preparar un estado de todas los PBIs completos y recomendaciones para completar los incompletos."
+                }
+              ]
+            },
+            {
+              "code": "3.5.3",
+              "title": "¿Quienes asisten/pueden asistir a la Sprint Retrospective?",
+              "type": "dragDrop",
+              "content": [
+                {
+                  "type": "textAnswer",
+                  "isCorrect": false,
+                  "data": "Product Owner"
+                },
+                {
+                  "type": "textAnswer",
+                  "isCorrect": true,
+                  "data": "Development Team"
+                },
+                {
+                  "type": "textAnswer",
+                  "isCorrect": false,
+                  "data": "Cualquier persona interesada"
+                },
+                {
+                  "type": "textAnswer",
+                  "isCorrect": true,
+                  "data": "Scrum Master"
+                },
+                {
+                  "type": "textAnswer",
+                  "isCorrect": false,
+                  "data": "El cliente"
+                }
+              ]
+            },
+            {
+              "code": "3.5.4",
+              "title": "¿En que momento del Sprint se realiza la Retrospective?",
+              "type": "textQuiz",
+              "content": [
+                {
+                  "type": "textAnswer",
+                  "isCorrect": false,
+                  "data": "Al principio"
+                },
+                {
+                  "type": "textAnswer",
+                  "isCorrect": false,
+                  "data": "Cuando el equipo necesite"
+                },
+                {
+                  "type": "textAnswer",
+                  "isCorrect": false,
+                  "data": "Cuando el Scrum Master sugiera"
+                },
+                {
+                  "type": "textAnswer",
+                  "isCorrect": true,
+                  "data": "Al final"
+                }
+              ]
+            }
+          ]
+        }
+      ]
     },
     {
       "name": "Graficos",

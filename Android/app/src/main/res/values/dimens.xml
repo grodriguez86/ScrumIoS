@@ -6,8 +6,13 @@
   <!--Level row-->
   <dimen name="lv_row_padding">10dp</dimen>
   <dimen name="lv_row_level_number_text_size">50sp</dimen>
+<!--<<<<<<< HEAD-->
   <dimen name="lv_row_level_name_text_size">24sp</dimen>
   <dimen name="lv_row_level_sub_levels_text_size">16sp</dimen>
+<!--=======-->
+<!--  <dimen name="lv_row_level_name_text_size">25sp</dimen>-->
+<!--  <dimen name="lv_row_level_sub_levels_text_size">15sp</dimen>-->
+<!--&gt;>>>>>> new_levels_android-->
   <dimen name="lv_row_level_progress_text_size">18sp</dimen>
 
   <!--Text view-->

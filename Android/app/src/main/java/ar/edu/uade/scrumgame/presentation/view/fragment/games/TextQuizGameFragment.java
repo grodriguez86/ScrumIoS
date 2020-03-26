@@ -1,10 +1,12 @@
 package ar.edu.uade.scrumgame.presentation.view.fragment.games;
 
+import android.graphics.Color;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
 import java.util.List;
 
+import androidx.core.content.ContextCompat;
 import ar.edu.uade.scrumgame.R;
 import ar.edu.uade.scrumgame.presentation.models.GameContentModel;
 import ar.edu.uade.scrumgame.presentation.view.GameContentView;
@@ -50,7 +52,11 @@ public class TextQuizGameFragment extends GameFragment implements GameContentVie
     }
 
     private void saveCheckedButtonAndClearCheck(RadioGroup radioGroup, int checkedId, RadioGroup otherRadioGroup) {
-        TextQuizGameFragment.this.choiceAttempt = radioGroup.findViewById(checkedId);
+        if (this.choiceAttempt != null) {
+            this.choiceAttempt.setTextColor(ContextCompat.getColor(this.getActivity(), R.color.violet));
+        }
+        this.choiceAttempt = radioGroup.findViewById(checkedId);
+        this.choiceAttempt.setTextColor(Color.WHITE);
         if (otherRadioGroup.getCheckedRadioButtonId() != -1) {
             otherRadioGroup.setOnCheckedChangeListener(null);
             otherRadioGroup.clearCheck();

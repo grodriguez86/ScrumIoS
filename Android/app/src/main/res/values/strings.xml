@@ -12,7 +12,7 @@
     <string name="info_theory_play">A JUGAR!</string>
     <string name="menu_play_available">Jugar ahora</string>
     <string name="menu_play_unavailable">No disponible</string>
-    <string name="menu_play_completed">Completo! 🤘</string>
+    <string name="menu_play_completed">Completo! &#129304;</string>
     <string name="product_backlog_tag">Excelente! El Product Backlog es el lugar donde figuran todas las tareas que el producto requiere desarrollar.</string>
     <string name="sprint_backlog_tag">Perfecto! El Sprint Backlog es el lugar donde figuran todas las tareas que el equipo decidió que realizarán en esta iteración.</string>
     <string name="arrow_iv_cd">arrow</string>
@@ -22,7 +22,7 @@
     <string name="curvedArrow_iv_cd">curvedArrow</string>
     <string name="sprint_tag">Buenísimo! El Sprint es la iteración en sí. Esta puede durar de 2 a 4 semanas y es el tiempo en el que el equipo desarrolla las tareas que definió en el Sprint Backlog.</string>
     <string name="daily_meetup_tag">Genial! La Daily Scrum Meeting es la reunion diaria donde se sincroniza el equipo sobre el estado de cada uno de sus miembros. Aprenderás sobre ella más adelante! 😊</string>
-    <string name="game_send_answer">Enviar respuesta</string>
+    <string name="game_send_answer">Continuar</string>
     <string name="game_choice_true">Verdadero</string>
     <string name="game_choice_false">Falso</string>
     <string name="correct_answer_button_text">OK</string>
@@ -33,7 +33,7 @@
     <string name="incorrect_answer_button_text">Aceptar</string>
     <string-array name="no_send_button_games">
         <item>scrumFlowDraggable</item>
-        <item>trueFalseQuiz</item>
+        <item>velocity</item>
     </string-array>
     <string name="progress_label">%1$d%%</string>
     <string name="accept">Aceptar</string>
@@ -80,4 +80,8 @@
     <string name="error_saving_progress">No se pudieron guardar los datos de progreso</string>
     <string name="error_saving_remote_data">Ocurrió un error al guardar los datos remotos</string>
     <string name="error_email_already_in_use">Ya existe un usuario con ese email</string>
+    <!-- Invaders -->
+    <string name="invaders_description">Una invasión extraterrestre amenaza tu planeta. ¡Debes protegerlo!</string>
+    <string name="invaders_description_2">¿Cuántas amenazas crees poder derribar en 30 segundos?</string>
+    <string name="invaders_play_button">A jugar!</string>
 </resources>

@@ -4,12 +4,10 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.Collection;
@@ -38,9 +36,11 @@ public class LevelsAdapter extends RecyclerView.Adapter<LevelsAdapter.LevelViewH
     private LayoutInflater layoutInflater;
     private OnItemClickListener onItemClickListener;
     private String subLevelsText;
+    private Context context;
 
     @Inject
     LevelsAdapter(Context context) {
+        this.context = context;
         this.layoutInflater =
                 (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         this.subLevelsText = context.getString(R.string.menu_level_row_sublevels);
@@ -62,8 +62,9 @@ public class LevelsAdapter extends RecyclerView.Adapter<LevelsAdapter.LevelViewH
     @Override
     public void onBindViewHolder(@NonNull LevelViewHolder holder, final int position) {
         LevelModel levelModel = this.levelsCollection.get(position);
-        holder.itemView.setOnClickListener(v -> { });
-        ProgressModel progressModel = this.progressModelCollection.size() >= position +1 ?
+        holder.itemView.setOnClickListener(v -> {
+        });
+        ProgressModel progressModel = this.progressModelCollection.size() >= position + 1 ?
                 this.progressModelCollection.get(position) :
                 null;
         if (progressModel == null || progressModel.isBlocked()) { // Level blocked
@@ -98,7 +99,12 @@ public class LevelsAdapter extends RecyclerView.Adapter<LevelsAdapter.LevelViewH
         holder.number.setText(String.valueOf(levelModel.getCode()));
         holder.name.setText(levelModel.getName());
         holder.sublevels.setText(String.format(subLevelsText, levelModel.getSublevels().size()));
-
+//        holder.action.setText(context.getString(R.string.menu_play_available));
+        holder.itemView.setOnClickListener(v -> {
+            if (LevelsAdapter.this.onItemClickListener != null) {
+                LevelsAdapter.this.onItemClickListener.onLevelItemClicked(levelModel);
+            }
+        });
     }
 
     @Override
@@ -140,16 +146,29 @@ public class LevelsAdapter extends RecyclerView.Adapter<LevelsAdapter.LevelViewH
     static class LevelViewHolder extends RecyclerView.ViewHolder {
         @BindView(R.id.number)
         TextView number;
+        //        AppCompatTextView number;
         @BindView(R.id.name)
         TextView name;
+        //        AppCompatTextView name;
         @BindView(R.id.sublevels)
         TextView sublevels;
+        //<<<<<<
+//        <HEAD
+//        TextView sublevels;
         @BindView(R.id.playLabel)
         TextView playLabel;
         @BindView(R.id.progressLabel)
         TextView progressLabel;
         @BindView(R.id.statusImage)
         ImageView statusImage;
+//=======
+//        @BindView(R.id.sublevels)
+//        AppCompatTextView sublevels;
+//        @BindView(R.id.action)
+//        AppCompatTextView action;
+//>>>>>>>
+//
+//        new_levels_android
 
         LevelViewHolder(View itemView) {
             super(itemView);

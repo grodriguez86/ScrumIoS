@@ -8,7 +8,6 @@ import android.view.ViewGroup;
 
 import androidx.annotation.Nullable;
 
-import ar.edu.uade.scrumgame.R;
 import ar.edu.uade.scrumgame.presentation.di.components.LevelComponent;
 import ar.edu.uade.scrumgame.presentation.models.InfoGameModel;
 import ar.edu.uade.scrumgame.presentation.view.activity.InfoGameActivity;

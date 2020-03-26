@@ -14,10 +14,10 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.AppCompatTextView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -49,9 +49,9 @@ public class InfoTheoryFragment extends BaseFragment implements InfoTheoryView {
     InfoTheoryPresenter infoTheoryPresenter;
     InfoTheoryAdapter infoTheoryAdapter;
     @BindView(R.id.levelTitle)
-    TextView levelTitle;
+    AppCompatTextView levelTitle;
     @BindView(R.id.subLevelTitle)
-    TextView subLevelTitle;
+    AppCompatTextView subLevelTitle;
     @BindView(R.id.rv_infoTheory)
     RecyclerView infoTheoryRecyclerView;
     @BindView(R.id.rl_progress)

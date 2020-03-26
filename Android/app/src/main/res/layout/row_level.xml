@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="150dp" xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:layout_margin="5dp"
+              android:background="@color/row_level_item"
+              android:orientation="vertical"
+              tools:ignore="UseCompoundDrawables">
+
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="0dp" android:layout_weight="1" android:padding="@dimen/lv_row_padding">
+        <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/number"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight=".4"
+                android:ellipsize="end"
+                android:gravity="center_vertical"
+                android:singleLine="true"
+                android:textColor="@color/row_level_number"
+                android:textSize="@dimen/lv_row_level_number_text_size"
+                android:fontFamily="@font/gotham_rounded_medium" tools:text="1" tools:ignore="NestedWeights"/>
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight=".3"
+                android:gravity="center"
+                android:orientation="vertical">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="center"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/lv_row_level_name_text_size"
+                    android:fontFamily="@font/gotham_rounded_bold"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/sublevels"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/lv_row_level_sub_levels_text_size"
+                    tools:text="1 subnivel" android:fontFamily="@font/gotham_rounded_light"/>
+        </LinearLayout>
+        <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/progress"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="end"
+                android:layout_weight=".4"
+                android:textAlignment="viewEnd"
+                android:textColor="@color/black"
+                android:textSize="@dimen/lv_row_level_progress_text_size"
+                android:textStyle="bold"
+                android:fontFamily="@font/gotham_rounded_bold" tools:text="30%"/>
+    </LinearLayout>
+    <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="match_parent"
+            android:layout_height="35dp" android:id="@+id/action"
+            android:background="@drawable/gradient_menu_button" tools:text="Jugar ahora"
+            android:textColor="@color/white"
+            android:fontFamily="@font/gotham_rounded_medium" android:gravity="center"/>
+
+</LinearLayout>

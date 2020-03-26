@@ -1,5 +1,6 @@
 package ar.edu.uade.scrumgame.presentation.view.fragment;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
@@ -8,9 +9,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.RelativeLayout;
-import android.widget.TextView;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.AppCompatTextView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.LinearSnapHelper;
 import androidx.recyclerview.widget.RecyclerView;
@@ -42,9 +43,9 @@ public class LevelFragment extends BaseFragment implements LevelView {
     @Inject
     SubLevelsAdapter subLevelsAdapter;
     @BindView(R.id.levelTitle)
-    TextView levelTitle;
+    AppCompatTextView levelTitle;
     @BindView(R.id.levelSubtitle)
-    TextView levelSubtitle;
+    AppCompatTextView levelSubtitle;
     @BindView(R.id.rv_subLevels)
     RecyclerView subLevelsRecyclerView;
     @BindView(R.id.rl_progress)
@@ -67,6 +68,7 @@ public class LevelFragment extends BaseFragment implements LevelView {
         this.getActivity().onBackPressed();
     }
 
+    @SuppressLint("DefaultLocale")
     @Override
     public void loadLevel(LevelModel level) {
         currentLevelName = level.getName();

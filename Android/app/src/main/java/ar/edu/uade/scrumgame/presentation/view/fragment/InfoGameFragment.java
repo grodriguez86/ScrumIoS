@@ -13,10 +13,10 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
-import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 
+import androidx.appcompat.widget.AppCompatTextView;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 
 import java.util.List;
@@ -48,15 +48,15 @@ public class InfoGameFragment extends BaseFragment implements InfoGamesContentVi
     @BindView(R.id.game_progress)
     ProgressBar progressBar;
     @BindView(R.id.progress_tv)
-    TextView progressTextView;
+    AppCompatTextView progressAppCompatTextView;
     @BindView(R.id.levelTitle)
-    TextView levelTitleTextView;
+    AppCompatTextView levelTitleAppCompatTextView;
     @BindView(R.id.subLevelTitle)
-    TextView subLevelTitleTextView;
+    AppCompatTextView subLevelTitleAppCompatTextView;
     @BindView(R.id.title)
-    TextView titleTextView;
+    AppCompatTextView titleAppCompatTextView;
     @BindView(R.id.indications)
-    TextView indicationsTextView;
+    AppCompatTextView indicationsAppCompatTextView;
     @BindView(R.id.sendAnswer)
     Button sendAnswerButton;
     @BindView(R.id.rl_progress)
@@ -133,8 +133,8 @@ public class InfoGameFragment extends BaseFragment implements InfoGamesContentVi
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         this.infoGamesContentPresenter.setView(this);
-        this.levelTitleTextView.setText(levelTitle);
-        this.subLevelTitleTextView.setText(subLevelTitle);
+        this.levelTitleAppCompatTextView.setText(levelTitle);
+        this.subLevelTitleAppCompatTextView.setText(subLevelTitle);
         this.bottomSheetBehavior = BottomSheetBehavior.from(bottomSheetLayout);
         bottomSheetBehavior.setState(BottomSheetBehavior.STATE_HIDDEN);
         if (savedInstanceState == null) {
@@ -232,7 +232,7 @@ public class InfoGameFragment extends BaseFragment implements InfoGamesContentVi
     private void updateProgress() {
         int progressPercentage = this.calculateProgress().intValue();
         this.progressBar.setProgress(progressPercentage);
-        this.progressTextView.setText(getString(R.string.progress_label, progressPercentage));
+        this.progressAppCompatTextView.setText(getString(R.string.progress_label, progressPercentage));
     }
 
     private Float calculateProgress() {
@@ -274,14 +274,14 @@ public class InfoGameFragment extends BaseFragment implements InfoGamesContentVi
     }
 
     private void setUpView(InfoGameModel infoGameModel) {
-        titleTextView.setText(infoGameModel.getTitle());
+        titleAppCompatTextView.setText(infoGameModel.getTitle());
         if (this.shouldHideSendAnswerButton(infoGameModel.getType())) {
             sendAnswerButton.setVisibility(View.GONE);
         } else {
             sendAnswerButton.setVisibility(View.VISIBLE);
         }
         //TODO tutorial
-        indicationsTextView.setText("");
+        indicationsAppCompatTextView.setText("");
     }
 
     private boolean shouldHideSendAnswerButton(String type) {

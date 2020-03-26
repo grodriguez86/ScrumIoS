@@ -42,7 +42,7 @@ public class ScrumFlowDraggableGameFragment extends GameFragment {
 
     @Override
     protected Integer getFragmentId() {
-        return R.layout.fragment_level_one_sublevel_two;
+        return R.layout.fragment_game_scrum_draggable;
     }
 
     @Override

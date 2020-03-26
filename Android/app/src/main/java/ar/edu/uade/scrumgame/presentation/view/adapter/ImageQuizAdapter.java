@@ -1,11 +1,11 @@
 package ar.edu.uade.scrumgame.presentation.view.adapter;
 
 import android.content.Context;
-import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RadioButton;
 
 import androidx.annotation.NonNull;
@@ -61,8 +61,10 @@ public class ImageQuizAdapter extends RecyclerView.Adapter<ImageQuizAdapter.Imag
         Picasso.get().load(gameContentModel.getData()).into(holder.image);
         holder.selected.setTag(gameContentModel.getCorrect());
         holder.selected.setOnClickListener(v -> {
+            holder.container.setSelected(true);
             if (lastSelectedPicture != null) {
                 lastSelectedPicture.selected.setChecked(false);
+                lastSelectedPicture.container.setSelected(false);
             }
             lastSelectedPicture = holder;
             if (ImageQuizAdapter.this.onItemClickListener != null) {
@@ -97,6 +99,8 @@ public class ImageQuizAdapter extends RecyclerView.Adapter<ImageQuizAdapter.Imag
         ImageView image;
         @BindView(R.id.selected_rb)
         RadioButton selected;
+        @BindView(R.id.container_ll)
+        LinearLayout container;
 
         ImageQuizViewHolder(View itemView) {
             super(itemView);

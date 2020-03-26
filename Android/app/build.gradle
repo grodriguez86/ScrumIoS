@@ -71,6 +71,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-auth:19.2.0'
     implementation 'com.google.firebase:firebase-firestore:21.4.1'
     implementation 'com.android.support:multidex:1.0.3'
+    implementation project(path: ':velocity')
 }
 
 apply plugin: 'com.google.gms.google-services'

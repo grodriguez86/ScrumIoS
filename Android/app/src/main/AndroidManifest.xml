@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="ar.edu.uade.scrumgame">
 
     <application
+        tools:replace="android:icon,android:theme"
         android:name=".presentation.ScrumApplication"
         android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
@@ -29,6 +31,7 @@
         <activity android:name=".presentation.view.activity.InfoGameActivity" />
         <activity android:name=".presentation.view.activity.SignupActivity" />
         <activity android:name=".presentation.view.activity.SignupDetailsActivity" />
+        <activity android:name=".presentation.view.activity.games.VelocityActivity" />
     </application>
     <uses-permission android:name="android.permission.INTERNET"></uses-permission>
 
