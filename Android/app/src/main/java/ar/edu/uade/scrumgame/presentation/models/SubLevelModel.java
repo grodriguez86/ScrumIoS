@@ -43,4 +43,21 @@ public class SubLevelModel {
     public void setInfoGame(List<InfoGameModel> infoGame) {
         this.infoGame = infoGame;
     }
+
+    public Integer calculatePercentage(ProgressModel progressModel, boolean forPrevious) {
+        int id = forPrevious ?
+                Integer.parseInt(this.code) - 1 :
+                Integer.parseInt(this.code);
+        if (progressModel.getSublevelID() < id)
+            return 0;
+        else if (progressModel.getSublevelID() > id)
+            return 100;
+        else {
+            int total = progressModel.getTotalGames() + 1;
+            int doneSoFar = progressModel.isTutorialCompleted() ?
+                    progressModel.getActualGame() + 1 :
+                    progressModel.getActualGame();
+            return doneSoFar * 100 / total;
+        }
+    }
 }

@@ -19,6 +19,8 @@ import javax.inject.Inject;
 import ar.edu.uade.scrumgame.R;
 import ar.edu.uade.scrumgame.presentation.di.components.LevelComponent;
 import ar.edu.uade.scrumgame.presentation.models.LevelModel;
+import ar.edu.uade.scrumgame.presentation.models.ProgressModel;
+import ar.edu.uade.scrumgame.presentation.models.UserOverallDataModel;
 import ar.edu.uade.scrumgame.presentation.presenter.MenuPresenter;
 import ar.edu.uade.scrumgame.presentation.view.LevelListView;
 import ar.edu.uade.scrumgame.presentation.view.adapter.LevelsAdapter;
@@ -93,9 +95,12 @@ public class MenuFragment extends BaseFragment implements LevelListView {
     }
 
     @Override
-    public void renderLevelList(Collection<LevelModel> levelModelCollection) {
+    public void renderLevelList(Collection<LevelModel> levelModelCollection,
+                                Collection<ProgressModel> progressModelCollection,
+                                UserOverallDataModel userOverallDataModel) {
         if (levelModelCollection != null) {
-            this.levelsAdapter.setLevelsCollection(levelModelCollection);
+            this.levelsAdapter.setLevelsCollection(levelModelCollection, progressModelCollection,
+                    userOverallDataModel);
         }
     }
 

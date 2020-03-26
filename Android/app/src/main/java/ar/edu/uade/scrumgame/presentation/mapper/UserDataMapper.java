@@ -1,5 +1,6 @@
 package ar.edu.uade.scrumgame.presentation.mapper;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
@@ -82,6 +83,20 @@ public class UserDataMapper {
         progressModel.setLevelId(progress.getLevelId());
         progressModel.setTotalGames(progress.getTotalGames());
         return progressModel;
+    }
+
+    public Collection<ProgressModel> progressToProgressModel(Collection<Progress> progressList) {
+        List<ProgressModel> progressModelList = new ArrayList<>();
+        for (Progress progress: progressList)
+            progressModelList.add(this.progressToProgressModel(progress));
+        return progressModelList;
+    }
+
+    public Collection<Progress> progressModelToProgress(Collection<ProgressModel> progressModelList) {
+        List<Progress> progressList = new ArrayList<>();
+        for (ProgressModel progressModel: progressModelList)
+            progressList.add(this.progressModelToProgress(progressModel));
+        return progressList;
     }
 
     public UserOverallData userOverallDataModelToUserOverallData(UserOverallDataModel userOverallDataModel) {

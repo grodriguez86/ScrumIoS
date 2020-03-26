@@ -4,21 +4,26 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
-
-import ar.edu.uade.scrumgame.R;
-import ar.edu.uade.scrumgame.presentation.models.LevelModel;
-import butterknife.BindView;
-import butterknife.ButterKnife;
 
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
 import javax.inject.Inject;
+
+import ar.edu.uade.scrumgame.R;
+import ar.edu.uade.scrumgame.presentation.models.LevelModel;
+import ar.edu.uade.scrumgame.presentation.models.ProgressModel;
+import ar.edu.uade.scrumgame.presentation.models.UserOverallDataModel;
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 
 public class LevelsAdapter extends RecyclerView.Adapter<LevelsAdapter.LevelViewHolder> {
@@ -28,6 +33,8 @@ public class LevelsAdapter extends RecyclerView.Adapter<LevelsAdapter.LevelViewH
     }
 
     private List<LevelModel> levelsCollection;
+    private List<ProgressModel> progressModelCollection;
+    private UserOverallDataModel userOverallDataModel;
     private LayoutInflater layoutInflater;
     private OnItemClickListener onItemClickListener;
     private String subLevelsText;
@@ -55,14 +62,43 @@ public class LevelsAdapter extends RecyclerView.Adapter<LevelsAdapter.LevelViewH
     @Override
     public void onBindViewHolder(@NonNull LevelViewHolder holder, final int position) {
         LevelModel levelModel = this.levelsCollection.get(position);
+        holder.itemView.setOnClickListener(v -> { });
+        ProgressModel progressModel = this.progressModelCollection.size() >= position +1 ?
+                this.progressModelCollection.get(position) :
+                null;
+        if (progressModel == null || progressModel.isBlocked()) { // Level blocked
+            holder.playLabel.setText(R.string.menu_play_unavailable);
+            holder.itemView.setAlpha(0.67f);
+            holder.itemView.setBackgroundResource(R.drawable.card_level_locked);
+            holder.progressLabel.setVisibility(View.INVISIBLE);
+            holder.statusImage.setBackgroundResource(R.mipmap.level_status_locked_foreground);
+            holder.statusImage.setVisibility(View.VISIBLE);
+        } else {
+            holder.itemView.setBackgroundResource(R.drawable.card_level);
+            holder.progressLabel.setVisibility(View.VISIBLE);
+            holder.itemView.setAlpha(1f);
+            int progressPercentage = levelModel.calculateProgressPercentage(progressModel);
+
+            if (progressPercentage < 100) { // Level incomplete
+                holder.statusImage.setVisibility(View.INVISIBLE);
+                holder.progressLabel.setText(String.format("%d%%", progressPercentage));
+                holder.playLabel.setText(R.string.menu_play_available);
+                holder.itemView.setOnClickListener(v -> {
+                    if (LevelsAdapter.this.onItemClickListener != null) {
+                        LevelsAdapter.this.onItemClickListener.onLevelItemClicked(levelModel);
+                    }
+                });
+            } else { // Level completed
+                holder.statusImage.setBackgroundResource(R.mipmap.level_status_completed_foreground);
+                holder.statusImage.setVisibility(View.INVISIBLE);
+                holder.playLabel.setText(R.string.menu_play_completed);
+                holder.progressLabel.setText("100%");
+            }
+        }
         holder.number.setText(String.valueOf(levelModel.getCode()));
         holder.name.setText(levelModel.getName());
         holder.sublevels.setText(String.format(subLevelsText, levelModel.getSublevels().size()));
-        holder.itemView.setOnClickListener(v -> {
-            if (LevelsAdapter.this.onItemClickListener != null) {
-                LevelsAdapter.this.onItemClickListener.onLevelItemClicked(levelModel);
-            }
-        });
+
     }
 
     @Override
@@ -70,9 +106,15 @@ public class LevelsAdapter extends RecyclerView.Adapter<LevelsAdapter.LevelViewH
         return position;
     }
 
-    public void setLevelsCollection(Collection<LevelModel> levelsCollection) {
+    public void setLevelsCollection(Collection<LevelModel> levelsCollection,
+                                    Collection<ProgressModel> progressModelCollection,
+                                    UserOverallDataModel userOverallDataModel) {
         this.validateLevelsCollection(levelsCollection);
         this.levelsCollection = (List<LevelModel>) levelsCollection;
+        this.validateProgressCollection(progressModelCollection);
+        this.progressModelCollection = (List<ProgressModel>) progressModelCollection;
+        this.validateUserOverallDataModel(userOverallDataModel);
+        this.userOverallDataModel = userOverallDataModel;
         this.notifyDataSetChanged();
     }
 
@@ -81,9 +123,18 @@ public class LevelsAdapter extends RecyclerView.Adapter<LevelsAdapter.LevelViewH
     }
 
     private void validateLevelsCollection(Collection<LevelModel> levelsCollection) {
-        if (levelsCollection == null) {
-            throw new IllegalArgumentException("The list cannot be null");
-        }
+        if (levelsCollection == null)
+            throw new IllegalArgumentException("The level list cannot be null");
+    }
+
+    private void validateProgressCollection(Collection<ProgressModel> progressModelCollection) {
+        if (progressModelCollection == null)
+            throw new IllegalArgumentException("The progress list cannot be null");
+    }
+
+    private void validateUserOverallDataModel(UserOverallDataModel userOverallDataModel) {
+        if (userOverallDataModel == null || userOverallDataModel.getCurrentAvailableLevel() < 1)
+            throw new IllegalArgumentException("Invalid userOverallDataModel");
     }
 
     static class LevelViewHolder extends RecyclerView.ViewHolder {
@@ -93,6 +144,12 @@ public class LevelsAdapter extends RecyclerView.Adapter<LevelsAdapter.LevelViewH
         TextView name;
         @BindView(R.id.sublevels)
         TextView sublevels;
+        @BindView(R.id.playLabel)
+        TextView playLabel;
+        @BindView(R.id.progressLabel)
+        TextView progressLabel;
+        @BindView(R.id.statusImage)
+        ImageView statusImage;
 
         LevelViewHolder(View itemView) {
             super(itemView);
