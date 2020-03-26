@@ -10,7 +10,9 @@
     <string name="menu_level_row_sublevels">%d subniveles</string>
     <string name="info_theory_skip">SALTAR TUTORIAL</string>
     <string name="info_theory_play">A JUGAR!</string>
-    <string name="menu_play">Jugar ahora</string>
+    <string name="menu_play_available">Jugar ahora</string>
+    <string name="menu_play_unavailable">No disponible</string>
+    <string name="menu_play_completed">Completo! 🤘</string>
     <string name="product_backlog_tag">Excelente! El Product Backlog es el lugar donde figuran todas las tareas que el producto requiere desarrollar.</string>
     <string name="sprint_backlog_tag">Perfecto! El Sprint Backlog es el lugar donde figuran todas las tareas que el equipo decidió que realizarán en esta iteración.</string>
     <string name="arrow_iv_cd">arrow</string>

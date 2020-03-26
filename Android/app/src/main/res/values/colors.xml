@@ -10,6 +10,7 @@
     <color name="lightBlue">#6f9ef5</color>
     <color name="levelOne">#FE9D20</color>
     <color name="menuLevelCardBackground">#e0e0e0</color>
+    <color name="menuLevelCardLockedBackground">#ababab</color>
     <color name="menuLevelCardLevelNumber">#C0C0C0</color>
     <color name="kiwi">#7AC70C</color>
     <color name="blueberry">#1CB0F6</color>
