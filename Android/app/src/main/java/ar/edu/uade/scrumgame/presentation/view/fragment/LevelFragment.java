@@ -23,6 +23,7 @@ import javax.inject.Inject;
 import ar.edu.uade.scrumgame.R;
 import ar.edu.uade.scrumgame.presentation.di.components.LevelComponent;
 import ar.edu.uade.scrumgame.presentation.models.LevelModel;
+import ar.edu.uade.scrumgame.presentation.models.ProgressModel;
 import ar.edu.uade.scrumgame.presentation.models.SubLevelModel;
 import ar.edu.uade.scrumgame.presentation.presenter.LevelPresenter;
 import ar.edu.uade.scrumgame.presentation.view.LevelView;
@@ -124,9 +125,11 @@ public class LevelFragment extends BaseFragment implements LevelView {
     }
 
     @Override
-    public void renderSubLevelList(Collection<SubLevelModel> subLevelModelCollection) {
+    public void renderSubLevelList(Collection<SubLevelModel> subLevelModelCollection,
+                                   ProgressModel progressModel) {
         if (subLevelModelCollection != null) {
             this.subLevelsAdapter.setSubLevelsCollection(subLevelModelCollection);
+            this.subLevelsAdapter.setProgressModel(progressModel);
         }
     }
 
