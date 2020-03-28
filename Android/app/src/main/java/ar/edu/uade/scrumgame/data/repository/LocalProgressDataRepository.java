@@ -39,7 +39,7 @@ public class LocalProgressDataRepository implements LocalProgressRepository {
         LocalProgressDataStore localProgressDataStore = this.progressDataStoreFactory.createLocalProgressDataStore();
         return localProgressDataStore.getProgressList().map(progressEntityList -> {
             List<Progress> progressList = new ArrayList<>();
-            for (ProgressEntity progressEntity: progressEntityList)
+            for (ProgressEntity progressEntity : progressEntityList)
                 progressList.add(progressEntityMapper.progressEntityToProgress(progressEntity));
             return progressList;
         });
@@ -49,9 +49,15 @@ public class LocalProgressDataRepository implements LocalProgressRepository {
     public Observable<Void> saveProgressList(List<Progress> progressList) {
         LocalProgressDataStore localProgressDataStore = this.progressDataStoreFactory.createLocalProgressDataStore();
         List<ProgressEntity> progressEntityList = new ArrayList<>();
-        for (Progress progress: progressList)
+        for (Progress progress : progressList)
             progressEntityList.add(progressEntityMapper.progressToProgressEntity(progress));
         return localProgressDataStore.saveProgressList(progressEntityList);
+    }
+
+    @Override
+    public Observable<Progress> getProgress(Integer levelCode) {
+        LocalProgressDataStore localProgressDataStore = this.progressDataStoreFactory.createLocalProgressDataStore();
+        return localProgressDataStore.getProgressEntity(levelCode).map(progressEntityMapper::progressEntityToProgress);
     }
 }
 

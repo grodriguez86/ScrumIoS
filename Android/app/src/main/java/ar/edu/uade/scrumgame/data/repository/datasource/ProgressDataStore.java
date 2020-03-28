@@ -11,4 +11,6 @@ public interface ProgressDataStore {
     Observable<List<ProgressEntity>> getProgressList();
 
     Observable<Void> saveProgressList(List<ProgressEntity> progressEntityList);
+
+    Observable<ProgressEntity> getProgressEntity(Integer levelCode);
 }

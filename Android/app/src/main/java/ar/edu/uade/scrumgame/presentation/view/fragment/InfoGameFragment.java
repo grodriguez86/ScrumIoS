@@ -310,7 +310,7 @@ public class InfoGameFragment extends BaseFragment implements InfoGamesContentVi
     @OnClick(R.id.finish_game_btn)
     public void finishGame() {
         if (this.onGamesCompletedListener != null) {
-            this.infoGamesContentPresenter.finishSublevel(currentGame);
+            this.infoGamesContentPresenter.finishSublevel();
         }
         this.bottomSheetBehavior.setState(BottomSheetBehavior.STATE_HIDDEN);
     }

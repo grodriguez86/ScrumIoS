@@ -10,10 +10,14 @@ import javax.inject.Inject;
 
 import ar.edu.uade.scrumgame.data.entity.LevelStatusConstants;
 import ar.edu.uade.scrumgame.domain.InfoGame;
+import ar.edu.uade.scrumgame.domain.Level;
+import ar.edu.uade.scrumgame.domain.Progress;
 import ar.edu.uade.scrumgame.domain.exception.DefaultErrorBundle;
 import ar.edu.uade.scrumgame.domain.exception.ErrorBundle;
 import ar.edu.uade.scrumgame.domain.interactor.DefaultObserver;
 import ar.edu.uade.scrumgame.domain.interactor.GetInfoGame;
+import ar.edu.uade.scrumgame.domain.interactor.GetLevel;
+import ar.edu.uade.scrumgame.domain.interactor.GetProgressLocally;
 import ar.edu.uade.scrumgame.domain.interactor.SaveProgress;
 import ar.edu.uade.scrumgame.presentation.di.PerActivity;
 import ar.edu.uade.scrumgame.presentation.exception.ErrorMessageFactory;
@@ -29,19 +33,23 @@ public class InfoGamesContentPresenter implements Presenter {
     private InfoGamesContentView infoGamesContentView;
     private GetInfoGame getInfoGameUseCase;
     private SaveProgress saveProgressUseCase;
+    private GetLevel getLevelUseCase;
     private UserDataMapper userDataMapper;
     private InfoGameModelDataMapper infoGameModelDataMapper;
     private List<InfoGameModel> infoGameModels;
+    private Integer subLevelCount;
 
     @Inject
     InfoGamesContentPresenter(GetInfoGame getInfoGameUseCase,
                               InfoGameModelDataMapper infoGameModelDataMapper,
                               UserDataMapper userDataMapper,
-                              SaveProgress saveProgressUseCase) {
+                              SaveProgress saveProgressUseCase,
+                              GetLevel getLevelUseCase) {
         this.getInfoGameUseCase = getInfoGameUseCase;
         this.infoGameModelDataMapper = infoGameModelDataMapper;
         this.userDataMapper = userDataMapper;
         this.saveProgressUseCase = saveProgressUseCase;
+        this.getLevelUseCase = getLevelUseCase;
     }
 
     public void setView(@NonNull InfoGamesContentView view) {
@@ -122,21 +130,6 @@ public class InfoGamesContentPresenter implements Presenter {
                 userDataMapper.progressModelToProgress(updatedProgress));
     }
 
-    public void finishSublevel(int currentGameIndex) {
-        InfoGameModel firstInfoGameModel = infoGameModels.get(0);
-        ProgressModel updatedProgress = new ProgressModel(
-                firstInfoGameModel.getLevelCode(),
-                firstInfoGameModel.getSubLevelCode() + 1,
-                true,
-                0,
-                infoGameModels.size(),
-                LevelStatusConstants.STARTED,
-                false
-        );
-        saveProgressUseCase.execute(new SaveProgressAndFinishObserver(),
-                userDataMapper.progressModelToProgress(updatedProgress));
-    }
-
     private final class InfoGameObserver extends DefaultObserver<Collection<InfoGame>> {
 
         @Override
@@ -157,24 +150,19 @@ public class InfoGamesContentPresenter implements Presenter {
         }
     }
 
-    private final class SaveProgressAndFinishObserver extends DefaultObserver<String> {
-        @Override
-        public void onComplete() {
-            InfoGamesContentPresenter.this.hideViewLoading();
-        }
-
-        @Override
-        public void onError(Throwable e) {
-            InfoGamesContentPresenter.this.hideViewLoading();
-            InfoGamesContentPresenter.this.showErrorMessage(new DefaultErrorBundle((Exception) e));
-            InfoGamesContentPresenter.this.showViewRetry();
-        }
-
-        @Override
-        public void onNext(String result) {
-            InfoGamesContentPresenter.this.hideViewLoading();
-            infoGamesContentView.goToSublevelMenu();
-        }
+    public void finishSublevel() {
+        InfoGameModel firstInfoGameModel = infoGameModels.get(0);
+        ProgressModel updatedProgress = new ProgressModel(
+                firstInfoGameModel.getLevelCode(),
+                firstInfoGameModel.getSubLevelCode() + 1,
+                true,
+                0,
+                infoGameModels.size(),
+                LevelStatusConstants.STARTED,
+                false
+        );
+        saveProgressUseCase.execute(new SaveProgressAndFinishObserver(),
+                userDataMapper.progressModelToProgress(updatedProgress));
     }
 
     private final class SaveProgressAndPlayNextObserver extends DefaultObserver<String> {
@@ -196,4 +184,72 @@ public class InfoGamesContentPresenter implements Presenter {
             InfoGamesContentPresenter.this.infoGamesContentView.playNextLevel();
         }
     }
+
+    private final class SaveProgressAndFinishObserver extends DefaultObserver<String> {
+        @Override
+        public void onError(Throwable e) {
+            InfoGamesContentPresenter.this.hideViewLoading();
+            InfoGamesContentPresenter.this.showErrorMessage(new DefaultErrorBundle((Exception) e));
+            InfoGamesContentPresenter.this.showViewRetry();
+        }
+
+        @Override
+        public void onNext(String result) {
+            InfoGameModel firstInfoGameModel = infoGameModels.get(0);
+            getLevelUseCase.execute(new GetLevelLocallyObserver(), firstInfoGameModel.getLevelCode());
+        }
+    }
+
+    private final class GetLevelLocallyObserver extends DefaultObserver<Level> {
+
+        @Override
+        public void onError(Throwable e) {
+            InfoGamesContentPresenter.this.hideViewLoading();
+            InfoGamesContentPresenter.this.showErrorMessage(new DefaultErrorBundle((Exception) e));
+            InfoGamesContentPresenter.this.showViewRetry();
+        }
+
+        @Override
+        public void onNext(Level level) {
+            subLevelCount = level.getSublevels().size();
+            InfoGameModel firstInfoGameModel = infoGameModels.get(0);
+            if (subLevelCount == firstInfoGameModel.getSubLevelCode()) {
+                ProgressModel updatedProgress = new ProgressModel(
+                        firstInfoGameModel.getLevelCode() + 1,
+                        0,
+                        false,
+                        0,
+                        0,
+                        LevelStatusConstants.NOT_STARTED,
+                        false
+                );
+                saveProgressUseCase.execute(new UpdateNextLevelProgressObserver(),
+                        userDataMapper.progressModelToProgress(updatedProgress));
+            } else {
+                InfoGamesContentPresenter.this.hideViewLoading();
+                infoGamesContentView.goToSublevelMenu();
+            }
+        }
+    }
+
+    private final class UpdateNextLevelProgressObserver extends DefaultObserver<String> {
+        @Override
+        public void onComplete() {
+            InfoGamesContentPresenter.this.hideViewLoading();
+        }
+
+        @Override
+        public void onError(Throwable e) {
+            InfoGamesContentPresenter.this.hideViewLoading();
+            InfoGamesContentPresenter.this.showErrorMessage(new DefaultErrorBundle((Exception) e));
+            InfoGamesContentPresenter.this.showViewRetry();
+        }
+
+        @Override
+        public void onNext(String result) {
+            InfoGamesContentPresenter.this.hideViewLoading();
+            infoGamesContentView.goToSublevelMenu();
+        }
+    }
+
 }

@@ -90,4 +90,9 @@ class FirestoreProgressDataStore implements RemoteProgressDataStore {
     public Observable<Void> saveProgressList(List<ProgressEntity> progressEntityList) {
         throw new RuntimeException("NOT IMPLEMENTED"); // TODO
     }
+
+    @Override
+    public Observable<ProgressEntity> getProgressEntity(Integer levelCode) {
+        throw new RuntimeException("NOT IMPLEMENTED"); // TODO
+    }
 }
