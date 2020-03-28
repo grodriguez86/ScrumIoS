@@ -64,6 +64,15 @@ public class InfoGameModel implements Parcelable, Cloneable {
         this.content = content;
     }
 
+    public int getLevelCode() {
+        return Integer.parseInt(code.split("\\.")[0]);
+    }
+
+    public int getSubLevelCode() {
+        return Integer.parseInt(code.split("\\.")[1]);
+    }
+
+
     @Override
     public int describeContents() {
         return 0;

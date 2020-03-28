@@ -60,6 +60,7 @@ public class MenuPresenter implements Presenter {
 
     @Override
     public void resume() {
+        loadLevels();
     }
 
     @Override

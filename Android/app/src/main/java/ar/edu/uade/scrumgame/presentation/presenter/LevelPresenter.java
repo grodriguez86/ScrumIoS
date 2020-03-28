@@ -50,6 +50,8 @@ public class LevelPresenter implements Presenter {
 
     @Override
     public void resume() {
+        if (level != null)
+            loadLevel(level.getCode());
     }
 
     @Override
@@ -68,8 +70,8 @@ public class LevelPresenter implements Presenter {
         this.loadLevel(levelCode);
     }
 
-    public void onSubLevelClicked(String levelName, SubLevelModel subLevelModel) {
-        this.levelView.enterSubLevel(levelName, subLevelModel);
+    public void onSubLevelClicked(String levelName, SubLevelModel subLevelModel, ProgressModel progressModel) {
+        this.levelView.enterSubLevel(levelName, subLevelModel, progressModel);
     }
 
     private void loadLevel(Integer levelCode) {

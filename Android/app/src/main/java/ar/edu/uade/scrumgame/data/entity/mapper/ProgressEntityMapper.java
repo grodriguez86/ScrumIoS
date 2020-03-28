@@ -20,7 +20,6 @@ public class ProgressEntityMapper {
         progressEntity.setTutorialCompleted(progress.isTutorialCompleted());
         progressEntity.setStatus(progress.getStatus());
         progressEntity.setBlocked(progress.isBlocked());
-        progressEntity.setpK(progress.getpK());
         progressEntity.setLevelId(progress.getLevelId());
         progressEntity.setTotalGames(progress.getTotalGames());
         return progressEntity;

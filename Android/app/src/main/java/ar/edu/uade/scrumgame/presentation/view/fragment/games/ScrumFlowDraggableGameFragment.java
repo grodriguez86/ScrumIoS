@@ -66,8 +66,8 @@ public class ScrumFlowDraggableGameFragment extends GameFragment {
     }
 
     private void checkCorrectDrags(View view) {
-        this.correctDrags++;
         this.showTooltip(view, v -> {
+            this.correctDrags++;
             if (this.hasCompletedGame()) {
                 this.onGameCompletedListener.onGameCompleted(gameCode);
             }

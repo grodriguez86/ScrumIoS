@@ -89,4 +89,18 @@ public class ProgressModel {
     public void setBlocked(boolean blocked) {
         this.blocked = blocked;
     }
+
+
+    public ProgressModel() {
+    }
+
+    public ProgressModel(int levelId, int sublevelID, boolean tutorialCompleted, int actualGame, int totalGames, String status, boolean blocked) {
+        this.levelId = levelId;
+        this.sublevelID = sublevelID;
+        this.tutorialCompleted = tutorialCompleted;
+        this.actualGame = actualGame;
+        this.totalGames = totalGames;
+        this.status = status;
+        this.blocked = blocked;
+    }
 }

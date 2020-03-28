@@ -57,10 +57,8 @@ public class SubLevelModel {
         else if (progressModel.getSublevelID() > id)
             return 100;
         else {
-            int total = progressModel.getTotalGames() + 1;
-            int doneSoFar = progressModel.isTutorialCompleted() ?
-                    progressModel.getActualGame() + 1 :
-                    progressModel.getActualGame();
+            int total = progressModel.getTotalGames();
+            int doneSoFar = progressModel.getActualGame();
             return doneSoFar * 100 / total;
         }
     }

@@ -42,7 +42,8 @@ import butterknife.OnClick;
 public class InfoTheoryFragment extends BaseFragment implements InfoTheoryView {
 
     public interface PlaySubLevelListener {
-        void onPlayClicked(Integer levelCode, String levelTitle, String subLevelCode, String subLevelTitle);
+        void onPlayClicked(Integer levelCode, String levelTitle, String subLevelCode,
+                           String subLevelTitle, Integer currentGame);
     }
 
     @Inject
@@ -76,6 +77,7 @@ public class InfoTheoryFragment extends BaseFragment implements InfoTheoryView {
 
     private Integer levelCode;
     private String subLevelCode;
+    private Integer currentGame;
 
     private PlaySubLevelListener playSubLevelListener;
 
@@ -221,7 +223,8 @@ public class InfoTheoryFragment extends BaseFragment implements InfoTheoryView {
     @OnClick(R.id.btn_play)
     public void startPlaying() {
         if (levelCode != null && subLevelCode != null)
-            this.playSubLevel(levelCode, levelTitle.getText().toString(), subLevelCode, subLevelTitle.getText().toString());
+            this.playSubLevel(levelCode, levelTitle.getText().toString(), subLevelCode,
+                    subLevelTitle.getText().toString(), currentGame);
     }
 
     @Override
@@ -238,6 +241,7 @@ public class InfoTheoryFragment extends BaseFragment implements InfoTheoryView {
         levelCode = getArguments().getInt("levelCode");
         levelTitle.setText(levelName);
         subLevelCode = getArguments().getString("subLevelCode");
+        currentGame = getArguments().getInt("currentGame");
         this.infoTheoryPresenter.initialize(subLevelCode);
     }
 
@@ -249,9 +253,11 @@ public class InfoTheoryFragment extends BaseFragment implements InfoTheoryView {
     }
 
     @Override
-    public void playSubLevel(Integer levelCode, String levelTitle, String subLevelCode, String subLevelTitle) {
+    public void playSubLevel(Integer levelCode, String levelTitle, String subLevelCode,
+                             String subLevelTitle, Integer currentGame) {
         if (this.playSubLevelListener != null) {
-            this.playSubLevelListener.onPlayClicked(levelCode, levelTitle, subLevelCode, subLevelTitle);
+            this.playSubLevelListener.onPlayClicked(levelCode, levelTitle, subLevelCode,
+                    subLevelTitle, currentGame);
         }
     }
 

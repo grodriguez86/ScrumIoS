@@ -21,6 +21,8 @@ public class InfoTheoryActivity extends BaseActivity implements HasComponent<Lev
 
     private String subLevelCode;
 
+    private Integer currentGame;
+
     public static Intent getCallingIntent(Context context) {
         return new Intent(context, InfoTheoryActivity.class);
     }
@@ -35,9 +37,11 @@ public class InfoTheoryActivity extends BaseActivity implements HasComponent<Lev
         levelCode = getIntent().getExtras().getInt("levelCode");
         levelName = getIntent().getExtras().getString("levelName");
         subLevelCode = getIntent().getExtras().getString("subLevelCode");
+        currentGame = getIntent().getExtras().getInt("currentGame");
         bundle.putInt("levelCode", levelCode);
         bundle.putString("levelName", levelName);
         bundle.putString("subLevelCode", subLevelCode);
+        bundle.putInt("currentGame", currentGame);
         InfoTheoryFragment infoTheoryFragment = new InfoTheoryFragment();
         infoTheoryFragment.setArguments(bundle);
         if (savedInstanceState == null) {
@@ -59,7 +63,9 @@ public class InfoTheoryActivity extends BaseActivity implements HasComponent<Lev
     }
 
     @Override
-    public void onPlayClicked(Integer levelCode, String levelTitle, String subLevelCode, String subLevelTitle) {
-        this.navigator.navigateToPlaySubLevel(this, levelCode, levelTitle, subLevelCode, subLevelTitle);
+    public void onPlayClicked(Integer levelCode, String levelTitle, String subLevelCode,
+                              String subLevelTitle, Integer currentGame) {
+        this.navigator.navigateToPlaySubLevel(this, levelCode, levelTitle,
+                subLevelCode, subLevelTitle, currentGame);
     }
 }

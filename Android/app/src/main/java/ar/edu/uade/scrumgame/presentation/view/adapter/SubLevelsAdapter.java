@@ -32,7 +32,7 @@ public class SubLevelsAdapter extends RecyclerView.Adapter<SubLevelsAdapter.SubL
     }
 
     public interface OnItemClickListener {
-        void onSubLevelItemClicked(SubLevelModel subLevelModel);
+        void onSubLevelItemClicked(SubLevelModel subLevelModel, ProgressModel progressModel);
     }
 
     private List<SubLevelModel> subLevelsCollection;
@@ -72,7 +72,8 @@ public class SubLevelsAdapter extends RecyclerView.Adapter<SubLevelsAdapter.SubL
             if (progressStatusModel.getStatus().equals(ProgressStatusConstant.AVAILABLE) ||
                     progressStatusModel.getStatus().equals(ProgressStatusConstant.STARTED) &&
                             SubLevelsAdapter.this.onItemClickListener != null)
-                SubLevelsAdapter.this.onItemClickListener.onSubLevelItemClicked(subLevelModel);
+                SubLevelsAdapter.this.onItemClickListener.onSubLevelItemClicked(subLevelModel,
+                        progressModel);
         });
     }
 
