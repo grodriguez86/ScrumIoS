@@ -11,4 +11,6 @@ public interface ProgressRepository {
     Observable<List<Progress>> getProgressList();
 
     Observable<Void> saveProgressList(List<Progress> progressList);
+
+    Observable<Progress> getProgress(Integer levelCode);
 }

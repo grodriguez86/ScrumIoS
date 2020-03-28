@@ -13,5 +13,6 @@ public interface LevelView extends LoadDataView {
 
     void renderSubLevelList(Collection<SubLevelModel> subLevelModelCollection, ProgressModel progressModel);
 
-    void enterSubLevel(String levelName, SubLevelModel subLevelModel);
+    void enterSubLevel(String levelName, SubLevelModel subLevelModel, ProgressModel progressModel);
+
 }

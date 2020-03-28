@@ -9,6 +9,7 @@ import ar.edu.uade.scrumgame.R;
 import ar.edu.uade.scrumgame.presentation.di.HasComponent;
 import ar.edu.uade.scrumgame.presentation.di.components.DaggerLevelComponent;
 import ar.edu.uade.scrumgame.presentation.di.components.LevelComponent;
+import ar.edu.uade.scrumgame.presentation.models.ProgressModel;
 import ar.edu.uade.scrumgame.presentation.models.SubLevelModel;
 import ar.edu.uade.scrumgame.presentation.view.fragment.LevelFragment;
 
@@ -52,7 +53,13 @@ public class LevelActivity extends BaseActivity implements HasComponent<LevelCom
     }
 
     @Override
-    public void onSubLevelClicked(String levelName, SubLevelModel subLevelModel) {
-        this.navigator.navigateToInfoTheory(this, levelCode, levelName, subLevelModel.getCode());
+    public void onSubLevelClicked(String levelName, SubLevelModel subLevelModel, ProgressModel progressModel) {
+        if (progressModel.isTutorialCompleted()) {
+            this.navigator.navigateToPlaySubLevel(this, levelCode, levelName,
+                    subLevelModel.getCode(), subLevelModel.getName(), progressModel.getActualGame());
+        } else {
+            this.navigator.navigateToInfoTheory(this, levelCode, levelName,
+                    subLevelModel.getCode(), progressModel.getActualGame());
+        }
     }
 }

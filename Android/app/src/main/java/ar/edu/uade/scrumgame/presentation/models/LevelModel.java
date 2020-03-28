@@ -40,7 +40,7 @@ public class LevelModel {
         int total = sublevels.size() * 100;
         int subLevelsCompleted = calculateSubslevelsCompleted(progressModel);
         int currentSublevelPercentage = calculateCurrentSublevelPercentage(progressModel);
-        int doneSofar = subLevelsCompleted * 100 * currentSublevelPercentage;
+        int doneSofar = subLevelsCompleted * 100 + currentSublevelPercentage;
         return doneSofar * 100 / total;
     }
 

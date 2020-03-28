@@ -44,18 +44,23 @@ public class Navigator {
         infoGameActivity.startActivity(intent);
     }
 
-    public void navigateToInfoTheory(LevelActivity levelActivity, Integer levelCode, String levelName, String subLevelCode) {
+    public void navigateToInfoTheory(LevelActivity levelActivity, Integer levelCode, String levelName,
+                                     String subLevelCode, Integer currentGame) {
         Intent intent = new Intent(levelActivity, InfoTheoryActivity.class);
         intent.putExtra("levelCode", levelCode);
         intent.putExtra("levelName", levelName);
         intent.putExtra("subLevelCode", subLevelCode);
+        intent.putExtra("currentGame", currentGame);
         levelActivity.startActivity(intent);
     }
 
-    public void navigateToPlaySubLevel(InfoTheoryActivity infoTheoryActivity, Integer levelCode, String levelTitle, String subLevelCode, String subLevelTitle) {
-        if (infoTheoryActivity != null) {
-            Intent intent = InfoGameActivity.getCallingIntent(infoTheoryActivity, levelCode, levelTitle, subLevelCode, subLevelTitle);
-            infoTheoryActivity.startActivity(intent);
+    public void navigateToPlaySubLevel(BaseActivity baseActivity, Integer levelCode,
+                                       String levelTitle, String subLevelCode, String subLevelTitle,
+                                       Integer currentGame) {
+        if (baseActivity != null) {
+            Intent intent = InfoGameActivity.getCallingIntent(baseActivity, levelCode,
+                    levelTitle, subLevelCode, subLevelTitle, currentGame);
+            baseActivity.startActivity(intent);
         }
     }
 

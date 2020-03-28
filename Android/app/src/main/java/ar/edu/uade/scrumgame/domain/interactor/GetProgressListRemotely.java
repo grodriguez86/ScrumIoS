@@ -46,11 +46,8 @@ public class GetProgressListRemotely extends UseCase<List<Progress>, Void> {
                             @Override
                             public void onComplete() {
                                 int levelNumber = 1;
-                                for (
-                                        Progress progress : fetchedProgressList)
-                                    if (!progress.getStatus().
-
-                                            equals(LevelStatusConstants.NOT_STARTED))
+                                for (Progress progress : fetchedProgressList)
+                                    if (!progress.getStatus().equals(LevelStatusConstants.NOT_STARTED))
                                         levelNumber = progress.getLevelId();
                                 UserOverallData userOverallData = new UserOverallData(levelNumber);
                                 userOverallDataRepository.saveUserOverallData(userOverallData).subscribe(new DefaultObserver<Void>() {

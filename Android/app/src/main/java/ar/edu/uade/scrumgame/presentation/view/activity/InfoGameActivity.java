@@ -34,13 +34,14 @@ public class InfoGameActivity extends BaseActivity implements HasComponent<Level
     private LevelComponent levelComponent;
     private InfoGameFragment infoGameFragment;
 
-    public static Intent getCallingIntent(Context context, Integer levelCode, String levelTitle, String subLevelCode, String subLevelTitle) {
+    public static Intent getCallingIntent(Context context, Integer levelCode, String levelTitle,
+                                          String subLevelCode, String subLevelTitle, Integer currentGame) {
         Intent callingIntent = new Intent(context, InfoGameActivity.class);
         callingIntent.putExtra(INTENT_EXTRA_PARAM_LEVEL_CODE, levelCode);
         callingIntent.putExtra(INTENT_EXTRA_PARAM_SUB_LEVEL_CODE, subLevelCode);
         callingIntent.putExtra(INTENT_EXTRA_PARAM_LEVEL_TITLE, levelTitle);
         callingIntent.putExtra(INTENT_EXTRA_PARAM_SUB_LEVEL_TITLE, subLevelTitle);
-        callingIntent.putExtra(INTENT_EXTRA_PARAM_CURRENT_GAME, 0);
+        callingIntent.putExtra(INTENT_EXTRA_PARAM_CURRENT_GAME, currentGame);
         return callingIntent;
     }
 

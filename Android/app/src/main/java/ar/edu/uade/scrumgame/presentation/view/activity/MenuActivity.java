@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Window;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 import ar.edu.uade.scrumgame.R;
 import ar.edu.uade.scrumgame.presentation.di.HasComponent;
 import ar.edu.uade.scrumgame.presentation.di.components.DaggerLevelComponent;
@@ -48,5 +50,12 @@ public class MenuActivity extends BaseActivity implements HasComponent<LevelComp
     @Override
     public void onLevelClicked(LevelModel levelModel) {
         this.navigator.navigateToLevel(this, levelModel.getCode());
+    }
+
+    @Override
+    public void onBackPressed() {
+        FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+        firebaseAuth.signOut();
+        super.onBackPressed();
     }
 }

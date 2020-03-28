@@ -100,11 +100,6 @@ public class LevelsAdapter extends RecyclerView.Adapter<LevelsAdapter.LevelViewH
         holder.name.setText(levelModel.getName());
         holder.sublevels.setText(String.format(subLevelsText, levelModel.getSublevels().size()));
 //        holder.action.setText(context.getString(R.string.menu_play_available));
-        holder.itemView.setOnClickListener(v -> {
-            if (LevelsAdapter.this.onItemClickListener != null) {
-                LevelsAdapter.this.onItemClickListener.onLevelItemClicked(levelModel);
-            }
-        });
     }
 
     @Override

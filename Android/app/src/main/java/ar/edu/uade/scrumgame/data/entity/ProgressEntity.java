@@ -10,12 +10,10 @@ import io.realm.annotations.RealmClass;
 @RealmClass
 public class ProgressEntity implements RealmModel {
 
-    @PrimaryKey
-    private String pK = "level_id";
-
     /**
      * Id del nivel. Si no hay Progress para el nivel, está bloqueado
      */
+    @PrimaryKey
     @SerializedName("level_number")
     private int levelId;
     /**
@@ -105,14 +103,6 @@ public class ProgressEntity implements RealmModel {
 
     public void setStatus(String status) {
         this.status = status;
-    }
-
-    public String getpK() {
-        return pK;
-    }
-
-    public void setpK(String pK) {
-        this.pK = pK;
     }
 
 }

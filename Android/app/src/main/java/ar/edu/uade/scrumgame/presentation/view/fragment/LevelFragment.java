@@ -36,7 +36,7 @@ import butterknife.OnClick;
 public class LevelFragment extends BaseFragment implements LevelView {
 
     public interface SubLevelListListener {
-        void onSubLevelClicked(String levelName, SubLevelModel subLevelModel);
+        void onSubLevelClicked(String levelName, SubLevelModel subLevelModel, ProgressModel progressModel);
     }
 
     @Inject
@@ -134,9 +134,9 @@ public class LevelFragment extends BaseFragment implements LevelView {
     }
 
     @Override
-    public void enterSubLevel(String levelName, SubLevelModel subLevelModel) {
+    public void enterSubLevel(String levelName, SubLevelModel subLevelModel, ProgressModel progressModel) {
         if (this.subLevelListListener!= null) {
-            this.subLevelListListener.onSubLevelClicked(levelName, subLevelModel);
+            this.subLevelListListener.onSubLevelClicked(levelName, subLevelModel, progressModel);
         }
     }
 
@@ -208,9 +208,9 @@ public class LevelFragment extends BaseFragment implements LevelView {
     }
 
     private SubLevelsAdapter.OnItemClickListener onItemClickListener =
-            subLevelModel -> {
+            (subLevelModel, progressModel) -> {
                 if (LevelFragment.this.levelPresenter != null && subLevelModel != null) {
-                    LevelFragment.this.levelPresenter.onSubLevelClicked(currentLevelName, subLevelModel);
+                    LevelFragment.this.levelPresenter.onSubLevelClicked(currentLevelName, subLevelModel, progressModel);
                 }
             };
 

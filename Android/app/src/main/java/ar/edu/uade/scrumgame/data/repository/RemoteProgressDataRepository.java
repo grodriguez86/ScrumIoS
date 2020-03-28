@@ -49,4 +49,9 @@ public class RemoteProgressDataRepository implements RemoteProgressRepository {
     public Observable<Void> saveProgressList(List<Progress> progressList) {
         throw new RuntimeException("NOT IMPLEMENTED"); // TODO
     }
+
+    @Override
+    public Observable<Progress> getProgress(Integer levelCode) {
+        throw new RuntimeException("NOT IMPLEMENTED"); // TODO
+    }
 }

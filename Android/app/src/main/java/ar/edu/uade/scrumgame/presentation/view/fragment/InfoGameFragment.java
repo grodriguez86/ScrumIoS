@@ -210,7 +210,7 @@ public class InfoGameFragment extends BaseFragment implements InfoGamesContentVi
 
     @Override
     public void onCompleteGame(String gameCode) {
-        this.infoGamesContentPresenter.saveCompleteGameProgress(gameCode);
+        this.infoGamesContentPresenter.playNextLevel(gameCode);
     }
 
     @Override
@@ -310,8 +310,14 @@ public class InfoGameFragment extends BaseFragment implements InfoGamesContentVi
     @OnClick(R.id.finish_game_btn)
     public void finishGame() {
         if (this.onGamesCompletedListener != null) {
-            this.onGamesCompletedListener.onGamesCompleted();
+            this.infoGamesContentPresenter.finishSublevel();
         }
         this.bottomSheetBehavior.setState(BottomSheetBehavior.STATE_HIDDEN);
     }
+
+    @Override
+    public void goToSublevelMenu() {
+        this.onGamesCompletedListener.onGamesCompleted();
+    }
+
 }
