@@ -3,12 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/background"
+    android:orientation="vertical"
     android:paddingStart="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingEnd="@dimen/activity_horizontal_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:background="@color/background"
-    android:orientation="vertical">
+    android:paddingBottom="@dimen/activity_vertical_margin">
 
     <ImageView
         android:id="@+id/logo"
@@ -34,7 +34,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:layout_weight="1"
         android:gravity="center"
         android:orientation="vertical">
@@ -77,47 +77,49 @@
             android:layout_margin="20dp"
             android:background="@drawable/button_round_purple_background"
             android:padding="10dp"
-            android:paddingLeft="40dp"
             android:paddingStart="40dp"
-            android:paddingRight="40dp"
+            android:paddingLeft="40dp"
             android:paddingEnd="40dp"
+            android:paddingRight="40dp"
             android:text="@string/login_login"
             android:textColor="@color/white"
             android:textSize="18sp"
             app:fontFamily="@font/montserrat_regular" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/alreadyRegistered"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:baselineAligned="false"
-            android:gravity="center"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/alreadyRegistered"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp"
-                android:text="@string/login_not_yet_registered"
-                android:textSize="16sp"
-                app:fontFamily="@font/montserrat_regular" />
-
-        </LinearLayout>
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:text="@string/login_not_yet_registered"
+            android:layout_marginBottom="12dp"
+            android:textSize="16sp"
+            app:fontFamily="@font/montserrat_regular" />
 
         <Button
             android:id="@+id/signup"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_margin="20dp"
             android:background="@drawable/button_round_purple_border"
             android:padding="10dp"
             android:text="@string/login_sign_up"
             android:textColor="@color/jelly"
             android:textSize="18sp"
             app:fontFamily="@font/montserrat_regular" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:layout_marginTop="24dp"
+            android:baselineAligned="false"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+        </LinearLayout>
+
     </LinearLayout>
 
 </LinearLayout>
