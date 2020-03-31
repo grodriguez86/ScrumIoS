@@ -1,6 +1,5 @@
 package ar.edu.uade.scrumgame.presentation.view.adapter;
 
-import android.content.ClipData;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,6 +8,7 @@ import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatTextView;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.Collection;
@@ -19,17 +19,18 @@ import javax.inject.Inject;
 
 import ar.edu.uade.scrumgame.R;
 import ar.edu.uade.scrumgame.presentation.models.GameContentModel;
-import ar.edu.uade.scrumgame.presentation.view.utils.DragToListListener;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-
-public class DragDropAdapter extends RecyclerView.Adapter<DragDropAdapter.DragDropViewHolder> {
+public class SelectionAdapter extends RecyclerView.Adapter<SelectionAdapter.DragDropViewHolder> {
     private List<GameContentModel> gameContentModels;
     private LayoutInflater layoutInflater;
+    private Context context;
+    private List<GameContentModel> selectedOptions = new LinkedList<>();
 
     @Inject
-    public DragDropAdapter(Context context) {
+    public SelectionAdapter(Context context) {
+        this.context = context;
         this.layoutInflater =
                 (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         this.gameContentModels = new LinkedList<>();
@@ -43,23 +44,27 @@ public class DragDropAdapter extends RecyclerView.Adapter<DragDropAdapter.DragDr
     @NonNull
     @Override
     public DragDropViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = this.layoutInflater.inflate(R.layout.fragment_game_drag_drop_rv_item, parent, false);
+        View view = this.layoutInflater.inflate(R.layout.fragment_game_selection_rv_item, parent, false);
         return new DragDropViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull DragDropViewHolder holder, final int position) {
         GameContentModel gameContentModel = this.gameContentModels.get(position);
-        holder.optionLinearLayout.setTag(position);
-        holder.optionLinearLayout.setOnLongClickListener(view -> {
-            ClipData data = ClipData.newPlainText("", "");
-            View.DragShadowBuilder shadowBuilder = new View.DragShadowBuilder(view);
-            view.startDrag(data, shadowBuilder, view, 0);
-            view.setVisibility(View.INVISIBLE);
-            return true;
+        holder.optionLinearLayout.setTag(gameContentModel.getCorrect());
+        holder.optionLinearLayout.setOnClickListener(v -> {
+            if (this.selectedOptions.contains(gameContentModel)) {
+                this.selectedOptions.remove(gameContentModel);
+                holder.optionLinearLayout.setBackground(ContextCompat.getDrawable(this.context, R.drawable.button_outline));
+                holder.optionAppCompatTextView.setTextColor(ContextCompat.getColor(this.context, R.color.blue));
+            } else {
+                this.selectedOptions.add(gameContentModel);
+                holder.optionLinearLayout.setBackground(ContextCompat.getDrawable(this.context, R.drawable.button_fill));
+                holder.optionAppCompatTextView.setTextColor(ContextCompat.getColor(this.context, R.color.white));
+            }
         });
-        holder.optionLinearLayout.setOnDragListener(new DragToListListener());
         holder.optionAppCompatTextView.setText(gameContentModel.getData());
+
     }
 
     @Override
@@ -67,34 +72,14 @@ public class DragDropAdapter extends RecyclerView.Adapter<DragDropAdapter.DragDr
         return position;
     }
 
-
-    public void removeItem(int position) {
-        this.gameContentModels.remove(position);
-        this.notifyDataSetChanged();
+    public List<GameContentModel> getSelectedOptions(){
+        return this.selectedOptions;
     }
-
 
     public void setGameContentModels(Collection<GameContentModel> gameContentModelCollection) {
         this.validateGameModelCollection(gameContentModelCollection);
         this.gameContentModels = (List<GameContentModel>) gameContentModelCollection;
         this.notifyDataSetChanged();
-    }
-
-    public GameContentModel getGameContentModelAt(int position) {
-        return this.gameContentModels.get(position);
-    }
-
-    public void addItem(GameContentModel gameContentModel) {
-        this.gameContentModels.add(gameContentModel);
-        this.notifyDataSetChanged();
-    }
-
-    public View.OnDragListener getDragListenerInstance() {
-        return new DragToListListener();
-    }
-
-    public List<GameContentModel> getItems() {
-        return this.gameContentModels;
     }
 
     private void validateGameModelCollection(Collection<GameContentModel> gameContentModelCollection) {

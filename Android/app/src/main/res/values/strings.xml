@@ -10,18 +10,28 @@
     <string name="menu_level_row_sublevels">%d subniveles</string>
     <string name="info_theory_skip">SALTAR TUTORIAL</string>
     <string name="info_theory_play">A JUGAR!</string>
+    <string name="product_backlog_tag">Excelente! El Product Backlog es el lugar donde figuran todas las tareas que el
+        producto requiere desarrollar.
+    </string>
+    <string name="sprint_backlog_tag">Perfecto! El Sprint Backlog es el lugar donde figuran todas las tareas que el
+        equipo decidió que realizarán en esta iteración.
+    </string>
     <string name="menu_play_available">Jugar ahora</string>
     <string name="menu_play_unavailable">No disponible</string>
     <string name="menu_play_completed">Completo! &#129304;</string>
-    <string name="product_backlog_tag">Excelente! El Product Backlog es el lugar donde figuran todas las tareas que el producto requiere desarrollar.</string>
-    <string name="sprint_backlog_tag">Perfecto! El Sprint Backlog es el lugar donde figuran todas las tareas que el equipo decidió que realizarán en esta iteración.</string>
     <string name="arrow_iv_cd">arrow</string>
     <string name="arrow2_iv_cd">arrow2</string>
-    <string name="increment_tag">Bien ahí! El producto incrementable es lo que se puede entregar al final de cada iteración.</string>
+    <string name="increment_tag">Bien ahí! El producto incrementable es lo que se puede entregar al final de cada
+        iteración.
+    </string>
     <string name="curvedArrow2_iv_cd">curvedArrow2</string>
     <string name="curvedArrow_iv_cd">curvedArrow</string>
-    <string name="sprint_tag">Buenísimo! El Sprint es la iteración en sí. Esta puede durar de 2 a 4 semanas y es el tiempo en el que el equipo desarrolla las tareas que definió en el Sprint Backlog.</string>
-    <string name="daily_meetup_tag">Genial! La Daily Scrum Meeting es la reunion diaria donde se sincroniza el equipo sobre el estado de cada uno de sus miembros. Aprenderás sobre ella más adelante! 😊</string>
+    <string name="sprint_tag">Buenísimo! El Sprint es la iteración en sí. Esta puede durar de 2 a 4 semanas y es el
+        tiempo en el que el equipo desarrolla las tareas que definió en el Sprint Backlog.
+    </string>
+    <string name="daily_meetup_tag">Genial! La Daily Scrum Meeting es la reunion diaria donde se sincroniza el equipo
+        sobre el estado de cada uno de sus miembros. Aprenderás sobre ella más adelante! 😊
+    </string>
     <string name="game_send_answer">Continuar</string>
     <string name="game_choice_true">Verdadero</string>
     <string name="game_choice_false">Falso</string>
@@ -84,4 +94,37 @@
     <string name="invaders_description">Una invasión extraterrestre amenaza tu planeta. ¡Debes protegerlo!</string>
     <string name="invaders_description_2">¿Cuántas amenazas crees poder derribar en 30 segundos?</string>
     <string name="invaders_play_button">A jugar!</string>
+    <string name="play_now">Jugar ahora</string>
+    <string name="not_available">No disponible</string>
+    <string name="game_completed">Completo &#129304;</string>
+    <string name="velocity_game_expected_score_input_hint">0</string>
+    <string name="velocity_invaders_logo_cv">Invasores</string>
+    <string name="velocity_game_results_title">Resultados</string>
+    <string name="velocity_game_expected_score_description">Estimación inicial</string>
+    <string name="velocity_game_score_description">Resultado real</string>
+    <string name="velocity_game_exact_estimation">"Excelente estimación! Lograste resolver en el tiempo acordado lo que
+        te propusiste!"
+    </string>
+    <string name="velocity_game_higher_estimation">"Bien igual! No llegaste a completar lo que estimaste, significa que
+        era una tarea mas compleja de lo que creías, o te falto más información al momento de estimar."
+    </string>
+    <string name="velocity_game_lower_estimation">Muy bien! Pudiste hacer más de lo que estimaste. Significa que te
+        resultó más fácil de lo que creías.
+    </string>
+    <string name="velocity_game_results_description">Así como te comprometiste antes de jugar, los miembros del equipo
+        se comprometen a resolver una cierta cantidad de funcionalidades dentro del Sprint.\n\nEse compromiso es
+        evaluado al final del Sprint, para ver cuanto realmente se pudo lograr
+    </string>
+    <string name="continue_text">Continuar</string>
+    <string name="velocity_game_conclusion_title">Velocity</string>
+    <string name="velocity_game_conclusion_user_story_description">Se toman todas las User Stories que se lograron
+        completar según el PO y se suman sus estimacione. Este resultado se denomina Velocity.
+    </string>
+    <string name="velocity_game_conclusion_velocity_description">La Velocity mide la cantidad de trabajo que un equipo
+        puede realizar a lo largo de un Sprint. Es muy útil, para dar feedback de inmediato de si el proceso llevado a
+        cabo durante el Sprint, mejoró la productividad o no.\n\nEs una de las métricas clave de Scrum, utilizada por
+        Product Owners para planificar los releases. Para estos análisis a futuro es necesario tomar la Velocity de
+        varios Sprints.
+    </string>
+    <string name="finish_text">Finalizar</string>
 </resources>

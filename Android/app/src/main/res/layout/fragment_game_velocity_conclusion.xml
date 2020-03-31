@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentBottom="false"
+            android:layout_weight="1"
+            android:background="@drawable/starfield"
+            android:orientation="vertical">
+
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                  android:orientation="vertical">
+
+        <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/titleTv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top"
+                android:gravity="center"
+                android:text="@string/velocity_game_conclusion_title"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:fontFamily="@font/gotham_rounded_bold"
+                android:textSize="24sp"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="15dp"/>
+        <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:baselineAligned="false">
+
+            <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                       android:src="@drawable/velocity"
+                       android:contentDescription="@string/velocity_game_conclusion_title" android:layout_weight="1"
+                       android:cropToPadding="true" android:adjustViewBounds="true" android:layout_margin="15dp"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/userStoryDescriptionTv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/velocity_game_conclusion_user_story_description"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    android:fontFamily="@font/gotham_rounded_book"
+                    android:textSize="20sp" android:layout_weight="1" android:layout_gravity="center"/>
+
+        </LinearLayout>
+        <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/explanationTv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top"
+                android:gravity="center"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:fontFamily="@font/gotham_rounded_book"
+                android:textSize="20sp"
+                android:paddingLeft="10dp" android:paddingRight="10dp" android:layout_marginTop="15dp"
+                android:layout_marginBottom="15dp"
+                android:text="@string/velocity_game_conclusion_velocity_description"/>
+        <Button
+                android:text="@string/finish_text"
+                android:id="@+id/finishBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_marginTop="@dimen/activity_vertical_margin"
+                android:layout_marginBottom="@dimen/activity_vertical_margin"
+                android:foregroundGravity="bottom"
+                android:textColor="@color/white" android:textSize="20sp"
+                android:fontFamily="@font/gotham_rounded_bold" android:textAllCaps="false"
+                android:background="@color/transparent"/>
+
+    </LinearLayout>
+</ScrollView>

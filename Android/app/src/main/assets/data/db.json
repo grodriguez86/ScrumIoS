@@ -801,7 +801,7 @@
             {
               "code": "3.2.4",
               "title": "¿Quienes asisten/pueden asistir a la Daily Meeting?",
-              "type": "dragDrop",
+              "type": "selection",
               "content": [
                 {
                   "type": "textAnswer",
@@ -906,7 +906,7 @@
             {
               "code": "3.3.2",
               "title": "¿Quienes asisten/pueden asistir a la Sprint Planning?",
-              "type": "dragDrop",
+              "type": "selection",
               "content": [
                 {
                   "type": "textAnswer",
@@ -1235,7 +1235,7 @@
             {
               "code": "3.5.3",
               "title": "¿Quienes asisten/pueden asistir a la Sprint Retrospective?",
-              "type": "dragDrop",
+              "type": "selection",
               "content": [
                 {
                   "type": "textAnswer",
