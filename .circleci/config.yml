@@ -1,0 +1,72 @@
+version: 2
+jobs:
+  build:
+    working_directory: ~/scrum/Android
+    docker:
+      - image: circleci/android:api-28
+    environment:
+      JVM_OPTS: -Xmx3200m
+    steps:
+      - checkout:
+         path: ~/scrum
+      - run:
+          name: Desencriptar release.keystore.jks
+          command: openssl aes-256-cbc -d -in "${releaseKeyStore}.encrypted" -k $RELEASE_ENCRYPT_SECRET_KEY >> app/$releaseKeyStore
+      - run:
+          name: Desencriptar google-services.json
+          command: openssl aes-256-cbc -d -in app/google-services.json.encrypted -k $RELEASE_ENCRYPT_SECRET_KEY >> app/google-services.json
+      - restore_cache:
+          key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
+      - run:
+          name: Aceptar licencias e instalar sdkmanager
+          command: |
+            yes | sdkmanager --licenses && sdkmanager --update
+            sdkmanager \
+      - run:
+          name: Descargar dependencias
+          command:  |
+            sudo chmod +x gradlew 
+            ./gradlew dependencies
+      - save_cache:
+          paths:
+            - ~/.gradle
+          key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
+      - run:
+          name: Buildear apk
+          command: ./gradlew assembleRelease -PpreDexEnable=false -Dorg.gradle.parallel=false -Dorg.gradle.jvmargs="-Xms3584m -Xmx3584m"
+      - store_artifacts:
+          path: /Android/app/build/outputs/apk/release/app-release.apk
+          destination: apks
+      - save_cache:
+          key: apk-{{ .Revision }}
+          paths:
+            - ~/scrum/Android/app/build/outputs/apk/release/app-release.apk
+
+  deploy:
+    docker:
+      - image: circleci/golang
+    working_directory: ~/scrum/Android
+    steps:
+      - checkout:
+         path: ~/scrum
+      - run: go get github.com/prasmussen/gdrive
+      - restore_cache:
+          keys:
+            - apk-{{ .Revision }}
+      - deploy:
+          command: |
+            echo $GOOGLE_SERVICE_ACCOUNT_CREDENTIAL > credential.json
+            version="ScrumGameV$(git tag --sort=committerdate | tail -1).apk" && mv ~/scrum/Android/app/build/outputs/apk/release/app-release.apk $version
+            gdrive --config `pwd` --service-account credential.json upload -p ${folderId} -r $version
+
+workflows:
+  version: 2
+  build_and_deploy:
+    jobs:
+      - build:
+          filters:
+            branches:
+              only: master
+      - deploy:
+          requires:
+            - build
