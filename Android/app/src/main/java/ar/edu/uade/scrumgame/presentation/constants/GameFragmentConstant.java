@@ -1,6 +1,6 @@
 package ar.edu.uade.scrumgame.presentation.constants;
 
-import ar.edu.uade.scrumgame.presentation.view.fragment.games.DragDropGameFragment;
+import ar.edu.uade.scrumgame.presentation.view.fragment.games.SelectionGameFragment;
 import ar.edu.uade.scrumgame.presentation.view.fragment.games.ImageQuizGameFragment;
 import ar.edu.uade.scrumgame.presentation.view.fragment.games.PokerPlanningGameFragment;
 import ar.edu.uade.scrumgame.presentation.view.fragment.games.ShortTextQuizGameFragment;
@@ -18,7 +18,7 @@ public enum GameFragmentConstant {
     IMAGE_QUIZ("imageQuiz", ImageQuizGameFragment.class.getName()),
     VELOCITY("velocity", VelocityGameFragment.class.getName()),
     POKER_PLANNING("pokerPlanning", PokerPlanningGameFragment.class.getName()),
-    DRAG_DROP("dragDrop", DragDropGameFragment.class.getName()),
+    SELECTION("selection", SelectionGameFragment.class.getName()),
     SHORT_TEXT_QUIZ("shortTextQuiz", ShortTextQuizGameFragment.class.getName());
 
     private String gameType;
