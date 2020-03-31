@@ -22,10 +22,22 @@ android {
         versionCode generateVersionCode()
         versionName generateVersionName()
     }
+    signingConfigs {
+        if (System.getenv("CIRCLECI")) {
+            release {
+                keyAlias System.getenv("releaseKeyAlias")
+                keyPassword System.getenv("releaseKeyPassword")
+                storeFile file(System.getenv("releaseKeyStore"))
+                storePassword System.getenv("releaseStorePassword")
+            }
+        }
+    }
     buildTypes {
         release {
             minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            if (System.getenv("CIRCLECI"))
+                signingConfig signingConfigs.release
         }
     }
     compileOptions {
