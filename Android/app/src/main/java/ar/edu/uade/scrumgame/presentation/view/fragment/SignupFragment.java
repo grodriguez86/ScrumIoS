@@ -12,6 +12,8 @@ import android.widget.ImageButton;
 
 import androidx.annotation.Nullable;
 
+import org.apache.commons.validator.routines.EmailValidator;
+
 import javax.inject.Inject;
 
 import ar.edu.uade.scrumgame.R;
@@ -21,6 +23,8 @@ import ar.edu.uade.scrumgame.presentation.view.SignupView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+
+import static ar.edu.uade.scrumgame.presentation.constants.SignupConstant.MINIMUM_PASSWORD_LENGTH;
 
 public class SignupFragment extends BaseFragment implements SignupView {
 
@@ -136,10 +140,24 @@ public class SignupFragment extends BaseFragment implements SignupView {
         if (signupListener != null) {
             String email = inputEmail.getText().toString().trim();
             String password = inputPassword.getText().toString().trim();
-            if (!email.isEmpty() && !password.isEmpty()) {
+            if (validateEmail(email) && validatePassword(password)) {
                 this.signupListener.onSignupClicked(email, password);
             }
         }
+    }
+
+    private boolean validateEmail(String email) {
+        boolean valid = !email.isEmpty() && EmailValidator.getInstance(false).isValid(email);
+        if (!valid)
+            this.showError(this.getActivity().getString(R.string.signup_form_invalid_email));
+        return valid;
+    }
+
+    private boolean validatePassword(String password) {
+        boolean valid = !password.isEmpty() && password.length() >= MINIMUM_PASSWORD_LENGTH;
+        if (!valid)
+            this.showError(this.getActivity().getString(R.string.signup_form_invalid_password));
+        return valid;
     }
 
     @OnClick(R.id.bt_exit)
