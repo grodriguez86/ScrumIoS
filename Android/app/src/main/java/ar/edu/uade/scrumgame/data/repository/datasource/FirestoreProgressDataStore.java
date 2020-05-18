@@ -1,5 +1,6 @@
 package ar.edu.uade.scrumgame.data.repository.datasource;
 
+import android.annotation.SuppressLint;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
@@ -8,8 +9,10 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.google.firebase.firestore.WriteBatch;
 
 import java.util.List;
 
@@ -88,7 +91,37 @@ class FirestoreProgressDataStore implements RemoteProgressDataStore {
 
     @Override
     public Observable<Void> saveProgressList(List<ProgressEntity> progressEntityList) {
-        throw new RuntimeException("NOT IMPLEMENTED"); // TODO
+        return Observable.create(emitter -> {
+            try {
+                FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+                FirebaseUser currentUser = firebaseAuth.getCurrentUser();
+                if (currentUser == null) {
+                    emitter.onError(new RuntimeException("TODO"));
+                    return;
+                }
+                String currentUserEmail = currentUser.getEmail();
+                FirebaseFirestore firebaseFirestore = FirebaseFirestore.getInstance();
+                WriteBatch writeBatch = firebaseFirestore.batch();
+                CollectionReference levelsCollection = firebaseFirestore.collection(String.format("users/%s/levels", currentUserEmail));
+                for (ProgressEntity progressEntity: progressEntityList) {
+                    @SuppressLint("DefaultLocale") String levelKey = String.format("level_%d", progressEntity.getLevelId());
+                    levelsCollection
+                        .document(levelKey)
+                        .set(progressEntity);
+                }
+                writeBatch.commit()
+                        .addOnCompleteListener(userProgressInitSuccess -> {
+                            Log.d(LOG_TAG, "UserProgress DocumentSnapshots written");
+                            emitter.onComplete();
+                        })
+                        .addOnFailureListener(e -> {
+                            Log.w(LOG_TAG, "Error adding progress documents", e);
+                            emitter.onError(e);
+                        });
+            } catch (Exception e) {
+                emitter.onError(e);
+            }
+        });
     }
 
     @Override
