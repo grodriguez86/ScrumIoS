@@ -624,7 +624,44 @@
           "info_games": [
             {
               "code": "3.1.1",
-              "type": "pokerPlanning"
+              "type": "pokerPlanning",
+              "content": [
+                {
+                  "data": "Chasis",
+                  "isCorrect": true,
+                  "type": "text"
+                },
+                {
+                  "data": "Frenos",
+                  "isCorrect": true,
+                  "type": "text"
+                },
+                {
+                  "data": "Motor",
+                  "isCorrect": true,
+                  "type": "text"
+                },
+                {
+                  "data": "Carroceria",
+                  "isCorrect": true,
+                  "type": "text"
+                },
+                {
+                  "data": "Transmisión",
+                  "isCorrect": true,
+                  "type": "text"
+                },
+                {
+                  "data": "Ruedas",
+                  "isCorrect": true,
+                  "type": "text"
+                },
+                {
+                  "data": "Volante",
+                  "isCorrect": true,
+                  "type": "text"
+                }
+              ]
             },
             {
               "code": "3.1.2",

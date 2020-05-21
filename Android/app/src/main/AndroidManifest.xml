@@ -14,7 +14,8 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".presentation.view.activity.SplashScreen"
-            android:theme="@style/AppTheme.SplashScreen">
+            android:theme="@style/AppTheme.SplashScreen"
+            android:noHistory="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -32,6 +33,8 @@
         <activity android:name=".presentation.view.activity.SignupActivity" />
         <activity android:name=".presentation.view.activity.SignupDetailsActivity" />
         <activity android:name=".presentation.view.activity.games.VelocityActivity" />
+        <activity android:name=".presentation.view.activity.ProfileActivity"/>
+        <activity android:name=".presentation.view.activity.games.PlanningPokerActivity"/>
     </application>
     <uses-permission android:name="android.permission.INTERNET"></uses-permission>
 
