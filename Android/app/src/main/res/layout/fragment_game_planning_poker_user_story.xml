@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true">
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" android:layout_marginRight="@dimen/activity_horizontal_margin"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:layout_marginBottom="@dimen/activity_vertical_margin">
+        <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/titleTv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top"
+                android:gravity="center"
+                android:text="@string/planning_poker_game_user_story_title"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:fontFamily="@font/gotham_rounded_bold"
+                android:textSize="30sp"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="25dp"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/planningPokerDescriptionTv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/planning_poker_game_user_story_description"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:fontFamily="@font/gotham_rounded_book"
+                android:textSize="18sp" android:layout_gravity="center" android:layout_marginBottom="20dp"/>
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@color/yellow"
+                android:padding="10dp"
+                android:layout_marginRight="32dp"
+                android:layout_marginEnd="32dp" android:layout_marginLeft="32dp" android:layout_marginStart="32dp"
+                android:id="@+id/linearLayout7">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/item_tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:textAlignment="center"
+                    android:text="@string/planning_poker_game_chassis"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/gotham_rounded_book"
+                    android:textSize="24sp" android:layout_gravity="center"/>
+
+        </LinearLayout>
+        <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/planningPokerDescription2Tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/planning_poker_game_user_story_description_2"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:fontFamily="@font/gotham_rounded_book"
+                android:textSize="18sp" android:layout_gravity="center" android:layout_marginTop="20dp"
+                android:layout_marginBottom="5dp"/>
+        <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp" android:id="@+id/estimation_tl" android:layout_weight="1"/>
+
+    </LinearLayout>
+
+</ScrollView>
