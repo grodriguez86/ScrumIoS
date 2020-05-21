@@ -17,6 +17,6 @@
             android:layout_gravity="center"
             android:button="@color/transparent"
             android:gravity="center" android:layout_weight="1" android:background="@drawable/radio_button_selector"
-            android:padding="20dp" android:fontFamily="@font/gotham_rounded_medium"/>
+            android:padding="20dp" android:fontFamily="@font/gotham_rounded_medium" android:textColor="@color/violet"/>
 
 </LinearLayout>

@@ -11,13 +11,11 @@ import javax.inject.Inject;
 import ar.edu.uade.scrumgame.data.entity.LevelStatusConstants;
 import ar.edu.uade.scrumgame.domain.InfoGame;
 import ar.edu.uade.scrumgame.domain.Level;
-import ar.edu.uade.scrumgame.domain.Progress;
 import ar.edu.uade.scrumgame.domain.exception.DefaultErrorBundle;
 import ar.edu.uade.scrumgame.domain.exception.ErrorBundle;
 import ar.edu.uade.scrumgame.domain.interactor.DefaultObserver;
 import ar.edu.uade.scrumgame.domain.interactor.GetInfoGame;
 import ar.edu.uade.scrumgame.domain.interactor.GetLevel;
-import ar.edu.uade.scrumgame.domain.interactor.GetProgressLocally;
 import ar.edu.uade.scrumgame.domain.interactor.SaveProgress;
 import ar.edu.uade.scrumgame.presentation.di.PerActivity;
 import ar.edu.uade.scrumgame.presentation.exception.ErrorMessageFactory;
@@ -111,6 +109,7 @@ public class InfoGamesContentPresenter implements Presenter {
     }
 
     public void playNextLevel(String gameCode) {
+        this.showViewLoading();
         String[] splitGameCode = gameCode.split("\\.");
         int levelCode = Integer.parseInt(splitGameCode[0]);
         int sublevelCode = Integer.parseInt(splitGameCode[1]);
@@ -151,6 +150,7 @@ public class InfoGamesContentPresenter implements Presenter {
     }
 
     public void finishSublevel() {
+        this.showViewLoading();
         InfoGameModel firstInfoGameModel = infoGameModels.get(0);
         ProgressModel updatedProgress = new ProgressModel(
                 firstInfoGameModel.getLevelCode(),

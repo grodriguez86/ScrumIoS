@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
 import androidx.annotation.Nullable;
@@ -17,9 +18,12 @@ import java.util.Collection;
 import javax.inject.Inject;
 
 import ar.edu.uade.scrumgame.R;
+import ar.edu.uade.scrumgame.domain.User;
+import ar.edu.uade.scrumgame.presentation.constants.UserGenderConstant;
 import ar.edu.uade.scrumgame.presentation.di.components.LevelComponent;
 import ar.edu.uade.scrumgame.presentation.models.LevelModel;
 import ar.edu.uade.scrumgame.presentation.models.ProgressModel;
+import ar.edu.uade.scrumgame.presentation.models.UserModel;
 import ar.edu.uade.scrumgame.presentation.models.UserOverallDataModel;
 import ar.edu.uade.scrumgame.presentation.presenter.MenuPresenter;
 import ar.edu.uade.scrumgame.presentation.view.LevelListView;
@@ -28,10 +32,13 @@ import ar.edu.uade.scrumgame.presentation.view.adapter.LevelsLayoutManager;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import com.squareup.picasso.Picasso;
 
 public class MenuFragment extends BaseFragment implements LevelListView {
     public interface LevelListListener {
         void onLevelClicked(LevelModel levelModel);
+
+        void navigateToProfile(UserModel loggedInUser);
     }
 
     @Inject
@@ -46,6 +53,8 @@ public class MenuFragment extends BaseFragment implements LevelListView {
     RelativeLayout retryLayout;
     @BindView(R.id.bt_retry)
     Button retryButton;
+    @BindView(R.id.iv_profile_picture)
+    ImageView profilePicture;
     private LevelListListener levelListListener;
 
     public MenuFragment() {
@@ -108,6 +117,18 @@ public class MenuFragment extends BaseFragment implements LevelListView {
     public void enterLevel(LevelModel levelModel) {
         if (this.levelListListener != null) {
             this.levelListListener.onLevelClicked(levelModel);
+        }
+    }
+
+    @Override
+    public void profileLoaded(UserModel loggedInUser) {
+        if (loggedInUser != null) {
+            UserGenderConstant gender = UserGenderConstant.getGender(loggedInUser.getGender());
+            int placeholderDrawable = gender.equals(UserGenderConstant.FEMALE) ? R.drawable.female_avatar : R.drawable.male_avatar;
+            Picasso.get().load(placeholderDrawable).into(profilePicture);
+            profilePicture.setOnClickListener(v -> {
+                this.levelListListener.navigateToProfile(loggedInUser);             
+            });
         }
     }
 

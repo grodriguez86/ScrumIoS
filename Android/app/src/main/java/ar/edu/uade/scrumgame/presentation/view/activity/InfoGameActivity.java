@@ -110,4 +110,13 @@ public class InfoGameActivity extends BaseActivity implements HasComponent<Level
     public void onGamesCompleted() {
         this.navigator.navigateToLevelAfterGameFinished(this, this.levelCode);
     }
+
+    @Override
+    public void onBackPressed() {
+        this.showAlert(getString(R.string.confirmation),
+                getString(R.string.exit_game),
+                this,
+                getString(R.string.quit),
+                (dialog, which) -> InfoGameActivity.super.onBackPressed());
+    }
 }

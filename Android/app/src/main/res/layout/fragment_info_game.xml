@@ -13,7 +13,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/game_header"
                 android:layout_width="match_parent"
-                android:layout_height="71dp"
+                android:layout_height="@dimen/bar"
                 android:background="@drawable/gradient_background_logo"
                 app:layout_constraintTop_toTopOf="parent">
 
@@ -144,10 +144,9 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <include layout="@layout/view_progress" />
-
     <include layout="@layout/view_retry" />
 
+    <include layout="@layout/view_progress"/>
     <include layout="@layout/view_bottom_sheet" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

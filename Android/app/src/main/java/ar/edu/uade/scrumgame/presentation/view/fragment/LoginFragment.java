@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 
+import android.widget.RelativeLayout;
 import androidx.annotation.Nullable;
 
 import javax.inject.Inject;
@@ -71,12 +72,14 @@ public class LoginFragment extends BaseFragment implements LoginView {
 
     @Override
     public void showLoading() {
-
+        this.progressLayout.setVisibility(View.VISIBLE);
+        this.getActivity().setProgressBarIndeterminateVisibility(true);
     }
 
     @Override
     public void hideLoading() {
-
+        this.progressLayout.setVisibility(View.GONE);
+        this.getActivity().setProgressBarIndeterminateVisibility(false);
     }
 
     @Override
@@ -125,6 +128,9 @@ public class LoginFragment extends BaseFragment implements LoginView {
 
     @BindView(R.id.inputPassword)
     EditText inputPassword;
+
+    @BindView(R.id.rl_progress)
+    RelativeLayout progressLayout;
 
     @OnClick(R.id.login)
     public void login() {
