@@ -10,8 +10,9 @@ import ar.edu.uade.scrumgame.presentation.di.HasComponent;
 import ar.edu.uade.scrumgame.presentation.di.components.DaggerLevelComponent;
 import ar.edu.uade.scrumgame.presentation.di.components.LevelComponent;
 import ar.edu.uade.scrumgame.presentation.view.fragment.SignupDetailsFragment;
+import ar.edu.uade.scrumgame.presentation.view.fragment.listeners.SignUpListener;
 
-public class SignupDetailsActivity extends BaseActivity implements HasComponent<LevelComponent>, SignupDetailsFragment.SignupDetailsListener{
+public class SignupDetailsActivity extends BaseActivity implements HasComponent<LevelComponent>, SignUpListener {
 
     private LevelComponent levelComponent;
 

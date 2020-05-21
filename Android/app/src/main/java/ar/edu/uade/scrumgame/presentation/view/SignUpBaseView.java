@@ -1,9 +1,9 @@
 package ar.edu.uade.scrumgame.presentation.view;
 
-public interface SignupDetailsView extends SignUpBaseView {
+public interface SignUpBaseView extends LoadDataView {
+
 
     void returnToLogin();
 
     void enterMenu();
-
 }

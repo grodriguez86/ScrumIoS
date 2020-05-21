@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 
+import android.widget.RelativeLayout;
 import androidx.annotation.Nullable;
 
 import javax.inject.Inject;
@@ -18,25 +19,35 @@ import ar.edu.uade.scrumgame.R;
 import ar.edu.uade.scrumgame.presentation.di.components.LevelComponent;
 import ar.edu.uade.scrumgame.presentation.presenter.SignupPresenter;
 import ar.edu.uade.scrumgame.presentation.view.SignupView;
+import ar.edu.uade.scrumgame.presentation.view.fragment.listeners.SignUpStep1Listener;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class SignupFragment extends BaseFragment implements SignupView {
-
-    public interface SignupListener {
-        void onSignupClicked(String email, String password);
-    }
+    private static final Integer MINIMUM_PASSWORD_LENGTH = 6;
 
     @Override
     public void signupUser(String email, String password) {
-        this.signupPresenter.onSignupDetailsClicked(email, password);
+        if (this.signupListener != null) {
+            this.signupListener.onSignupClicked(email, password);
+        }
     }
 
+    @BindView(R.id.bt_exit)
+    ImageButton exitButton;
+    @BindView(R.id.btnDone)
+    Button continueButton;
+    @BindView(R.id.inputEmail)
+    EditText inputEmail;
+    @BindView(R.id.inputPassword)
+    EditText inputPassword;
+    @BindView(R.id.rl_progress)
+    RelativeLayout progressLayout;
     @Inject
     SignupPresenter signupPresenter;
 
-    private SignupListener signupListener;
+    private SignUpStep1Listener signupListener;
 
     public SignupFragment() {
         this.setRetainInstance(true);
@@ -51,8 +62,8 @@ public class SignupFragment extends BaseFragment implements SignupView {
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
-        if (activity instanceof SignupFragment.SignupListener) {
-            this.signupListener = (SignupFragment.SignupListener) activity;
+        if (activity instanceof SignUpStep1Listener) {
+            this.signupListener = (SignUpStep1Listener) activity;
         }
     }
 
@@ -73,23 +84,24 @@ public class SignupFragment extends BaseFragment implements SignupView {
 
     @Override
     public void showLoading() {
-
+        this.progressLayout.setVisibility(View.VISIBLE);
+        this.getActivity().setProgressBarIndeterminateVisibility(true);
     }
 
     @Override
     public void hideLoading() {
-
+        this.progressLayout.setVisibility(View.GONE);
+        this.getActivity().setProgressBarIndeterminateVisibility(false);
     }
 
     @Override
     public void showRetry() {
-
     }
 
     @Override
     public void hideRetry() {
-
     }
+
 
     @Override
     public void showError(String message) {
@@ -119,27 +131,40 @@ public class SignupFragment extends BaseFragment implements SignupView {
         this.signupPresenter.destroy();
     }
 
-    @BindView(R.id.bt_exit)
-    ImageButton exitButton;
+    @Override
+    public void returnToLogin() {
+        signupListener.onSignupDetailsCompleted();
+    }
 
-    @BindView(R.id.btnDone)
-    Button continueButton;
-
-    @BindView(R.id.inputEmail)
-    EditText inputEmail;
-
-    @BindView(R.id.inputPassword)
-    EditText inputPassword;
+    @Override
+    public void enterMenu() {
+        signupListener.onSignupDetailsFailed();
+    }
 
     @OnClick(R.id.btnDone)
     public void signupClicked() {
-        if (signupListener != null) {
-            String email = inputEmail.getText().toString().trim();
-            String password = inputPassword.getText().toString().trim();
-            if (!email.isEmpty() && !password.isEmpty()) {
-                this.signupListener.onSignupClicked(email, password);
-            }
+        String email = inputEmail.getText().toString().trim();
+        String password = inputPassword.getText().toString().trim();
+        if (signupListener != null && this.validForm(email, password)) {
+            this.signupPresenter.onSignUpClicked(email, password);
         }
+    }
+
+    public Boolean validForm(String email, String password) {
+        if (!email.isEmpty() && !password.isEmpty()) {
+            if (android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+                if (password.length() >= MINIMUM_PASSWORD_LENGTH) {
+                    return true;
+                } else {
+                    this.showError(getString(R.string.form_invalid_password_length));
+                }
+            } else {
+                this.showError(getString(R.string.form_invalid_email));
+            }
+        } else {
+            this.showError(getString(R.string.form_incomplete_alert_message));
+        }
+        return false;
     }
 
     @OnClick(R.id.bt_exit)
