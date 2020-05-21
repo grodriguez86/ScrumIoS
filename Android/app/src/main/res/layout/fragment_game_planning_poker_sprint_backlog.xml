@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:layout_alignParentBottom="false"
+              android:layout_weight="1"
+              android:orientation="vertical" android:layout_marginRight="@dimen/activity_horizontal_margin"
+              android:layout_marginLeft="@dimen/activity_horizontal_margin"
+              android:layout_marginTop="@dimen/activity_vertical_margin"
+              android:layout_marginBottom="@dimen/activity_vertical_margin">
+    <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/titleTv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top"
+            android:gravity="center"
+            android:text="@string/planning_poker_game_sprint_backlog_title"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:fontFamily="@font/gotham_rounded_bold"
+            android:textSize="30sp"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="25dp"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/planningPokerDescriptionTv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/planning_poker_game_sprint_backlog_description"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:fontFamily="@font/gotham_rounded_book"
+            android:textSize="18sp" android:layout_gravity="center"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/product_backlog_rv"
+            android:layout_width="match_parent"
+            android:layout_height="0dp" android:layout_weight="1"
+            tools:listitem="@layout/fragment_game_planning_poker_sprint_backlog_rv_item" tools:itemCount="10"/>
+    <Button
+            android:id="@+id/end_game_button"
+            style="@style/Button.SendAnswer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/finish_text"
+            android:textAllCaps="false"
+            android:visibility="visible" android:fontFamily="@font/gotham_rounded_bold"
+            android:textColor="@color/white" android:background="@drawable/button_round_purple_background"
+            android:paddingLeft="30dp" android:paddingTop="10dp" android:paddingRight="30dp"
+            android:paddingBottom="10dp" android:layout_marginTop="20dp"/>
+</LinearLayout>

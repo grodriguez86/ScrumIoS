@@ -40,7 +40,7 @@ public class Login extends UseCase<String, UserCredentials> {
                             } else {
                                 // If sign in fails, display a message to the user.
                                 Log.w(TAG, "signInWithEmail:failure", task.getException());
-                                emitter.onError(new RuntimeException("TODO auth failed"));
+                                emitter.onError(task.getException());
                             }
                         }
                     });

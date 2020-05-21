@@ -1,7 +1,7 @@
 package ar.edu.uade.scrumgame.data.repository.datasource;
 
-import ar.edu.uade.scrumgame.data.entity.ProgressEntity;
 import ar.edu.uade.scrumgame.data.entity.UserEntity;
+import ar.edu.uade.scrumgame.data.exception.LocalUserNotFoundException;
 import io.reactivex.Observable;
 import io.realm.Realm;
 
@@ -30,7 +30,7 @@ class RealmUserDataStore implements LocalUserDataStore {
                 UserEntity userEntity = realm.where(UserEntity.class).equalTo("mail", userEmail).findFirst();
                 realm.commitTransaction();
                 if (userEntity == null)
-                    emitter.onError(new RuntimeException("TODO user not found"));
+                    emitter.onError(new LocalUserNotFoundException());
                 else {
                     emitter.onNext(userEntity);
                     emitter.onComplete();

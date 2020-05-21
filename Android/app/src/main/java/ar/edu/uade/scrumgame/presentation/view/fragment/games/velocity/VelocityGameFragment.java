@@ -1,4 +1,4 @@
-package ar.edu.uade.scrumgame.presentation.view.fragment.games;
+package ar.edu.uade.scrumgame.presentation.view.fragment.games.velocity;
 
 import android.content.Intent;
 
@@ -6,6 +6,8 @@ import ar.edu.uade.scrumgame.R;
 import ar.edu.uade.scrumgame.presentation.view.GameContentView;
 import ar.edu.uade.scrumgame.presentation.view.activity.games.VelocityActivity;
 import ar.edu.uade.scrumgame.presentation.view.fragment.GameFragment;
+
+import static android.app.Activity.RESULT_CANCELED;
 
 public class VelocityGameFragment extends GameFragment implements GameContentView {
     private static int ON_GAME_COMPLETED_CODE = 90;
@@ -23,6 +25,7 @@ public class VelocityGameFragment extends GameFragment implements GameContentVie
 
     @Override
     public void onCorrectAttempt() {
+        super.onCorrectAttempt();
         this.onGameCompletedListener.onGameCompleted(gameCode);
     }
 
@@ -33,13 +36,18 @@ public class VelocityGameFragment extends GameFragment implements GameContentVie
 
     @Override
     public void checkAttempt() {
+        super.checkAttempt();
         this.onCorrectAttempt();
     }
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == ON_GAME_COMPLETED_CODE) {
-            this.checkAttempt();
+            if (resultCode == RESULT_CANCELED) {
+                this.getActivity().finish();
+            } else if (this.getActivity() != null) {
+                this.checkAttempt();
+            }
         }
     }
 }

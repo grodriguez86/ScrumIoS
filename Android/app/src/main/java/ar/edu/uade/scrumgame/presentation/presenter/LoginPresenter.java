@@ -82,6 +82,7 @@ public class LoginPresenter implements Presenter {
                             // TODO CHECK IF LOCAL DATA IS AVAILABLE FOR THIS USER, IF SO TRY TO SAVE IT.
 
                             // TODO ELSE REDIRECT TO SIGNUP DETAILS
+                            hideViewLoading();
                             loginView.navigateToSignupDetails();
                         } else {
                             getProgressListRemotelyUseCase.execute(new DefaultObserver<List<Progress>>() {
