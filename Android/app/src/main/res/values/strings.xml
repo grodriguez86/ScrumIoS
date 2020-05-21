@@ -82,6 +82,8 @@
     <string name="signup_details_gamesTime">Tiempo dedicado a juegos</string>
     <string name="button_done">Listo!</string>
     <!-- Errors -->
+    <string name="signup_form_invalid_email">Email inválido!</string>
+    <string name="signup_form_invalid_password">Contraseña inválida!</string>
     <string name="form_incomplete_alert_title">Datos incompletos</string>
     <string name="form_incomplete_alert_message">Todos los campos deben estar completos!</string>
     <string name="form_error_age_nan">Edad inválida! Ingresa un número!</string>

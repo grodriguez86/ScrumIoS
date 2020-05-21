@@ -47,7 +47,11 @@ public class RemoteProgressDataRepository implements RemoteProgressRepository {
 
     @Override
     public Observable<Void> saveProgressList(List<Progress> progressList) {
-        throw new RuntimeException("NOT IMPLEMENTED"); // TODO
+        RemoteProgressDataStore remoteProgressDataStore = this.progressDataStoreFactory.createRemoteProgressDataStore();
+        List<ProgressEntity> progressEntityList = new ArrayList<>();
+        for (Progress progress: progressList)
+            progressEntityList.add(progressEntityMapper.progressToProgressEntity(progress));
+        return remoteProgressDataStore.saveProgressList(progressEntityList);
     }
 
     @Override
