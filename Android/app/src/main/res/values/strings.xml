@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">Scrum Game</string>
     <string name="exception_message_generic">Se ha producido un error, intente nuevamente</string>
     <string name="exception_message_file_not_found">El archivo de niveles no se ha encontrado</string>
@@ -21,6 +21,8 @@
     <string name="menu_play_completed">Completo! &#129304;</string>
     <string name="arrow_iv_cd">arrow</string>
     <string name="arrow2_iv_cd">arrow2</string>
+    <string name="profile_picture_cd">Profile picture</string>
+    <string name="back_button_cd">Back</string>
     <string name="increment_tag">Bien ahí! El producto incrementable es lo que se puede entregar al final de cada
         iteración.
     </string>
@@ -90,6 +92,9 @@
     <string name="error_saving_progress">No se pudieron guardar los datos de progreso</string>
     <string name="error_saving_remote_data">Ocurrió un error al guardar los datos remotos</string>
     <string name="error_email_already_in_use">Ya existe un usuario con ese email</string>
+    <string name="exception_message_user_already_registered">El mail ingresado está asociado a otro usuario</string>
+    <string name="form_invalid_password_length">La contraseña debe tener al menos 6 caracteres</string>
+    <string name="form_invalid_email">El mail ingresado es inválido</string>
     <!-- Invaders -->
     <string name="invaders_description">Una invasión extraterrestre amenaza tu planeta. ¡Debes protegerlo!</string>
     <string name="invaders_description_2">¿Cuántas amenazas crees poder derribar en 30 segundos?</string>
