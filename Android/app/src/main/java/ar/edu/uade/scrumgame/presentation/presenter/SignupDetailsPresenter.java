@@ -2,13 +2,17 @@ package ar.edu.uade.scrumgame.presentation.presenter;
 
 import androidx.annotation.NonNull;
 
+import java.util.Collections;
+
 import javax.inject.Inject;
 
 import ar.edu.uade.scrumgame.R;
 import ar.edu.uade.scrumgame.domain.exception.ErrorBundle;
 import ar.edu.uade.scrumgame.domain.interactor.DefaultObserver;
-import ar.edu.uade.scrumgame.domain.interactor.SaveProgress;
+import ar.edu.uade.scrumgame.domain.interactor.SaveProgress.PROGRESS_SAVE_OUTCOMES;
+import ar.edu.uade.scrumgame.domain.interactor.SaveProgressList;
 import ar.edu.uade.scrumgame.domain.interactor.SaveUserLocalAndRemote;
+import ar.edu.uade.scrumgame.domain.interactor.SaveUserLocalAndRemote.USER_SAVE_OUTCOMES;
 import ar.edu.uade.scrumgame.domain.interactor.SaveUserOverallData;
 import ar.edu.uade.scrumgame.presentation.di.PerActivity;
 import ar.edu.uade.scrumgame.presentation.exception.ErrorMessageFactory;
@@ -17,25 +21,23 @@ import ar.edu.uade.scrumgame.presentation.models.ProgressModel;
 import ar.edu.uade.scrumgame.presentation.models.UserModel;
 import ar.edu.uade.scrumgame.presentation.models.UserOverallDataModel;
 import ar.edu.uade.scrumgame.presentation.view.SignupDetailsView;
-import ar.edu.uade.scrumgame.domain.interactor.SaveProgress.PROGRESS_SAVE_OUTCOMES;
-import ar.edu.uade.scrumgame.domain.interactor.SaveUserLocalAndRemote.USER_SAVE_OUTCOMES;
 
 @PerActivity
 public class SignupDetailsPresenter implements Presenter {
 
-    private SaveProgress saveProgressUseCase;
+    private SaveProgressList saveProgresListUseCase;
     private SaveUserLocalAndRemote saveUserLocalAndRemoteUseCase;
     private SaveUserOverallData saveUserOverallDataUseCase;
     private SignupDetailsView signupDetailsView;
     private UserDataMapper userDataMapper;
 
     @Inject
-    SignupDetailsPresenter(SaveProgress saveProgressUseCase,
+    SignupDetailsPresenter(SaveProgressList saveProgresListUseCase,
                            SaveUserLocalAndRemote saveUserLocalAndRemoteUseCase,
                            SaveUserOverallData saveUserOverallDataUseCase,
                            UserDataMapper userDataMapper
     ) {
-        this.saveProgressUseCase = saveProgressUseCase;
+        this.saveProgresListUseCase = saveProgresListUseCase;
         this.saveUserLocalAndRemoteUseCase = saveUserLocalAndRemoteUseCase;
         this.saveUserOverallDataUseCase = saveUserOverallDataUseCase;
         this.userDataMapper = userDataMapper;
@@ -56,7 +58,7 @@ public class SignupDetailsPresenter implements Presenter {
     @Override
     public void destroy() {
         this.signupDetailsView = null;
-        this.saveProgressUseCase.dispose();
+        this.saveProgresListUseCase.dispose();
         this.saveUserOverallDataUseCase.dispose();
         this.saveUserLocalAndRemoteUseCase.dispose();
     }
@@ -76,7 +78,7 @@ public class SignupDetailsPresenter implements Presenter {
                         saveUserOverallDataUseCase.execute(new DefaultObserver<Void>() {
                             @Override
                             public void onComplete() {
-                                saveProgressUseCase.execute(new DefaultObserver<String>() {
+                                saveProgresListUseCase.execute(new DefaultObserver<String>() {
                                     @Override
                                     public void onNext(String saveProgressOutcome) {
                                         switch (saveProgressOutcome) {
@@ -104,7 +106,7 @@ public class SignupDetailsPresenter implements Presenter {
                                         signupDetailsView.showError(signupDetailsView.context().getString(R.string.error_saving_progress));
                                         SignupDetailsPresenter.this.showViewRetry();
                                     }
-                                }, userDataMapper.progressModelToProgress(initialProgress));
+                                }, Collections.singletonList(userDataMapper.progressModelToProgress(initialProgress)));
                             }
 
                             @Override
