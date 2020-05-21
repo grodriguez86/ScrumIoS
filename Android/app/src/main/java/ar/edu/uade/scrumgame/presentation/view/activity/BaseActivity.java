@@ -4,6 +4,7 @@ import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
+import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
@@ -20,6 +21,7 @@ import ar.edu.uade.scrumgame.presentation.ScrumApplication;
 import ar.edu.uade.scrumgame.presentation.di.components.ApplicationComponent;
 import ar.edu.uade.scrumgame.presentation.di.modules.ActivityModule;
 import ar.edu.uade.scrumgame.presentation.navigation.Navigator;
+import com.afollestad.materialdialogs.MaterialDialog;
 
 public abstract class BaseActivity extends AppCompatActivity {
 
@@ -51,7 +53,6 @@ public abstract class BaseActivity extends AppCompatActivity {
         fragmentTransaction.commit();
     }
 
-
     protected ApplicationComponent getApplicationComponent() {
         return ((ScrumApplication) getApplication()).getApplicationComponent();
     }
@@ -60,4 +61,12 @@ public abstract class BaseActivity extends AppCompatActivity {
         return new ActivityModule(this);
     }
 
+    protected void showAlert(String title, String message, Context context, String positiveButtonText, MaterialDialog.SingleButtonCallback onPositiveClickListener) {
+        MaterialDialog.Builder builder = new MaterialDialog.Builder(context);
+        builder.title(title);
+        builder.content(message);
+        builder.positiveText(positiveButtonText);
+        builder.onPositive(onPositiveClickListener);
+        builder.show();
+    }
 }
