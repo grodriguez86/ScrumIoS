@@ -2,7 +2,6 @@ package ar.edu.uade.scrumgame.domain.interactor;
 
 import javax.inject.Inject;
 
-import ar.edu.uade.scrumgame.domain.Progress;
 import ar.edu.uade.scrumgame.domain.UserOverallData;
 import ar.edu.uade.scrumgame.domain.executor.PostExecutionThread;
 import ar.edu.uade.scrumgame.domain.executor.ThreadExecutor;
