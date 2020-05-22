@@ -5,4 +5,6 @@ import org.json.JSONObject;
 
 public interface LogEventDataStore {
     Observable<Void> logEvent(String eventName, JSONObject eventParams);
+
+    Observable<Void> initialize();
 }

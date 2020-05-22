@@ -25,8 +25,8 @@ import ar.edu.uade.scrumgame.presentation.view.InfoTheoryView;
 
 @PerActivity
 public class InfoTheoryPresenter implements Presenter {
-
     private InfoTheoryView infoTheoryView;
+    private InitializeApplication initializeApplicationUseCase;
     private GetSubLevel getSubLevelUseCase;
     private LogEvent logEventUseCase;
     private GetLoggedInUser getLoggedInUser;
@@ -35,12 +35,13 @@ public class InfoTheoryPresenter implements Presenter {
     private UserModel loggedInUser;
 
     @Inject
-    InfoTheoryPresenter(GetSubLevel getSubLevelUseCase, LogEvent logEventUseCase,
+    InfoTheoryPresenter(InitializeApplication initializeApplicationUseCase, GetSubLevel getSubLevelUseCase, LogEvent logEventUseCase,
                         GetLoggedInUser getLoggedInUser, UserDataMapper userDataMapper,
                         LevelModelDataMapper levelModelDataMapper) {
+        this.initializeApplicationUseCase = initializeApplicationUseCase;
         this.getSubLevelUseCase = getSubLevelUseCase;
         this.logEventUseCase = logEventUseCase;
-        this.getLoggedInUser=getLoggedInUser;
+        this.getLoggedInUser = getLoggedInUser;
         this.levelModelDataMapper = levelModelDataMapper;
         this.userDataMapper = userDataMapper;
     }
@@ -59,13 +60,15 @@ public class InfoTheoryPresenter implements Presenter {
 
     @Override
     public void destroy() {
+        this.initializeApplicationUseCase.dispose();
         this.getSubLevelUseCase.dispose();
         this.getLoggedInUser.dispose();
         this.infoTheoryView = null;
     }
 
     public void initialize(String subLevelCode) {
-        this.getLoggedInUser.execute(new GetLoggedInUserObserver(),null);
+        this.initializeApplicationUseCase.execute(new DefaultObserver<>(), null);
+        this.getLoggedInUser.execute(new GetLoggedInUserObserver(), false);
         this.loadSubLevel(subLevelCode);
     }
 
@@ -108,7 +111,7 @@ public class InfoTheoryPresenter implements Presenter {
         this.infoTheoryView.loadSubLevel(subLevelModel);
     }
 
-    public void logTutorialSkipped( String subLevelCode) {
+    public void logTutorialSkipped(String subLevelCode) {
         this.doLog(subLevelCode, null, LogEvent.TUTORIAL_SKIPPED);
     }
 

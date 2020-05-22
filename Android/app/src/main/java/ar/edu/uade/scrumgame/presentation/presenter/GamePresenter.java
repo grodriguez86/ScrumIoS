@@ -14,20 +14,23 @@ import javax.inject.Inject;
 
 @PerActivity
 public class GamePresenter implements Presenter {
+    private InitializeApplication initializeApplicationUseCase;
     private LogEvent logEventUseCase;
     private GetLoggedInUser getLoggedInUserUseCase;
     private UserDataMapper userDataMapper;
     private UserModel loggedInUser;
 
     @Inject
-    GamePresenter(LogEvent logEventUseCase, GetLoggedInUser getLoggedInUserUseCase, UserDataMapper userDataMapper) {
+    GamePresenter(InitializeApplication initializeApplicationUseCase, LogEvent logEventUseCase, GetLoggedInUser getLoggedInUserUseCase, UserDataMapper userDataMapper) {
+        this.initializeApplicationUseCase = initializeApplicationUseCase;
         this.logEventUseCase = logEventUseCase;
         this.getLoggedInUserUseCase = getLoggedInUserUseCase;
         this.userDataMapper = userDataMapper;
     }
 
     public void initialize() {
-        this.getLoggedInUserUseCase.execute(new GetLoggedInUserObserver(), null);
+        this.initializeApplicationUseCase.execute(new DefaultObserver<>(), null);
+        this.getLoggedInUserUseCase.execute(new GetLoggedInUserObserver(), false);
     }
 
     @Override
@@ -40,6 +43,7 @@ public class GamePresenter implements Presenter {
 
     @Override
     public void destroy() {
+        this.initializeApplicationUseCase.dispose();
         this.logEventUseCase.dispose();
         this.getLoggedInUserUseCase.dispose();
     }

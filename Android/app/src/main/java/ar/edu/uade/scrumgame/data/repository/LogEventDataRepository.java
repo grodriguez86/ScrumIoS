@@ -23,4 +23,10 @@ public class LogEventDataRepository implements LogEventRepository {
         LogEventDataStore logEventDataStore = this.logEventDataStoreFactory.createAmplitudeDataStore();
         return logEventDataStore.logEvent(eventName,eventParams);
     }
+
+    @Override
+    public Observable<Void> initialize() {
+        LogEventDataStore logEventDataStore = this.logEventDataStoreFactory.createAmplitudeDataStore();
+        return logEventDataStore.initialize();
+    }
 }
