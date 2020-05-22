@@ -36,7 +36,9 @@ public class ShortTextQuizGameFragment extends GameFragment implements GameConte
     @Override
     public void onCorrectAttempt() {
         super.onCorrectAttempt();
-        this.showAlert(getString(R.string.correct_answer_title), getString(R.string.correct_answer), getActivity(), getString(R.string.correct_answer_button_text), (dialog, which) -> this.onGameCompletedListener.onGameCompleted(gameCode));
+        if (this.onGameCompletedListener != null) {
+            this.showAlert(getString(R.string.correct_answer_title), getString(R.string.correct_answer), getActivity(), getString(R.string.correct_answer_button_text), (dialog, which) -> this.onGameCompletedListener.onGameCompleted(gameCode));
+        }
     }
 
     @Override

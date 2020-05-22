@@ -71,7 +71,9 @@ public class ScrumFlowDraggableGameFragment extends GameFragment {
             if (this.hasCompletedGame()) {
                 super.checkAttempt();
                 super.onCorrectAttempt();
-                this.onGameCompletedListener.onGameCompleted(gameCode);
+                if (this.onGameCompletedListener != null) {
+                    this.onGameCompletedListener.onGameCompleted(gameCode);
+                }
             }
         });
     }
