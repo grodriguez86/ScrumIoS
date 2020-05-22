@@ -54,7 +54,7 @@ public class ProfilePresenter implements Presenter {
     }
 
     private void getLoggedInUser() {
-        this.getLoggedInUserUseCase.execute(new GetLoggedInUserObserver(), null);
+        this.getLoggedInUserUseCase.execute(new GetLoggedInUserObserver(), false);
     }
 
     private void showViewLoading() {

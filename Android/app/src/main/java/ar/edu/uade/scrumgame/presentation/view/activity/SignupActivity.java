@@ -1,7 +1,5 @@
 package ar.edu.uade.scrumgame.presentation.view.activity;
 
-import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.Window;
 
@@ -14,10 +12,6 @@ import ar.edu.uade.scrumgame.presentation.view.fragment.listeners.SignUpStep1Lis
 
 public class SignupActivity extends BaseActivity implements HasComponent<LevelComponent>, SignUpStep1Listener {
     private LevelComponent levelComponent;
-
-    public static Intent getCallingIntent(Context context) {
-        return new Intent(context, SignupActivity.class);
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

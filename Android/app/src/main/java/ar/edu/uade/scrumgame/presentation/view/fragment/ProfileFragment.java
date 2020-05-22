@@ -9,11 +9,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatTextView;
 import androidx.core.content.ContextCompat;
 import ar.edu.uade.scrumgame.R;
+import ar.edu.uade.scrumgame.presentation.constants.UserGenderConstant;
 import ar.edu.uade.scrumgame.presentation.di.components.LevelComponent;
 import ar.edu.uade.scrumgame.presentation.models.UserModel;
 import ar.edu.uade.scrumgame.presentation.presenter.ProfilePresenter;
@@ -22,6 +24,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import com.google.android.material.chip.Chip;
+import com.squareup.picasso.Picasso;
 
 import javax.inject.Inject;
 
@@ -54,6 +57,8 @@ public class ProfileFragment extends BaseFragment implements ProfileView {
     Chip information;
     @BindView(R.id.achievements_chip)
     Chip achievements;
+    @BindView(R.id.profile_picture_iv)
+    ImageView profilePicture;
     private ProfileListener profileListener;
 
     public ProfileFragment() {
@@ -199,5 +204,8 @@ public class ProfileFragment extends BaseFragment implements ProfileView {
         this.location.setText(String.format(getString(R.string.location), userProfile.getCity(), userProfile.getState(), userProfile.getCountry()));
         this.gameTaste.setText(userProfile.getGameTasteLevel());
         this.gameTime.setText(userProfile.getGameTimeLevel());
+        UserGenderConstant gender = UserGenderConstant.getGender(userProfile.getGender());
+        int placeholderDrawable = gender.equals(UserGenderConstant.FEMALE) ? R.drawable.female_avatar : R.drawable.male_avatar;
+        Picasso.get().load(placeholderDrawable).into(profilePicture);
     }
 }

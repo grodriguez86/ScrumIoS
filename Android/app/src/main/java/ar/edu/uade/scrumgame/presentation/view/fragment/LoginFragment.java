@@ -67,6 +67,7 @@ public class LoginFragment extends BaseFragment implements LoginView {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         this.loginPresenter.setView(this);
+        this.loginPresenter.initialize();
     }
 
 

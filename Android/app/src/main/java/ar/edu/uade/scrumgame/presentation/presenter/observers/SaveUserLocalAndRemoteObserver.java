@@ -1,27 +1,27 @@
 package ar.edu.uade.scrumgame.presentation.presenter.observers;
 
 import ar.edu.uade.scrumgame.R;
-import ar.edu.uade.scrumgame.domain.interactor.DefaultObserver;
-import ar.edu.uade.scrumgame.domain.interactor.SaveProgress;
-import ar.edu.uade.scrumgame.domain.interactor.SaveUserLocalAndRemote;
-import ar.edu.uade.scrumgame.domain.interactor.SaveUserOverallData;
+import ar.edu.uade.scrumgame.domain.Progress;
+import ar.edu.uade.scrumgame.domain.interactor.*;
 import ar.edu.uade.scrumgame.presentation.mapper.UserDataMapper;
 import ar.edu.uade.scrumgame.presentation.models.ProgressModel;
 import ar.edu.uade.scrumgame.presentation.models.UserOverallDataModel;
 import ar.edu.uade.scrumgame.presentation.presenter.SignUpBasePresenter;
 import ar.edu.uade.scrumgame.presentation.view.SignUpBaseView;
 
+import java.util.List;
+
 public class SaveUserLocalAndRemoteObserver extends DefaultObserver<String> {
     private SaveUserOverallData saveUserOverallDataUseCase;
-    private SaveProgress saveProgressUseCase;
+    private SaveProgressList saveProgressListUseCase;
     private SignUpBasePresenter signUpPresenter;
     private SignUpBaseView signUpView;
     private UserDataMapper userDataMapper;
-    private ProgressModel initialProgress;
+    private List<ProgressModel> initialProgress;
 
-    public SaveUserLocalAndRemoteObserver(SaveUserOverallData saveUserOverallDataUseCase, SaveProgress saveProgressUseCase, SignUpBasePresenter signUpPresenter, SignUpBaseView signUpView, UserDataMapper userDataMapper, ProgressModel initialProgress) {
+    public SaveUserLocalAndRemoteObserver(SaveUserOverallData saveUserOverallDataUseCase, SaveProgressList saveProgressListUseCase, SignUpBasePresenter signUpPresenter, SignUpBaseView signUpView, UserDataMapper userDataMapper, List<ProgressModel> initialProgress) {
         this.saveUserOverallDataUseCase = saveUserOverallDataUseCase;
-        this.saveProgressUseCase = saveProgressUseCase;
+        this.saveProgressListUseCase = saveProgressListUseCase;
         this.signUpPresenter = signUpPresenter;
         this.signUpView = signUpView;
         this.userDataMapper = userDataMapper;
@@ -36,7 +36,7 @@ public class SaveUserLocalAndRemoteObserver extends DefaultObserver<String> {
                 saveUserOverallDataUseCase.execute(new DefaultObserver<Void>() {
                     @Override
                     public void onComplete() {
-                        saveProgressUseCase.execute(new DefaultObserver<String>() {
+                        saveProgressListUseCase.execute(new DefaultObserver<String>() {
                             @Override
                             public void onNext(String saveProgressOutcome) {
                                 switch (saveProgressOutcome) {
@@ -64,7 +64,7 @@ public class SaveUserLocalAndRemoteObserver extends DefaultObserver<String> {
                                 signUpView.showError(signUpView.context().getString(R.string.error_saving_progress));
                                 signUpPresenter.showViewRetry();
                             }
-                        }, userDataMapper.progressModelToProgress(initialProgress));
+                        }, (List<Progress>) userDataMapper.progressModelToProgress(initialProgress));
                     }
 
                     @Override

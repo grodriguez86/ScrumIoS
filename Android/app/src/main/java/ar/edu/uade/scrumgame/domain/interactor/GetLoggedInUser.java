@@ -8,18 +8,22 @@ import io.reactivex.Observable;
 
 import javax.inject.Inject;
 
-public class GetLoggedInUser extends UseCase<User, Void> {
+public class GetLoggedInUser extends UseCase<User, Boolean> {
 
-  private final UserSessionRepository userSessionRepository;
+    private final UserSessionRepository userSessionRepository;
 
-  @Inject
-  GetLoggedInUser(UserSessionRepository userSessionRepository, ThreadExecutor threadExecutor,
-                  PostExecutionThread postExecutionThread) {
-    super(threadExecutor, postExecutionThread);
-    this.userSessionRepository = userSessionRepository;
-  }
+    @Inject
+    GetLoggedInUser(UserSessionRepository userSessionRepository, ThreadExecutor threadExecutor,
+                    PostExecutionThread postExecutionThread) {
+        super(threadExecutor, postExecutionThread);
+        this.userSessionRepository = userSessionRepository;
+    }
 
-  @Override Observable<User> buildUseCaseObservable(Void unused) {
-    return userSessionRepository.getLoggedInUser();
-  }
+    @Override
+    Observable<User> buildUseCaseObservable(Boolean checkIfExistsOnRemote) {
+        if (checkIfExistsOnRemote) {
+            return userSessionRepository.getLoggedInUser();
+        }
+        return userSessionRepository.getLocalLoggedInUser();
+    }
 }

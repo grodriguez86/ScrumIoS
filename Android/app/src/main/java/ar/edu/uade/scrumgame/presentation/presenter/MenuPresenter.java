@@ -76,11 +76,10 @@ public class MenuPresenter implements Presenter {
 
     public void initialize() {
         this.getLoggedInUser();
-        this.loadLevels();
     }
 
     private void getLoggedInUser(){
-        this.getLoggedInUserUseCase.execute(new GetLoggedInUserObserver(),null);
+        this.getLoggedInUserUseCase.execute(new GetLoggedInUserObserver(),false);
     }
 
     public void onLevelClicked(LevelModel levelModel) {
