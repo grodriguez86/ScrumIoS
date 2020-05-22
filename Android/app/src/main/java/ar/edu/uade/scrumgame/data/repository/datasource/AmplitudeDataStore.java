@@ -20,7 +20,11 @@ class AmplitudeDataStore implements LogEventDataStore {
     @Override
     public Observable<Void> initialize() {
         return Observable.create(emitter -> {
-            Amplitude.getInstance().initialize(this.context, BuildConfig.AMPLITUDE_API_KEY).enableForegroundTracking((Application) this.context);
+            try {
+                Amplitude.getInstance().initialize(this.context, BuildConfig.AMPLITUDE_API_KEY).enableForegroundTracking((Application) this.context);
+            } catch (Exception e) {
+                emitter.onError(e);
+            }
             emitter.onComplete();
         });
     }
@@ -28,7 +32,11 @@ class AmplitudeDataStore implements LogEventDataStore {
     @Override
     public Observable<Void> logEvent(String eventName, JSONObject eventParams) {
         return Observable.create(emitter -> {
-            Amplitude.getInstance().logEvent(eventName, eventParams);
+            try {
+                Amplitude.getInstance().logEvent(eventName, eventParams);
+            } catch (Exception e) {
+                emitter.onError(e);
+            }
             emitter.onComplete();
         });
     }
