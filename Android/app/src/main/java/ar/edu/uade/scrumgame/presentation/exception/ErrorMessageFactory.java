@@ -7,6 +7,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import ar.edu.uade.scrumgame.R;
+import ar.edu.uade.scrumgame.domain.exception.UserAlreadyRegisteredException;
 import com.google.firebase.FirebaseException;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseAuthInvalidUserException;
