@@ -169,7 +169,9 @@ public class SignupFragment extends BaseFragment implements SignupView {
 
     @OnClick(R.id.bt_exit)
     public void backPressed() {
-//        TODO this.onBackPressed();
+        if (this.getActivity() != null) {
+            this.getActivity().onBackPressed();
+        }
     }
 
 }
