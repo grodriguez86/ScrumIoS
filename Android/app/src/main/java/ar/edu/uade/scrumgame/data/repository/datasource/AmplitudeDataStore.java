@@ -2,6 +2,7 @@ package ar.edu.uade.scrumgame.data.repository.datasource;
 
 import android.app.Application;
 import android.content.Context;
+import ar.edu.uade.scrumgame.BuildConfig;
 import com.amplitude.api.Amplitude;
 import io.reactivex.Observable;
 import org.json.JSONObject;
@@ -19,7 +20,7 @@ class AmplitudeDataStore implements LogEventDataStore {
     @Override
     public Observable<Void> initialize() {
         return Observable.create(emitter -> {
-            Amplitude.getInstance().initialize(this.context, "").enableForegroundTracking((Application) this.context);
+            Amplitude.getInstance().initialize(this.context, BuildConfig.AMPLITUDE_API_KEY).enableForegroundTracking((Application) this.context);
             emitter.onComplete();
         });
     }
