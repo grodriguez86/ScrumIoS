@@ -14,6 +14,8 @@ import androidx.annotation.Nullable;
 
 import javax.inject.Inject;
 
+import androidx.appcompat.widget.AppCompatTextView;
+import ar.edu.uade.scrumgame.BuildConfig;
 import ar.edu.uade.scrumgame.R;
 import ar.edu.uade.scrumgame.presentation.di.components.LevelComponent;
 import ar.edu.uade.scrumgame.presentation.presenter.LoginPresenter;
@@ -34,7 +36,8 @@ public class LoginFragment extends BaseFragment implements LoginView {
 
     @Inject
     LoginPresenter loginPresenter;
-
+    @BindView(R.id.app_version_tv)
+    AppCompatTextView appVersion;
     private LoginListener loginListener;
 
     public LoginFragment() {
@@ -68,6 +71,7 @@ public class LoginFragment extends BaseFragment implements LoginView {
         super.onViewCreated(view, savedInstanceState);
         this.loginPresenter.setView(this);
         this.loginPresenter.initialize();
+        this.appVersion.setText(String.format(getString(R.string.version),BuildConfig.VERSION_NAME));
     }
 
 

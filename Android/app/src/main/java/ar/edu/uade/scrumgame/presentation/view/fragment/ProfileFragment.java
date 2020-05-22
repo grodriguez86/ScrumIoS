@@ -14,6 +14,7 @@ import android.widget.RelativeLayout;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatTextView;
 import androidx.core.content.ContextCompat;
+import ar.edu.uade.scrumgame.BuildConfig;
 import ar.edu.uade.scrumgame.R;
 import ar.edu.uade.scrumgame.presentation.constants.UserGenderConstant;
 import ar.edu.uade.scrumgame.presentation.di.components.LevelComponent;
@@ -59,6 +60,8 @@ public class ProfileFragment extends BaseFragment implements ProfileView {
     Chip achievements;
     @BindView(R.id.profile_picture_iv)
     ImageView profilePicture;
+    @BindView(R.id.app_version_tv)
+    AppCompatTextView appVersion;
     private ProfileListener profileListener;
 
     public ProfileFragment() {
@@ -207,5 +210,6 @@ public class ProfileFragment extends BaseFragment implements ProfileView {
         UserGenderConstant gender = UserGenderConstant.getGender(userProfile.getGender());
         int placeholderDrawable = gender.equals(UserGenderConstant.FEMALE) ? R.drawable.female_avatar : R.drawable.male_avatar;
         Picasso.get().load(placeholderDrawable).into(profilePicture);
+        this.appVersion.setText(String.format(getString(R.string.version),BuildConfig.VERSION_NAME));
     }
 }
