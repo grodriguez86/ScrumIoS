@@ -9,11 +9,7 @@ import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ImageButton;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
+import android.widget.*;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -55,9 +51,9 @@ public class InfoTheoryFragment extends BaseFragment implements InfoTheoryView {
     @BindView(R.id.rv_infoTheory)
     RecyclerView infoTheoryRecyclerView;
     @BindView(R.id.rl_progress)
-    RelativeLayout progressLayout;
+    FrameLayout progressLayout;
     @BindView(R.id.rl_retry)
-    RelativeLayout retryLayout;
+    FrameLayout retryLayout;
     @BindView(R.id.bt_retry)
     Button retryButton;
     @BindView(R.id.bt_exit)
@@ -90,10 +86,6 @@ public class InfoTheoryFragment extends BaseFragment implements InfoTheoryView {
         }
     };
 
-    public InfoTheoryFragment() {
-        this.setRetainInstance(true);
-    }
-
     @OnClick(R.id.bt_exit)
     public void goBack() {
         this.getActivity().onBackPressed();
@@ -107,16 +99,11 @@ public class InfoTheoryFragment extends BaseFragment implements InfoTheoryView {
 
     @Override
     public void onAttach(Activity activity) {
+        this.getComponent(LevelComponent.class).inject(this);
         super.onAttach(activity);
         if (activity instanceof PlaySubLevelListener) {
             this.playSubLevelListener = (PlaySubLevelListener) activity;
         }
-    }
-
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        this.getComponent(LevelComponent.class).inject(this);
     }
 
     @Nullable

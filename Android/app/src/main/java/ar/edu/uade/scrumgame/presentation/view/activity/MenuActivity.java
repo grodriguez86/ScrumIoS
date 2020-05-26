@@ -24,10 +24,10 @@ public class MenuActivity extends BaseActivity implements HasComponent<LevelComp
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        this.initializeInjector();
         super.onCreate(savedInstanceState);
         this.requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
         this.setContentView(R.layout.activity_menu);
-        this.initializeInjector();
         if (savedInstanceState == null) {
             addFragment(R.id.fragmentContainer, new MenuFragment());
         }

@@ -41,11 +41,6 @@ public abstract class GameFragment extends BaseFragment implements GameContentVi
 
     protected OnGameCompletedListener onGameCompletedListener;
 
-    public GameFragment() {
-        this.setRetainInstance(true);
-    }
-
-
     protected abstract Integer getFragmentId();
 
     protected abstract void doLoadGame();
@@ -53,7 +48,6 @@ public abstract class GameFragment extends BaseFragment implements GameContentVi
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        this.getComponent(LevelComponent.class).inject(this);
         this.gamePresenter.initialize();
     }
 
@@ -85,6 +79,7 @@ public abstract class GameFragment extends BaseFragment implements GameContentVi
 
     @Override
     public void onAttach(Activity activity) {
+        this.getComponent(LevelComponent.class).inject(this);
         super.onAttach(activity);
         if (activity instanceof InfoGameActivity) {
             this.onGameCompletedListener = (OnGameCompletedListener) activity;

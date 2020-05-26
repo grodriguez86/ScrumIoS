@@ -6,11 +6,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageButton;
+import android.widget.*;
 
-import android.widget.RelativeLayout;
 import androidx.annotation.Nullable;
 
 import javax.inject.Inject;
@@ -43,24 +40,15 @@ public class SignupFragment extends BaseFragment implements SignupView {
     @BindView(R.id.inputPassword)
     EditText inputPassword;
     @BindView(R.id.rl_progress)
-    RelativeLayout progressLayout;
+    FrameLayout progressLayout;
     @Inject
     SignupPresenter signupPresenter;
 
     private SignUpStep1Listener signupListener;
 
-    public SignupFragment() {
-        this.setRetainInstance(true);
-    }
-
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        this.getComponent(LevelComponent.class).inject(this);
-    }
-
     @Override
     public void onAttach(Activity activity) {
+        this.getComponent(LevelComponent.class).inject(this);
         super.onAttach(activity);
         if (activity instanceof SignUpStep1Listener) {
             this.signupListener = (SignUpStep1Listener) activity;

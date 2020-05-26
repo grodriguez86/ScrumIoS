@@ -1,7 +1,5 @@
 package ar.edu.uade.scrumgame.presentation.view.activity;
 
-import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.Window;
 
@@ -15,16 +13,12 @@ public class LoginActivity extends BaseActivity implements HasComponent<LevelCom
 
     private LevelComponent levelComponent;
 
-    public static Intent getCallingIntent(Context context) {
-        return new Intent(context, MenuActivity.class);
-    }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        this.initializeInjector();
         super.onCreate(savedInstanceState);
         this.requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
         this.setContentView(R.layout.activity_login);
-        this.initializeInjector();
         if (savedInstanceState == null) {
             addFragment(R.id.fragmentContainer, new LoginFragment());
         }

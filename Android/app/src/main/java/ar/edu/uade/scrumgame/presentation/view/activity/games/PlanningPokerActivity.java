@@ -37,7 +37,7 @@ public class PlanningPokerActivity extends BaseActivity implements PlanningPoker
     protected void replaceFragment(Fragment fragment) {
         final FragmentTransaction fragmentTransaction = this.getSupportFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.fragmentContainer, fragment);
-        fragmentTransaction.commit();
+        fragmentTransaction.commitAllowingStateLoss();
     }
 
     @Override

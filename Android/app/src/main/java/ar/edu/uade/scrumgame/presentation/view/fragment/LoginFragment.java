@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 
-import android.widget.RelativeLayout;
+import android.widget.FrameLayout;
 import androidx.annotation.Nullable;
 
 import javax.inject.Inject;
@@ -40,18 +40,9 @@ public class LoginFragment extends BaseFragment implements LoginView {
     AppCompatTextView appVersion;
     private LoginListener loginListener;
 
-    public LoginFragment() {
-        this.setRetainInstance(true);
-    }
-
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        this.getComponent(LevelComponent.class).inject(this);
-    }
-
     @Override
     public void onAttach(Activity activity) {
+        this.getComponent(LevelComponent.class).inject(this);
         super.onAttach(activity);
         if (activity instanceof LoginFragment.LoginListener) {
             this.loginListener = (LoginFragment.LoginListener) activity;
@@ -135,7 +126,7 @@ public class LoginFragment extends BaseFragment implements LoginView {
     EditText inputPassword;
 
     @BindView(R.id.rl_progress)
-    RelativeLayout progressLayout;
+    FrameLayout progressLayout;
 
     @OnClick(R.id.login)
     public void login() {

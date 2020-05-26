@@ -36,10 +36,6 @@ public class ScrumFlowDraggableGameFragment extends GameFragment {
     ImageView sprint;
     private Integer correctDrags = 0;
 
-    public ScrumFlowDraggableGameFragment() {
-        this.setRetainInstance(true);
-    }
-
     @Override
     protected Integer getFragmentId() {
         return R.layout.fragment_game_scrum_draggable;

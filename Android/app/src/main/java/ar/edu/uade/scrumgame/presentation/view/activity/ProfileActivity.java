@@ -14,10 +14,10 @@ public class ProfileActivity extends BaseActivity implements HasComponent<LevelC
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        this.initializeInjector();
         super.onCreate(savedInstanceState);
         this.requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
         this.setContentView(R.layout.activity_profile);
-        this.initializeInjector();
         if (savedInstanceState == null) {
             addFragment(R.id.fragmentContainer, ProfileFragment.newInstance());
         }

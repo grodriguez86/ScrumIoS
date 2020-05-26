@@ -47,11 +47,11 @@ public class InfoGameActivity extends BaseActivity implements HasComponent<Level
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        this.initializeInjector();
         super.onCreate(savedInstanceState);
         this.requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
         this.setContentView(R.layout.activity_info_game);
         this.initializeActivity(savedInstanceState);
-        this.initializeInjector();
     }
 
     private void initializeActivity(Bundle savedInstanceState) {
