@@ -4,7 +4,6 @@ import androidx.annotation.NonNull;
 
 import javax.inject.Inject;
 
-import ar.edu.uade.scrumgame.data.exception.LocalUserNotFoundException;
 import ar.edu.uade.scrumgame.domain.Progress;
 import ar.edu.uade.scrumgame.domain.User;
 import ar.edu.uade.scrumgame.domain.UserCredentials;
@@ -13,11 +12,12 @@ import ar.edu.uade.scrumgame.domain.exception.ErrorBundle;
 import ar.edu.uade.scrumgame.domain.interactor.*;
 import ar.edu.uade.scrumgame.presentation.di.PerActivity;
 import ar.edu.uade.scrumgame.presentation.exception.ErrorMessageFactory;
-import ar.edu.uade.scrumgame.presentation.exception.UserAlreadyRegisteredException;
 import ar.edu.uade.scrumgame.presentation.mapper.UserDataMapper;
 import ar.edu.uade.scrumgame.presentation.models.ProgressModel;
 import ar.edu.uade.scrumgame.presentation.presenter.observers.SaveUserLocalAndRemoteObserver;
 import ar.edu.uade.scrumgame.presentation.view.SignupView;
+
+import java.util.Collections;
 
 @PerActivity
 public class SignupPresenter implements SignUpBasePresenter {
@@ -27,24 +27,27 @@ public class SignupPresenter implements SignUpBasePresenter {
     private GetUserLocally getUserLocallyUseCase;
     private GetUserRemotely getUserRemotelyUseCase;
     private SaveUserLocalAndRemote saveUserLocalAndRemoteUseCase;
-    private SaveProgress saveProgressUseCase;
+    private SaveProgressList saveProgressListUseCase;
     private SaveUserOverallData saveUserOverallDataUseCase;
     private GetInitialProgress getInitialProgressUseCase;
+    private CheckIncompleteSignUp checkIncompleteSignUpUseCase;
     private UserDataMapper userDataMapper;
     private UserCredentials userCredentials;
 
     @Inject
     SignupPresenter(SignUp signUpUseCase, GetUserLocally getUserLocallyUseCase, GetUserRemotely getUserRemotelyUseCase,
-                    SaveUserLocalAndRemote saveUserLocalAndRemoteUseCase, SaveProgress saveProgressUseCase,
+                    SaveUserLocalAndRemote saveUserLocalAndRemoteUseCase, SaveProgressList saveProgressListUseCase,
                     SaveUserOverallData saveUserOverallDataUseCase, GetInitialProgress getInitialProgressUseCase,
+                    CheckIncompleteSignUp checkIncompleteSignUpUseCase,
                     UserDataMapper userDataMapper) {
         this.signUpUseCase = signUpUseCase;
         this.getUserLocallyUseCase = getUserLocallyUseCase;
         this.getUserRemotelyUseCase = getUserRemotelyUseCase;
         this.saveUserLocalAndRemoteUseCase = saveUserLocalAndRemoteUseCase;
-        this.saveProgressUseCase = saveProgressUseCase;
+        this.saveProgressListUseCase = saveProgressListUseCase;
         this.saveUserOverallDataUseCase = saveUserOverallDataUseCase;
-        this.getInitialProgressUseCase= getInitialProgressUseCase;
+        this.getInitialProgressUseCase = getInitialProgressUseCase;
+        this.checkIncompleteSignUpUseCase = checkIncompleteSignUpUseCase;
         this.userDataMapper = userDataMapper;
     }
 
@@ -64,11 +67,12 @@ public class SignupPresenter implements SignUpBasePresenter {
     public void destroy() {
         this.signupView = null;
         this.saveUserOverallDataUseCase.dispose();
-        this.saveProgressUseCase.dispose();
+        this.saveProgressListUseCase.dispose();
         this.saveUserLocalAndRemoteUseCase.dispose();
         this.getUserRemotelyUseCase.dispose();
         this.getUserLocallyUseCase.dispose();
         this.getInitialProgressUseCase.dispose();
+        this.checkIncompleteSignUpUseCase.dispose();
     }
 
     public void initialize() {
@@ -108,12 +112,20 @@ public class SignupPresenter implements SignUpBasePresenter {
     private void isUserRegistered() {
         if (this.userCredentials != null) {
             String email = this.userCredentials.getEmail();
-            this.getUserLocallyUseCase.execute(new LocalUserObserver(email), email);
+            this.checkIncompleteSignUpUseCase.execute(new IncompleteSignUpObserver(), email);
+        }
+    }
+
+
+    private void retrySignUp() {
+        if (this.userCredentials != null) {
+            String email = this.userCredentials.getEmail();
+            this.getUserLocallyUseCase.execute(new LocalUserObserver(), email);
         }
     }
 
     private void retryFirebaseSignUp(User user) {
-        this.getInitialProgressUseCase.execute(new GetInitialProgressObserver(user),null);
+        this.getInitialProgressUseCase.execute(new GetInitialProgressObserver(user), null);
     }
 
 
@@ -131,27 +143,9 @@ public class SignupPresenter implements SignUpBasePresenter {
     }
 
     private final class LocalUserObserver extends DefaultObserver<User> {
-        private String email;
-
-        public LocalUserObserver(String email) {
-            this.email = email;
-        }
-
         @Override
         public void onNext(User localUser) {
-            SignupPresenter.this.getUserRemotelyUseCase.execute(new RemoteUserObserver(remoteUser -> SignupPresenter.this.retryFirebaseSignUp(localUser)
-            ), localUser.getMail());
-        }
-
-        @Override
-        public void onError(Throwable exception) {
-            if (exception instanceof LocalUserNotFoundException) {
-                SignupPresenter.this.getUserRemotelyUseCase.execute(new RemoteUserObserver(remoteUser -> SignupPresenter.this.continueSignUp()), this.email);
-            } else {
-                SignupPresenter.this.showErrorMessage(new DefaultErrorBundle((Exception) exception));
-                SignupPresenter.this.hideViewLoading();
-                SignupPresenter.this.showViewRetry();
-            }
+            SignupPresenter.this.retryFirebaseSignUp(localUser);
         }
     }
 
@@ -170,34 +164,6 @@ public class SignupPresenter implements SignUpBasePresenter {
         }
     }
 
-    private final class RemoteUserObserver extends DefaultObserver<User> {
-        private OnFinishValidation onFinish;
-
-        public RemoteUserObserver(OnFinishValidation onFinish) {
-            this.onFinish = onFinish;
-        }
-
-        @Override
-        public void onNext(User remoteUser) {
-            if (remoteUser.getUid() == null && this.onFinish != null) {
-                this.onFinish.onValidationFinished(remoteUser);
-            } else {
-                SignupPresenter.this.hideViewLoading();
-                ErrorBundle errorBundle = new DefaultErrorBundle(new UserAlreadyRegisteredException());
-                SignupPresenter.this.showErrorMessage(errorBundle);
-            }
-        }
-
-        @Override
-        public void onError(Throwable exception) {
-            SignupPresenter.this.hideViewLoading();
-        }
-    }
-
-    private interface OnFinishValidation {
-        void onValidationFinished(User remoteUser);
-    }
-
     private final class GetInitialProgressObserver extends DefaultObserver<Progress> {
         private User user;
 
@@ -208,8 +174,33 @@ public class SignupPresenter implements SignUpBasePresenter {
         @Override
         public void onNext(Progress progress) {
             ProgressModel initialProgress = SignupPresenter.this.userDataMapper.progressToProgressModel(progress);
-            SignupPresenter.this.saveUserLocalAndRemoteUseCase.execute(new SaveUserLocalAndRemoteObserver(saveUserOverallDataUseCase, saveProgressUseCase, SignupPresenter.this, signupView, userDataMapper, initialProgress), user);
+            SignupPresenter.this.saveUserLocalAndRemoteUseCase.execute(new SaveUserLocalAndRemoteObserver(saveUserOverallDataUseCase, saveProgressListUseCase, SignupPresenter.this, signupView, userDataMapper, Collections.singletonList(initialProgress)), user);
         }
     }
+
+    private final class IncompleteSignUpObserver extends DefaultObserver<String> {
+        @Override
+        public void onNext(String status) {
+            SignupPresenter.this.hideViewLoading();
+            switch (status) {
+                case CheckIncompleteSignUp.RETRY_SIGN_UP:
+                    SignupPresenter.this.retrySignUp();
+                    break;
+                case CheckIncompleteSignUp.CONTINUE_SIGN_UP:
+                    SignupPresenter.this.continueSignUp();
+                    break;
+            }
+        }
+
+
+        @Override
+        public void onError(Throwable exception) {
+            SignupPresenter.this.showErrorMessage(new DefaultErrorBundle((Exception) exception));
+            SignupPresenter.this.hideViewLoading();
+            SignupPresenter.this.showViewRetry();
+        }
+    }
+
+
 
 }

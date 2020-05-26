@@ -55,7 +55,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent" android:layout_gravity="center"
                     android:foregroundGravity="center" app:singleSelection="true" android:layout_marginBottom="25dp"
-                    android:id="@+id/profile_cg">
+                    android:id="@+id/profile_cg" android:visibility="visible">
                 <com.google.android.material.chip.Chip
                         android:id="@+id/information_chip"
                         style="@style/Widget.MaterialComponents.Chip.Choice"
@@ -92,7 +92,7 @@
                     android:fontFamily="@font/gotham_rounded_light"
                     android:text="@string/profile_name"
                     android:layout_marginBottom="5dp"
-                    android:textColor="@color/jelly" android:textSize="20sp"/>
+                    android:textColor="@color/jelly" android:textSize="20sp" android:visibility="visible"/>
 
             <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/name_tv"
@@ -101,7 +101,7 @@
                     android:fontFamily="@font/gotham_rounded_bold"
                     android:text="@string/profile_name"
                     android:layout_marginBottom="20dp"
-                    android:textColor="@color/black" android:textSize="20sp"/>
+                    android:textColor="@color/black" android:textSize="20sp" android:visibility="visible"/>
 
             <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/profession_label_tv"
@@ -110,7 +110,7 @@
                     android:fontFamily="@font/gotham_rounded_light"
                     android:text="@string/profile_profession"
                     android:layout_marginBottom="5dp"
-                    android:textColor="@color/jelly" android:textSize="20sp"/>
+                    android:textColor="@color/jelly" android:textSize="20sp" android:visibility="visible"/>
 
             <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/profession_tv"
@@ -119,7 +119,7 @@
                     android:fontFamily="@font/gotham_rounded_bold"
                     android:text="@string/profile_name"
                     android:layout_marginBottom="20dp"
-                    android:textColor="@color/black" android:textSize="20sp"/>
+                    android:textColor="@color/black" android:textSize="20sp" android:visibility="visible"/>
 
             <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/age_label_tv"
@@ -128,7 +128,7 @@
                     android:fontFamily="@font/gotham_rounded_light"
                     android:text="@string/profile_age"
                     android:layout_marginBottom="5dp"
-                    android:textColor="@color/jelly" android:textSize="20sp"/>
+                    android:textColor="@color/jelly" android:textSize="20sp" android:visibility="visible"/>
 
             <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/age_tv"
@@ -204,7 +204,18 @@
                     android:textColor="@color/white" android:background="@drawable/button_round_purple_background"
                     android:paddingLeft="20dp" android:paddingTop="10dp" android:paddingRight="20dp"
                     android:paddingBottom="10dp"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                    android:textAlignment="center"
+                    android:layout_marginTop="10dp"
+                    android:id="@+id/app_version_tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/gotham_rounded_light"
+                    android:layout_marginBottom="5dp"
+                    android:textColor="@color/gray" android:textSize="14sp"/>
         </LinearLayout>
+
     </ScrollView>
 
     <include layout="@layout/view_progress"/>

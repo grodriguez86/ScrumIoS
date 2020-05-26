@@ -7,7 +7,6 @@ import ar.edu.uade.scrumgame.domain.User;
 import ar.edu.uade.scrumgame.domain.executor.PostExecutionThread;
 import ar.edu.uade.scrumgame.domain.executor.ThreadExecutor;
 import ar.edu.uade.scrumgame.domain.repository.LocalUserRepository;
-import ar.edu.uade.scrumgame.domain.repository.RemoteUserRepository;
 import io.reactivex.Observable;
 
 public class GetUserLocally extends UseCase<User, String> {

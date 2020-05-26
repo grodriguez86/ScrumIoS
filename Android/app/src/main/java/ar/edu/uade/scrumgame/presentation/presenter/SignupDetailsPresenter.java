@@ -6,6 +6,7 @@ import javax.inject.Inject;
 
 import ar.edu.uade.scrumgame.domain.exception.ErrorBundle;
 import ar.edu.uade.scrumgame.domain.interactor.SaveProgress;
+import ar.edu.uade.scrumgame.domain.interactor.SaveProgressList;
 import ar.edu.uade.scrumgame.domain.interactor.SaveUserLocalAndRemote;
 import ar.edu.uade.scrumgame.domain.interactor.SaveUserOverallData;
 import ar.edu.uade.scrumgame.presentation.di.PerActivity;
@@ -16,22 +17,24 @@ import ar.edu.uade.scrumgame.presentation.models.UserModel;
 import ar.edu.uade.scrumgame.presentation.presenter.observers.SaveUserLocalAndRemoteObserver;
 import ar.edu.uade.scrumgame.presentation.view.SignupDetailsView;
 
+import java.util.Collections;
+
 @PerActivity
 public class SignupDetailsPresenter implements SignUpBasePresenter {
 
-    private SaveProgress saveProgressUseCase;
+    private SaveProgressList saveProgressListUseCase;
     private SaveUserLocalAndRemote saveUserLocalAndRemoteUseCase;
     private SaveUserOverallData saveUserOverallDataUseCase;
     private SignupDetailsView signupDetailsView;
     private UserDataMapper userDataMapper;
 
     @Inject
-    SignupDetailsPresenter(SaveProgress saveProgressUseCase,
+    SignupDetailsPresenter(SaveProgressList saveProgressListUseCase,
                            SaveUserLocalAndRemote saveUserLocalAndRemoteUseCase,
                            SaveUserOverallData saveUserOverallDataUseCase,
                            UserDataMapper userDataMapper
     ) {
-        this.saveProgressUseCase = saveProgressUseCase;
+        this.saveProgressListUseCase = saveProgressListUseCase;
         this.saveUserLocalAndRemoteUseCase = saveUserLocalAndRemoteUseCase;
         this.saveUserOverallDataUseCase = saveUserOverallDataUseCase;
         this.userDataMapper = userDataMapper;
@@ -52,7 +55,7 @@ public class SignupDetailsPresenter implements SignUpBasePresenter {
     @Override
     public void destroy() {
         this.signupDetailsView = null;
-        this.saveProgressUseCase.dispose();
+        this.saveProgressListUseCase.dispose();
         this.saveUserOverallDataUseCase.dispose();
         this.saveUserLocalAndRemoteUseCase.dispose();
     }
@@ -63,7 +66,7 @@ public class SignupDetailsPresenter implements SignUpBasePresenter {
 
     public void onDoneClicked(UserModel userDetails, ProgressModel initialProgress) {
         this.showViewLoading();
-        saveUserLocalAndRemoteUseCase.execute(new SaveUserLocalAndRemoteObserver(saveUserOverallDataUseCase, saveProgressUseCase, this, signupDetailsView, userDataMapper, initialProgress), userDataMapper.userModelToUser(userDetails));
+        saveUserLocalAndRemoteUseCase.execute(new SaveUserLocalAndRemoteObserver(saveUserOverallDataUseCase, saveProgressListUseCase, this, signupDetailsView, userDataMapper, Collections.singletonList(initialProgress)), userDataMapper.userModelToUser(userDetails));
     }
 
     private void showViewLoading() {

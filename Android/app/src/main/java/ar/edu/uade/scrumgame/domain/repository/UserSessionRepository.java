@@ -8,4 +8,6 @@ public interface UserSessionRepository {
     Observable<User> getLoggedInUser();
 
     Observable<Void> logOut();
+
+    Observable<User> getLocalLoggedInUser();
 }
