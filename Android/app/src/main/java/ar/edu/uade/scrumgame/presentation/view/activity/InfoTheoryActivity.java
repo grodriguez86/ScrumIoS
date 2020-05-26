@@ -1,7 +1,5 @@
 package ar.edu.uade.scrumgame.presentation.view.activity;
 
-import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.Window;
 
@@ -23,16 +21,12 @@ public class InfoTheoryActivity extends BaseActivity implements HasComponent<Lev
 
     private Integer currentGame;
 
-    public static Intent getCallingIntent(Context context) {
-        return new Intent(context, InfoTheoryActivity.class);
-    }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        this.initializeInjector();
         super.onCreate(savedInstanceState);
         this.requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
         this.setContentView(R.layout.activity_info_theory);
-        this.initializeInjector();
         Bundle bundle = new Bundle();
         levelCode = getIntent().getExtras().getInt("levelCode");
         levelName = getIntent().getExtras().getString("levelName");

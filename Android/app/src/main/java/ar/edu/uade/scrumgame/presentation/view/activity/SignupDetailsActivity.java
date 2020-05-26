@@ -25,10 +25,10 @@ public class SignupDetailsActivity extends BaseActivity implements HasComponent<
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        this.initializeInjector();
         super.onCreate(savedInstanceState);
         this.requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
         setContentView(R.layout.activity_signup_details);
-        this.initializeInjector();
         SignupDetailsFragment signupDetailsFragment = new SignupDetailsFragment();
         if (savedInstanceState == null) {
             addFragment(R.id.fragmentContainer, signupDetailsFragment);

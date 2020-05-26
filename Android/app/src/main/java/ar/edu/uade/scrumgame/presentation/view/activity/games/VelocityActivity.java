@@ -35,7 +35,7 @@ public class VelocityActivity extends BaseActivity implements VelocityIntroGameF
     private void addFragment(Fragment fragment) {
         final FragmentTransaction fragmentTransaction = this.getSupportFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.fragmentContainer, fragment);
-        fragmentTransaction.commit();
+        fragmentTransaction.commitAllowingStateLoss();
     }
 
 

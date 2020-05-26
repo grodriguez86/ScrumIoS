@@ -46,18 +46,9 @@ public class SignupDetailsFragment extends BaseFragment implements SignupDetails
 
     private SignUpListener signupDetailsListener;
 
-    public SignupDetailsFragment() {
-        this.setRetainInstance(true);
-    }
-
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        this.getComponent(LevelComponent.class).inject(this);
-    }
-
     @Override
     public void onAttach(Activity activity) {
+        this.getComponent(LevelComponent.class).inject(this);
         super.onAttach(activity);
         if (activity instanceof SignUpListener) {
             this.signupDetailsListener = (SignUpListener) activity;
@@ -163,7 +154,7 @@ public class SignupDetailsFragment extends BaseFragment implements SignupDetails
     Spinner inputGamesTime;
 
     @BindView(R.id.rl_progress)
-    RelativeLayout progressLayout;
+    FrameLayout progressLayout;
 
     @OnClick(R.id.btnDone)
     public void signupDoneClicked() {

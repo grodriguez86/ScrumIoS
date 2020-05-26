@@ -7,10 +7,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ImageButton;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
+import android.widget.*;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatTextView;
 import androidx.core.content.ContextCompat;
@@ -37,7 +34,7 @@ public class ProfileFragment extends BaseFragment implements ProfileView {
     @Inject
     ProfilePresenter profilePresenter;
     @BindView(R.id.rl_progress)
-    RelativeLayout progressLayout;
+    FrameLayout progressLayout;
     @BindView(R.id.name_tv)
     AppCompatTextView name;
     @BindView(R.id.profession_tv)
@@ -64,26 +61,17 @@ public class ProfileFragment extends BaseFragment implements ProfileView {
     AppCompatTextView appVersion;
     private ProfileListener profileListener;
 
-    public ProfileFragment() {
-        this.setRetainInstance(true);
-    }
-
     public static Fragment newInstance() {
         return new ProfileFragment();
     }
 
     @Override
     public void onAttach(Activity activity) {
+        this.getComponent(LevelComponent.class).inject(this);
         super.onAttach(activity);
         if (activity instanceof ProfileListener) {
             this.profileListener = (ProfileListener) activity;
         }
-    }
-
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        this.getComponent(LevelComponent.class).inject(this);
     }
 
     @Nullable

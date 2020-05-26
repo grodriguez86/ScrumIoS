@@ -30,8 +30,8 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
         this.getApplicationComponent().inject(this);
+        super.onCreate(savedInstanceState);
         setStatusBarGradiant(this);
     }
 
@@ -50,7 +50,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected void addFragment(int containerViewId, Fragment fragment) {
         final FragmentTransaction fragmentTransaction = this.getFragmentManager().beginTransaction();
         fragmentTransaction.add(containerViewId, fragment);
-        fragmentTransaction.commit();
+        fragmentTransaction.commitAllowingStateLoss();
     }
 
     protected ApplicationComponent getApplicationComponent() {
