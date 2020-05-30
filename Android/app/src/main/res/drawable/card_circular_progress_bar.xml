@@ -9,7 +9,7 @@
         android:useLevel="true">
 
         <solid
-            android:color="@color/levelOne"
+            android:color="#9500D8"
             />
     </shape>
 </rotate>

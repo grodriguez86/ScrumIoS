@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linearLayout4"
+    android:layout_width="match_parent"
+    android:layout_height="150dp"
+    android:layout_margin="5dp"
+    android:background="@drawable/card_level">
+
+
+    <TextView
+        android:id="@+id/number"
+        android:layout_width="70dp"
+        android:layout_height="0dp"
+        android:ellipsize="end"
+        android:gravity="center_horizontal|center_vertical"
+        android:singleLine="true"
+        android:textColor="@color/menuLevelCardLevelNumber"
+        android:textSize="@dimen/lv_row_level_number_text_size"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/playLabel"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="70dp"
+        android:layout_marginRight="70dp"
+        android:gravity="center_horizontal|center_vertical"
+        android:text="t"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="@dimen/lv_row_level_name_text_size"
+        android:textStyle="bold"
+        app:fontFamily="@font/montserrat_regular"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/number"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/sublevels"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="70dp"
+        android:layout_marginRight="70dp"
+        android:text="t"
+        android:textColor="@color/black"
+        android:textSize="@dimen/lv_row_level_sub_levels_text_size"
+        app:fontFamily="@font/montserrat_regular"
+        app:layout_constraintBottom_toTopOf="@+id/playLabel"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/number"
+        app:layout_constraintTop_toBottomOf="@+id/name"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/playLabel"
+        android:layout_width="0dp"
+        android:layout_height="35dp"
+        android:background="@drawable/card_level_bottom"
+        android:gravity="center_horizontal|center_vertical"
+        android:text="@string/menu_play_unavailable"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/progressLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:text="100%"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/statusImage"
+        android:layout_width="67dp"
+        android:layout_height="66dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginRight="12dp"
+        android:layout_marginBottom="12dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

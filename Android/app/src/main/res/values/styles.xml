@@ -2,7 +2,9 @@
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
-
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="colorAccent">@color/jelly</item>
         <item name="scrimBackground" tools:ignore="PrivateResource">@color/mtrl_scrim_color</item>
         <item name="textAppearanceHeadline1">@style/TextAppearance.MaterialComponents.Headline1</item>
         <item name="textAppearanceHeadline2">@style/TextAppearance.MaterialComponents.Headline2</item>
@@ -19,7 +21,7 @@
         <item name="textAppearanceOverline">@style/TextAppearance.MaterialComponents.Overline</item>
     </style>
 
-    <style name="AppTheme.ProgressBar">
+    <style name="ProgressBar" parent="@style/Theme.AppCompat">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_centerInParent">true</item>
@@ -35,31 +37,31 @@
         <item name="android:layout_gravity">center</item>
     </style>
 
-    <style name="TextView.Title" parent="CenteredView">
+    <style name="androidx.appcompat.widget.AppCompatTextView.Title" parent="CenteredView">
         <item name="android:textSize">20sp</item>
         <item name="android:textStyle">bold</item>
     </style>
 
-    <style name="TextView.Indication" parent="CenteredView">
+    <style name="androidx.appcompat.widget.AppCompatTextView.Indication" parent="CenteredView">
         <item name="android:textSize">14sp</item>
     </style>
 
-    <style name="TextView.RadioButtonText" parent="CenteredView">
+    <style name="androidx.appcompat.widget.AppCompatTextView.RadioButtonText" parent="CenteredView">
         <item name="android:textSize">18sp</item>
         <item name="android:textColor">@android:color/white</item>
         <item name="android:textStyle">bold</item>
     </style>
 
     <style name="Button.SendAnswer" parent="@style/CenteredView">
-        <item name="android:textColor">@color/blue</item>
+        <item name="android:textColor">@color/white</item>
         <item name="android:textSize">18sp</item>
         <item name="android:background">@android:color/transparent</item>
     </style>
 
     <style name="Button.Choice" parent="@style/CenteredView">
-        <item name="android:textColor">@color/blue</item>
+        <item name="android:textColor">@color/violet</item>
         <item name="android:textStyle">bold</item>
-        <item name="android:textSize">16sp</item>
+        <item name="android:textSize">20sp</item>
     </style>
 
 

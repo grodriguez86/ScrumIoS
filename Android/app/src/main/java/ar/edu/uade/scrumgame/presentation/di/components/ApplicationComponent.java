@@ -4,7 +4,7 @@ import android.content.Context;
 
 import ar.edu.uade.scrumgame.domain.executor.PostExecutionThread;
 import ar.edu.uade.scrumgame.domain.executor.ThreadExecutor;
-import ar.edu.uade.scrumgame.domain.repository.LevelRepository;
+import ar.edu.uade.scrumgame.domain.repository.*;
 import ar.edu.uade.scrumgame.presentation.di.modules.ApplicationModule;
 import ar.edu.uade.scrumgame.presentation.view.activity.BaseActivity;
 import dagger.Component;
@@ -23,4 +23,20 @@ public interface ApplicationComponent {
     PostExecutionThread postExecutionThread();
 
     LevelRepository levelRepository();
+
+    LocalProgressRepository localProgressRepository();
+
+    RemoteProgressRepository remoteProgressRepository();
+
+    LocalUserRepository localUserRepository();
+
+    RemoteUserRepository remoteUserRepository();
+
+    UserOverallDataRepository userOverallDataRepository();
+
+    SignUpRepository signUpDataRepository();
+
+    UserSessionRepository userSessionRepository();
+
+    LogEventRepository logEventRepository();
 }

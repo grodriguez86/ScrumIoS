@@ -34,23 +34,24 @@ public class InfoGameActivity extends BaseActivity implements HasComponent<Level
     private LevelComponent levelComponent;
     private InfoGameFragment infoGameFragment;
 
-    public static Intent getCallingIntent(Context context, Integer levelCode, String levelTitle, String subLevelCode, String subLevelTitle) {
+    public static Intent getCallingIntent(Context context, Integer levelCode, String levelTitle,
+                                          String subLevelCode, String subLevelTitle, Integer currentGame) {
         Intent callingIntent = new Intent(context, InfoGameActivity.class);
         callingIntent.putExtra(INTENT_EXTRA_PARAM_LEVEL_CODE, levelCode);
         callingIntent.putExtra(INTENT_EXTRA_PARAM_SUB_LEVEL_CODE, subLevelCode);
         callingIntent.putExtra(INTENT_EXTRA_PARAM_LEVEL_TITLE, levelTitle);
         callingIntent.putExtra(INTENT_EXTRA_PARAM_SUB_LEVEL_TITLE, subLevelTitle);
-        callingIntent.putExtra(INTENT_EXTRA_PARAM_CURRENT_GAME, 0);
+        callingIntent.putExtra(INTENT_EXTRA_PARAM_CURRENT_GAME, currentGame);
         return callingIntent;
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        this.initializeInjector();
         super.onCreate(savedInstanceState);
         this.requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
         this.setContentView(R.layout.activity_info_game);
         this.initializeActivity(savedInstanceState);
-        this.initializeInjector();
     }
 
     private void initializeActivity(Bundle savedInstanceState) {
@@ -108,5 +109,14 @@ public class InfoGameActivity extends BaseActivity implements HasComponent<Level
     @Override
     public void onGamesCompleted() {
         this.navigator.navigateToLevelAfterGameFinished(this, this.levelCode);
+    }
+
+    @Override
+    public void onBackPressed() {
+        this.showAlert(getString(R.string.confirmation),
+                getString(R.string.exit_game),
+                this,
+                getString(R.string.quit),
+                (dialog, which) -> InfoGameActivity.super.onBackPressed());
     }
 }

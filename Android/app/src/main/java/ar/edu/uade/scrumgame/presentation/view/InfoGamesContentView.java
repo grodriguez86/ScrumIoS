@@ -10,4 +10,6 @@ public interface InfoGamesContentView extends LoadDataView {
     void playNextLevel();
 
     void onCompleteGame(String gameCode);
+
+    void goToSublevelMenu();
 }

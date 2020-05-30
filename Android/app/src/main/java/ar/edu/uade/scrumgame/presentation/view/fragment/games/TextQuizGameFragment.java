@@ -1,10 +1,12 @@
 package ar.edu.uade.scrumgame.presentation.view.fragment.games;
 
+import android.graphics.Color;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
 import java.util.List;
 
+import androidx.core.content.ContextCompat;
 import ar.edu.uade.scrumgame.R;
 import ar.edu.uade.scrumgame.presentation.models.GameContentModel;
 import ar.edu.uade.scrumgame.presentation.view.GameContentView;
@@ -50,7 +52,11 @@ public class TextQuizGameFragment extends GameFragment implements GameContentVie
     }
 
     private void saveCheckedButtonAndClearCheck(RadioGroup radioGroup, int checkedId, RadioGroup otherRadioGroup) {
-        TextQuizGameFragment.this.choiceAttempt = radioGroup.findViewById(checkedId);
+        if (this.choiceAttempt != null) {
+            this.choiceAttempt.setTextColor(ContextCompat.getColor(this.getActivity(), R.color.violet));
+        }
+        this.choiceAttempt = radioGroup.findViewById(checkedId);
+        this.choiceAttempt.setTextColor(Color.WHITE);
         if (otherRadioGroup.getCheckedRadioButtonId() != -1) {
             otherRadioGroup.setOnCheckedChangeListener(null);
             otherRadioGroup.clearCheck();
@@ -60,17 +66,22 @@ public class TextQuizGameFragment extends GameFragment implements GameContentVie
 
     @Override
     public void onCorrectAttempt() {
-        this.showAlert(getString(R.string.correct_answer_title), getString(R.string.correct_answer), getActivity(), getString(R.string.correct_answer_button_text), (dialog, which) -> this.onGameCompletedListener.onGameCompleted(gameCode));
+        super.onCorrectAttempt();
+        if (this.onGameCompletedListener != null) {
+            this.showAlert(getString(R.string.correct_answer_title), getString(R.string.correct_answer), getActivity(), getString(R.string.correct_answer_button_text), (dialog, which) -> this.onGameCompletedListener.onGameCompleted(gameCode));
+        }
     }
 
     @Override
     public void onFailedAttempt() {
+        super.onFailedAttempt();
         this.showAlert(getString(R.string.incorrect_answer_title), getString(R.string.incorrect_answer), getActivity(), getString(R.string.incorrect_answer_button_text), (dialog, which) -> {
         });
     }
 
     @Override
     public void checkAttempt() {
+        super.checkAttempt();
         if (this.choiceAttempt != null) {
             Boolean isCorrect = (Boolean) choiceAttempt.getTag();
             if (isCorrect) {

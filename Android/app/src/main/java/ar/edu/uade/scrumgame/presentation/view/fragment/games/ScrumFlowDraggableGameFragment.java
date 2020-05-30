@@ -36,13 +36,9 @@ public class ScrumFlowDraggableGameFragment extends GameFragment {
     ImageView sprint;
     private Integer correctDrags = 0;
 
-    public ScrumFlowDraggableGameFragment() {
-        this.setRetainInstance(true);
-    }
-
     @Override
     protected Integer getFragmentId() {
-        return R.layout.fragment_level_one_sublevel_two;
+        return R.layout.fragment_game_scrum_draggable;
     }
 
     @Override
@@ -66,10 +62,14 @@ public class ScrumFlowDraggableGameFragment extends GameFragment {
     }
 
     private void checkCorrectDrags(View view) {
-        this.correctDrags++;
         this.showTooltip(view, v -> {
+            this.correctDrags++;
             if (this.hasCompletedGame()) {
-                this.onGameCompletedListener.onGameCompleted(gameCode);
+                super.checkAttempt();
+                super.onCorrectAttempt();
+                if (this.onGameCompletedListener != null) {
+                    this.onGameCompletedListener.onGameCompleted(gameCode);
+                }
             }
         });
     }

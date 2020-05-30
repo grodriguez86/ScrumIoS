@@ -3,13 +3,14 @@ package ar.edu.uade.scrumgame.presentation.models;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import java.util.LinkedList;
 import java.util.List;
 
 public class InfoGameModel implements Parcelable, Cloneable {
     private String code;
     private String type;
     private String title;
-    private List<GameContentModel> content;
+    private List<GameContentModel> content = new LinkedList<>();
 
     public InfoGameModel() {
     }
@@ -63,6 +64,15 @@ public class InfoGameModel implements Parcelable, Cloneable {
     public void setContent(List<GameContentModel> content) {
         this.content = content;
     }
+
+    public int getLevelCode() {
+        return Integer.parseInt(code.split("\\.")[0]);
+    }
+
+    public int getSubLevelCode() {
+        return Integer.parseInt(code.split("\\.")[1]);
+    }
+
 
     @Override
     public int describeContents() {

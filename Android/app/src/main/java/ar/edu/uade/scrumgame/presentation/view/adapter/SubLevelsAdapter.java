@@ -4,9 +4,10 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
+import android.widget.ProgressBar;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.widget.AppCompatTextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.Collection;
@@ -16,6 +17,9 @@ import java.util.List;
 import javax.inject.Inject;
 
 import ar.edu.uade.scrumgame.R;
+import ar.edu.uade.scrumgame.presentation.constants.ProgressStatusConstant;
+import ar.edu.uade.scrumgame.presentation.models.ProgressModel;
+import ar.edu.uade.scrumgame.presentation.models.ProgressStatusModel;
 import ar.edu.uade.scrumgame.presentation.models.SubLevelModel;
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -23,11 +27,16 @@ import butterknife.ButterKnife;
 
 public class SubLevelsAdapter extends RecyclerView.Adapter<SubLevelsAdapter.SubLevelViewHolder> {
 
+    public void setProgressModel(ProgressModel progressModel) {
+        this.progressModel = progressModel;
+    }
+
     public interface OnItemClickListener {
-        void onSubLevelItemClicked(SubLevelModel subLevelModel);
+        void onSubLevelItemClicked(SubLevelModel subLevelModel, ProgressModel progressModel);
     }
 
     private List<SubLevelModel> subLevelsCollection;
+    private ProgressModel progressModel;
     private LayoutInflater layoutInflater;
     private OnItemClickListener onItemClickListener;
 
@@ -36,6 +45,7 @@ public class SubLevelsAdapter extends RecyclerView.Adapter<SubLevelsAdapter.SubL
         this.layoutInflater =
                 (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         this.subLevelsCollection = Collections.emptyList();
+        this.progressModel = null;
     }
 
     @Override
@@ -54,10 +64,16 @@ public class SubLevelsAdapter extends RecyclerView.Adapter<SubLevelsAdapter.SubL
     public void onBindViewHolder(@NonNull SubLevelViewHolder holder, final int position) {
         SubLevelModel subLevelModel = this.subLevelsCollection.get(position);
         holder.text.setText(subLevelModel.getName());
+        ProgressStatusModel progressStatusModel = subLevelModel.getStatus(progressModel);
+        holder.progressBar.setProgress(progressStatusModel.getProgress());
+        holder.progressBarText.setText(Integer.toString(progressStatusModel.getProgress()));
+        holder.progressText.setText(progressStatusModel.getStatus());
         holder.itemView.setOnClickListener(v -> {
-            if (SubLevelsAdapter.this.onItemClickListener != null) {
-                SubLevelsAdapter.this.onItemClickListener.onSubLevelItemClicked(subLevelModel);
-            }
+            if (progressStatusModel.getStatus().equals(ProgressStatusConstant.AVAILABLE) ||
+                    progressStatusModel.getStatus().equals(ProgressStatusConstant.STARTED) &&
+                            SubLevelsAdapter.this.onItemClickListener != null)
+                SubLevelsAdapter.this.onItemClickListener.onSubLevelItemClicked(subLevelModel,
+                        progressModel);
         });
     }
 
@@ -84,7 +100,13 @@ public class SubLevelsAdapter extends RecyclerView.Adapter<SubLevelsAdapter.SubL
 
     static class SubLevelViewHolder extends RecyclerView.ViewHolder {
         @BindView(R.id.subLevelText)
-        TextView text;
+        AppCompatTextView text;
+        @BindView(R.id.progressBar)
+        ProgressBar progressBar;
+        @BindView(R.id.progressText)
+        AppCompatTextView progressText;
+        @BindView(R.id.progressBarText)
+        AppCompatTextView progressBarText;
 
         SubLevelViewHolder(View itemView) {
             super(itemView);

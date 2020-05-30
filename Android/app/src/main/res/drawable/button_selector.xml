@@ -1,0 +1,7 @@
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@drawable/true_false_button_fill" android:state_selected="true"
+          android:textColor="@color/white"/>
+    <item android:drawable="@drawable/true_false_button_fill" android:state_pressed="true"
+          android:textColor="@color/white"/>
+    <item android:drawable="@drawable/true_false_button_outline" android:textColor="@color/violet"/>
+</selector>

@@ -1,7 +1,5 @@
 package ar.edu.uade.scrumgame.presentation.view.activity;
 
-import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.Window;
 
@@ -21,23 +19,23 @@ public class InfoTheoryActivity extends BaseActivity implements HasComponent<Lev
 
     private String subLevelCode;
 
-    public static Intent getCallingIntent(Context context) {
-        return new Intent(context, InfoTheoryActivity.class);
-    }
+    private Integer currentGame;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        this.initializeInjector();
         super.onCreate(savedInstanceState);
         this.requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
         this.setContentView(R.layout.activity_info_theory);
-        this.initializeInjector();
         Bundle bundle = new Bundle();
         levelCode = getIntent().getExtras().getInt("levelCode");
         levelName = getIntent().getExtras().getString("levelName");
         subLevelCode = getIntent().getExtras().getString("subLevelCode");
+        currentGame = getIntent().getExtras().getInt("currentGame");
         bundle.putInt("levelCode", levelCode);
         bundle.putString("levelName", levelName);
         bundle.putString("subLevelCode", subLevelCode);
+        bundle.putInt("currentGame", currentGame);
         InfoTheoryFragment infoTheoryFragment = new InfoTheoryFragment();
         infoTheoryFragment.setArguments(bundle);
         if (savedInstanceState == null) {
@@ -59,7 +57,9 @@ public class InfoTheoryActivity extends BaseActivity implements HasComponent<Lev
     }
 
     @Override
-    public void onPlayClicked(Integer levelCode, String levelTitle, String subLevelCode, String subLevelTitle) {
-        this.navigator.navigateToPlaySubLevel(this, levelCode, levelTitle, subLevelCode, subLevelTitle);
+    public void onPlayClicked(Integer levelCode, String levelTitle, String subLevelCode,
+                              String subLevelTitle, Integer currentGame) {
+        this.navigator.navigateToPlaySubLevel(this, levelCode, levelTitle,
+                subLevelCode, subLevelTitle, currentGame);
     }
 }

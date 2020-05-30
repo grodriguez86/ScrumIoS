@@ -1,7 +1,5 @@
 package ar.edu.uade.scrumgame.presentation.view.activity;
 
-import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.Window;
 
@@ -9,6 +7,7 @@ import ar.edu.uade.scrumgame.R;
 import ar.edu.uade.scrumgame.presentation.di.HasComponent;
 import ar.edu.uade.scrumgame.presentation.di.components.DaggerLevelComponent;
 import ar.edu.uade.scrumgame.presentation.di.components.LevelComponent;
+import ar.edu.uade.scrumgame.presentation.models.ProgressModel;
 import ar.edu.uade.scrumgame.presentation.models.SubLevelModel;
 import ar.edu.uade.scrumgame.presentation.view.fragment.LevelFragment;
 
@@ -18,16 +17,12 @@ public class LevelActivity extends BaseActivity implements HasComponent<LevelCom
 
     private Integer levelCode;
 
-    public static Intent getCallingIntent(Context context) {
-        return new Intent(context, LevelActivity.class);
-    }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        this.initializeInjector();
         super.onCreate(savedInstanceState);
         this.requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
         this.setContentView(R.layout.activity_level);
-        this.initializeInjector();
         Bundle bundle = new Bundle();
         levelCode = (Integer) getIntent().getExtras().get("levelCode");
         bundle.putInt("levelCode", levelCode);
@@ -52,7 +47,13 @@ public class LevelActivity extends BaseActivity implements HasComponent<LevelCom
     }
 
     @Override
-    public void onSubLevelClicked(String levelName, SubLevelModel subLevelModel) {
-        this.navigator.navigateToInfoTheory(this, levelCode, levelName, subLevelModel.getCode());
+    public void onSubLevelClicked(String levelName, SubLevelModel subLevelModel, ProgressModel progressModel) {
+        if (progressModel.isTutorialCompleted()) {
+            this.navigator.navigateToPlaySubLevel(this, levelCode, levelName,
+                    subLevelModel.getCode(), subLevelModel.getName(), progressModel.getActualGame());
+        } else {
+            this.navigator.navigateToInfoTheory(this, levelCode, levelName,
+                    subLevelModel.getCode(), progressModel.getActualGame());
+        }
     }
 }

@@ -1,35 +1,63 @@
 package ar.edu.uade.scrumgame.domain.interactor;
 
-import java.util.Collection;
-
 import javax.inject.Inject;
 
-import ar.edu.uade.scrumgame.domain.InfoGame;
+import ar.edu.uade.scrumgame.domain.Progress;
 import ar.edu.uade.scrumgame.domain.executor.PostExecutionThread;
 import ar.edu.uade.scrumgame.domain.executor.ThreadExecutor;
-import ar.edu.uade.scrumgame.domain.repository.LevelRepository;
+import ar.edu.uade.scrumgame.domain.repository.LocalProgressRepository;
+import ar.edu.uade.scrumgame.domain.repository.RemoteProgressRepository;
 import io.reactivex.Observable;
-import io.reactivex.Observer;
 
-public class SaveProgress extends UseCase<Integer, String> {
+public class SaveProgress extends UseCase<String, Progress> {
 
-    private final LevelRepository levelRepository;
+    public static final class PROGRESS_SAVE_OUTCOMES {
+        public static final String COMPLETE = "complete";
+        public static final String FAILED_REMOTE = "failed remote";
+    }
+
+    private final LocalProgressRepository localProgressRepository;
+
+    private final RemoteProgressRepository remoteProgressRepository;
 
     @Inject
-    SaveProgress(LevelRepository levelRepository, ThreadExecutor threadExecutor,
-                 PostExecutionThread postExecutionThread) {
+    SaveProgress(
+            LocalProgressRepository localProgressRepository,
+            RemoteProgressRepository remoteProgressRepository,
+            ThreadExecutor threadExecutor,
+            PostExecutionThread postExecutionThread) {
         super(threadExecutor, postExecutionThread);
-        this.levelRepository = levelRepository;
+        this.localProgressRepository = localProgressRepository;
+        this.remoteProgressRepository = remoteProgressRepository;
     }
 
     @Override
-    Observable<Integer> buildUseCaseObservable(String subLevelCode) {
-        //TODO guardar progreso y devolver porcentaje completado para el nivel actual
-        return new Observable<Integer>() {
-            @Override
-            protected void subscribeActual(Observer<? super Integer> observer) {
+    Observable<String> buildUseCaseObservable(Progress progress) {
+        return Observable.create(emitter -> {
+            localProgressRepository.saveProgress(progress).subscribe(new DefaultObserver<Void>() {
+                @Override
+                public void onComplete() {
+                    remoteProgressRepository.saveProgress(progress).subscribe(new DefaultObserver<Void>() {
+                        @Override
+                        public void onComplete() {
+                            emitter.onNext(PROGRESS_SAVE_OUTCOMES.COMPLETE);
+                            emitter.onComplete();
+                        }
 
-            }
-        };
+                        @Override
+                        public void onError(Throwable exception) {
+                            emitter.onNext(PROGRESS_SAVE_OUTCOMES.FAILED_REMOTE);
+                            emitter.onComplete();
+
+                        }
+                    });
+                }
+
+                @Override
+                public void onError(Throwable exception) {
+                    emitter.onError(exception);
+                }
+            });
+        });
     }
 }

@@ -1,25 +1,40 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">Scrum Game</string>
     <string name="exception_message_generic">Se ha producido un error, intente nuevamente</string>
     <string name="exception_message_file_not_found">El archivo de niveles no se ha encontrado</string>
     <string name="btn_text_retry">Reintentar</string>
-    <string name="login_sign_up">Regístrate!</string>
+    <string name="login_sign_up">Crear una cuenta</string>
     <string name="login_description">Aprende Scrum jugando!</string>
-    <string name="login_already_registered">¿Ya tienes una cuenta?</string>
-    <string name="login_login">Iniciar sesión</string>
+    <string name="login_not_yet_registered">¿No estás registrado?</string>
+    <string name="login_login">Ingresar</string>
     <string name="menu_level_row_sublevels">%d subniveles</string>
     <string name="info_theory_skip">SALTAR TUTORIAL</string>
     <string name="info_theory_play">A JUGAR!</string>
-    <string name="product_backlog_tag">Excelente! El Product Backlog es el lugar donde figuran todas las tareas que el producto requiere desarrollar.</string>
-    <string name="sprint_backlog_tag">Perfecto! El Sprint Backlog es el lugar donde figuran todas las tareas que el equipo decidió que realizarán en esta iteración.</string>
+    <string name="product_backlog_tag">Excelente! El Product Backlog es el lugar donde figuran todas las tareas que el
+        producto requiere desarrollar.
+    </string>
+    <string name="sprint_backlog_tag">Perfecto! El Sprint Backlog es el lugar donde figuran todas las tareas que el
+        equipo decidió que realizarán en esta iteración.
+    </string>
+    <string name="menu_play_available">Jugar ahora</string>
+    <string name="menu_play_unavailable">No disponible</string>
+    <string name="menu_play_completed">Completo! &#129304;</string>
     <string name="arrow_iv_cd">arrow</string>
     <string name="arrow2_iv_cd">arrow2</string>
-    <string name="increment_tag">Bien ahí! El producto incrementable es lo que se puede entregar al final de cada iteración.</string>
+    <string name="profile_picture_cd">Profile picture</string>
+    <string name="back_button_cd">Back</string>
+    <string name="increment_tag">Bien ahí! El producto incrementable es lo que se puede entregar al final de cada
+        iteración.
+    </string>
     <string name="curvedArrow2_iv_cd">curvedArrow2</string>
     <string name="curvedArrow_iv_cd">curvedArrow</string>
-    <string name="sprint_tag">Buenísimo! El Sprint es la iteración en sí. Esta puede durar de 2 a 4 semanas y es el tiempo en el que el equipo desarrolla las tareas que definió en el Sprint Backlog.</string>
-    <string name="daily_meetup_tag">Genial! La Daily Scrum Meeting es la reunion diaria donde se sincroniza el equipo sobre el estado de cada uno de sus miembros. Aprenderás sobre ella más adelante! 😊</string>
-    <string name="game_send_answer">Enviar respuesta</string>
+    <string name="sprint_tag">Buenísimo! El Sprint es la iteración en sí. Esta puede durar de 2 a 4 semanas y es el
+        tiempo en el que el equipo desarrolla las tareas que definió en el Sprint Backlog.
+    </string>
+    <string name="daily_meetup_tag">Genial! La Daily Scrum Meeting es la reunion diaria donde se sincroniza el equipo
+        sobre el estado de cada uno de sus miembros. Aprenderás sobre ella más adelante! 😊
+    </string>
+    <string name="game_send_answer">Continuar</string>
     <string name="game_choice_true">Verdadero</string>
     <string name="game_choice_false">Falso</string>
     <string name="correct_answer_button_text">OK</string>
@@ -30,10 +45,181 @@
     <string name="incorrect_answer_button_text">Aceptar</string>
     <string-array name="no_send_button_games">
         <item>scrumFlowDraggable</item>
-        <item>trueFalseQuiz</item>
+        <item>velocity</item>
     </string-array>
     <string name="progress_label">%1$d%%</string>
     <string name="accept">Aceptar</string>
     <string name="complete">Completo</string>
     <string name="image_quiz_cd">Imagen</string>
+    <string-array name="genders">
+        <item>Masculino</item>
+        <item>Femenino</item>
+    </string-array>
+    <string-array name="tasteLevels">
+        <item>Nada</item>
+        <item>Poco</item>
+        <item>Le da igual</item>
+        <item>Mucho</item>
+        <item>Fanático</item>
+    </string-array>
+    <string name="signup_title">Registro</string>
+    <string name="signup_page_text">1 de 2</string>
+    <string name="signup_subtitle">Ingresa tu información de sesión</string>
+    <string name="signup_password_subtext">La contraseña debe tener al menos 6 caracteres.</string>
+    <string name="signup_email">Mail</string>
+    <string name="signup_password">Contraseña</string>
+    <string name="button_continue">Continuar</string>
+    <string name="signup_details_page_text">2 de 2</string>
+    <string name="signup_details_subtitle">Ingresa tu información personal</string>
+    <string name="signup_details_name">Nombre</string>
+    <string name="signup_details_age">Edad</string>
+    <string name="signup_details_sex">Sexo</string>
+    <string name="signup_details_profession">Profesión</string>
+    <string name="signup_details_city">Ciudad</string>
+    <string name="signup_details_province">Provincia</string>
+    <string name="signup_details_country">País</string>
+    <string name="signup_details_gamesTasteLevel">Nivel de gusto por los juegos</string>
+    <string name="signup_details_gamesTime">Tiempo dedicado a juegos</string>
+    <string name="button_done">Listo!</string>
+    <!-- Errors -->
+    <string name="signup_form_invalid_email">Email inválido!</string>
+    <string name="signup_form_invalid_password">Contraseña inválida!</string>
+    <string name="form_incomplete_alert_title">Datos incompletos</string>
+    <string name="form_incomplete_alert_message">Todos los campos deben estar completos!</string>
+    <string name="form_error_age_nan">Edad inválida! Ingresa un número!</string>
+    <string name="unknown_error">Ocurrió un error desconocido</string>
+    <string name="error_user_not_found">No se encontró el usuario</string>
+    <string name="error_creating_remote_user">Ocurrió un error creando el usuario remoto</string>
+    <string name="error_saving_user">No se pudieron guardar los datos del usuario</string>
+    <string name="error_saving_progress">No se pudieron guardar los datos de progreso</string>
+    <string name="error_saving_remote_data">Ocurrió un error al guardar los datos remotos</string>
+    <string name="error_email_already_in_use">Ya existe un usuario con ese email</string>
+    <string name="exception_message_user_already_registered">El mail ingresado está asociado a otro usuario</string>
+    <string name="form_invalid_password_length">La contraseña debe tener al menos 6 caracteres</string>
+    <string name="form_invalid_email">El mail ingresado es inválido</string>
+    <!-- Invaders -->
+    <string name="invaders_description">Una invasión extraterrestre amenaza tu planeta. ¡Debes protegerlo!</string>
+    <string name="invaders_description_2">¿Cuántas amenazas crees poder derribar en 30 segundos?</string>
+    <string name="invaders_play_button">A jugar!</string>
+    <string name="play_now">Jugar ahora</string>
+    <string name="not_available">No disponible</string>
+    <string name="game_completed">Completo &#129304;</string>
+    <string name="velocity_game_expected_score_input_hint">0</string>
+    <string name="velocity_invaders_logo_cv">Invasores</string>
+    <string name="velocity_game_results_title">Resultados</string>
+    <string name="velocity_game_expected_score_description">Estimación inicial</string>
+    <string name="velocity_game_score_description">Resultado real</string>
+    <string name="velocity_game_exact_estimation">"Excelente estimación! Lograste resolver en el tiempo acordado lo que
+        te propusiste!"
+    </string>
+    <string name="velocity_game_higher_estimation">"Bien igual! No llegaste a completar lo que estimaste, significa que
+        era una tarea mas compleja de lo que creías, o te falto más información al momento de estimar."
+    </string>
+    <string name="velocity_game_lower_estimation">Muy bien! Pudiste hacer más de lo que estimaste. Significa que te
+        resultó más fácil de lo que creías.
+    </string>
+    <string name="velocity_game_results_description">Así como te comprometiste antes de jugar, los miembros del equipo
+        se comprometen a resolver una cierta cantidad de funcionalidades dentro del Sprint.\n\nEse compromiso es
+        evaluado al final del Sprint, para ver cuanto realmente se pudo lograr
+    </string>
+    <string name="continue_text">Continuar</string>
+    <string name="velocity_game_conclusion_title">Velocity</string>
+    <string name="velocity_game_conclusion_user_story_description">Se toman todas las User Stories que se lograron
+        completar según el PO y se suman sus estimacione. Este resultado se denomina Velocity.
+    </string>
+    <string name="velocity_game_conclusion_velocity_description">La Velocity mide la cantidad de trabajo que un equipo
+        puede realizar a lo largo de un Sprint. Es muy útil, para dar feedback de inmediato de si el proceso llevado a
+        cabo durante el Sprint, mejoró la productividad o no.\n\nEs una de las métricas clave de Scrum, utilizada por
+        Product Owners para planificar los releases. Para estos análisis a futuro es necesario tomar la Velocity de
+        varios Sprints.
+    </string>
+    <string name="finish_text">Finalizar</string>
+    <string name="profile_name">Nombre</string>
+    <string name="profile_profession">Profesión</string>
+    <string name="profile_age">Edad</string>
+    <string name="profile_location">Ubicación</string>
+    <string name="profile_game_taste">Nivel de gusto por los juegos</string>
+    <string name="profile_game_time">Tiempo dedicado a juegos</string>
+    <string name="profile_logout">Cerrar sesión &#128075;</string>
+    <string name="location">%s, %s, %s</string>
+    <string name="profile_information">Información</string>
+    <string name="profile_achievements">Logros</string>
+    <string name="planning_poker_game_intro_title">Ejercicio de Planificación</string>
+    <string name="planning_poker_game_intro_description">Supongamos que nos han contratado de una empresa de transporte
+        para construir autobuses para el traslado de niños.
+    </string>
+    <string name="planning_poker_game_intro_description_2">Luego de analizar las funcionalidades que el autobús debe
+        tener, hemos dividido la el problema en los siguientes items:
+    </string>
+    <string name="planning_poker_game_intro_product_backlog">Product Backlog</string>
+    <string name="planning_poker_bus_cv">Bus</string>
+    <string name="planning_poker_game_pivot_title">Pivote</string>
+    <string name="planning_poker_game_pivot_description">Es importante definir una historia pivote. Es decir, una
+        historia que sea relativamente sencilla, que todos sepan como resolverla. Esta sera valuada con 1 Story Point y
+        sera usada como referencia para hacer proyecciones en el tiempo.
+    </string>
+    <string name="planning_poker_game_pivote_description_2">En este caso, se toma la User Story \"Volante\", como
+        referencia para las demás.
+    </string>
+    <string name="planning_poker_game_pivote_item">Volante</string>
+    <string name="planning_poker_game_pivote_item_points">Story Points: 1</string>
+    <string name="steering_wheel_bus_cv">Steering wheel bus</string>
+    <string name="planning_poker_game_user_story_title">Estimación de las User Stories</string>
+    <string name="planning_poker_game_user_story_description">Utilizaremos Planning Poker para planificar el Sprint. La
+        siguiente historia a estimar es:
+    </string>
+    <string name="planning_poker_game_chassis">Chasis</string>
+    <string name="planning_poker_game_user_story_description_2">Seleccione lo que considere de esfuerzo para realizar la
+        User Story, medido en Story Points. Tené en cuenta la User Story pivote.
+    </string>
+    <string name="team_member_3_cv">Team\n Member 3</string>
+    <string name="team_member_2_cv">Team\n Member 2</string>
+    <string name="team_member_1_cv">Team\n Member 1</string>
+    <string name="user_cv">Vos</string>
+    <string name="planning_poker_game_conclusion_title">Se decidió:</string>
+    <string name="planning_poker_game_conclusion_description">Luego de las iteraciones que el moderador considere, se
+        llega a un acuerdo para dicha funcionalidad.\n\nEsto se realizara por todas las tareas que se planificaron para
+        el sprint.
+    </string>
+    <string name="planning_poker_game_confrontation_team_member_estimation">El Team Member\n 3 eligió:</string>
+    <string name="planning_poker_game_confrontation_user_estimation">y vos elegiste:</string>
+    <string name="planning_poker_game_confrontation_description">Como son las cartas mas extremas de las elegidas, en esta
+        etapa cada uno da una explicacion de porque las eligieron. \n\nUna vez explicadas las razones se vuelven a elegir
+        cartas para la misma funcionalidad, para ponerse de acuerdo.
+    </string>
+    <string name="planning_poker_game_sprint_backlog_title">Sprint Backlog</string>
+    <string name="planning_poker_game_sprint_backlog_description">El Sprint Backlog se definirá con aquellas User
+        Stories que sean prioritarias con para el PO, mas algunas de menor complejidad. Todo esto teniendo en cuenta la
+        Velocity del equipo.\n En este caso, la Velocity es de 30.
+    </string>
+    <string name="planning_poker_game_priority_item">Prioridad para el PO, por lo tanto debe estar en el sprint</string>
+    <string name="story_points">Story Points: %s</string>
+    <string name="exception_invalid_credentials">El mail y/o contraseña son incorrectos.</string>
+    <string name="confirmation">Confirmación</string>
+    <string name="logout_confirmation">¿Deseas cerrar sesión?</string>
+    <string name="logout">Cerrar sesión</string>
+    <string name="quit_application_confirmation">¿Deseas salir de la aplicación?</string>
+    <string name="quit">Salir</string>
+    <string name="exit_game">¿Desea salir del juego? ¡Perderás el progreso!</string>
+    <string name="version">Versión %s</string>
+    <string-array name="fibonacci_sequence">
+        <item>0</item>
+        <item tools:ignore="TypographyFractions">1/2</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>5</item>
+        <item>8</item>
+        <item>13</item>
+        <item>20</item>
+        <item>40</item>
+        <item>∞</item>
+        <item>\?</item>
+    </string-array>
+    <string-array name="planning_poker_product_backlog_items">
+        <item>Chasis</item>
+        <item>Frenos</item>
+        <item>Motor</item>
+        <item>Volante</item>
+    </string-array>
 </resources>

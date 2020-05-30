@@ -1,62 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@color/levelOne">
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+              android:background="@drawable/gradient_background_logo">
 
     <Button
-        android:id="@+id/bt_exit"
-        android:layout_width="36dp"
-        android:layout_height="36dp"
-        android:layout_margin="0dp"
-        android:background="@color/transparent"
-        android:padding="0dp"
-        android:text="X"
-        android:textColor="@color/white"
-        android:textStyle="bold" />
+            android:id="@+id/bt_exit"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_margin="10dp"
+            android:background="@color/transparent"
+            android:text="X"
+            android:textColor="@color/white"
+            android:textStyle="bold" android:textSize="30sp" android:fontFamily="@font/gotham_rounded_bold"/>
 
-    <TextView
-        android:id="@+id/levelTitle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginEnd="40dp"
-        android:layout_marginBottom="0dp"
-        android:adjustViewBounds="true"
-        android:contentDescription="@string/app_name"
-        android:cropToPadding="false"
-        android:gravity="center"
-        android:textSize="36sp"
-        android:textColor="@color/white"/>
+    <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/levelTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginEnd="40dp"
+            android:layout_marginBottom="0dp"
+            android:adjustViewBounds="true"
+            android:contentDescription="@string/app_name"
+            android:cropToPadding="false"
+            android:gravity="center"
+            android:textSize="36sp"
+            android:textColor="@color/white" android:fontFamily="@font/gotham_rounded_bold" tools:text="¿Scrum?"/>
 
-    <TextView
-        android:id="@+id/levelSubtitle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginEnd="40dp"
-        android:adjustViewBounds="true"
-        android:contentDescription="@string/app_name"
-        android:cropToPadding="false"
-        android:gravity="center"
-        android:textSize="24sp"
-        android:textColor="@color/white"/>
+    <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/levelSubtitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginEnd="40dp"
+            android:adjustViewBounds="true"
+            android:contentDescription="@string/app_name"
+            android:cropToPadding="false"
+            android:gravity="center"
+            android:textSize="24sp"
+            android:textColor="@color/white" tools:text="2 subniveles"
+            android:fontFamily="@font/gotham_rounded_medium" android:layout_marginTop="5dp"/>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_subLevels"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/levelOne"
-        android:clipChildren="false"
-        android:clipToPadding="false"
-        android:orientation="horizontal"
-        android:paddingLeft="110dp"
-        android:paddingRight="110dp" />
+            android:id="@+id/rv_subLevels"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/gradient_background_logo"
+            android:clipChildren="false"
+            android:clipToPadding="false"
+            android:orientation="horizontal"
+            android:paddingLeft="110dp"
+            android:paddingRight="110dp"/>
 
-    <include layout="@layout/view_progress" />
+    <include layout="@layout/view_progress"/>
 
-    <include layout="@layout/view_retry" />
+    <include layout="@layout/view_retry"/>
 
 </LinearLayout>

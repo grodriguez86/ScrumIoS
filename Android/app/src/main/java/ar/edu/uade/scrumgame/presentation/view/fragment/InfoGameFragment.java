@@ -9,14 +9,11 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.LinearLayout;
-import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
+import android.widget.*;
 
 import androidx.annotation.Nullable;
 
+import androidx.appcompat.widget.AppCompatTextView;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 
 import java.util.List;
@@ -48,21 +45,21 @@ public class InfoGameFragment extends BaseFragment implements InfoGamesContentVi
     @BindView(R.id.game_progress)
     ProgressBar progressBar;
     @BindView(R.id.progress_tv)
-    TextView progressTextView;
+    AppCompatTextView progressAppCompatTextView;
     @BindView(R.id.levelTitle)
-    TextView levelTitleTextView;
+    AppCompatTextView levelTitleAppCompatTextView;
     @BindView(R.id.subLevelTitle)
-    TextView subLevelTitleTextView;
+    AppCompatTextView subLevelTitleAppCompatTextView;
     @BindView(R.id.title)
-    TextView titleTextView;
+    AppCompatTextView titleAppCompatTextView;
     @BindView(R.id.indications)
-    TextView indicationsTextView;
+    AppCompatTextView indicationsAppCompatTextView;
     @BindView(R.id.sendAnswer)
     Button sendAnswerButton;
     @BindView(R.id.rl_progress)
-    RelativeLayout progressLayout;
+    FrameLayout progressLayout;
     @BindView(R.id.rl_retry)
-    RelativeLayout retryLayout;
+    FrameLayout retryLayout;
     @BindView(R.id.bt_retry)
     Button retryButton;
     @BindView(R.id.bottom_sheet)
@@ -92,12 +89,9 @@ public class InfoGameFragment extends BaseFragment implements InfoGamesContentVi
         return fragment;
     }
 
-    public InfoGameFragment() {
-        this.setRetainInstance(true);
-    }
-
     @Override
     public void onAttach(Activity activity) {
+        this.getComponent(LevelComponent.class).inject(this);
         super.onAttach(activity);
         if (activity instanceof InfoGameActivity) {
             this.context = (InfoGameActivity) activity;
@@ -110,7 +104,6 @@ public class InfoGameFragment extends BaseFragment implements InfoGamesContentVi
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        this.getComponent(LevelComponent.class).inject(this);
         this.getGamesData();
     }
 
@@ -133,8 +126,8 @@ public class InfoGameFragment extends BaseFragment implements InfoGamesContentVi
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         this.infoGamesContentPresenter.setView(this);
-        this.levelTitleTextView.setText(levelTitle);
-        this.subLevelTitleTextView.setText(subLevelTitle);
+        this.levelTitleAppCompatTextView.setText(levelTitle);
+        this.subLevelTitleAppCompatTextView.setText(subLevelTitle);
         this.bottomSheetBehavior = BottomSheetBehavior.from(bottomSheetLayout);
         bottomSheetBehavior.setState(BottomSheetBehavior.STATE_HIDDEN);
         if (savedInstanceState == null) {
@@ -210,7 +203,7 @@ public class InfoGameFragment extends BaseFragment implements InfoGamesContentVi
 
     @Override
     public void onCompleteGame(String gameCode) {
-        this.infoGamesContentPresenter.saveCompleteGameProgress(gameCode);
+        this.infoGamesContentPresenter.playNextLevel(gameCode);
     }
 
     @Override
@@ -232,7 +225,7 @@ public class InfoGameFragment extends BaseFragment implements InfoGamesContentVi
     private void updateProgress() {
         int progressPercentage = this.calculateProgress().intValue();
         this.progressBar.setProgress(progressPercentage);
-        this.progressTextView.setText(getString(R.string.progress_label, progressPercentage));
+        this.progressAppCompatTextView.setText(getString(R.string.progress_label, progressPercentage));
     }
 
     private Float calculateProgress() {
@@ -274,14 +267,14 @@ public class InfoGameFragment extends BaseFragment implements InfoGamesContentVi
     }
 
     private void setUpView(InfoGameModel infoGameModel) {
-        titleTextView.setText(infoGameModel.getTitle());
+        titleAppCompatTextView.setText(infoGameModel.getTitle());
         if (this.shouldHideSendAnswerButton(infoGameModel.getType())) {
             sendAnswerButton.setVisibility(View.GONE);
         } else {
             sendAnswerButton.setVisibility(View.VISIBLE);
         }
         //TODO tutorial
-        indicationsTextView.setText("");
+        indicationsAppCompatTextView.setText("");
     }
 
     private boolean shouldHideSendAnswerButton(String type) {
@@ -297,7 +290,7 @@ public class InfoGameFragment extends BaseFragment implements InfoGamesContentVi
     protected void addFragment(Fragment fragment) {
         final FragmentTransaction fragmentTransaction = this.getFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.gameContainer, fragment);
-        fragmentTransaction.commit();
+        fragmentTransaction.commitAllowingStateLoss();
     }
 
     @OnClick(R.id.bt_exit)
@@ -310,8 +303,14 @@ public class InfoGameFragment extends BaseFragment implements InfoGamesContentVi
     @OnClick(R.id.finish_game_btn)
     public void finishGame() {
         if (this.onGamesCompletedListener != null) {
-            this.onGamesCompletedListener.onGamesCompleted();
+            this.infoGamesContentPresenter.finishSublevel();
         }
         this.bottomSheetBehavior.setState(BottomSheetBehavior.STATE_HIDDEN);
     }
+
+    @Override
+    public void goToSublevelMenu() {
+        this.onGamesCompletedListener.onGamesCompleted();
+    }
+
 }

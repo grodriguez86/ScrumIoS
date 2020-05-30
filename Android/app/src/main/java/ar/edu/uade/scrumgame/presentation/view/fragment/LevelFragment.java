@@ -1,5 +1,6 @@
 package ar.edu.uade.scrumgame.presentation.view.fragment;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
@@ -7,10 +8,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
+import android.widget.FrameLayout;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.AppCompatTextView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.LinearSnapHelper;
 import androidx.recyclerview.widget.RecyclerView;
@@ -22,6 +23,7 @@ import javax.inject.Inject;
 import ar.edu.uade.scrumgame.R;
 import ar.edu.uade.scrumgame.presentation.di.components.LevelComponent;
 import ar.edu.uade.scrumgame.presentation.models.LevelModel;
+import ar.edu.uade.scrumgame.presentation.models.ProgressModel;
 import ar.edu.uade.scrumgame.presentation.models.SubLevelModel;
 import ar.edu.uade.scrumgame.presentation.presenter.LevelPresenter;
 import ar.edu.uade.scrumgame.presentation.view.LevelView;
@@ -34,7 +36,7 @@ import butterknife.OnClick;
 public class LevelFragment extends BaseFragment implements LevelView {
 
     public interface SubLevelListListener {
-        void onSubLevelClicked(String levelName, SubLevelModel subLevelModel);
+        void onSubLevelClicked(String levelName, SubLevelModel subLevelModel, ProgressModel progressModel);
     }
 
     @Inject
@@ -42,15 +44,15 @@ public class LevelFragment extends BaseFragment implements LevelView {
     @Inject
     SubLevelsAdapter subLevelsAdapter;
     @BindView(R.id.levelTitle)
-    TextView levelTitle;
+    AppCompatTextView levelTitle;
     @BindView(R.id.levelSubtitle)
-    TextView levelSubtitle;
+    AppCompatTextView levelSubtitle;
     @BindView(R.id.rv_subLevels)
     RecyclerView subLevelsRecyclerView;
     @BindView(R.id.rl_progress)
-    RelativeLayout progressLayout;
+    FrameLayout progressLayout;
     @BindView(R.id.rl_retry)
-    RelativeLayout retryLayout;
+    FrameLayout retryLayout;
     @BindView(R.id.bt_retry)
     Button retryButton;
     @BindView(R.id.bt_exit)
@@ -58,15 +60,12 @@ public class LevelFragment extends BaseFragment implements LevelView {
     private SubLevelListListener subLevelListListener;
     private String currentLevelName;
 
-    public LevelFragment() {
-        this.setRetainInstance(true);
-    }
-
     @OnClick(R.id.bt_exit)
     public void goBack() {
         this.getActivity().onBackPressed();
     }
 
+    @SuppressLint("DefaultLocale")
     @Override
     public void loadLevel(LevelModel level) {
         currentLevelName = level.getName();
@@ -76,16 +75,11 @@ public class LevelFragment extends BaseFragment implements LevelView {
 
     @Override
     public void onAttach(Activity activity) {
+        this.getComponent(LevelComponent.class).inject(this);
         super.onAttach(activity);
         if (activity instanceof SubLevelListListener) {
             this.subLevelListListener = (SubLevelListListener) activity;
         }
-    }
-
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        this.getComponent(LevelComponent.class).inject(this);
     }
 
     @Nullable
@@ -122,16 +116,18 @@ public class LevelFragment extends BaseFragment implements LevelView {
     }
 
     @Override
-    public void renderSubLevelList(Collection<SubLevelModel> subLevelModelCollection) {
+    public void renderSubLevelList(Collection<SubLevelModel> subLevelModelCollection,
+                                   ProgressModel progressModel) {
         if (subLevelModelCollection != null) {
             this.subLevelsAdapter.setSubLevelsCollection(subLevelModelCollection);
+            this.subLevelsAdapter.setProgressModel(progressModel);
         }
     }
 
     @Override
-    public void enterSubLevel(String levelName, SubLevelModel subLevelModel) {
+    public void enterSubLevel(String levelName, SubLevelModel subLevelModel, ProgressModel progressModel) {
         if (this.subLevelListListener!= null) {
-            this.subLevelListListener.onSubLevelClicked(levelName, subLevelModel);
+            this.subLevelListListener.onSubLevelClicked(levelName, subLevelModel, progressModel);
         }
     }
 
@@ -203,9 +199,9 @@ public class LevelFragment extends BaseFragment implements LevelView {
     }
 
     private SubLevelsAdapter.OnItemClickListener onItemClickListener =
-            subLevelModel -> {
+            (subLevelModel, progressModel) -> {
                 if (LevelFragment.this.levelPresenter != null && subLevelModel != null) {
-                    LevelFragment.this.levelPresenter.onSubLevelClicked(currentLevelName, subLevelModel);
+                    LevelFragment.this.levelPresenter.onSubLevelClicked(currentLevelName, subLevelModel, progressModel);
                 }
             };
 
