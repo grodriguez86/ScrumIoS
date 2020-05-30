@@ -24,7 +24,6 @@
             android:layout_marginTop="24dp"
             android:background="@color/jelly"
             android:padding="0dp"
-            android:text="b"
             android:textColor="@color/white"
             android:textSize="24sp"
             android:textStyle="bold"
@@ -61,316 +60,328 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:background="@color/background"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
-        app:layout_constraintVertical_bias="0.0">
-
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.33" />
-
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.67" />
-
-        <TextView
-            android:id="@+id/textView4"
-            android:layout_width="wrap_content"
+    <ScrollView
+            android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginStart="@dimen/signup_input_label_left_margin"
-            android:layout_marginLeft="@dimen/signup_input_label_left_margin"
-            android:layout_marginTop="24dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
-            android:text="@string/signup_details_subtitle"
-            android:textColor="@color/black"
-            android:textSize="18sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.496"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <EditText
-            android:id="@+id/inputName"
-            android:layout_width="match_parent"
-            android:layout_height="44dp"
-            android:layout_marginStart="@dimen/signup_input_left_margin"
-            android:layout_marginLeft="@dimen/signup_input_left_margin"
-            android:layout_marginTop="32dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
-            android:ems="10"
-            android:imeOptions="actionNext"
-            android:singleLine="true"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView4" />
-
-        <EditText
-            android:id="@+id/inputCity"
-            android:layout_width="0dp"
-            android:layout_height="44dp"
-            android:layout_marginStart="@dimen/signup_input_left_margin"
-            android:layout_marginLeft="@dimen/signup_input_left_margin"
-            android:layout_marginEnd="16dp"
-            android:layout_marginRight="16dp"
-            android:ems="10"
-            android:imeOptions="actionNext"
-            android:singleLine="true"
-            app:layout_constraintEnd_toStartOf="@+id/guideline3"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txCity" />
-
-        <EditText
-            android:id="@+id/inputProvince"
-            android:layout_width="0dp"
-            android:layout_height="44dp"
-            android:layout_marginStart="@dimen/signup_input_left_margin"
-            android:layout_marginLeft="@dimen/signup_input_left_margin"
-            android:layout_marginEnd="@dimen/signup_input_left_margin"
-            android:layout_marginRight="@dimen/signup_input_left_margin"
-            android:ems="10"
-            android:imeOptions="actionNext"
-            android:singleLine="true"
-            app:layout_constraintEnd_toStartOf="@+id/guideline4"
-            app:layout_constraintStart_toStartOf="@+id/guideline3"
-            app:layout_constraintTop_toBottomOf="@+id/txProvince" />
-
-        <EditText
-            android:id="@+id/inputCountry"
-            android:layout_width="0dp"
-            android:layout_height="44dp"
-            android:layout_marginStart="@dimen/signup_input_left_margin"
-            android:layout_marginLeft="@dimen/signup_input_left_margin"
-            android:layout_marginEnd="16dp"
-            android:layout_marginRight="16dp"
-            android:ems="10"
-            android:imeOptions="actionDone"
-            android:singleLine="true"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="@+id/guideline4"
-            app:layout_constraintTop_toBottomOf="@+id/txCountry" />
-
-        <EditText
-            android:id="@+id/inputProfession"
-            android:layout_width="match_parent"
-            android:layout_height="44dp"
-            android:layout_marginStart="@dimen/signup_input_left_margin"
-            android:layout_marginLeft="@dimen/signup_input_left_margin"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
-            android:ems="10"
-            android:imeOptions="actionNext"
-            android:singleLine="true"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txProfession" />
-
-        <EditText
-            android:id="@+id/inputAge"
-            android:layout_width="100dp"
-            android:layout_height="44dp"
-            android:layout_marginStart="@dimen/signup_input_left_margin"
-            android:layout_marginLeft="@dimen/signup_input_left_margin"
-            android:layout_marginTop="32dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginRight="16dp"
-            android:ems="10"
-            android:imeOptions="actionNext"
-            android:singleLine="true"
-            app:layout_constraintEnd_toStartOf="@+id/guideline3"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/inputName" />
-
-        <Button
-            android:id="@+id/btnDone"
-            android:layout_width="144dp"
-            android:layout_height="41dp"
-            android:layout_gravity="center"
-            android:layout_margin="20dp"
-            android:layout_marginBottom="40dp"
-            android:background="@drawable/signup_button_fill"
-            android:padding="0dp"
-            android:text="@string/button_done"
-            android:textAllCaps="false"
-            android:textColor="@android:color/white"
-            android:textSize="18sp"
-            app:fontFamily="@font/montserrat_regular"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/inputGamesTime" />
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
 
-        <TextView
-            android:id="@+id/txAge"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/signup_input_label_left_margin"
-            android:layout_marginLeft="@dimen/signup_input_label_left_margin"
-            android:layout_marginTop="8dp"
-            android:text="@string/signup_details_age"
-            android:textColor="@color/jelly"
-            android:textSize="18sp"
-            app:layout_constraintBottom_toTopOf="@+id/inputAge"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/inputName" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/background"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
+                app:layout_constraintVertical_bias="0.0">
 
-        <TextView
-            android:id="@+id/txSex"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/signup_input_label_left_margin"
-            android:layout_marginLeft="@dimen/signup_input_label_left_margin"
-            android:text="@string/signup_details_sex"
-            android:textColor="@color/jelly"
-            android:textSize="18sp"
-            app:layout_constraintStart_toStartOf="@+id/guideline3"
-            app:layout_constraintTop_toTopOf="@+id/txAge" />
+            <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guideline3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.33"/>
 
-        <TextView
-            android:id="@+id/txNombre"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/signup_input_label_left_margin"
-            android:layout_marginLeft="@dimen/signup_input_label_left_margin"
-            android:layout_marginTop="8dp"
-            android:text="@string/signup_details_name"
-            android:textSize="18sp"
-            app:layout_constraintBottom_toTopOf="@+id/inputName"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView4"
-            app:layout_constraintVertical_bias="1.0" />
+            <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guideline4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.67"/>
 
-        <TextView
-            android:id="@+id/txGamesTasteLevel"
-            android:layout_width="0dp"
-            android:layout_height="24dp"
-            android:layout_marginStart="@dimen/signup_input_label_left_margin"
-            android:layout_marginLeft="@dimen/signup_input_label_left_margin"
-            android:layout_marginTop="8dp"
-            android:text="@string/signup_details_gamesTasteLevel"
-            android:textSize="18sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/inputCity" />
+            <TextView
+                    android:id="@+id/textView4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_marginStart="@dimen/signup_input_label_left_margin"
+                    android:layout_marginLeft="@dimen/signup_input_label_left_margin"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginRight="8dp"
+                    android:text="@string/signup_details_subtitle"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.496"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"/>
 
-        <TextView
-            android:id="@+id/txGamesTime"
-            android:layout_width="0dp"
-            android:layout_height="24dp"
-            android:layout_marginStart="@dimen/signup_input_label_left_margin"
-            android:layout_marginLeft="@dimen/signup_input_label_left_margin"
-            android:layout_marginTop="8dp"
-            android:text="@string/signup_details_gamesTime"
-            android:textSize="18sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/inputGamesTasteLevel" />
+            <EditText
+                    android:id="@+id/inputName"
+                    android:layout_width="match_parent"
+                    android:layout_height="44dp"
+                    android:layout_marginStart="@dimen/signup_input_left_margin"
+                    android:layout_marginLeft="@dimen/signup_input_left_margin"
+                    android:layout_marginTop="32dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginRight="8dp"
+                    android:ems="10"
+                    android:imeOptions="actionNext"
+                    android:singleLine="true"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView4" android:inputType="text"/>
 
-        <Spinner
-            android:id="@+id/inputGamesTasteLevel"
-            android:layout_width="0dp"
-            android:layout_height="44dp"
-            android:layout_marginStart="@dimen/signup_input_left_margin"
-            android:layout_marginLeft="@dimen/signup_input_left_margin"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
-            android:entries="@array/tasteLevels"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txGamesTasteLevel" />
+            <EditText
+                    android:id="@+id/inputCity"
+                    android:layout_width="0dp"
+                    android:layout_height="44dp"
+                    android:layout_marginStart="@dimen/signup_input_left_margin"
+                    android:layout_marginLeft="@dimen/signup_input_left_margin"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginRight="16dp"
+                    android:ems="10"
+                    android:imeOptions="actionNext"
+                    android:singleLine="true"
+                    app:layout_constraintEnd_toStartOf="@+id/guideline3"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txCity" android:inputType="text"/>
 
-        <Spinner
-            android:id="@+id/inputGamesTime"
-            android:layout_width="0dp"
-            android:layout_height="44dp"
-            android:layout_marginStart="@dimen/signup_input_left_margin"
-            android:layout_marginLeft="@dimen/signup_input_left_margin"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
-            android:entries="@array/tasteLevels"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txGamesTime" />
+            <EditText
+                    android:id="@+id/inputProvince"
+                    android:layout_width="0dp"
+                    android:layout_height="44dp"
+                    android:layout_marginStart="@dimen/signup_input_left_margin"
+                    android:layout_marginLeft="@dimen/signup_input_left_margin"
+                    android:layout_marginEnd="@dimen/signup_input_left_margin"
+                    android:layout_marginRight="@dimen/signup_input_left_margin"
+                    android:ems="10"
+                    android:imeOptions="actionNext"
+                    android:singleLine="true"
+                    app:layout_constraintEnd_toStartOf="@+id/guideline4"
+                    app:layout_constraintStart_toStartOf="@+id/guideline3"
+                    app:layout_constraintTop_toBottomOf="@+id/txProvince" android:inputType="text"/>
 
-        <TextView
-            android:id="@+id/txProfession"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/signup_input_label_left_margin"
-            android:layout_marginLeft="@dimen/signup_input_label_left_margin"
-            android:layout_marginTop="8dp"
-            android:text="@string/signup_details_profession"
-            android:textSize="18sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/inputAge" />
+            <EditText
+                    android:id="@+id/inputCountry"
+                    android:layout_width="0dp"
+                    android:layout_height="44dp"
+                    android:layout_marginStart="@dimen/signup_input_left_margin"
+                    android:layout_marginLeft="@dimen/signup_input_left_margin"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginRight="16dp"
+                    android:ems="10"
+                    android:imeOptions="actionDone"
+                    android:singleLine="true"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toStartOf="@+id/guideline4"
+                    app:layout_constraintTop_toBottomOf="@+id/txCountry" android:inputType="text"/>
 
-        <TextView
-            android:id="@+id/txCity"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/signup_input_label_left_margin"
-            android:layout_marginLeft="@dimen/signup_input_label_left_margin"
-            android:layout_marginTop="8dp"
-            android:text="@string/signup_details_city"
-            android:textSize="18sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/inputProfession" />
+            <EditText
+                    android:id="@+id/inputProfession"
+                    android:layout_width="match_parent"
+                    android:layout_height="44dp"
+                    android:layout_marginStart="@dimen/signup_input_left_margin"
+                    android:layout_marginLeft="@dimen/signup_input_left_margin"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginRight="8dp"
+                    android:ems="10"
+                    android:imeOptions="actionNext"
+                    android:singleLine="true"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txProfession" android:inputType="text"/>
 
-        <TextView
-            android:id="@+id/txProvince"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/signup_input_label_left_margin"
-            android:layout_marginLeft="@dimen/signup_input_label_left_margin"
-            android:layout_marginTop="8dp"
-            android:text="@string/signup_details_province"
-            android:textSize="18sp"
-            app:layout_constraintStart_toStartOf="@+id/guideline3"
-            app:layout_constraintTop_toBottomOf="@+id/inputProfession" />
+            <EditText
+                    android:id="@+id/inputAge"
+                    android:layout_width="100dp"
+                    android:layout_height="44dp"
+                    android:layout_marginStart="@dimen/signup_input_left_margin"
+                    android:layout_marginLeft="@dimen/signup_input_left_margin"
+                    android:layout_marginTop="32dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginRight="16dp"
+                    android:ems="10"
+                    android:imeOptions="actionNext"
+                    android:singleLine="true"
+                    app:layout_constraintEnd_toStartOf="@+id/guideline3"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/inputName" android:inputType="number"/>
 
-        <TextView
-            android:id="@+id/txCountry"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/signup_input_label_left_margin"
-            android:layout_marginLeft="@dimen/signup_input_label_left_margin"
-            android:layout_marginTop="8dp"
-            android:text="@string/signup_details_country"
-            android:textSize="18sp"
-            app:layout_constraintStart_toStartOf="@+id/guideline4"
-            app:layout_constraintTop_toBottomOf="@+id/inputProfession" />
+            <Button
+                    android:id="@+id/btnDone"
+                    android:layout_width="144dp"
+                    android:layout_height="41dp"
+                    android:layout_gravity="center"
+                    android:layout_margin="20dp"
+                    android:layout_marginBottom="40dp"
+                    android:background="@drawable/signup_button_fill"
+                    android:padding="0dp"
+                    android:text="@string/button_done"
+                    android:textAllCaps="false"
+                    android:textColor="@android:color/white"
+                    android:textSize="18sp"
+                    app:fontFamily="@font/montserrat_regular"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.498"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/inputGamesTime"/>
 
-        <Spinner
-            android:id="@+id/inputSex"
-            android:layout_width="0dp"
-            android:layout_height="44dp"
-            android:layout_marginStart="@dimen/signup_input_left_margin"
-            android:layout_marginLeft="@dimen/signup_input_left_margin"
-            android:layout_marginEnd="@dimen/signup_input_left_margin"
-            android:layout_marginRight="@dimen/signup_input_left_margin"
-            android:entries="@array/genders"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/guideline3"
-            app:layout_constraintTop_toBottomOf="@+id/txSex" />
+            <TextView
+                    android:id="@+id/txAge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/signup_input_label_left_margin"
+                    android:layout_marginLeft="@dimen/signup_input_label_left_margin"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/signup_details_age"
+                    android:textColor="@color/jelly"
+                    android:textSize="18sp"
+                    app:layout_constraintBottom_toTopOf="@+id/inputAge"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/inputName"/>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <TextView
+                    android:id="@+id/txSex"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/signup_input_label_left_margin"
+                    android:layout_marginLeft="@dimen/signup_input_label_left_margin"
+                    android:text="@string/signup_details_sex"
+                    android:textColor="@color/jelly"
+                    android:textSize="18sp"
+                    app:layout_constraintStart_toStartOf="@+id/guideline3"
+                    app:layout_constraintTop_toTopOf="@+id/txAge"/>
+
+            <TextView
+                    android:id="@+id/txNombre"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/signup_input_label_left_margin"
+                    android:layout_marginLeft="@dimen/signup_input_label_left_margin"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/signup_details_name"
+                    android:textSize="18sp"
+                    app:layout_constraintBottom_toTopOf="@+id/inputName"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView4"
+                    app:layout_constraintVertical_bias="1.0"/>
+
+            <TextView
+                    android:id="@+id/txGamesTasteLevel"
+                    android:layout_width="0dp"
+                    android:layout_height="24dp"
+                    android:layout_marginStart="@dimen/signup_input_label_left_margin"
+                    android:layout_marginLeft="@dimen/signup_input_label_left_margin"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/signup_details_gamesTasteLevel"
+                    android:textSize="18sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/inputCity"/>
+
+            <TextView
+                    android:id="@+id/txGamesTime"
+                    android:layout_width="0dp"
+                    android:layout_height="24dp"
+                    android:layout_marginStart="@dimen/signup_input_label_left_margin"
+                    android:layout_marginLeft="@dimen/signup_input_label_left_margin"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/signup_details_gamesTime"
+                    android:textSize="18sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/inputGamesTasteLevel"/>
+
+            <Spinner
+                    android:id="@+id/inputGamesTasteLevel"
+                    android:layout_width="0dp"
+                    android:layout_height="44dp"
+                    android:layout_marginStart="@dimen/signup_input_left_margin"
+                    android:layout_marginLeft="@dimen/signup_input_left_margin"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginRight="8dp"
+                    android:entries="@array/tasteLevels"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txGamesTasteLevel"/>
+
+            <Spinner
+                    android:id="@+id/inputGamesTime"
+                    android:layout_width="0dp"
+                    android:layout_height="44dp"
+                    android:layout_marginStart="@dimen/signup_input_left_margin"
+                    android:layout_marginLeft="@dimen/signup_input_left_margin"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginRight="8dp"
+                    android:entries="@array/tasteLevels"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txGamesTime"/>
+
+            <TextView
+                    android:id="@+id/txProfession"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/signup_input_label_left_margin"
+                    android:layout_marginLeft="@dimen/signup_input_label_left_margin"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/signup_details_profession"
+                    android:textSize="18sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/inputAge"/>
+
+            <TextView
+                    android:id="@+id/txCity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/signup_input_label_left_margin"
+                    android:layout_marginLeft="@dimen/signup_input_label_left_margin"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/signup_details_city"
+                    android:textSize="18sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/inputProfession"/>
+
+            <TextView
+                    android:id="@+id/txProvince"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/signup_input_label_left_margin"
+                    android:layout_marginLeft="@dimen/signup_input_label_left_margin"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/signup_details_province"
+                    android:textSize="18sp"
+                    app:layout_constraintStart_toStartOf="@+id/guideline3"
+                    app:layout_constraintTop_toBottomOf="@+id/inputProfession"/>
+
+            <TextView
+                    android:id="@+id/txCountry"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/signup_input_label_left_margin"
+                    android:layout_marginLeft="@dimen/signup_input_label_left_margin"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/signup_details_country"
+                    android:textSize="18sp"
+                    app:layout_constraintStart_toStartOf="@+id/guideline4"
+                    app:layout_constraintTop_toBottomOf="@+id/inputProfession"/>
+
+            <Spinner
+                    android:id="@+id/inputSex"
+                    android:layout_width="0dp"
+                    android:layout_height="44dp"
+                    android:layout_marginStart="@dimen/signup_input_left_margin"
+                    android:layout_marginLeft="@dimen/signup_input_left_margin"
+                    android:layout_marginEnd="@dimen/signup_input_left_margin"
+                    android:layout_marginRight="@dimen/signup_input_left_margin"
+                    android:entries="@array/genders"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/guideline3"
+                    app:layout_constraintTop_toBottomOf="@+id/txSex"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+    <include layout="@layout/view_progress"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

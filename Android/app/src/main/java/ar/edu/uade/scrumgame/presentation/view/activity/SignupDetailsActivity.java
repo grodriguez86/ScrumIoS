@@ -10,8 +10,9 @@ import ar.edu.uade.scrumgame.presentation.di.HasComponent;
 import ar.edu.uade.scrumgame.presentation.di.components.DaggerLevelComponent;
 import ar.edu.uade.scrumgame.presentation.di.components.LevelComponent;
 import ar.edu.uade.scrumgame.presentation.view.fragment.SignupDetailsFragment;
+import ar.edu.uade.scrumgame.presentation.view.fragment.listeners.SignUpListener;
 
-public class SignupDetailsActivity extends BaseActivity implements HasComponent<LevelComponent>, SignupDetailsFragment.SignupDetailsListener{
+public class SignupDetailsActivity extends BaseActivity implements HasComponent<LevelComponent>, SignUpListener {
 
     private LevelComponent levelComponent;
 
@@ -24,10 +25,10 @@ public class SignupDetailsActivity extends BaseActivity implements HasComponent<
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        this.initializeInjector();
         super.onCreate(savedInstanceState);
         this.requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
         setContentView(R.layout.activity_signup_details);
-        this.initializeInjector();
         SignupDetailsFragment signupDetailsFragment = new SignupDetailsFragment();
         if (savedInstanceState == null) {
             addFragment(R.id.fragmentContainer, signupDetailsFragment);

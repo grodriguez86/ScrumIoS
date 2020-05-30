@@ -9,10 +9,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.LinearLayout;
-import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
+import android.widget.*;
 
 import androidx.annotation.Nullable;
 
@@ -60,9 +57,9 @@ public class InfoGameFragment extends BaseFragment implements InfoGamesContentVi
     @BindView(R.id.sendAnswer)
     Button sendAnswerButton;
     @BindView(R.id.rl_progress)
-    RelativeLayout progressLayout;
+    FrameLayout progressLayout;
     @BindView(R.id.rl_retry)
-    RelativeLayout retryLayout;
+    FrameLayout retryLayout;
     @BindView(R.id.bt_retry)
     Button retryButton;
     @BindView(R.id.bottom_sheet)
@@ -92,12 +89,9 @@ public class InfoGameFragment extends BaseFragment implements InfoGamesContentVi
         return fragment;
     }
 
-    public InfoGameFragment() {
-        this.setRetainInstance(true);
-    }
-
     @Override
     public void onAttach(Activity activity) {
+        this.getComponent(LevelComponent.class).inject(this);
         super.onAttach(activity);
         if (activity instanceof InfoGameActivity) {
             this.context = (InfoGameActivity) activity;
@@ -110,7 +104,6 @@ public class InfoGameFragment extends BaseFragment implements InfoGamesContentVi
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        this.getComponent(LevelComponent.class).inject(this);
         this.getGamesData();
     }
 
@@ -297,7 +290,7 @@ public class InfoGameFragment extends BaseFragment implements InfoGamesContentVi
     protected void addFragment(Fragment fragment) {
         final FragmentTransaction fragmentTransaction = this.getFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.gameContainer, fragment);
-        fragmentTransaction.commit();
+        fragmentTransaction.commitAllowingStateLoss();
     }
 
     @OnClick(R.id.bt_exit)

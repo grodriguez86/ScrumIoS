@@ -2,18 +2,14 @@ package ar.edu.uade.scrumgame.presentation.view.fragment;
 
 import android.app.Activity;
 import android.content.Context;
-import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ImageButton;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
+import android.widget.*;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -24,7 +20,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
-import java.util.Objects;
 
 import javax.inject.Inject;
 
@@ -56,9 +51,9 @@ public class InfoTheoryFragment extends BaseFragment implements InfoTheoryView {
     @BindView(R.id.rv_infoTheory)
     RecyclerView infoTheoryRecyclerView;
     @BindView(R.id.rl_progress)
-    RelativeLayout progressLayout;
+    FrameLayout progressLayout;
     @BindView(R.id.rl_retry)
-    RelativeLayout retryLayout;
+    FrameLayout retryLayout;
     @BindView(R.id.bt_retry)
     Button retryButton;
     @BindView(R.id.bt_exit)
@@ -81,9 +76,15 @@ public class InfoTheoryFragment extends BaseFragment implements InfoTheoryView {
 
     private PlaySubLevelListener playSubLevelListener;
 
-    public InfoTheoryFragment() {
-        this.setRetainInstance(true);
-    }
+    private Integer secondsSpent = 0;
+    private Handler handler = new Handler();
+    private Runnable counterRunnable = new Runnable() {
+        @Override
+        public void run() {
+            secondsSpent += 1;
+            handler.postDelayed(counterRunnable, 1000);
+        }
+    };
 
     @OnClick(R.id.bt_exit)
     public void goBack() {
@@ -93,20 +94,16 @@ public class InfoTheoryFragment extends BaseFragment implements InfoTheoryView {
     @Override
     public void loadSubLevel(SubLevelModel subLevelModel) {
         subLevelTitle.setText(subLevelModel.getName());
+        this.handler.post(counterRunnable);
     }
 
     @Override
     public void onAttach(Activity activity) {
+        this.getComponent(LevelComponent.class).inject(this);
         super.onAttach(activity);
         if (activity instanceof PlaySubLevelListener) {
             this.playSubLevelListener = (PlaySubLevelListener) activity;
         }
-    }
-
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        this.getComponent(LevelComponent.class).inject(this);
     }
 
     @Nullable
@@ -217,14 +214,22 @@ public class InfoTheoryFragment extends BaseFragment implements InfoTheoryView {
 
     @OnClick(R.id.btn_skip)
     public void skipTutorial() {
+        this.infoTheoryPresenter.logTutorialSkipped(this.subLevelCode);
         startPlaying();
     }
 
     @OnClick(R.id.btn_play)
     public void startPlaying() {
-        if (levelCode != null && subLevelCode != null)
+        if (levelCode != null && subLevelCode != null) {
+            this.logTutorialTimeSpent();
             this.playSubLevel(levelCode, levelTitle.getText().toString(), subLevelCode,
                     subLevelTitle.getText().toString(), currentGame);
+        }
+    }
+
+    private void logTutorialTimeSpent() {
+        this.handler.removeCallbacks(counterRunnable);
+        this.infoTheoryPresenter.logTutorialTimeSpent(this.subLevelCode, this.secondsSpent);
     }
 
     @Override
@@ -314,6 +319,7 @@ public class InfoTheoryFragment extends BaseFragment implements InfoTheoryView {
     public void onDestroy() {
         super.onDestroy();
         this.infoTheoryPresenter.destroy();
+        this.handler.removeCallbacks(counterRunnable);
     }
 
     @Override

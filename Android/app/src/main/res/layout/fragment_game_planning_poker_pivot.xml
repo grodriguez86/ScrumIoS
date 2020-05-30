@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:layout_alignParentBottom="false"
+              android:layout_weight="1"
+              android:orientation="vertical" android:layout_marginRight="@dimen/activity_horizontal_margin"
+              android:layout_marginLeft="@dimen/activity_horizontal_margin"
+              android:layout_marginTop="@dimen/activity_vertical_margin"
+              android:layout_marginBottom="@dimen/activity_vertical_margin">
+    <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/titleTv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top"
+            android:gravity="center"
+            android:text="@string/planning_poker_game_pivot_title"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:fontFamily="@font/gotham_rounded_bold"
+            android:textSize="30sp"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="25dp"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/planningPokerDescriptionTv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/planning_poker_game_pivot_description"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:fontFamily="@font/gotham_rounded_book"
+            android:textSize="18sp" android:layout_gravity="center" android:layout_weight=".5"/>
+    <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/planningPokerDescription2Tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/planning_poker_game_pivote_description_2"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:fontFamily="@font/gotham_rounded_book"
+            android:textSize="18sp" android:layout_gravity="center" android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp" android:layout_weight=".5"/>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:layout_weight=".5">
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@color/yellow"
+                android:padding="10dp"
+                app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" android:layout_marginRight="32dp"
+                android:layout_marginEnd="32dp" android:layout_marginLeft="32dp" android:layout_marginStart="32dp"
+                android:id="@+id/linearLayout7">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/item_tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:textAlignment="center"
+                    android:text="@string/planning_poker_game_pivote_item"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/gotham_rounded_book"
+                    android:textSize="24sp" android:layout_gravity="center"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/item_points_tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:textAlignment="center"
+                    android:text="@string/planning_poker_game_pivote_item_points"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/gotham_rounded_book"
+                    android:textSize="20sp" android:layout_gravity="center"/>
+
+        </LinearLayout>
+
+
+        <ImageView
+                android:layout_width="75dp"
+                android:layout_height="75dp" app:srcCompat="@drawable/steering_wheel_bus"
+                android:id="@+id/steering_wheel_bus_iv" android:cropToPadding="true" android:layout_gravity="end"
+                app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toTopOf="@id/linearLayout7"
+                android:contentDescription="@string/steering_wheel_bus_cv"
+                android:layout_marginTop="32dp"/>
+        <Button
+                android:id="@+id/continue_button"
+                style="@style/Button.SendAnswer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/continue_text"
+                android:textAllCaps="false"
+                android:visibility="visible" android:fontFamily="@font/gotham_rounded_bold"
+                android:textColor="@color/white" android:background="@drawable/button_round_purple_background"
+                android:paddingLeft="30dp" android:paddingTop="10dp" android:paddingRight="30dp"
+                android:paddingBottom="10dp" android:layout_marginTop="32dp"
+                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" app:layout_constraintBottom_toBottomOf="parent"
+        />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</LinearLayout>

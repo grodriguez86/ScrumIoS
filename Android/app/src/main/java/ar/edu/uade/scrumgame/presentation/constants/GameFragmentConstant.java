@@ -2,13 +2,13 @@ package ar.edu.uade.scrumgame.presentation.constants;
 
 import ar.edu.uade.scrumgame.presentation.view.fragment.games.SelectionGameFragment;
 import ar.edu.uade.scrumgame.presentation.view.fragment.games.ImageQuizGameFragment;
-import ar.edu.uade.scrumgame.presentation.view.fragment.games.PokerPlanningGameFragment;
+import ar.edu.uade.scrumgame.presentation.view.fragment.games.planningPoker.PlanningPokerGameFragment;
 import ar.edu.uade.scrumgame.presentation.view.fragment.games.ShortTextQuizGameFragment;
 import ar.edu.uade.scrumgame.presentation.view.fragment.games.TextQuizGameFragment;
 import ar.edu.uade.scrumgame.presentation.view.fragment.games.ScrumFlowDraggableGameFragment;
 import ar.edu.uade.scrumgame.presentation.view.fragment.games.TextChoicesGameFragment;
 import ar.edu.uade.scrumgame.presentation.view.fragment.games.TrueFalseGameFragment;
-import ar.edu.uade.scrumgame.presentation.view.fragment.games.VelocityGameFragment;
+import ar.edu.uade.scrumgame.presentation.view.fragment.games.velocity.VelocityGameFragment;
 
 public enum GameFragmentConstant {
     TEXT_QUIZ("textQuiz", TextQuizGameFragment.class.getName()),
@@ -17,7 +17,7 @@ public enum GameFragmentConstant {
     TRUE_FALSE_QUIZ("trueFalseQuiz", TrueFalseGameFragment.class.getName()),
     IMAGE_QUIZ("imageQuiz", ImageQuizGameFragment.class.getName()),
     VELOCITY("velocity", VelocityGameFragment.class.getName()),
-    POKER_PLANNING("pokerPlanning", PokerPlanningGameFragment.class.getName()),
+    POKER_PLANNING("pokerPlanning", PlanningPokerGameFragment.class.getName()),
     SELECTION("selection", SelectionGameFragment.class.getName()),
     SHORT_TEXT_QUIZ("shortTextQuiz", ShortTextQuizGameFragment.class.getName());
 

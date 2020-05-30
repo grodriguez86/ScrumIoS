@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+              android:paddingBottom="@dimen/activity_vertical_margin" android:background="@color/appWhite80Opacity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/bar" android:background="@drawable/gradient_background_logo"
+                app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+            <ImageButton
+                    android:id="@+id/back_ib"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:background="@drawable/button_back"
+                    android:padding="0dp"
+                    android:scaleType="fitCenter"
+                    android:textColor="@color/white"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    android:tint="@color/black"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintStart_toStartOf="parent"
+                    android:contentDescription="@string/back_button_cd" android:layout_marginLeft="24dp"
+                    android:layout_marginStart="24dp"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <ImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp" app:srcCompat="@drawable/female_avatar"
+                android:id="@+id/profile_picture_iv" app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent" android:background="@drawable/white_border"
+                android:contentDescription="@string/profile_picture_cd"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ScrollView android:layout_width="match_parent" android:layout_height="wrap_content" android:fillViewport="true">
+
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                      android:orientation="vertical" android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                      android:layout_marginRight="@dimen/activity_horizontal_margin">
+
+            <com.google.android.material.chip.ChipGroup
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent" android:layout_gravity="center"
+                    android:foregroundGravity="center" app:singleSelection="true" android:layout_marginBottom="25dp"
+                    android:id="@+id/profile_cg" android:visibility="visible">
+                <com.google.android.material.chip.Chip
+                        android:id="@+id/information_chip"
+                        style="@style/Widget.MaterialComponents.Chip.Choice"
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        app:chipBackgroundColor="@color/chip"
+                        android:textColor="@color/jelly"
+                        android:textAlignment="center"
+                        android:checkable="true"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:text="@string/profile_information" android:layout_marginRight="10dp"
+                        android:layout_marginEnd="10dp" android:paddingTop="10dp" android:paddingBottom="10dp"
+                        android:gravity="center"/>
+                <com.google.android.material.chip.Chip
+                        android:id="@+id/achievements_chip"
+                        style="@style/Widget.MaterialComponents.Chip.Choice"
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        app:chipBackgroundColor="@color/chip"
+                        android:textColor="@color/jelly"
+                        android:textAlignment="center"
+                        android:checkable="true"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:text="@string/profile_achievements" android:paddingTop="10dp"
+                        android:paddingBottom="10dp" android:gravity="center"/>
+            </com.google.android.material.chip.ChipGroup>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/name_label_tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:fontFamily="@font/gotham_rounded_light"
+                    android:text="@string/profile_name"
+                    android:layout_marginBottom="5dp"
+                    android:textColor="@color/jelly" android:textSize="20sp" android:visibility="visible"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/name_tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:fontFamily="@font/gotham_rounded_bold"
+                    android:text="@string/profile_name"
+                    android:layout_marginBottom="20dp"
+                    android:textColor="@color/black" android:textSize="20sp" android:visibility="visible"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/profession_label_tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:fontFamily="@font/gotham_rounded_light"
+                    android:text="@string/profile_profession"
+                    android:layout_marginBottom="5dp"
+                    android:textColor="@color/jelly" android:textSize="20sp" android:visibility="visible"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/profession_tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:fontFamily="@font/gotham_rounded_bold"
+                    android:text="@string/profile_name"
+                    android:layout_marginBottom="20dp"
+                    android:textColor="@color/black" android:textSize="20sp" android:visibility="visible"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/age_label_tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:fontFamily="@font/gotham_rounded_light"
+                    android:text="@string/profile_age"
+                    android:layout_marginBottom="5dp"
+                    android:textColor="@color/jelly" android:textSize="20sp" android:visibility="visible"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/age_tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:fontFamily="@font/gotham_rounded_bold"
+                    android:text="@string/profile_name"
+                    android:layout_marginBottom="20dp"
+                    android:textColor="@color/black" android:textSize="20sp"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/location_label_tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:fontFamily="@font/gotham_rounded_light"
+                    android:text="@string/profile_location"
+                    android:layout_marginBottom="5dp"
+                    android:textColor="@color/jelly" android:textSize="20sp"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/location_tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:fontFamily="@font/gotham_rounded_bold"
+                    android:text="@string/profile_name"
+                    android:layout_marginBottom="20dp"
+                    android:textColor="@color/black" android:textSize="20sp"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/game_taste_label_tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:fontFamily="@font/gotham_rounded_light"
+                    android:text="@string/profile_game_taste"
+                    android:layout_marginBottom="5dp"
+                    android:textColor="@color/jelly" android:textSize="20sp"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/game_taste_tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:fontFamily="@font/gotham_rounded_bold"
+                    android:text="@string/profile_name"
+                    android:layout_marginBottom="20dp"
+                    android:textColor="@color/black" android:textSize="20sp"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/game_time_label_tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:fontFamily="@font/gotham_rounded_light"
+                    android:text="@string/profile_game_time"
+                    android:layout_marginBottom="5dp"
+                    android:textColor="@color/jelly" android:textSize="20sp"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/game_time_tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:fontFamily="@font/gotham_rounded_bold"
+                    android:text="@string/profile_name"
+                    android:layout_marginBottom="20dp"
+                    android:textColor="@color/black" android:textSize="20sp"/>
+
+            <Button
+                    android:id="@+id/log_out_button"
+                    style="@style/Button.SendAnswer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/profile_logout"
+                    android:textAllCaps="false"
+                    android:visibility="visible" android:fontFamily="@font/gotham_rounded_bold"
+                    android:textColor="@color/white" android:background="@drawable/button_round_purple_background"
+                    android:paddingLeft="20dp" android:paddingTop="10dp" android:paddingRight="20dp"
+                    android:paddingBottom="10dp"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                    android:textAlignment="center"
+                    android:layout_marginTop="10dp"
+                    android:id="@+id/app_version_tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/gotham_rounded_light"
+                    android:layout_marginBottom="5dp"
+                    android:textColor="@color/gray" android:textSize="14sp"/>
+        </LinearLayout>
+
+    </ScrollView>
+
+    <include layout="@layout/view_progress"/>
+
+</LinearLayout>

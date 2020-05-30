@@ -3,14 +3,7 @@ package ar.edu.uade.scrumgame.presentation.di.components;
 import ar.edu.uade.scrumgame.presentation.di.PerActivity;
 import ar.edu.uade.scrumgame.presentation.di.modules.ActivityModule;
 import ar.edu.uade.scrumgame.presentation.di.modules.LevelModule;
-import ar.edu.uade.scrumgame.presentation.view.fragment.GameFragment;
-import ar.edu.uade.scrumgame.presentation.view.fragment.InfoGameFragment;
-import ar.edu.uade.scrumgame.presentation.view.fragment.InfoTheoryFragment;
-import ar.edu.uade.scrumgame.presentation.view.fragment.LevelFragment;
-import ar.edu.uade.scrumgame.presentation.view.fragment.LoginFragment;
-import ar.edu.uade.scrumgame.presentation.view.fragment.MenuFragment;
-import ar.edu.uade.scrumgame.presentation.view.fragment.SignupDetailsFragment;
-import ar.edu.uade.scrumgame.presentation.view.fragment.SignupFragment;
+import ar.edu.uade.scrumgame.presentation.view.fragment.*;
 import dagger.Component;
 
 @PerActivity
@@ -31,4 +24,6 @@ public interface LevelComponent extends ActivityComponent {
     void inject(SignupDetailsFragment signupDetailsFragment);
 
     void inject(LoginFragment loginFragment);
+
+    void inject(ProfileFragment profileFragment);
 }

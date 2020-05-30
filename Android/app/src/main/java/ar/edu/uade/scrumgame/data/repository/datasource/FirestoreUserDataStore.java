@@ -5,7 +5,6 @@ import android.util.Log;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import ar.edu.uade.scrumgame.data.entity.UserEntity;
-import ar.edu.uade.scrumgame.domain.User;
 import io.reactivex.Observable;
 
 class FirestoreUserDataStore implements RemoteUserDataStore {

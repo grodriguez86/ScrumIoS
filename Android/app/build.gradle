@@ -1,3 +1,7 @@
+def envPropertiesFile = rootProject.file("env.properties");
+def envProperties = new Properties()
+envProperties.load(new FileInputStream(envPropertiesFile))
+
 apply plugin: 'com.android.application'
 apply plugin: 'io.fabric'
 apply plugin: 'realm-android'
@@ -21,6 +25,7 @@ android {
         minSdkVersion project.ext.minimumSdkVersion
         versionCode generateVersionCode()
         versionName generateVersionName()
+        buildConfigField("String", "AMPLITUDE_API_KEY", envProperties["AMPLITUDE_API_KEY"])
     }
     buildTypes {
         release {
@@ -73,6 +78,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-firestore:21.4.1'
     implementation 'com.android.support:multidex:1.0.3'
     implementation project(path: ':velocity')
+    implementation 'com.amplitude:android-sdk:2.25.2'
 }
 
 apply plugin: 'com.google.gms.google-services'

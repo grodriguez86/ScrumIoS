@@ -11,11 +11,7 @@ import ar.edu.uade.scrumgame.domain.User;
 import ar.edu.uade.scrumgame.domain.UserCredentials;
 import ar.edu.uade.scrumgame.domain.exception.DefaultErrorBundle;
 import ar.edu.uade.scrumgame.domain.exception.ErrorBundle;
-import ar.edu.uade.scrumgame.domain.interactor.DefaultObserver;
-import ar.edu.uade.scrumgame.domain.interactor.GetProgressListRemotely;
-import ar.edu.uade.scrumgame.domain.interactor.GetUserRemotely;
-import ar.edu.uade.scrumgame.domain.interactor.Login;
-import ar.edu.uade.scrumgame.domain.interactor.SaveUserLocally;
+import ar.edu.uade.scrumgame.domain.interactor.*;
 import ar.edu.uade.scrumgame.presentation.di.PerActivity;
 import ar.edu.uade.scrumgame.presentation.exception.ErrorMessageFactory;
 import ar.edu.uade.scrumgame.presentation.mapper.UserDataMapper;
@@ -26,7 +22,7 @@ import ar.edu.uade.scrumgame.presentation.view.LoginView;
 public class LoginPresenter implements Presenter {
 
     private LoginView loginView;
-
+    private GetLoggedInUser getLoggedInUserUseCase;
     private GetProgressListRemotely getProgressListRemotelyUseCase;
     private GetUserRemotely getUserRemotelyUseCase;
     private Login loginUseCase;
@@ -34,12 +30,14 @@ public class LoginPresenter implements Presenter {
     private UserDataMapper userDataMapper;
 
     @Inject
-    public LoginPresenter(GetProgressListRemotely getProgressListRemotelyUseCase,
+    public LoginPresenter(GetLoggedInUser getLoggedInUserUseCase,
+                          GetProgressListRemotely getProgressListRemotelyUseCase,
                           GetUserRemotely getUserRemotelyUseCase,
                           Login loginUseCase,
                           SaveUserLocally saveUserLocallyUseCase,
                           UserDataMapper userDataMapper
     ) {
+        this.getLoggedInUserUseCase = getLoggedInUserUseCase;
         this.getProgressListRemotelyUseCase = getProgressListRemotelyUseCase;
         this.getUserRemotelyUseCase = getUserRemotelyUseCase;
         this.loginUseCase = loginUseCase;
@@ -62,10 +60,21 @@ public class LoginPresenter implements Presenter {
     @Override
     public void destroy() {
         this.loginView = null;
+        this.getLoggedInUserUseCase.dispose();
+        this.getProgressListRemotelyUseCase.dispose();
+        this.getUserRemotelyUseCase.dispose();
+        this.saveUserLocallyUseCase.dispose();
     }
 
     public void initialize() {
+        this.showViewLoading();
+        this.getLoggedInUserUseCase.execute(new GetLoggedInUserObserver(), true);
+    }
 
+    private void loggedInUser(User loggedInUser) {
+        if (loggedInUser != null) {
+            this.loginView.loggedIn();
+        }
     }
 
     public void onLoginClicked(String mail, String password) {
@@ -82,6 +91,7 @@ public class LoginPresenter implements Presenter {
                             // TODO CHECK IF LOCAL DATA IS AVAILABLE FOR THIS USER, IF SO TRY TO SAVE IT.
 
                             // TODO ELSE REDIRECT TO SIGNUP DETAILS
+                            hideViewLoading();
                             loginView.navigateToSignupDetails();
                         } else {
                             getProgressListRemotelyUseCase.execute(new DefaultObserver<List<Progress>>() {
@@ -150,6 +160,20 @@ public class LoginPresenter implements Presenter {
         String errorMessage = ErrorMessageFactory.create(this.loginView.context(),
                 errorBundle.getException());
         this.loginView.showError(errorMessage);
+    }
+
+    private final class GetLoggedInUserObserver extends DefaultObserver<User> {
+
+        @Override
+        public void onNext(User loggedInUser) {
+            LoginPresenter.this.hideViewLoading();
+            LoginPresenter.this.loggedInUser(loggedInUser);
+        }
+
+        @Override
+        public void onError(Throwable exception) {
+            LoginPresenter.this.hideViewLoading();
+        }
     }
 
 }

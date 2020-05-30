@@ -7,15 +7,7 @@ import android.content.Intent;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
-import ar.edu.uade.scrumgame.presentation.view.activity.BaseActivity;
-import ar.edu.uade.scrumgame.presentation.view.activity.InfoGameActivity;
-import ar.edu.uade.scrumgame.presentation.view.activity.InfoTheoryActivity;
-import ar.edu.uade.scrumgame.presentation.view.activity.LevelActivity;
-import ar.edu.uade.scrumgame.presentation.view.activity.LoginActivity;
-import ar.edu.uade.scrumgame.presentation.view.activity.MenuActivity;
-import ar.edu.uade.scrumgame.presentation.view.activity.SignupActivity;
-import ar.edu.uade.scrumgame.presentation.view.activity.SignupDetailsActivity;
-import ar.edu.uade.scrumgame.presentation.view.activity.SplashScreen;
+import ar.edu.uade.scrumgame.presentation.view.activity.*;
 
 @Singleton
 public class Navigator {
@@ -27,6 +19,7 @@ public class Navigator {
     public void navigateToMenu(Context context) {
         if (context != null) {
             Intent intentToLaunch = MenuActivity.getCallingIntent(context);
+            intentToLaunch.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
             context.startActivity(intentToLaunch);
         }
     }
@@ -84,6 +77,13 @@ public class Navigator {
         if (baseActivity != null) {
             Intent intent = new Intent(baseActivity.getApplicationContext(), SignupDetailsActivity.class);
             baseActivity.startActivity(intent);
+        }
+    }
+
+    public void navigateToProfile(MenuActivity menuActivity) {
+        if (menuActivity != null) {
+            Intent intent = new Intent(menuActivity.getApplicationContext(), ProfileActivity.class);
+            menuActivity.startActivity(intent);
         }
     }
 }

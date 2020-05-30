@@ -1,4 +1,4 @@
-package ar.edu.uade.scrumgame.presentation.view.fragment.games;
+package ar.edu.uade.scrumgame.presentation.view.fragment.games.velocity;
 
 import android.content.Context;
 import android.content.Intent;

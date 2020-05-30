@@ -2,13 +2,10 @@ package ar.edu.uade.scrumgame.domain.interactor;
 
 import javax.inject.Inject;
 
-import ar.edu.uade.scrumgame.domain.Progress;
 import ar.edu.uade.scrumgame.domain.User;
 import ar.edu.uade.scrumgame.domain.executor.PostExecutionThread;
 import ar.edu.uade.scrumgame.domain.executor.ThreadExecutor;
-import ar.edu.uade.scrumgame.domain.repository.LocalProgressRepository;
 import ar.edu.uade.scrumgame.domain.repository.LocalUserRepository;
-import ar.edu.uade.scrumgame.domain.repository.RemoteProgressRepository;
 import ar.edu.uade.scrumgame.domain.repository.RemoteUserRepository;
 import io.reactivex.Observable;
 

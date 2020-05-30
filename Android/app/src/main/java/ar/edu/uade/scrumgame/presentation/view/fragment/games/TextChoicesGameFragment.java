@@ -46,17 +46,22 @@ public class TextChoicesGameFragment extends GameFragment implements GameContent
 
     @Override
     public void onCorrectAttempt() {
-        this.showAlert(getString(R.string.correct_answer_title), getString(R.string.correct_answer), getActivity(), getString(R.string.correct_answer_button_text), (dialog, which) -> this.onGameCompletedListener.onGameCompleted(gameCode));
+        super.onCorrectAttempt();
+        if (this.onGameCompletedListener != null) {
+            this.showAlert(getString(R.string.correct_answer_title), getString(R.string.correct_answer), getActivity(), getString(R.string.correct_answer_button_text), (dialog, which) -> this.onGameCompletedListener.onGameCompleted(gameCode));
+        }
     }
 
     @Override
     public void onFailedAttempt() {
+        super.onFailedAttempt();
         this.showAlert(getString(R.string.incorrect_answer_title), getString(R.string.incorrect_answer), getActivity(), getString(R.string.incorrect_answer_button_text), (dialog, which) -> {
         });
     }
 
     @Override
     public void checkAttempt() {
+        super.checkAttempt();
         if (this.choiceAttempt != null) {
             Boolean isCorrect = (Boolean) choiceAttempt.getTag();
             if (isCorrect) {

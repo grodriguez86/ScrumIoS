@@ -9,10 +9,13 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 
+import android.widget.FrameLayout;
 import androidx.annotation.Nullable;
 
 import javax.inject.Inject;
 
+import androidx.appcompat.widget.AppCompatTextView;
+import ar.edu.uade.scrumgame.BuildConfig;
 import ar.edu.uade.scrumgame.R;
 import ar.edu.uade.scrumgame.presentation.di.components.LevelComponent;
 import ar.edu.uade.scrumgame.presentation.presenter.LoginPresenter;
@@ -33,21 +36,13 @@ public class LoginFragment extends BaseFragment implements LoginView {
 
     @Inject
     LoginPresenter loginPresenter;
-
+    @BindView(R.id.app_version_tv)
+    AppCompatTextView appVersion;
     private LoginListener loginListener;
-
-    public LoginFragment() {
-        this.setRetainInstance(true);
-    }
-
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        this.getComponent(LevelComponent.class).inject(this);
-    }
 
     @Override
     public void onAttach(Activity activity) {
+        this.getComponent(LevelComponent.class).inject(this);
         super.onAttach(activity);
         if (activity instanceof LoginFragment.LoginListener) {
             this.loginListener = (LoginFragment.LoginListener) activity;
@@ -66,17 +61,21 @@ public class LoginFragment extends BaseFragment implements LoginView {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         this.loginPresenter.setView(this);
+        this.loginPresenter.initialize();
+        this.appVersion.setText(String.format(getString(R.string.version),BuildConfig.VERSION_NAME));
     }
 
 
     @Override
     public void showLoading() {
-
+        this.progressLayout.setVisibility(View.VISIBLE);
+        this.getActivity().setProgressBarIndeterminateVisibility(true);
     }
 
     @Override
     public void hideLoading() {
-
+        this.progressLayout.setVisibility(View.GONE);
+        this.getActivity().setProgressBarIndeterminateVisibility(false);
     }
 
     @Override
@@ -125,6 +124,9 @@ public class LoginFragment extends BaseFragment implements LoginView {
 
     @BindView(R.id.inputPassword)
     EditText inputPassword;
+
+    @BindView(R.id.rl_progress)
+    FrameLayout progressLayout;
 
     @OnClick(R.id.login)
     public void login() {

@@ -4,52 +4,32 @@ import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageButton;
-import android.widget.Spinner;
-import android.widget.Toast;
+import android.widget.*;
 
 import androidx.annotation.Nullable;
 
+import ar.edu.uade.scrumgame.presentation.view.fragment.listeners.SignUpListener;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.firestore.FirebaseFirestore;
 
 import javax.inject.Inject;
 
 import ar.edu.uade.scrumgame.R;
 import ar.edu.uade.scrumgame.data.entity.LevelStatusConstants;
-import ar.edu.uade.scrumgame.data.entity.ProgressEntity;
-import ar.edu.uade.scrumgame.data.entity.UserEntity;
-import ar.edu.uade.scrumgame.data.entity.UserOverallDataEntity;
-import ar.edu.uade.scrumgame.data.entity.mapper.ProgressEntityMapper;
-import ar.edu.uade.scrumgame.data.entity.mapper.UserEntityMapper;
-import ar.edu.uade.scrumgame.domain.User;
 import ar.edu.uade.scrumgame.presentation.di.components.LevelComponent;
 import ar.edu.uade.scrumgame.presentation.models.ProgressModel;
 import ar.edu.uade.scrumgame.presentation.models.UserModel;
 import ar.edu.uade.scrumgame.presentation.presenter.SignupDetailsPresenter;
-import ar.edu.uade.scrumgame.presentation.presenter.SignupPresenter;
 import ar.edu.uade.scrumgame.presentation.view.SignupDetailsView;
-import ar.edu.uade.scrumgame.presentation.view.SignupView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import io.realm.Realm;
 
 public class SignupDetailsFragment extends BaseFragment implements SignupDetailsView {
-
-    public interface SignupDetailsListener {
-        void onSignupDetailsCompleted();
-
-        void onSignupDetailsFailed();
-    }
 
     @Override
     public void returnToLogin() {
@@ -64,23 +44,14 @@ public class SignupDetailsFragment extends BaseFragment implements SignupDetails
     @Inject
     SignupDetailsPresenter signupDetailsPresenter;
 
-    private SignupDetailsListener signupDetailsListener;
-
-    public SignupDetailsFragment() {
-        this.setRetainInstance(true);
-    }
-
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        this.getComponent(LevelComponent.class).inject(this);
-    }
+    private SignUpListener signupDetailsListener;
 
     @Override
     public void onAttach(Activity activity) {
+        this.getComponent(LevelComponent.class).inject(this);
         super.onAttach(activity);
-        if (activity instanceof SignupDetailsFragment.SignupDetailsListener) {
-            this.signupDetailsListener = (SignupDetailsFragment.SignupDetailsListener) activity;
+        if (activity instanceof SignUpListener) {
+            this.signupDetailsListener = (SignUpListener) activity;
         }
     }
 
@@ -98,15 +69,16 @@ public class SignupDetailsFragment extends BaseFragment implements SignupDetails
         this.signupDetailsPresenter.setView(this);
     }
 
-
     @Override
     public void showLoading() {
-
+        this.progressLayout.setVisibility(View.VISIBLE);
+        this.getActivity().setProgressBarIndeterminateVisibility(true);
     }
 
     @Override
     public void hideLoading() {
-
+        this.progressLayout.setVisibility(View.GONE);
+        this.getActivity().setProgressBarIndeterminateVisibility(false);
     }
 
     @Override
@@ -180,6 +152,9 @@ public class SignupDetailsFragment extends BaseFragment implements SignupDetails
 
     @BindView(R.id.inputGamesTime)
     Spinner inputGamesTime;
+
+    @BindView(R.id.rl_progress)
+    FrameLayout progressLayout;
 
     @OnClick(R.id.btnDone)
     public void signupDoneClicked() {

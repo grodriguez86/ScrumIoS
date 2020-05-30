@@ -105,7 +105,7 @@ public class InfoTheoryAdapter extends RecyclerView.Adapter<InfoTheoryAdapter.In
                     } );
                     final FragmentTransaction fragmentTransaction = context.getFragmentManager().beginTransaction();
                     fragmentTransaction.add(R.id.container, youTubePlayerFragment);
-                    fragmentTransaction.commit();
+                    fragmentTransaction.commitAllowingStateLoss();
                     break;
                 case "text":
                     AppCompatTextView text = new AppCompatTextView(context);

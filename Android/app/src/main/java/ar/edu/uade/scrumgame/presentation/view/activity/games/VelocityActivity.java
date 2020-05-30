@@ -8,9 +8,9 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import ar.edu.uade.scrumgame.R;
 import ar.edu.uade.scrumgame.presentation.view.activity.BaseActivity;
-import ar.edu.uade.scrumgame.presentation.view.fragment.games.VelocityConclusionGameFragment;
-import ar.edu.uade.scrumgame.presentation.view.fragment.games.VelocityResultsGameFragment;
-import ar.edu.uade.scrumgame.presentation.view.fragment.games.VelocityIntroGameFragment;
+import ar.edu.uade.scrumgame.presentation.view.fragment.games.velocity.VelocityConclusionGameFragment;
+import ar.edu.uade.scrumgame.presentation.view.fragment.games.velocity.VelocityResultsGameFragment;
+import ar.edu.uade.scrumgame.presentation.view.fragment.games.velocity.VelocityIntroGameFragment;
 
 public class VelocityActivity extends BaseActivity implements VelocityIntroGameFragment.OnVelocityGameFinishedListener, VelocityResultsGameFragment.OnContinueToConclusionListener, VelocityConclusionGameFragment.OnVelocityConclusionFinishedListener {
     private static final int INDETERMINATE_PROGRESS_FEATURE_ID = 5;
@@ -35,7 +35,7 @@ public class VelocityActivity extends BaseActivity implements VelocityIntroGameF
     private void addFragment(Fragment fragment) {
         final FragmentTransaction fragmentTransaction = this.getSupportFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.fragmentContainer, fragment);
-        fragmentTransaction.commit();
+        fragmentTransaction.commitAllowingStateLoss();
     }
 
 
@@ -56,5 +56,19 @@ public class VelocityActivity extends BaseActivity implements VelocityIntroGameF
         Intent returnIntent = new Intent();
         setResult(RESULT_OK, returnIntent);
         finish();
+    }
+
+    @Override
+    public void onBackPressed() {
+        this.showAlert(getString(R.string.confirmation),
+                getString(R.string.exit_game),
+                this,
+                getString(R.string.quit),
+                (dialog, which) -> {
+                    super.onBackPressed();
+                    Intent returnIntent = new Intent();
+                    setResult(RESULT_CANCELED, returnIntent);
+                    finish();
+                });
     }
 }

@@ -2,42 +2,39 @@ package ar.edu.uade.scrumgame.presentation.presenter;
 
 import androidx.annotation.NonNull;
 
-import java.util.Collections;
-
 import javax.inject.Inject;
 
-import ar.edu.uade.scrumgame.R;
 import ar.edu.uade.scrumgame.domain.exception.ErrorBundle;
-import ar.edu.uade.scrumgame.domain.interactor.DefaultObserver;
-import ar.edu.uade.scrumgame.domain.interactor.SaveProgress.PROGRESS_SAVE_OUTCOMES;
+import ar.edu.uade.scrumgame.domain.interactor.SaveProgress;
 import ar.edu.uade.scrumgame.domain.interactor.SaveProgressList;
 import ar.edu.uade.scrumgame.domain.interactor.SaveUserLocalAndRemote;
-import ar.edu.uade.scrumgame.domain.interactor.SaveUserLocalAndRemote.USER_SAVE_OUTCOMES;
 import ar.edu.uade.scrumgame.domain.interactor.SaveUserOverallData;
 import ar.edu.uade.scrumgame.presentation.di.PerActivity;
 import ar.edu.uade.scrumgame.presentation.exception.ErrorMessageFactory;
 import ar.edu.uade.scrumgame.presentation.mapper.UserDataMapper;
 import ar.edu.uade.scrumgame.presentation.models.ProgressModel;
 import ar.edu.uade.scrumgame.presentation.models.UserModel;
-import ar.edu.uade.scrumgame.presentation.models.UserOverallDataModel;
+import ar.edu.uade.scrumgame.presentation.presenter.observers.SaveUserLocalAndRemoteObserver;
 import ar.edu.uade.scrumgame.presentation.view.SignupDetailsView;
 
-@PerActivity
-public class SignupDetailsPresenter implements Presenter {
+import java.util.Collections;
 
-    private SaveProgressList saveProgresListUseCase;
+@PerActivity
+public class SignupDetailsPresenter implements SignUpBasePresenter {
+
+    private SaveProgressList saveProgressListUseCase;
     private SaveUserLocalAndRemote saveUserLocalAndRemoteUseCase;
     private SaveUserOverallData saveUserOverallDataUseCase;
     private SignupDetailsView signupDetailsView;
     private UserDataMapper userDataMapper;
 
     @Inject
-    SignupDetailsPresenter(SaveProgressList saveProgresListUseCase,
+    SignupDetailsPresenter(SaveProgressList saveProgressListUseCase,
                            SaveUserLocalAndRemote saveUserLocalAndRemoteUseCase,
                            SaveUserOverallData saveUserOverallDataUseCase,
                            UserDataMapper userDataMapper
     ) {
-        this.saveProgresListUseCase = saveProgresListUseCase;
+        this.saveProgressListUseCase = saveProgressListUseCase;
         this.saveUserLocalAndRemoteUseCase = saveUserLocalAndRemoteUseCase;
         this.saveUserOverallDataUseCase = saveUserOverallDataUseCase;
         this.userDataMapper = userDataMapper;
@@ -58,7 +55,7 @@ public class SignupDetailsPresenter implements Presenter {
     @Override
     public void destroy() {
         this.signupDetailsView = null;
-        this.saveProgresListUseCase.dispose();
+        this.saveProgressListUseCase.dispose();
         this.saveUserOverallDataUseCase.dispose();
         this.saveUserLocalAndRemoteUseCase.dispose();
     }
@@ -68,84 +65,21 @@ public class SignupDetailsPresenter implements Presenter {
     }
 
     public void onDoneClicked(UserModel userDetails, ProgressModel initialProgress) {
-        SignupDetailsPresenter.this.showViewLoading();
-        saveUserLocalAndRemoteUseCase.execute(new DefaultObserver<String>() {
-            @Override
-            public void onNext(String saveUserOutcome) {
-                switch (saveUserOutcome) {
-                    case USER_SAVE_OUTCOMES.COMPLETE:
-                    case USER_SAVE_OUTCOMES.FAILED_REMOTE:
-                        saveUserOverallDataUseCase.execute(new DefaultObserver<Void>() {
-                            @Override
-                            public void onComplete() {
-                                saveProgresListUseCase.execute(new DefaultObserver<String>() {
-                                    @Override
-                                    public void onNext(String saveProgressOutcome) {
-                                        switch (saveProgressOutcome) {
-                                            case PROGRESS_SAVE_OUTCOMES.COMPLETE:
-                                                SignupDetailsPresenter.this.hideViewLoading();
-                                                signupDetailsView.enterMenu();
-                                                break;
-                                            case PROGRESS_SAVE_OUTCOMES.FAILED_REMOTE:
-                                                SignupDetailsPresenter.this.hideViewLoading();
-                                                signupDetailsView.showError(signupDetailsView
-                                                        .context().getString(R.string.error_saving_remote_data));
-                                                signupDetailsView.returnToLogin();
-                                                break;
-                                            default:
-                                                SignupDetailsPresenter.this.hideViewLoading();
-                                                signupDetailsView.showError(signupDetailsView
-                                                        .context().getString(R.string.unknown_error));
-                                                SignupDetailsPresenter.this.showViewRetry();
-                                        }
-                                    }
-
-                                    @Override
-                                    public void onError(Throwable exception) {
-                                        SignupDetailsPresenter.this.hideViewLoading();
-                                        signupDetailsView.showError(signupDetailsView.context().getString(R.string.error_saving_progress));
-                                        SignupDetailsPresenter.this.showViewRetry();
-                                    }
-                                }, Collections.singletonList(userDataMapper.progressModelToProgress(initialProgress)));
-                            }
-
-                            @Override
-                            public void onError(Throwable exception) {
-                                SignupDetailsPresenter.this.hideViewLoading();
-                                signupDetailsView.showError(signupDetailsView
-                                        .context().getString(R.string.unknown_error));
-                                SignupDetailsPresenter.this.showViewRetry();
-                            }
-                        }, userDataMapper.userOverallDataModelToUserOverallData(
-                                new UserOverallDataModel(1)));
-                        break;
-                    default:
-                        SignupDetailsPresenter.this.hideViewLoading();
-                        signupDetailsView.showError(signupDetailsView.context().getString(R.string.unknown_error));
-                        SignupDetailsPresenter.this.showViewRetry();
-                        break;
-                }
-            }
-
-            @Override
-            public void onError(Throwable exception) {
-                SignupDetailsPresenter.this.hideViewLoading();
-                signupDetailsView.showError(signupDetailsView.context().getString(R.string.error_saving_user));
-                SignupDetailsPresenter.this.showViewRetry();
-            }
-        }, userDataMapper.userModelToUser(userDetails));
-
+        this.showViewLoading();
+        saveUserLocalAndRemoteUseCase.execute(new SaveUserLocalAndRemoteObserver(saveUserOverallDataUseCase, saveProgressListUseCase, this, signupDetailsView, userDataMapper, Collections.singletonList(initialProgress)), userDataMapper.userModelToUser(userDetails));
     }
 
     private void showViewLoading() {
         this.signupDetailsView.showLoading();
     }
 
-    private void hideViewLoading() {
+    @Override
+    public void hideViewLoading() {
         this.signupDetailsView.hideLoading();
     }
 
-    private void showViewRetry() {
+    @Override
+    public void showViewRetry() {
         this.signupDetailsView.showRetry();
     }
 

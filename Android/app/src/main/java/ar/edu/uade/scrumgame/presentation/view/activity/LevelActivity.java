@@ -1,7 +1,5 @@
 package ar.edu.uade.scrumgame.presentation.view.activity;
 
-import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.Window;
 
@@ -19,16 +17,12 @@ public class LevelActivity extends BaseActivity implements HasComponent<LevelCom
 
     private Integer levelCode;
 
-    public static Intent getCallingIntent(Context context) {
-        return new Intent(context, LevelActivity.class);
-    }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        this.initializeInjector();
         super.onCreate(savedInstanceState);
         this.requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
         this.setContentView(R.layout.activity_level);
-        this.initializeInjector();
         Bundle bundle = new Bundle();
         levelCode = (Integer) getIntent().getExtras().get("levelCode");
         bundle.putInt("levelCode", levelCode);

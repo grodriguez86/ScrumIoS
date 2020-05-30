@@ -8,7 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.RelativeLayout;
+import android.widget.FrameLayout;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatTextView;
@@ -50,19 +50,15 @@ public class LevelFragment extends BaseFragment implements LevelView {
     @BindView(R.id.rv_subLevels)
     RecyclerView subLevelsRecyclerView;
     @BindView(R.id.rl_progress)
-    RelativeLayout progressLayout;
+    FrameLayout progressLayout;
     @BindView(R.id.rl_retry)
-    RelativeLayout retryLayout;
+    FrameLayout retryLayout;
     @BindView(R.id.bt_retry)
     Button retryButton;
     @BindView(R.id.bt_exit)
     Button exitButton;
     private SubLevelListListener subLevelListListener;
     private String currentLevelName;
-
-    public LevelFragment() {
-        this.setRetainInstance(true);
-    }
 
     @OnClick(R.id.bt_exit)
     public void goBack() {
@@ -79,16 +75,11 @@ public class LevelFragment extends BaseFragment implements LevelView {
 
     @Override
     public void onAttach(Activity activity) {
+        this.getComponent(LevelComponent.class).inject(this);
         super.onAttach(activity);
         if (activity instanceof SubLevelListListener) {
             this.subLevelListListener = (SubLevelListListener) activity;
         }
-    }
-
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        this.getComponent(LevelComponent.class).inject(this);
     }
 
     @Nullable
