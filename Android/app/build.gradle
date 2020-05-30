@@ -81,6 +81,12 @@ dependencies {
     implementation 'com.amplitude:android-sdk:2.25.2'
 }
 
+configurations {
+    all {
+        exclude module: 'commons-logging'
+    }
+}
+
 apply plugin: 'com.google.gms.google-services'
 
 private Integer generateVersionCode() {
