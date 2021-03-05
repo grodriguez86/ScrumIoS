@@ -17,4 +17,8 @@ public class LogEventDataStoreFactory {
     public LogEventDataStore createAmplitudeDataStore() {
         return new AmplitudeDataStore(this.context);
     }
+
+    public LogEventDataStore createAnalyticsDataStore() {
+        return new AnalyticsDataStore(this.context);
+    }
 }
