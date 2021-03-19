@@ -5,14 +5,16 @@ import android.view.View;
 import android.widget.ImageView;
 
 public class DragListener implements View.OnDragListener {
-    public interface OnCorrectDragListener {
+    public interface OnDragListener {
         void onCorrectDrag(View view);
+
+        void onFailedDrag(View view);
     }
 
-    private OnCorrectDragListener onCorrectDragListener;
+    private OnDragListener dragListener;
 
-    public DragListener(OnCorrectDragListener onCorrectDragListener) {
-        this.onCorrectDragListener = onCorrectDragListener;
+    public DragListener(OnDragListener dragListener) {
+        this.dragListener = dragListener;
     }
 
     @Override
@@ -27,18 +29,19 @@ public class DragListener implements View.OnDragListener {
             if ((tagDropTarget != null) && (tagDropTarget.equals(tagDroppedImage))) {
                 dropTarget.setVisibility(View.VISIBLE);
                 dropTarget.setAlpha(1f);
-                if (onCorrectDragListener != null) {
-                    onCorrectDragListener.onCorrectDrag(dropTarget);
+                if (dragListener != null) {
+                    dragListener.onCorrectDrag(dropTarget);
                 }
             } else {
                 dragView.setVisibility(View.VISIBLE);
+                if (dragListener != null) {
+                    dragListener.onFailedDrag(dropTarget);
+                }
             }
         }
         if (event.getAction() == DragEvent.ACTION_DRAG_ENDED && !event.getResult()) {
             dragView.setVisibility(View.VISIBLE);
         }
         return true;
-
-
     }
 }

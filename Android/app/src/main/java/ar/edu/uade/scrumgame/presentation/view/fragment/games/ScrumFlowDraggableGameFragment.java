@@ -12,7 +12,7 @@ import ar.edu.uade.scrumgame.presentation.view.utils.DragListener;
 import ar.edu.uade.scrumgame.presentation.view.utils.TouchListener;
 import butterknife.BindView;
 
-public class ScrumFlowDraggableGameFragment extends GameFragment {
+public class ScrumFlowDraggableGameFragment extends GameFragment implements DragListener.OnDragListener {
     private static final Integer DRAGGABLE_VIEWS = 5;
     @BindView(R.id.productBacklogContainer)
     ImageView productBacklogContainer;
@@ -48,12 +48,12 @@ public class ScrumFlowDraggableGameFragment extends GameFragment {
 
     @SuppressLint("ClickableViewAccessibility")
     private void setUpListeners() {
-        DragListener.OnCorrectDragListener onCorrectDragListener = this::checkCorrectDrags;
-        sprintContainer.setOnDragListener(new DragListener(onCorrectDragListener));
-        productBacklogContainer.setOnDragListener(new DragListener(onCorrectDragListener));
-        incrementContainer.setOnDragListener(new DragListener(onCorrectDragListener));
-        sprintBacklogContainer.setOnDragListener(new DragListener(onCorrectDragListener));
-        dailyMeetUpContainer.setOnDragListener(new DragListener(onCorrectDragListener));
+        DragListener.OnDragListener dragListener = this;
+        sprintContainer.setOnDragListener(new DragListener(dragListener));
+        productBacklogContainer.setOnDragListener(new DragListener(dragListener));
+        incrementContainer.setOnDragListener(new DragListener(dragListener));
+        sprintBacklogContainer.setOnDragListener(new DragListener(dragListener));
+        dailyMeetUpContainer.setOnDragListener(new DragListener(dragListener));
         sprint.setOnTouchListener(new TouchListener());
         productBacklog.setOnTouchListener(new TouchListener());
         increment.setOnTouchListener(new TouchListener());
@@ -64,9 +64,9 @@ public class ScrumFlowDraggableGameFragment extends GameFragment {
     private void checkCorrectDrags(View view) {
         this.showTooltip(view, v -> {
             this.correctDrags++;
+            super.checkAttempt();
+            super.onCorrectAttempt();
             if (this.hasCompletedGame()) {
-                super.checkAttempt();
-                super.onCorrectAttempt();
                 if (this.onGameCompletedListener != null) {
                     this.onGameCompletedListener.onGameCompleted(gameCode);
                 }
@@ -87,5 +87,16 @@ public class ScrumFlowDraggableGameFragment extends GameFragment {
                 .corner(30)
                 .text(view.getContentDescription().toString())
                 .show();
+    }
+
+    @Override
+    public void onCorrectDrag(View view) {
+        this.checkCorrectDrags(view);
+    }
+
+    @Override
+    public void onFailedDrag(View view) {
+        super.checkAttempt();
+        super.onFailedAttempt();
     }
 }
