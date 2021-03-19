@@ -200,8 +200,17 @@
     <string name="logout">Cerrar sesión</string>
     <string name="quit_application_confirmation">¿Deseas salir de la aplicación?</string>
     <string name="quit">Salir</string>
-    <string name="exit_game">¿Desea salir del juego? ¡Perderás el progreso!</string>
+    <string name="exit_game">¿Deseas salir del juego?</string>
     <string name="version">Versión %s</string>
+    <string name="back">Back</string>
+    <string name="como_cd">Como</string>
+    <string name="comprador_cd">Comprador</string>
+    <string name="quiero_cd">quiero</string>
+    <string name="pago_cd">realizar el pago de mi compra</string>
+    <string name="producto_cd">encontrar más fácilmente el producto que necesito</string>
+    <string name="busqueda_cd">filtrar los resultados de una búsqueda</string>
+    <string name="duenio_cd">Dueño de la empresa</string>
+    <string name="para_cd">para</string>
     <string-array name="fibonacci_sequence">
         <item>0</item>
         <item tools:ignore="TypographyFractions">1/2</item>
