@@ -20,28 +20,24 @@ public class InfoGameActivity extends BaseActivity implements HasComponent<Level
     private static final String INTENT_EXTRA_PARAM_SUB_LEVEL_CODE = "ar.edu.uade.scrumgame.INTENT_EXTRA_PARAM_SUB_LEVEL_CODE";
     private static final String INTENT_EXTRA_PARAM_LEVEL_TITLE = "ar.edu.uade.scrumgame.INTENT_EXTRA_PARAM_LEVEL_TITLE";
     private static final String INTENT_EXTRA_PARAM_SUB_LEVEL_TITLE = "ar.edu.uade.scrumgame.INTENT_EXTRA_PARAM_SUB_LEVEL_TITLE";
-    private static final String INTENT_EXTRA_PARAM_CURRENT_GAME = "ar.edu.uade.scrumgame.INTENT_EXTRA_PARAM_CURRENT_GAME";
     private static final String INSTANCE_STATE_PARAM_LEVEL_CODE = "ar.edu.uade.scrumgame.INSTANCE_STATE_PARAM_LEVEL_CODE";
     private static final String INSTANCE_STATE_PARAM_SUB_LEVEL_CODE = "ar.edu.uade.scrumgame.INSTANCE_STATE_PARAM_SUB_LEVEL_TITLE";
     private static final String INSTANCE_STATE_PARAM_LEVEL_TITLE = "ar.edu.uade.scrumgame.INSTANCE_STATE_PARAM_LEVEL_TITLE";
     private static final String INSTANCE_STATE_PARAM_SUB_LEVEL_TITLE = "ar.edu.uade.scrumgame.INSTANCE_STATE_PARAM_SUB_LEVEL_CODE";
-    private static final String INSTANCE_STATE_PARAM_CURRENT_GAME = "ar.edu.uade.scrumgame.INSTANCE_STATE_PARAM_CURRENT_GAME";
     private Integer levelCode;
     private String subLevelCode;
-    private Integer currentGame;
     private String levelTitle;
     private String subLevelTitle;
     private LevelComponent levelComponent;
     private InfoGameFragment infoGameFragment;
 
     public static Intent getCallingIntent(Context context, Integer levelCode, String levelTitle,
-                                          String subLevelCode, String subLevelTitle, Integer currentGame) {
+                                          String subLevelCode, String subLevelTitle) {
         Intent callingIntent = new Intent(context, InfoGameActivity.class);
         callingIntent.putExtra(INTENT_EXTRA_PARAM_LEVEL_CODE, levelCode);
         callingIntent.putExtra(INTENT_EXTRA_PARAM_SUB_LEVEL_CODE, subLevelCode);
         callingIntent.putExtra(INTENT_EXTRA_PARAM_LEVEL_TITLE, levelTitle);
         callingIntent.putExtra(INTENT_EXTRA_PARAM_SUB_LEVEL_TITLE, subLevelTitle);
-        callingIntent.putExtra(INTENT_EXTRA_PARAM_CURRENT_GAME, currentGame);
         return callingIntent;
     }
 
@@ -60,19 +56,17 @@ public class InfoGameActivity extends BaseActivity implements HasComponent<Level
             this.subLevelCode = getIntent().getStringExtra(INTENT_EXTRA_PARAM_SUB_LEVEL_CODE);
             this.levelTitle = getIntent().getStringExtra(INTENT_EXTRA_PARAM_LEVEL_TITLE);
             this.subLevelTitle = getIntent().getStringExtra(INTENT_EXTRA_PARAM_SUB_LEVEL_TITLE);
-            this.currentGame = getIntent().getIntExtra(INTENT_EXTRA_PARAM_CURRENT_GAME, 0);
         } else {
             this.levelCode = savedInstanceState.getInt(INSTANCE_STATE_PARAM_LEVEL_CODE);
             this.subLevelCode = savedInstanceState.getString(INSTANCE_STATE_PARAM_SUB_LEVEL_CODE);
             this.levelTitle = savedInstanceState.getString(INSTANCE_STATE_PARAM_LEVEL_TITLE);
             this.subLevelTitle = savedInstanceState.getString(INSTANCE_STATE_PARAM_SUB_LEVEL_TITLE);
-            this.currentGame = savedInstanceState.getInt(INSTANCE_STATE_PARAM_CURRENT_GAME);
         }
         this.initializeFragment(savedInstanceState);
     }
 
     private void initializeFragment(Bundle savedInstanceState) {
-        this.infoGameFragment = InfoGameFragment.newInstance(this.levelTitle, this.subLevelCode, this.subLevelTitle, this.currentGame);
+        this.infoGameFragment = InfoGameFragment.newInstance(this.levelTitle, this.subLevelCode, this.subLevelTitle);
         if (savedInstanceState == null) {
             addFragment(R.id.fragmentContainer, infoGameFragment);
         }
@@ -95,7 +89,6 @@ public class InfoGameActivity extends BaseActivity implements HasComponent<Level
     protected void onSaveInstanceState(@NonNull Bundle outState) {
         outState.putInt(INSTANCE_STATE_PARAM_LEVEL_CODE, this.levelCode);
         outState.putString(INSTANCE_STATE_PARAM_SUB_LEVEL_CODE, this.subLevelCode);
-        outState.putInt(INSTANCE_STATE_PARAM_CURRENT_GAME, this.currentGame);
         super.onSaveInstanceState(outState);
     }
 
