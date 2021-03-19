@@ -35,6 +35,7 @@ public class ShortTextQuizAdapter extends RecyclerView.Adapter<ShortTextQuizAdap
     private LayoutInflater layoutInflater;
     private OnItemClickListener onItemClickListener;
     private ShortTextQuizViewHolder lastSelectedOption;
+    private Boolean enabled = true;
 
     @Inject
     public ShortTextQuizAdapter(Context context) {
@@ -62,14 +63,16 @@ public class ShortTextQuizAdapter extends RecyclerView.Adapter<ShortTextQuizAdap
         holder.selected.setText(gameContentModel.getData());
         holder.selected.setTag(gameContentModel.getCorrect());
         holder.selected.setOnClickListener(v -> {
-            if (lastSelectedOption != null) {
-                lastSelectedOption.selected.setTextColor(ContextCompat.getColor(this.context,R.color.violet));
-                lastSelectedOption.selected.setChecked(false);
-            }
-            lastSelectedOption = holder;
-            lastSelectedOption.selected.setTextColor(Color.WHITE);
-            if (ShortTextQuizAdapter.this.onItemClickListener != null) {
-                ShortTextQuizAdapter.this.onItemClickListener.onOptionSelected(gameContentModel);
+            if (this.enabled) {
+                if (lastSelectedOption != null) {
+                    lastSelectedOption.selected.setTextColor(ContextCompat.getColor(this.context, R.color.violet));
+                    lastSelectedOption.selected.setChecked(false);
+                }
+                lastSelectedOption = holder;
+                lastSelectedOption.selected.setTextColor(Color.WHITE);
+                if (ShortTextQuizAdapter.this.onItemClickListener != null) {
+                    ShortTextQuizAdapter.this.onItemClickListener.onOptionSelected(gameContentModel);
+                }
             }
         });
     }
@@ -96,6 +99,11 @@ public class ShortTextQuizAdapter extends RecyclerView.Adapter<ShortTextQuizAdap
         if (gameContentModelCollection.size() > MAXIMUM_NUMBER_OF_OPTIONS) {
             throw new IllegalArgumentException("The list has too many elements");
         }
+    }
+
+
+    public void setEnabled(Boolean enabled) {
+        this.enabled = enabled;
     }
 
     static class ShortTextQuizViewHolder extends RecyclerView.ViewHolder {

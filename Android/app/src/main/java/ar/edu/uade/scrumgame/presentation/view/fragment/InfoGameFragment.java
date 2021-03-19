@@ -16,8 +16,6 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatTextView;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 
-import java.util.List;
-
 import javax.inject.Inject;
 
 import ar.edu.uade.scrumgame.R;
@@ -40,8 +38,8 @@ public class InfoGameFragment extends BaseFragment implements InfoGamesContentVi
     private static final String BUNDLE_EXTRA_PARAM_SUB_LEVEL_CODE = "ar.edu.uade.scrumgame.BUNDLE_EXTRA_PARAM_SUB_LEVEL_CODE";
     private static final String BUNDLE_EXTRA_PARAM_LEVEL_TITLE = "ar.edu.uade.scrumgame.BUNDLE_EXTRA_PARAM_LEVEL_TITLE";
     private static final String BUNDLE_EXTRA_PARAM_SUB_LEVEL_TITLE = "ar.edu.uade.scrumgame.BUNDLE_EXTRA_PARAM_SUB_LEVEL_TITLE";
-    private static final String BUNDLE_EXTRA_PARAM_CURRENT_GAME = "ar.edu.uade.scrumgame.BUNDLE_EXTRA_PARAM_CURRENT_GAME";
     private static final String BUNDLE_EXTRA_PARAM_INFO_GAME = "ar.edu.uade.scrumgame.BUNDLE_EXTRA_PARAM_INFO_GAME";
+    private static final String BUNDLE_EXTRA_PARAM_COMPLETED = "ar.edu.uade.scrumgame.BUNDLE_EXTRA_PARAM_COMPLETED";
     @BindView(R.id.game_progress)
     ProgressBar progressBar;
     @BindView(R.id.progress_tv)
@@ -66,25 +64,25 @@ public class InfoGameFragment extends BaseFragment implements InfoGamesContentVi
     LinearLayout bottomSheetLayout;
     @BindView(R.id.finish_game_btn)
     Button finishGameButton;
+    @BindView(R.id.btn_back)
+    ImageButton backButton;
     private Fragment gameFragment;
     @Inject
     InfoGamesContentPresenter infoGamesContentPresenter;
-    private List<InfoGameModel> infoGameModelList;
     private InfoGameActivity context;
     private String subLevelCode;
     private String levelTitle;
     private String subLevelTitle;
-    private Integer currentGame;
+    private InfoGameModel currentGame;
     private OnGamesCompletedListener onGamesCompletedListener;
     private BottomSheetBehavior bottomSheetBehavior;
 
-    public static InfoGameFragment newInstance(String levelTitle, String subLevelCode, String subLevelTitle, Integer currentGame) {
+    public static InfoGameFragment newInstance(String levelTitle, String subLevelCode, String subLevelTitle) {
         InfoGameFragment fragment = new InfoGameFragment();
         Bundle bundle = new Bundle();
         bundle.putString(BUNDLE_EXTRA_PARAM_SUB_LEVEL_CODE, subLevelCode);
         bundle.putString(BUNDLE_EXTRA_PARAM_LEVEL_TITLE, levelTitle);
         bundle.putString(BUNDLE_EXTRA_PARAM_SUB_LEVEL_TITLE, subLevelTitle);
-        bundle.putInt(BUNDLE_EXTRA_PARAM_CURRENT_GAME, currentGame);
         fragment.setArguments(bundle);
         return fragment;
     }
@@ -111,7 +109,6 @@ public class InfoGameFragment extends BaseFragment implements InfoGamesContentVi
         this.subLevelCode = getArguments().getString(BUNDLE_EXTRA_PARAM_SUB_LEVEL_CODE);
         this.levelTitle = getArguments().getString(BUNDLE_EXTRA_PARAM_LEVEL_TITLE);
         this.subLevelTitle = getArguments().getString(BUNDLE_EXTRA_PARAM_SUB_LEVEL_TITLE);
-        this.currentGame = getArguments().getInt(BUNDLE_EXTRA_PARAM_CURRENT_GAME);
     }
 
     @Nullable
@@ -194,9 +191,23 @@ public class InfoGameFragment extends BaseFragment implements InfoGamesContentVi
         this.infoGamesContentPresenter.destroy();
     }
 
+    @Override
+    public void playGame(InfoGameModel game, Float progress) {
+        this.currentGame = game;
+        this.updateProgress(progress);
+        this.loadGame(game);
+    }
+
+    @Override
+    public void showLevelCompletedView() {
+        this.bottomSheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
+    }
+
     @OnClick(R.id.sendAnswer)
     public void onSendAnswerClicked() {
-        if (gameFragment != null && gameFragment instanceof GameContentView) {
+        if (this.infoGamesContentPresenter.isGameCompleted() && this.currentGame != null) {
+            this.onCompleteGame(this.currentGame.getCode());
+        } else if (gameFragment != null && gameFragment instanceof GameContentView) {
             ((GameContentView) gameFragment).checkAttempt();
         }
     }
@@ -206,40 +217,10 @@ public class InfoGameFragment extends BaseFragment implements InfoGamesContentVi
         this.infoGamesContentPresenter.playNextLevel(gameCode);
     }
 
-    @Override
-    public void loadGames(List<InfoGameModel> infoGameModelCollection) {
-        this.infoGameModelList = infoGameModelCollection;
-        this.startPlaying();
-    }
-
-    private void startPlaying() {
-        this.updateProgress();
-        if (this.areGamesPendingToPlay()) {
-            InfoGameModel currentGame = infoGameModelList.get(this.currentGame);
-            this.loadGame(currentGame);
-        } else {
-            this.bottomSheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
-        }
-    }
-
-    private void updateProgress() {
-        int progressPercentage = this.calculateProgress().intValue();
+    private void updateProgress(Float progress) {
+        int progressPercentage = progress.intValue();
         this.progressBar.setProgress(progressPercentage);
         this.progressAppCompatTextView.setText(getString(R.string.progress_label, progressPercentage));
-    }
-
-    private Float calculateProgress() {
-        return (float) this.currentGame / infoGameModelList.size() * 100;
-    }
-
-    private boolean areGamesPendingToPlay() {
-        return this.currentGame < this.infoGameModelList.size();
-    }
-
-    @Override
-    public void playNextLevel() {
-        this.currentGame++;
-        this.startPlaying();
     }
 
     private void loadGame(InfoGameModel infoGameModel) {
@@ -253,6 +234,7 @@ public class InfoGameFragment extends BaseFragment implements InfoGamesContentVi
             gameFragment = (Fragment) Class.forName(fragmentName).newInstance();
             Bundle bundle = new Bundle();
             bundle.putParcelable(BUNDLE_EXTRA_PARAM_INFO_GAME, infoGameModel);
+            bundle.putBoolean(BUNDLE_EXTRA_PARAM_COMPLETED, this.infoGamesContentPresenter.isGameCompleted());
             gameFragment.setArguments(bundle);
             if (context != null) {
                 addFragment(gameFragment);
@@ -273,8 +255,8 @@ public class InfoGameFragment extends BaseFragment implements InfoGamesContentVi
         } else {
             sendAnswerButton.setVisibility(View.VISIBLE);
         }
-        //TODO tutorial
-        indicationsAppCompatTextView.setText("");
+        indicationsAppCompatTextView.setVisibility(View.GONE);
+        this.backButton.setVisibility(this.infoGamesContentPresenter.isFirstGame() ? View.INVISIBLE : View.VISIBLE);
     }
 
     private boolean shouldHideSendAnswerButton(String type) {
@@ -311,6 +293,11 @@ public class InfoGameFragment extends BaseFragment implements InfoGamesContentVi
     @Override
     public void goToSublevelMenu() {
         this.onGamesCompletedListener.onGamesCompleted();
+    }
+
+    @OnClick(R.id.btn_back)
+    public void goToPreviousGame() {
+        this.infoGamesContentPresenter.playPreviousLevel();
     }
 
 }

@@ -20,8 +20,10 @@ import javax.inject.Inject;
 
 public abstract class GameFragment extends BaseFragment implements GameContentView {
     protected static final String BUNDLE_EXTRA_PARAM_INFO_GAME = "ar.edu.uade.scrumgame.BUNDLE_EXTRA_PARAM_INFO_GAME";
+    protected static final String BUNDLE_EXTRA_PARAM_COMPLETED = "ar.edu.uade.scrumgame.BUNDLE_EXTRA_PARAM_COMPLETED";
     protected String gameCode;
     protected InfoGameModel infoGameModel;
+    protected Boolean completed;
     private Boolean firstAttempt = true;
     @Inject
     GamePresenter gamePresenter;
@@ -44,6 +46,8 @@ public abstract class GameFragment extends BaseFragment implements GameContentVi
     protected abstract Integer getFragmentId();
 
     protected abstract void doLoadGame();
+
+    protected abstract void doLoadCompletedGame();
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -69,9 +73,13 @@ public abstract class GameFragment extends BaseFragment implements GameContentVi
 
     private void loadGame() {
         this.infoGameModel = getArguments().getParcelable(BUNDLE_EXTRA_PARAM_INFO_GAME);
+        this.completed = getArguments().getBoolean(BUNDLE_EXTRA_PARAM_COMPLETED);
         if (infoGameModel != null) {
             this.gameCode = infoGameModel.getCode();
             this.doLoadGame();
+            if (this.completed) {
+                this.doLoadCompletedGame();
+            }
             this.handler.post(counterRunnable);
         }
     }

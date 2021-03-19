@@ -1,5 +1,6 @@
 package ar.edu.uade.scrumgame.presentation.view.fragment.games;
 
+import android.os.Handler;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -8,12 +9,15 @@ import ar.edu.uade.scrumgame.presentation.models.GameContentModel;
 import ar.edu.uade.scrumgame.presentation.view.GameContentView;
 import ar.edu.uade.scrumgame.presentation.view.adapter.ImageQuizAdapter;
 import ar.edu.uade.scrumgame.presentation.view.fragment.GameFragment;
+import ar.edu.uade.scrumgame.presentation.view.utils.GameModelUtils;
 import butterknife.BindView;
 
 public class ImageQuizGameFragment extends GameFragment implements GameContentView, ImageQuizAdapter.OnItemClickListener {
     @BindView(R.id.picture_rv)
     RecyclerView picturesRecyclerView;
+    private ImageQuizAdapter imageQuizAdapter;
     private Boolean isChoiceCorrect = false;
+
     @Override
     protected Integer getFragmentId() {
         return R.layout.fragment_game_image_quiz;
@@ -24,11 +28,25 @@ public class ImageQuizGameFragment extends GameFragment implements GameContentVi
         this.setUpRecyclerView();
     }
 
+    @Override
+    protected void doLoadCompletedGame() {
+        int correctOptionIndex = GameModelUtils.getCorrectOptionIndex(infoGameModel.getContent());
+        if (this.picturesRecyclerView != null) {
+            this.imageQuizAdapter.setEnabled(false);
+            new Handler().postDelayed(() -> {
+                RecyclerView.ViewHolder viewHolder = this.picturesRecyclerView.findViewHolderForAdapterPosition(correctOptionIndex);
+                if (viewHolder != null) {
+                    viewHolder.itemView.setSelected(true);
+                }
+            }, 100);
+        }
+    }
+
     private void setUpRecyclerView() {
-        ImageQuizAdapter imageQuizAdapter = new ImageQuizAdapter(getActivity());
-        imageQuizAdapter.setGameContentModels(infoGameModel.getContent());
-        imageQuizAdapter.setOnItemClickListener(this);
-        this.picturesRecyclerView.setAdapter(imageQuizAdapter);
+        this.imageQuizAdapter = new ImageQuizAdapter(getActivity());
+        this.imageQuizAdapter.setGameContentModels(infoGameModel.getContent());
+        this.imageQuizAdapter.setOnItemClickListener(this);
+        this.picturesRecyclerView.setAdapter(this.imageQuizAdapter);
         this.picturesRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), RecyclerView.VERTICAL, false));
     }
 

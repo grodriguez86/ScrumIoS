@@ -58,8 +58,8 @@ public class InfoTheoryActivity extends BaseActivity implements HasComponent<Lev
 
     @Override
     public void onPlayClicked(Integer levelCode, String levelTitle, String subLevelCode,
-                              String subLevelTitle, Integer currentGame) {
+                              String subLevelTitle) {
         this.navigator.navigateToPlaySubLevel(this, levelCode, levelTitle,
-                subLevelCode, subLevelTitle, currentGame);
+                subLevelCode, subLevelTitle);
     }
 }

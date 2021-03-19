@@ -1,5 +1,6 @@
 package ar.edu.uade.scrumgame.presentation.view.fragment.games;
 
+import android.os.Handler;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -8,6 +9,7 @@ import ar.edu.uade.scrumgame.presentation.models.GameContentModel;
 import ar.edu.uade.scrumgame.presentation.view.GameContentView;
 import ar.edu.uade.scrumgame.presentation.view.adapter.SelectionAdapter;
 import ar.edu.uade.scrumgame.presentation.view.fragment.GameFragment;
+import ar.edu.uade.scrumgame.presentation.view.utils.GameModelUtils;
 import butterknife.BindView;
 
 import java.util.List;
@@ -26,6 +28,22 @@ public class SelectionGameFragment extends GameFragment implements GameContentVi
     @Override
     protected void doLoadGame() {
         this.setUpRecyclerView();
+    }
+
+    @Override
+    protected void doLoadCompletedGame() {
+        List<Integer> correctOptionIndexes = GameModelUtils.getCorrectOptionIndexes(infoGameModel.getContent());
+        if (this.optionsRecyclerView != null) {
+            new Handler().postDelayed(() -> {
+                for (Integer correctOptionIndex : correctOptionIndexes) {
+                    RecyclerView.ViewHolder viewHolder = this.optionsRecyclerView.findViewHolderForAdapterPosition(correctOptionIndex);
+                    if (viewHolder != null) {
+                        viewHolder.itemView.performClick();
+                    }
+                }
+                this.optionsAdapter.setEnabled(false);
+            }, 100);
+        }
     }
 
     private void setUpRecyclerView() {

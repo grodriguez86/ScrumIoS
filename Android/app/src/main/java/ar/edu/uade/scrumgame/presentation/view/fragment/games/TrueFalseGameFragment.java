@@ -28,20 +28,31 @@ public class TrueFalseGameFragment extends GameFragment implements GameContentVi
 
     @Override
     protected void doLoadGame() {
-        choices = new Button[]{choice1Button, choice2Button};
+        this.choices = new Button[]{choice1Button, choice2Button};
         List<GameContentModel> gameContent = infoGameModel.getContent();
         if (gameContent.size() != NUMBER_OF_CHOICES) {
             throw new IllegalArgumentException("True/false choices must be two");
         }
         for (int index = 0; index < NUMBER_OF_CHOICES; index++) {
-            choices[index].setText(gameContent.get(index).getData());
-            choices[index].setTag(gameContent.get(index).getCorrect());
-            choices[index].setOnClickListener(v -> {
+            this.choices[index].setText(gameContent.get(index).getData());
+            this.choices[index].setTag(gameContent.get(index).getCorrect());
+            this.choices[index].setOnClickListener(v -> {
                 TrueFalseGameFragment.this.unselectChoice();
                 v.setSelected(true);
                 ((Button) v).setTextColor(Color.WHITE);
                 this.choiceAttempt = (Button) v;
             });
+        }
+    }
+
+    @Override
+    protected void doLoadCompletedGame() {
+        for (int index = 0; index < NUMBER_OF_CHOICES; index++) {
+            Button button = this.choices[index];
+            button.setEnabled(false);
+            if (button.getTag().equals(true)) {
+                button.performClick();
+            }
         }
     }
 

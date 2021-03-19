@@ -25,8 +25,15 @@ public class PlanningPokerGameFragment extends GameFragment implements GameConte
     }
 
     @Override
+    protected void doLoadCompletedGame() {
+
+    }
+
+    @Override
     public void onCorrectAttempt() {
-        super.onCorrectAttempt();
+        if (!this.completed) {
+            super.onCorrectAttempt();
+        }
         this.onGameCompletedListener.onGameCompleted(gameCode);
     }
 

@@ -69,9 +69,8 @@ public class SubLevelsAdapter extends RecyclerView.Adapter<SubLevelsAdapter.SubL
         holder.progressBarText.setText(Integer.toString(progressStatusModel.getProgress()));
         holder.progressText.setText(progressStatusModel.getStatus());
         holder.itemView.setOnClickListener(v -> {
-            if (progressStatusModel.getStatus().equals(ProgressStatusConstant.AVAILABLE) ||
-                    progressStatusModel.getStatus().equals(ProgressStatusConstant.STARTED) &&
-                            SubLevelsAdapter.this.onItemClickListener != null)
+            if (!progressStatusModel.getStatus().equals(ProgressStatusConstant.LOCKED) &&
+                    SubLevelsAdapter.this.onItemClickListener != null)
                 SubLevelsAdapter.this.onItemClickListener.onSubLevelItemClicked(subLevelModel,
                         progressModel);
         });

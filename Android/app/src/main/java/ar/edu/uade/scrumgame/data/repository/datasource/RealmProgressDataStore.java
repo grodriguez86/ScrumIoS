@@ -19,6 +19,8 @@ class RealmProgressDataStore implements LocalProgressDataStore {
                 emitter.onComplete();
             } catch (Exception e) {
                 emitter.onError(e);
+            } finally {
+                Realm.getDefaultInstance().close();
             }
         });
     }
@@ -63,19 +65,21 @@ class RealmProgressDataStore implements LocalProgressDataStore {
     public Observable<ProgressEntity> getProgressEntity(Integer levelCode) {
         return Observable.create(emitter -> {
             try {
-                Realm realm = Realm.getDefaultInstance();
-                realm.beginTransaction();
-                ProgressEntity progressEntity = realm.where(ProgressEntity.class)
-                        .equalTo("level_number", levelCode).findFirst();
-                realm.commitTransaction();
-                if (progressEntity == null)
-                    emitter.onError(new RuntimeException("TODO: ProgressEntity not found error"));
-                else {
-                    emitter.onNext(progressEntity);
-                    emitter.onComplete();
-                }
+                Realm.getDefaultInstance().executeTransaction(realm -> {
+                    ProgressEntity progressEntity = realm.where(ProgressEntity.class)
+                            .equalTo("levelId", levelCode).findFirst();
+                    if (progressEntity == null)
+                        emitter.onError(new RuntimeException("TODO: ProgressEntity not found error"));
+                    else {
+                        emitter.onNext(progressEntity);
+                        emitter.onComplete();
+                    }
+                });
             } catch (Exception e) {
                 emitter.onError(e);
+            }
+            finally {
+                Realm.getDefaultInstance().close();
             }
         });
     }
