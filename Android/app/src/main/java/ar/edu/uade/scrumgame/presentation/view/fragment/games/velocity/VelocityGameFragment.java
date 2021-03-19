@@ -24,8 +24,15 @@ public class VelocityGameFragment extends GameFragment implements GameContentVie
     }
 
     @Override
+    protected void doLoadCompletedGame() {
+
+    }
+
+    @Override
     public void onCorrectAttempt() {
-        super.onCorrectAttempt();
+        if (!this.completed) {
+            super.onCorrectAttempt();
+        }
         this.onGameCompletedListener.onGameCompleted(gameCode);
     }
 

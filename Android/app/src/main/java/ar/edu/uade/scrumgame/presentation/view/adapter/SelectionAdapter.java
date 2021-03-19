@@ -27,6 +27,7 @@ public class SelectionAdapter extends RecyclerView.Adapter<SelectionAdapter.Drag
     private LayoutInflater layoutInflater;
     private Context context;
     private List<GameContentModel> selectedOptions = new LinkedList<>();
+    private Boolean enabled = true;
 
     @Inject
     public SelectionAdapter(Context context) {
@@ -53,14 +54,16 @@ public class SelectionAdapter extends RecyclerView.Adapter<SelectionAdapter.Drag
         GameContentModel gameContentModel = this.gameContentModels.get(position);
         holder.optionLinearLayout.setTag(gameContentModel.getCorrect());
         holder.optionLinearLayout.setOnClickListener(v -> {
-            if (this.selectedOptions.contains(gameContentModel)) {
-                this.selectedOptions.remove(gameContentModel);
-                holder.optionLinearLayout.setBackground(ContextCompat.getDrawable(this.context, R.drawable.button_outline));
-                holder.optionAppCompatTextView.setTextColor(ContextCompat.getColor(this.context, R.color.blue));
-            } else {
-                this.selectedOptions.add(gameContentModel);
-                holder.optionLinearLayout.setBackground(ContextCompat.getDrawable(this.context, R.drawable.button_fill));
-                holder.optionAppCompatTextView.setTextColor(ContextCompat.getColor(this.context, R.color.white));
+            if (this.enabled) {
+                if (this.selectedOptions.contains(gameContentModel)) {
+                    this.selectedOptions.remove(gameContentModel);
+                    holder.optionLinearLayout.setBackground(ContextCompat.getDrawable(this.context, R.drawable.button_outline));
+                    holder.optionAppCompatTextView.setTextColor(ContextCompat.getColor(this.context, R.color.blue));
+                } else {
+                    this.selectedOptions.add(gameContentModel);
+                    holder.optionLinearLayout.setBackground(ContextCompat.getDrawable(this.context, R.drawable.button_fill));
+                    holder.optionAppCompatTextView.setTextColor(ContextCompat.getColor(this.context, R.color.white));
+                }
             }
         });
         holder.optionAppCompatTextView.setText(gameContentModel.getData());
@@ -72,7 +75,7 @@ public class SelectionAdapter extends RecyclerView.Adapter<SelectionAdapter.Drag
         return position;
     }
 
-    public List<GameContentModel> getSelectedOptions(){
+    public List<GameContentModel> getSelectedOptions() {
         return this.selectedOptions;
     }
 
@@ -86,6 +89,10 @@ public class SelectionAdapter extends RecyclerView.Adapter<SelectionAdapter.Drag
         if (gameContentModelCollection == null) {
             throw new IllegalArgumentException("The list cannot be null");
         }
+    }
+
+    public void setEnabled(Boolean enabled) {
+        this.enabled = enabled;
     }
 
     static class DragDropViewHolder extends RecyclerView.ViewHolder {

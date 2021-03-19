@@ -45,6 +45,18 @@ public class TextChoicesGameFragment extends GameFragment implements GameContent
     }
 
     @Override
+    protected void doLoadCompletedGame() {
+        int choicesCount = this.choices.getChildCount();
+        for(int index = 0; index < choicesCount; index++){
+            RadioButton button = (RadioButton) this.choices.getChildAt(index);
+            button.setEnabled(false);
+            if(button.getTag().equals(true)){
+                button.setChecked(true);
+            }
+        }
+    }
+
+    @Override
     public void onCorrectAttempt() {
         super.onCorrectAttempt();
         if (this.onGameCompletedListener != null) {
