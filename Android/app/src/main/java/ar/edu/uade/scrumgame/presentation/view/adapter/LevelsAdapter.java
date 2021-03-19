@@ -94,6 +94,11 @@ public class LevelsAdapter extends RecyclerView.Adapter<LevelsAdapter.LevelViewH
                 holder.statusImage.setVisibility(View.VISIBLE);
                 holder.playLabel.setText(R.string.menu_play_completed);
                 holder.progressLabel.setText("100%");
+                holder.itemView.setOnClickListener(v -> {
+                    if (LevelsAdapter.this.onItemClickListener != null) {
+                        LevelsAdapter.this.onItemClickListener.onLevelItemClicked(levelModel);
+                    }
+                });
             }
         }
         holder.number.setText(String.valueOf(levelModel.getCode()));
