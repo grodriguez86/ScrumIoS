@@ -35,7 +35,7 @@ public class ImageQuizAdapter extends RecyclerView.Adapter<ImageQuizAdapter.Imag
     private LayoutInflater layoutInflater;
     private OnItemClickListener onItemClickListener;
     private ImageQuizViewHolder lastSelectedPicture;
-    private Boolean enabled = tr7ue;
+    private Boolean enabled = true;
 
     @Inject
     public ImageQuizAdapter(Context context) {

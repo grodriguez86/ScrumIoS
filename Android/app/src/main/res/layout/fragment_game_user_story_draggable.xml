@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                                   xmlns:app="http://schemas.android.com/apk/res-auto"
+                                                   android:layout_width="match_parent"
+                                                   android:layout_height="match_parent"
+                                                   android:layout_alignParentStart="true"
+                                                   android:layout_alignParentLeft="true"
+                                                   android:layout_alignParentTop="true"
+                                                   android:layout_gravity="center"
+                                                   android:foregroundGravity="center"
+                                                   app:layout_anchorGravity="center">
+    <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="0dp" app:srcCompat="@drawable/como" android:id="@+id/como"
+            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" android:contentDescription="@string/como_cd"
+            android:tag="@string/como_cd"
+    />
+    <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="0dp" app:srcCompat="@drawable/compradorcontainer"
+            android:id="@+id/compradorContainer"
+            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/como" android:contentDescription="@string/comprador_cd"
+            android:tag="@string/comprador_cd"
+            android:maxHeight="50dp" android:layout_marginTop="8dp" android:alpha="0"/>
+    <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="0dp" app:srcCompat="@drawable/quiero" android:id="@+id/quiero"
+            app:layout_constraintTop_toBottomOf="@+id/compradorContainer" app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" android:contentDescription="@string/quiero_cd"
+            android:tag="@string/quiero_cd"
+            android:layout_marginTop="8dp"/>
+    <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="0dp" app:srcCompat="@drawable/busquedacontainer" android:id="@+id/busquedaContainer"
+            app:layout_constraintTop_toBottomOf="@id/quiero" app:layout_constraintEnd_toEndOf="parent"
+            android:contentDescription="@string/busqueda_cd" android:tag="@string/busqueda_cd"
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginTop="8dp" android:alpha="0"/>
+    <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" app:srcCompat="@drawable/para" android:id="@+id/para"
+            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/busquedaContainer" android:layout_marginTop="8dp"
+            android:contentDescription="@string/para_cd" android:tag="@string/para_cd"/>
+    <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="0dp" app:srcCompat="@drawable/productocontainer" android:id="@+id/productoContainer"
+            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toBottomOf="@+id/para"
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginTop="8dp" android:alpha="0"
+            android:contentDescription="@string/producto_cd" android:tag="@string/producto_cd"/>
+    <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="0dp" app:srcCompat="@drawable/comprador" android:id="@+id/comprador"
+            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginBottom="8dp" android:layout_marginLeft="8dp" android:layout_marginStart="8dp"
+            android:contentDescription="@string/comprador_cd" android:tag="@string/comprador_cd"/>
+    <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="0dp" app:srcCompat="@drawable/duenio" android:id="@+id/duenio"
+            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/comprador" android:layout_marginBottom="8dp"
+            android:contentDescription="@string/duenio_cd" android:tag="@string/duenio_cd"/>
+    <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="0dp" app:srcCompat="@drawable/busqueda" android:id="@+id/busqueda"
+            app:layout_constraintBottom_toTopOf="@+id/duenio" app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginBottom="8dp" android:layout_marginRight="8dp" android:layout_marginEnd="8dp"
+            android:contentDescription="@string/busqueda_cd" android:tag="@string/busqueda_cd"/>
+    <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="0dp" app:srcCompat="@drawable/producto" android:id="@+id/producto"
+            app:layout_constraintBottom_toTopOf="@+id/pago" app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginBottom="8dp"
+            android:contentDescription="@string/producto_cd" android:tag="@string/producto_cd"/>
+    <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="0dp" app:srcCompat="@drawable/pago" android:id="@+id/pago"
+            app:layout_constraintBottom_toTopOf="@+id/comprador" app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/busqueda" android:layout_marginBottom="8dp"
+            android:layout_marginLeft="8dp" android:layout_marginStart="8dp"
+            android:contentDescription="@string/pago_cd" android:tag="@string/pago_cd"/>
+</androidx.constraintlayout.widget.ConstraintLayout>
