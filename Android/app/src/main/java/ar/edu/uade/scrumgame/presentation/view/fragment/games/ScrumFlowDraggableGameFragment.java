@@ -46,6 +46,20 @@ public class ScrumFlowDraggableGameFragment extends GameFragment implements Drag
         this.setUpListeners();
     }
 
+    @Override
+    protected void doLoadCompletedGame() {
+        this.sprintContainer.setAlpha(1f);
+        this.productBacklogContainer.setAlpha(1f);
+        this.incrementContainer.setAlpha(1f);
+        this.sprintBacklogContainer.setAlpha(1f);
+        this.dailyMeetUpContainer.setAlpha(1f);
+        this.sprint.setVisibility(View.INVISIBLE);
+        this.productBacklog.setVisibility(View.INVISIBLE);
+        this.increment.setVisibility(View.INVISIBLE);
+        this.sprintBacklog.setVisibility(View.INVISIBLE);
+        this.dailyMeetUp.setVisibility(View.INVISIBLE);
+    }
+
     @SuppressLint("ClickableViewAccessibility")
     private void setUpListeners() {
         DragListener.OnDragListener dragListener = this;

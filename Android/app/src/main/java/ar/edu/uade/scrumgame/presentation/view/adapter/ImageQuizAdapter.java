@@ -35,6 +35,7 @@ public class ImageQuizAdapter extends RecyclerView.Adapter<ImageQuizAdapter.Imag
     private LayoutInflater layoutInflater;
     private OnItemClickListener onItemClickListener;
     private ImageQuizViewHolder lastSelectedPicture;
+    private Boolean enabled = tr7ue;
 
     @Inject
     public ImageQuizAdapter(Context context) {
@@ -61,14 +62,16 @@ public class ImageQuizAdapter extends RecyclerView.Adapter<ImageQuizAdapter.Imag
         Picasso.get().load(gameContentModel.getData()).into(holder.image);
         holder.selected.setTag(gameContentModel.getCorrect());
         holder.selected.setOnClickListener(v -> {
-            holder.container.setSelected(true);
-            if (lastSelectedPicture != null) {
-                lastSelectedPicture.selected.setChecked(false);
-                lastSelectedPicture.container.setSelected(false);
-            }
-            lastSelectedPicture = holder;
-            if (ImageQuizAdapter.this.onItemClickListener != null) {
-                ImageQuizAdapter.this.onItemClickListener.onImageSelected(gameContentModel);
+            if (this.enabled) {
+                holder.container.setSelected(true);
+                if (lastSelectedPicture != null) {
+                    lastSelectedPicture.selected.setChecked(false);
+                    lastSelectedPicture.container.setSelected(false);
+                }
+                lastSelectedPicture = holder;
+                if (ImageQuizAdapter.this.onItemClickListener != null) {
+                    ImageQuizAdapter.this.onItemClickListener.onImageSelected(gameContentModel);
+                }
             }
         });
     }
@@ -92,6 +95,10 @@ public class ImageQuizAdapter extends RecyclerView.Adapter<ImageQuizAdapter.Imag
         if (gameContentModelCollection == null) {
             throw new IllegalArgumentException("The list cannot be null");
         }
+    }
+
+    public void setEnabled(Boolean enabled) {
+        this.enabled = enabled;
     }
 
     static class ImageQuizViewHolder extends RecyclerView.ViewHolder {

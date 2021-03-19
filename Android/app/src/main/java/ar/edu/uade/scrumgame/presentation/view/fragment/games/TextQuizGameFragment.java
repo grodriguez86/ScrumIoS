@@ -27,6 +27,7 @@ public class TextQuizGameFragment extends GameFragment implements GameContentVie
     RadioButton choice3;
     @BindView(R.id.rb_choice_4)
     RadioButton choice4;
+    private RadioButton[] choices;
     private RadioButton choiceAttempt;
 
     @Override
@@ -36,7 +37,7 @@ public class TextQuizGameFragment extends GameFragment implements GameContentVie
 
     @Override
     protected void doLoadGame() {
-        RadioButton[] choices = new RadioButton[]{choice1, choice2, choice3, choice4};
+        this.choices = new RadioButton[]{choice1, choice2, choice3, choice4};
         List<GameContentModel> gameContent = infoGameModel.getContent();
         if (gameContent == null || gameContent.size() != REQUIRED_CHOICES) {
             throw new IllegalArgumentException("Choices must be 4");
@@ -49,6 +50,21 @@ public class TextQuizGameFragment extends GameFragment implements GameContentVie
         }
         this.choices1.setOnCheckedChangeListener((group, checkedId) -> saveCheckedButtonAndClearCheck(group, checkedId, choices2));
         this.choices2.setOnCheckedChangeListener((group, checkedId) -> saveCheckedButtonAndClearCheck(group, checkedId, choices1));
+    }
+
+    @Override
+    protected void doLoadCompletedGame() {
+        if (this.choices != null) {
+            for (int index = 0; index < REQUIRED_CHOICES; index++) {
+                RadioButton radioButton = this.choices[index];
+                radioButton.setEnabled(false);
+                if (radioButton.getTag().equals(true)) {
+                    radioButton.performClick();
+                }
+            }
+        }
+        this.choices1.setEnabled(false);
+        this.choices2.setEnabled(false);
     }
 
     private void saveCheckedButtonAndClearCheck(RadioGroup radioGroup, int checkedId, RadioGroup otherRadioGroup) {

@@ -50,7 +50,7 @@ public class LevelActivity extends BaseActivity implements HasComponent<LevelCom
     public void onSubLevelClicked(String levelName, SubLevelModel subLevelModel, ProgressModel progressModel) {
         if (progressModel.isTutorialCompleted()) {
             this.navigator.navigateToPlaySubLevel(this, levelCode, levelName,
-                    subLevelModel.getCode(), subLevelModel.getName(), progressModel.getActualGame());
+                    subLevelModel.getCode(), subLevelModel.getName());
         } else {
             this.navigator.navigateToInfoTheory(this, levelCode, levelName,
                     subLevelModel.getCode(), progressModel.getActualGame());

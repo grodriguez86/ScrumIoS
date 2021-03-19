@@ -1,5 +1,6 @@
 package ar.edu.uade.scrumgame.presentation.view.fragment.games;
 
+import android.os.Handler;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -8,11 +9,13 @@ import ar.edu.uade.scrumgame.presentation.models.GameContentModel;
 import ar.edu.uade.scrumgame.presentation.view.GameContentView;
 import ar.edu.uade.scrumgame.presentation.view.adapter.ShortTextQuizAdapter;
 import ar.edu.uade.scrumgame.presentation.view.fragment.GameFragment;
+import ar.edu.uade.scrumgame.presentation.view.utils.GameModelUtils;
 import butterknife.BindView;
 
 public class ShortTextQuizGameFragment extends GameFragment implements GameContentView, ShortTextQuizAdapter.OnItemClickListener {
     @BindView(R.id.options_rv)
     RecyclerView optionsRecyclerView;
+    private ShortTextQuizAdapter optionsAdapter;
     private Boolean isChoiceCorrect = false;
 
     @Override
@@ -25,11 +28,26 @@ public class ShortTextQuizGameFragment extends GameFragment implements GameConte
         this.setUpRecyclerView();
     }
 
+    @Override
+    protected void doLoadCompletedGame() {
+        int correctOptionIndex = GameModelUtils.getCorrectOptionIndex(infoGameModel.getContent());
+        if (this.optionsRecyclerView != null) {
+            new Handler().postDelayed(() -> {
+                RecyclerView.ViewHolder viewHolder = this.optionsRecyclerView.findViewHolderForAdapterPosition(correctOptionIndex);
+                if (viewHolder != null) {
+                    viewHolder.itemView.findViewById(R.id.selected_rb).performClick();
+                }
+                this.optionsAdapter.setEnabled(false);
+                this.optionsRecyclerView.setEnabled(false);
+            }, 100);
+        }
+    }
+
     private void setUpRecyclerView() {
-        ShortTextQuizAdapter optionsAdapter = new ShortTextQuizAdapter(getActivity());
-        optionsAdapter.setGameContentModels(infoGameModel.getContent());
-        optionsAdapter.setOnItemClickListener(this);
-        this.optionsRecyclerView.setAdapter(optionsAdapter);
+        this.optionsAdapter = new ShortTextQuizAdapter(getActivity());
+        this.optionsAdapter.setGameContentModels(infoGameModel.getContent());
+        this.optionsAdapter.setOnItemClickListener(this);
+        this.optionsRecyclerView.setAdapter(this.optionsAdapter);
         this.optionsRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), RecyclerView.VERTICAL, false));
     }
 

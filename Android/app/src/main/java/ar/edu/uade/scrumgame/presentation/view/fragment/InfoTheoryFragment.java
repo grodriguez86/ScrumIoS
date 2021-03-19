@@ -38,7 +38,7 @@ public class InfoTheoryFragment extends BaseFragment implements InfoTheoryView {
 
     public interface PlaySubLevelListener {
         void onPlayClicked(Integer levelCode, String levelTitle, String subLevelCode,
-                           String subLevelTitle, Integer currentGame);
+                           String subLevelTitle);
     }
 
     @Inject
@@ -262,7 +262,7 @@ public class InfoTheoryFragment extends BaseFragment implements InfoTheoryView {
                              String subLevelTitle, Integer currentGame) {
         if (this.playSubLevelListener != null) {
             this.playSubLevelListener.onPlayClicked(levelCode, levelTitle, subLevelCode,
-                    subLevelTitle, currentGame);
+                    subLevelTitle);
         }
     }
 

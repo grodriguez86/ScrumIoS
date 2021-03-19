@@ -48,11 +48,10 @@ public class Navigator {
     }
 
     public void navigateToPlaySubLevel(BaseActivity baseActivity, Integer levelCode,
-                                       String levelTitle, String subLevelCode, String subLevelTitle,
-                                       Integer currentGame) {
+                                       String levelTitle, String subLevelCode, String subLevelTitle) {
         if (baseActivity != null) {
             Intent intent = InfoGameActivity.getCallingIntent(baseActivity, levelCode,
-                    levelTitle, subLevelCode, subLevelTitle, currentGame);
+                    levelTitle, subLevelCode, subLevelTitle);
             baseActivity.startActivity(intent);
         }
     }
