@@ -10,7 +10,6 @@ import android.view.ViewGroup;
 import android.widget.*;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatTextView;
-import androidx.core.content.ContextCompat;
 import ar.edu.uade.scrumgame.BuildConfig;
 import ar.edu.uade.scrumgame.R;
 import ar.edu.uade.scrumgame.presentation.constants.UserGenderConstant;
@@ -21,7 +20,6 @@ import ar.edu.uade.scrumgame.presentation.view.ProfileView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import com.google.android.material.chip.Chip;
 import com.squareup.picasso.Picasso;
 
 import javax.inject.Inject;
@@ -51,10 +49,6 @@ public class ProfileFragment extends BaseFragment implements ProfileView {
     Button logoutButton;
     @BindView(R.id.back_ib)
     ImageButton backButton;
-    @BindView(R.id.information_chip)
-    Chip information;
-    @BindView(R.id.achievements_chip)
-    Chip achievements;
     @BindView(R.id.profile_picture_iv)
     ImageView profilePicture;
     @BindView(R.id.app_version_tv)
@@ -87,23 +81,7 @@ public class ProfileFragment extends BaseFragment implements ProfileView {
         super.onViewCreated(view, savedInstanceState);
         this.profilePresenter.setView(this);
         if (savedInstanceState == null) {
-            this.setUpViews();
             this.profilePresenter.initialize();
-        }
-    }
-
-    private void setUpViews() {
-        this.information.setOnCheckedChangeListener((buttonView, isChecked) -> ProfileFragment.this.changeSelectedChipStyle(this.information, isChecked));
-        this.achievements.setOnCheckedChangeListener((buttonView, isChecked) -> ProfileFragment.this.changeSelectedChipStyle(this.achievements, isChecked));
-        this.information.setSelected(true);
-        this.information.setChecked(true);
-    }
-
-    private void changeSelectedChipStyle(Chip chip, boolean isChecked) {
-        if (isChecked) {
-            chip.setTextColor(ContextCompat.getColor(getActivity(), R.color.white));
-        } else {
-            chip.setTextColor(ContextCompat.getColor(getActivity(), R.color.jelly));
         }
     }
 
