@@ -77,9 +77,9 @@
                     android:text="X"
                     android:textColor="@color/white"
                     android:textSize="24sp"
-                    app:layout_constraintEnd_toStartOf="@id/game_progress"
+                    app:layout_constraintStart_toEndOf="@id/game_progress"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent" android:fontFamily="@font/gotham_rounded_bold"/>
             <ProgressBar
                     android:id="@+id/game_progress"
@@ -90,21 +90,41 @@
                     tools:progress="60"
                     app:layout_constraintHorizontal_weight="1"
                     app:layout_constraintBottom_toBottomOf="@id/game_header"
-                    app:layout_constraintStart_toEndOf="@+id/bt_exit" app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/bt_exit" app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintEnd_toEndOf="parent" android:layout_marginRight="16dp"
-                    android:layout_marginEnd="16dp" android:layout_marginLeft="16dp" android:layout_marginStart="16dp"/>
+                    android:layout_marginEnd="16dp" app:layout_constraintStart_toEndOf="@+id/btn_back"
+                    android:layout_marginLeft="16dp" android:layout_marginStart="16dp"/>
+
+            <ImageButton
+                    android:id="@+id/btn_back"
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:background="@drawable/button_back_arrow"
+                    android:contentDescription="@string/back"
+                    android:maxHeight="16dp"
+                    android:minWidth="0dp"
+                    android:minHeight="0dp"
+                    android:padding="8dp"
+                    android:paddingTop="0dp"
+                    android:typeface="normal"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" app:layout_constraintEnd_toStartOf="@+id/game_progress"
+                    android:layout_marginRight="8dp" android:layout_marginEnd="8dp" android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp" android:layout_marginLeft="8dp" android:layout_marginStart="8dp"/>
+
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <LinearLayout
-            android:id="@+id/game_content_ll"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_marginBottom="8dp"
-            android:orientation="vertical"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/game_header">
+                android:id="@+id/game_content_ll"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginBottom="4dp"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/game_header">
 
             <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/title"
@@ -113,7 +133,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/title_text_view_margin_vertical"
                     android:textAlignment="center" android:fontFamily="@font/gotham_rounded_bold"
-                    android:textColor="@color/black" android:textSize="24sp"/>
+                    android:textColor="@color/black" android:textSize="20sp"/>
 
             <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/indications"
@@ -123,11 +143,11 @@
                     app:fontFamily="@font/gotham_rounded_medium" android:textColor="@color/black"/>
 
             <FrameLayout
-                android:id="@+id/gameContainer"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:background="@android:color/transparent" />
+                    android:id="@+id/gameContainer"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:background="@android:color/transparent"/>
 
             <Button
                     android:id="@+id/sendAnswer"
