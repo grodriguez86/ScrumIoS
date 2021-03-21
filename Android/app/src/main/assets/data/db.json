@@ -54,7 +54,7 @@
           "info_games": [
             {
               "code": "1.1.1",
-              "title": "En cascada, ¿cuando se inicia una etapa?",
+              "title": "En el ciclo de vida en cascada, ¿cuándo se inicia una etapa?",
               "type": "textChoiceQuiz",
               "content": [
                 {
@@ -81,7 +81,7 @@
             },
             {
               "code": "1.1.2",
-              "title": "Cuando no se conoce el dominio o éste cambia constantemente, el desarrollo en cascada es ideal.",
+              "title": "Cuando no se conoce el dominio, o éste cambia constantemente, el desarrollo en cascada es el adecuado",
               "type": "trueFalseQuiz",
               "content": [
                 {
@@ -165,7 +165,7 @@
           "info_games": [
             {
               "code": "1.2.1",
-              "title": "Conviene usar Scrum si el problema es … :",
+              "title": "Conviene usar Scrum si el problema es",
               "type": "textChoiceQuiz",
               "content": [
                 {
@@ -176,13 +176,13 @@
                 {
                   "type": "textAnswer",
                   "isCorrect": true,
-                  "data": "Complejo, Impredecible, Cambiante"
+                  "data": "Complejo, impredecible, cambiante"
                 }
               ]
             },
             {
               "code": "1.2.2",
-              "title": "¿Cuál es el flujo de scrum? ",
+              "title": "¿Cuál es el ciclo de vida de Scrum? ",
               "type": "imageQuiz",
               "content": [
                 {
@@ -199,7 +199,7 @@
             },
             {
               "code": "1.2.3",
-              "title": "¡Completa el flujo de Scrum!",
+              "title": "Completar el ciclo de vida de Scrum",
               "type": "scrumFlowDraggable"
             }
           ]
@@ -277,7 +277,7 @@
           "info_games": [
             {
               "code": "2.1.1",
-              "title": "El Scrum Master les indica a los integrantes del equipo que tienen que hacer. ",
+              "title": "El Scrum Master les indica a los integrantes del equipo qué tienen que hacer",
               "type": "trueFalseQuiz",
               "content": [
                 {
@@ -294,7 +294,7 @@
             },
             {
               "code": "2.1.2",
-              "title": "¿Quién tiene la última decisión sobre el Product Backlog?",
+              "title": "¿Quién tiene la última decisión sobre el orden del Product Backlog?",
               "type": "textQuiz",
               "content": [
                 {
@@ -310,7 +310,7 @@
                 {
                   "type": "textAnswer",
                   "isCorrect": false,
-                  "data": "El cliente"
+                  "data": "El Cliente"
                 },
                 {
                   "type": "textAnswer",
@@ -337,7 +337,7 @@
                 {
                   "type": "textAnswer",
                   "isCorrect": false,
-                  "data": "El cliente"
+                  "data": "El Cliente"
                 },
                 {
                   "type": "textAnswer",
@@ -439,34 +439,7 @@
           "info_games": [
             {
               "code": "2.2.1",
-              "title": "¿Quién tiene la última decisión en el orden del Product Backlog?",
-              "type": "textQuiz",
-              "content": [
-                {
-                  "type": "textAnswer",
-                  "isCorrect": false,
-                  "data": "Scrum Master"
-                },
-                {
-                  "type": "textAnswer",
-                  "isCorrect": false,
-                  "data": "Development Team"
-                },
-                {
-                  "type": "textAnswer",
-                  "isCorrect": false,
-                  "data": "Product Owner"
-                },
-                {
-                  "type": "textAnswer",
-                  "isCorrect": true,
-                  "data": "El CEO"
-                }
-              ]
-            },
-            {
-              "code": "2.2.2",
-              "title": "¿Por qué criterio se ordena al Product Backlog?",
+              "title": "¿Con qué criterio se ordena el Product Backlog?",
               "type": "textChoiceQuiz",
               "content": [
                 {
@@ -497,25 +470,25 @@
               ]
             },
             {
-              "code": "2.2.3",
-              "title": "Todas los Product Backlog Items presentes en el Product Backlog están estimados.",
+              "code": "2.2.2",
+              "title": "Todos los Product Backlog Items (PBI) presentes en el Product Backlog están estimados.",
               "type": "trueFalseQuiz",
               "content": [
                 {
                   "type": "textAnswer",
-                  "isCorrect": true,
+                  "isCorrect": false,
                   "data": "Verdadero"
                 },
                 {
                   "type": "textAnswer",
-                  "isCorrect": false,
+                  "isCorrect": true,
                   "data": "Falso"
                 }
               ]
             },
             {
-              "code": "2.2.4",
-              "title": "¿Quién es el responsable de manejar el progreso de trabajo durante el Sprint?",
+              "code": "2.2.3",
+              "title": "¿Quién es el responsable de administrar el progreso de trabajo durante el Sprint?",
               "type": "textQuiz",
               "content": [
                 {
@@ -536,13 +509,13 @@
                 {
                   "type": "textAnswer",
                   "isCorrect": false,
-                  "data": "Un miembro designado del Dev Team"
+                  "data": "Un miembro designado del Development Team"
                 }
               ]
             },
             {
-              "code": "2.2.5",
-              "title": "El Product Owner puede agregar una tarea al Sprint Backlog que no estaba en el Product Backlog.",
+              "code": "2.2.4",
+              "title": "El Product Owner puede agregar una tarea al Sprint Backlog durante el desarrollo del Sprint que no estaba en el Product Backlog.",
               "type": "trueFalseQuiz",
               "content": [
                 {
@@ -665,7 +638,7 @@
             },
             {
               "code": "3.1.2",
-              "title": "En la reunión de refinamiento del Backlog se decide el trabajo que se va a realizar durante el Sprint.",
+              "title": "Cada vez que se refina una User Story se la incluye en el Sprint Backlog del próximo Sprint",
               "type": "trueFalseQuiz",
               "content": [
                 {
@@ -682,12 +655,12 @@
             },
             {
               "code": "3.1.3",
-              "title": "¿Cuál es el objetivo más importante de la reunión de refinamiento del Backlog?",
-              "type": "textChoiceQuiz",
+              "title": "¿Cuál es el objetivo del Sprint Planning?",
+              "type": "selection",
               "content": [
                 {
                   "type": "textAnswer",
-                  "isCorrect": false,
+                  "isCorrect": true,
                   "data": "Tener PBIs estimados de alta precisión"
                 },
                 {
@@ -771,7 +744,7 @@
           "info_games": [
             {
               "code": "3.2.1",
-              "title": "¿Por que la Daily se celebra siempre en el mismo lugar y a la misma hora?",
+              "title": "¿Por qué la Daily Meeting se celebra siempre en el mismo lugar y a la misma hora?",
               "type": "textChoiceQuiz",
               "content": [
                 {
@@ -793,7 +766,7 @@
             },
             {
               "code": "3.2.2",
-              "title": "¿Cuál es la duración de la Daily?",
+              "title": "¿Cuál es la duración de la Daily Meeting?",
               "type": "textQuiz",
               "content": [
                 {
@@ -820,7 +793,7 @@
             },
             {
               "code": "3.2.3",
-              "title": "Los problemas que surjan durante la Daily se resuelven en el momento, aprovechando la presencia del equipo. ",
+              "title": "Los impedimentos planteados en la Daily Meeting se resuelven en el momento, aprovechando la presencia del equipo",
               "type": "trueFalseQuiz",
               "content": [
                 {
@@ -837,7 +810,7 @@
             },
             {
               "code": "3.2.4",
-              "title": "¿Quienes asisten/pueden asistir a la Daily Meeting?",
+              "title": "¿Quiénes asisten/pueden asistir a la Daily Meeting?",
               "type": "selection",
               "content": [
                 {
@@ -858,7 +831,7 @@
                 {
                   "type": "textAnswer",
                   "isCorrect": true,
-                  "data": "Scrum Master"
+                  "data": "Sponsors"
                 },
                 {
                   "type": "textAnswer",
@@ -920,13 +893,13 @@
               "content": [
                 {
                   "type": "textAnswer",
-                  "isCorrect": true,
-                  "data": "Decidir junto al Scrum Master que tareas son prioritarias."
+                  "isCorrect": false,
+                  "data": "Decidir junto al Scrum Master qué tareas son prioritarias."
                 },
                 {
                   "type": "textAnswer",
-                  "isCorrect": false,
-                  "data": "Describir las tareas con mayor prioridad al resto del equipo y responder las preguntas que este tenga"
+                  "isCorrect": true,
+                  "data": "Describir las tareas con mayor prioridad al resto del equipo y responder las preguntas que éste tenga"
                 },
                 {
                   "type": "textAnswer",
@@ -942,7 +915,7 @@
             },
             {
               "code": "3.3.2",
-              "title": "¿Quienes asisten/pueden asistir a la Sprint Planning?",
+              "title": "¿Quiénes deben asistir a la Sprint Planning?",
               "type": "selection",
               "content": [
                 {
@@ -968,13 +941,13 @@
                 {
                   "type": "textAnswer",
                   "isCorrect": false,
-                  "data": "El cliente"
+                  "data": "El Cliente"
                 }
               ]
             },
             {
               "code": "3.3.3",
-              "title": "En un Sprint de 2 semanas,¿cuál es la duración de la Sprint Planning?",
+              "title": "En un Sprint de 2 semanas, ¿cuál es la duración máxima de la Sprint Planning?",
               "type": "textQuiz",
               "content": [
                 {
@@ -995,13 +968,13 @@
                 {
                   "type": "textAnswer",
                   "isCorrect": false,
-                  "data": "Todo el dia"
+                  "data": "Todo el día"
                 }
               ]
             },
             {
               "code": "3.3.4",
-              "title": "El Product Owner selecciona las tareas que el Development Team deberá realizar durante el Sprint.",
+              "title": "El Product Owner selecciona qué tareas realizará cada miembro del Development Team durante el Sprint",
               "type": "trueFalseQuiz",
               "content": [
                 {
