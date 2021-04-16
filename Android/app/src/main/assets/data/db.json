@@ -158,7 +158,7 @@
             },
             {
               "code": "2.1.3",
-              "title": "¿Quién es el responsable por el progreso del trabajo durante el Sprint?",
+              "title": "¿¿Quién es el responsable de estimar un requerimiento durante el Sprint Planning??",
               "type": "textQuiz",
               "content": [
                 {
@@ -174,7 +174,7 @@
                 {
                   "type": "textAnswer",
                   "isCorrect": false,
-                  "data": "El Cliente"
+                  "data": "Scrum Team"
                 },
                 {
                   "type": "textAnswer",
@@ -192,7 +192,7 @@
           "info_games": [
             {
               "code": "2.2.1",
-              "title": "Todos los Product Backlog Items (PBI) presentes en el Product Backlog están estimados.",
+              "title": "Todos los Product Backlog Items (PBIs) presentes en el Product Backlog están estimados.",
               "type": "trueFalseQuiz",
               "content": [
                 {
