@@ -93,4 +93,10 @@ public class ApplicationModule {
     LogEventRepository provideLogEventDataRepository(LogEventDataRepository logEventDataRepository) {
         return logEventDataRepository;
     }
+
+    @Provides
+    @Singleton
+    ResetPasswordRepository provideResetPasswordDataRepository(ResetPasswordDataRepository resetPasswordDataRepository) {
+        return resetPasswordDataRepository;
+    }
 }

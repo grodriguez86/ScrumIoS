@@ -198,6 +198,10 @@ acuerdo del Story Point para dicha US.
     <string name="duenio_cd">Dueño de la empresa</string>
     <string name="para_cd">para</string>
     <string name="invaders_instructions">Para el movimiento se usa el acelerómetro del celular (izq/der). Para gatillar se presiona sobre la nave</string>
+    <string name="login_forgot_password">Restablecer contraseña</string>
+    <string name="reset_password_alert">Restablecer contraseña</string>
+    <string name="reset_password_success">Hemos enviado un link para restablecer la contraseña a %s. Verifica tu bandeja de entrada.</string>
+    <string name="reset_password_input_hint">Email</string>
     <string-array name="fibonacci_sequence">
         <item>0</item>
         <item tools:ignore="TypographyFractions">1/2</item>
