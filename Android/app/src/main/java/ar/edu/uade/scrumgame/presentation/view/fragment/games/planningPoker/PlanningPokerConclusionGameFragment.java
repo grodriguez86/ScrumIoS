@@ -11,7 +11,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatTextView;
 import androidx.fragment.app.Fragment;
 import ar.edu.uade.scrumgame.R;
-import ar.edu.uade.scrumgame.presentation.view.fragment.listeners.PlanningPokerNextStepListener;
+import ar.edu.uade.scrumgame.presentation.view.fragment.listeners.PlanningPokerGameEndedListener;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -23,9 +23,9 @@ public class PlanningPokerConclusionGameFragment extends Fragment {
     AppCompatTextView teamMemberEstimationTextView;
     @BindView(R.id.item_points_tv)
     AppCompatTextView itemPointsTextView;
-    @BindView(R.id.continue_button)
-    Button continueButton;
-    private PlanningPokerNextStepListener planningPokerNextStepListener;
+    @BindView(R.id.end_game_button)
+    Button endGameButton;
+    private PlanningPokerGameEndedListener planningPokerGameEndedListener;
 
 
     public static PlanningPokerConclusionGameFragment newInstance(String chosenEstimation) {
@@ -39,15 +39,15 @@ public class PlanningPokerConclusionGameFragment extends Fragment {
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
-        if (context instanceof PlanningPokerNextStepListener) {
-            this.planningPokerNextStepListener = (PlanningPokerNextStepListener) context;
+        if (context instanceof PlanningPokerGameEndedListener) {
+            this.planningPokerGameEndedListener = (PlanningPokerGameEndedListener) context;
         }
     }
 
     @Override
     public void onDetach() {
         super.onDetach();
-        this.planningPokerNextStepListener = null;
+        this.planningPokerGameEndedListener = null;
     }
 
     @Override
@@ -79,11 +79,10 @@ public class PlanningPokerConclusionGameFragment extends Fragment {
         this.itemPointsTextView.setText(String.format(getResources().getString(R.string.story_points), this.finalEstimation));
     }
 
-    @OnClick(R.id.continue_button)
-    public void continueToNextStep() {
-        if (this.planningPokerNextStepListener != null) {
-            Fragment springBacklogFragment = PlanningPokerSprintBacklogGameFragment.newInstance();
-            this.planningPokerNextStepListener.goToNextStep(springBacklogFragment);
+    @OnClick(R.id.end_game_button)
+    public void finishGame() {
+        if (this.planningPokerGameEndedListener != null) {
+            this.planningPokerGameEndedListener.finishGame();
         }
     }
 }
