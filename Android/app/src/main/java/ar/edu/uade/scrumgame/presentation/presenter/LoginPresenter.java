@@ -28,6 +28,8 @@ public class LoginPresenter implements Presenter {
     private Login loginUseCase;
     private SaveUserLocally saveUserLocallyUseCase;
     private UserDataMapper userDataMapper;
+    private ResetPassword resetPasswordUseCase;
+    private String email;
 
     @Inject
     public LoginPresenter(GetLoggedInUser getLoggedInUserUseCase,
@@ -35,6 +37,7 @@ public class LoginPresenter implements Presenter {
                           GetUserRemotely getUserRemotelyUseCase,
                           Login loginUseCase,
                           SaveUserLocally saveUserLocallyUseCase,
+                          ResetPassword resetPasswordUseCase,
                           UserDataMapper userDataMapper
     ) {
         this.getLoggedInUserUseCase = getLoggedInUserUseCase;
@@ -42,6 +45,7 @@ public class LoginPresenter implements Presenter {
         this.getUserRemotelyUseCase = getUserRemotelyUseCase;
         this.loginUseCase = loginUseCase;
         this.saveUserLocallyUseCase = saveUserLocallyUseCase;
+        this.resetPasswordUseCase = resetPasswordUseCase;
         this.userDataMapper = userDataMapper;
     }
 
@@ -64,6 +68,7 @@ public class LoginPresenter implements Presenter {
         this.getProgressListRemotelyUseCase.dispose();
         this.getUserRemotelyUseCase.dispose();
         this.saveUserLocallyUseCase.dispose();
+        this.resetPasswordUseCase.dispose();
     }
 
     public void initialize() {
@@ -162,6 +167,20 @@ public class LoginPresenter implements Presenter {
         this.loginView.showError(errorMessage);
     }
 
+    public void resetPassword(String email) {
+        this.email = email;
+        this.resetPasswordUseCase.execute(new ResetPasswordObserver(), email);
+        this.showViewLoading();
+    }
+
+    private void showResetPasswordSuccessAlert() {
+        this.loginView.showResetPasswordSuccessAlert(this.email);
+    }
+
+    private void showResetPasswordErrorAlert(String error) {
+        this.loginView.showError(error);
+    }
+
     private final class GetLoggedInUserObserver extends DefaultObserver<User> {
 
         @Override
@@ -173,6 +192,21 @@ public class LoginPresenter implements Presenter {
         @Override
         public void onError(Throwable exception) {
             LoginPresenter.this.hideViewLoading();
+        }
+    }
+
+    private final class ResetPasswordObserver extends DefaultObserver<Void> {
+
+        @Override
+        public void onComplete() {
+            LoginPresenter.this.hideViewLoading();
+            LoginPresenter.this.showResetPasswordSuccessAlert();
+        }
+
+        @Override
+        public void onError(Throwable exception) {
+            LoginPresenter.this.hideViewLoading();
+            LoginPresenter.this.showResetPasswordErrorAlert(exception.getMessage());
         }
     }
 
