@@ -1,7 +1,7 @@
 {
   "levels": [
     {
-      "name": "Conceptos generales de Scrum",
+      "name": "Conceptos generales\n de Scrum",
       "code": 1,
       "sublevels": [
         {
@@ -104,7 +104,7 @@
       ]
     },
     {
-      "name": "Roles y Artefactos de Scrum",
+      "name": "Roles y Artefactos\n de Scrum",
       "code": 2,
       "sublevels": [
         {
