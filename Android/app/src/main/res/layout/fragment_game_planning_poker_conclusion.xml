@@ -75,27 +75,29 @@
         </LinearLayout>
 
         <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/decision_description_tv"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="@string/planning_poker_game_conclusion_description"
-                android:textAlignment="center"
-                android:textColor="@color/black"
-                android:fontFamily="@font/gotham_rounded_book"
-                android:textSize="18sp" android:layout_gravity="center"/>
+            android:id="@+id/decision_description_tv"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:fontFamily="@font/gotham_rounded_book"
+            android:text="@string/planning_poker_game_conclusion_description"
+            android:layout_marginTop="10dp"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:gravity="center_horizontal" />
 
         <Button
-                android:id="@+id/continue_button"
-                style="@style/Button.SendAnswer"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/continue_text"
-                android:textAllCaps="false"
-                android:visibility="visible" android:fontFamily="@font/gotham_rounded_bold"
-                android:textColor="@color/white" android:background="@drawable/button_round_purple_background"
-                android:paddingLeft="30dp" android:paddingTop="10dp" android:paddingRight="30dp"
-                android:paddingBottom="10dp" android:layout_marginTop="40dp" android:layout_marginBottom="20dp"/>
+            android:id="@+id/end_game_button"
+            style="@style/Button.SendAnswer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/finish_text"
+            android:textAllCaps="false"
+            android:visibility="visible" android:fontFamily="@font/gotham_rounded_bold"
+            android:textColor="@color/white" android:background="@drawable/button_round_purple_background"
+            android:paddingLeft="30dp" android:paddingTop="10dp" android:paddingRight="30dp"
+            android:paddingBottom="10dp" android:layout_marginTop="20dp"/>
     </LinearLayout>
 
 </ScrollView>
