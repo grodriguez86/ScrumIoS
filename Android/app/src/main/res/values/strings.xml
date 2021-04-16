@@ -44,7 +44,6 @@
     <string name="incorrect_answer">La respuesta es incorrecta &#128169;\nInténtalo de nuevo</string>
     <string name="incorrect_answer_button_text">Aceptar</string>
     <string-array name="no_send_button_games">
-        <item>scrumFlowDraggable</item>
         <item>velocity</item>
     </string-array>
     <string name="progress_label">%1$d%%</string>
