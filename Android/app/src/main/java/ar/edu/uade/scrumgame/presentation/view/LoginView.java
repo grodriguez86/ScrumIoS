@@ -7,4 +7,6 @@ public interface LoginView extends LoadDataView {
     void navigateToSignupDetails();
 
     void goToSignup();
+
+    void showResetPasswordSuccessAlert(String email);
 }

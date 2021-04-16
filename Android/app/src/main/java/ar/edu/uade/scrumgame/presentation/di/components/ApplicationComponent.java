@@ -39,4 +39,6 @@ public interface ApplicationComponent {
     UserSessionRepository userSessionRepository();
 
     LogEventRepository logEventRepository();
+
+    ResetPasswordRepository resetPasswordRepository();
 }
