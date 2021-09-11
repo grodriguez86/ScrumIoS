@@ -1,0 +1,231 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="game_file">data/db_en.json</string>
+    <string name="app_name">Scrum Game</string>
+    <string name="exception_message_generic">An error has occurred, try again</string>
+    <string name="exception_message_file_not_found">Game file not found</string>
+    <string name="btn_text_retry">Retry</string>
+    <string name="login_sign_up">Create account</string>
+    <string name="login_description">Learn Scrum playing!</string>
+    <string name="login_not_yet_registered">Don\'t have an account?</string>
+    <string name="login_login">Log in</string>
+    <string name="menu_level_row_sublevels">%d sublevels</string>
+    <string name="info_theory_skip">SKIP TUTORIAL</string>
+    <string name="info_theory_play">PLAY!</string>
+    <string name="product_backlog_tag">Excellent! Product Backlog is where all tasks needed to be done are placed </string>
+    <string name="sprint_backlog_tag">Perfect! Sprint Backlog is where all tasks decided to be done on this iteration by the team are placed</string>
+    <string name="menu_play_available">Play now</string>
+    <string name="menu_play_unavailable">Unavailable</string>
+    <string name="menu_play_completed">Complete! &#129304;</string>
+    <string name="arrow_iv_cd">arrow</string>
+    <string name="arrow2_iv_cd">arrow2</string>
+    <string name="profile_picture_cd">Profile picture</string>
+    <string name="back_button_cd">Back</string>
+    <string name="increment_tag">Great! The product increment is what can be delivered by the end of each iteration</string>
+    <string name="curvedArrow2_iv_cd">curvedArrow2</string>
+    <string name="curvedArrow_iv_cd">curvedArrow</string>
+    <string name="sprint_tag">Cool! The sprint is an iteration by itself. It can last from 2 to 4 weeks, and during this phase the team carries out the tasks defined in the Sprint Backlog
+    </string>
+    <string name="daily_meetup_tag">Good! Daily Scrum Meeting is where the team gives updates about each member state. You\'ll learn about it later! 😊</string>
+    <string name="game_send_answer">Continue</string>
+    <string name="game_choice_true">True</string>
+    <string name="game_choice_false">False</string>
+    <string name="correct_answer_button_text">OK</string>
+    <string name="correct_answer_title">Excellent!</string>
+    <string name="correct_answer">Answer is correct &#129299;</string>
+    <string name="incorrect_answer_title">Wrong!</string>
+    <string name="incorrect_answer">Wrong answer &#128169;\nTry again</string>
+    <string name="incorrect_answer_button_text">Accept</string>
+    <string-array name="no_send_button_games">
+        <item>velocity</item>
+    </string-array>
+    <string name="progress_label">%1$d%%</string>
+    <string name="accept">Accept</string>
+    <string name="complete">Complete</string>
+    <string name="image_quiz_cd">Picture</string>
+    <string-array name="genders">
+        <item>Male</item>
+        <item>Female</item>
+    </string-array>
+    <string-array name="tasteLevels">
+        <item>Nothing</item>
+        <item>Not much</item>
+        <item>I do not care</item>
+        <item>A lot</item>
+        <item>Fan</item>
+    </string-array>
+    <string name="signup_title">Registration</string>
+    <string name="signup_page_text">1 out of 2</string>
+    <string name="signup_subtitle">Enter your login information</string>
+    <string name="signup_password_subtext">Password must contain at least 6 characters.</string>
+    <string name="signup_email">Mail</string>
+    <string name="signup_password">Password</string>
+    <string name="button_continue">Continue</string>
+    <string name="signup_details_page_text">2 out 2</string>
+    <string name="signup_details_subtitle">Enter your personal information</string>
+    <string name="signup_details_name">Name</string>
+    <string name="signup_details_age">Age</string>
+    <string name="signup_details_sex">Sex</string>
+    <string name="signup_details_profession">Job</string>
+    <string name="signup_details_city">City</string>
+    <string name="signup_details_province">Province</string>
+    <string name="signup_details_country">Country</string>
+    <string name="signup_details_gamesTasteLevel">Game taste level</string>
+    <string name="signup_details_gamesTime">Time playing games</string>
+    <string name="button_done">Done!</string>
+    <!-- Errors -->
+    <string name="signup_form_invalid_email">Invalid email!</string>
+    <string name="signup_form_invalid_password">Invalid password!</string>
+    <string name="form_incomplete_alert_title">Incomplete form</string>
+    <string name="form_incomplete_alert_message">All fields must be complete!</string>
+    <string name="form_error_age_nan">Invalid age! Enter a number!</string>
+    <string name="unknown_error">An unknown error has occurred</string>
+    <string name="error_user_not_found">User was not found</string>
+    <string name="error_creating_remote_user">An error has occurred when creating a remote user</string>
+    <string name="error_saving_user">User data couldn\'t be saved</string>
+    <string name="error_saving_progress">Progress data couldn\'t be saved</string>
+    <string name="error_saving_remote_data">An error has occurred when saving remote data</string>
+    <string name="error_email_already_in_use">Another user registered with this email exists</string>
+    <string name="exception_message_user_already_registered">This mail is associated to another user</string>
+    <string name="form_invalid_password_length">Password must contain at least 6 characters</string>
+    <string name="form_invalid_email">Mail is invalid</string>
+    <!-- Invaders -->
+    <string name="invaders_description">An alien invasion is threatening our planet. You must protect it!</string>
+    <string name="invaders_description_2">
+Set the number of threats to shoot down in 30 seconds</string>
+    <string name="invaders_play_button">Play!</string>
+    <string name="play_now">Play now</string>
+    <string name="not_available">Unavailable</string>
+    <string name="game_completed">Complete &#129304;</string>
+    <string name="velocity_game_expected_score_input_hint">0</string>
+    <string name="velocity_invaders_logo_cv">Invaders</string>
+    <string name="velocity_game_results_title">Results</string>
+    <string name="velocity_game_expected_score_description">Initial estimation</string>
+    <string name="velocity_game_score_description">Real result</string>
+    <string name="velocity_game_exact_estimation">"Excellent estimation! You could achieve what you proposed in time!"
+    </string>
+    <string name="velocity_game_higher_estimation">Still great! You couldn’t complete what you’ve estimated to complete, meaning the task was more complex than what you’ve thought to be, or you didn’t have enough information when estimating.
+    </string>
+    <string name="velocity_game_lower_estimation">Very good! You could do more than you estimated. This means the task was easier than you thought.
+    </string>
+    <string name="velocity_game_results_description">Just as you committed before playing, team members commit to complete a certain number of features within a Sprint.\n\nThis commitment is evaluated at the end of a Sprint to measure what was accomplished.
+    </string>
+    <string name="continue_text">Continue</string>
+    <string name="velocity_game_conclusion_title">Velocity</string>
+    <string name="velocity_game_conclusion_user_story_description">Completed user stories according to the PO are gathered, and their estimations are summed up. This result is known as Velocity.
+    </string>
+    <string name="velocity_game_conclusion_velocity_description">Velocity measures the team’s ability to complete tasks within a Sprint. This is useful as it can be immediately proved whether the team productivity increased after carrying out the process during the Sprint.\n\nIt’s one Scrum key metrics used by Product Owners to plan releases. For future analysis several Sprints velocities need to be considered.
+    </string>
+    <string name="finish_text">Finish</string>
+    <string name="profile_name">Name</string>
+    <string name="profile_profession">Job</string>
+    <string name="profile_age">Age</string>
+    <string name="profile_location">Location</string>
+    <string name="profile_game_taste">Game taste level</string>
+    <string name="profile_game_time">Time playing games</string>
+    <string name="profile_logout">Log out &#128075;</string>
+    <string name="location">%s, %s, %s</string>
+    <string name="profile_information">Information</string>
+    <string name="profile_achievements">Achievements</string>
+    <string name="planning_poker_game_intro_title">Planning exercise</string>
+    <string name="planning_poker_game_intro_description">Suppose we have been hired by a transport company to build buses for children transportation.
+    </string>
+    <string name="planning_poker_game_intro_description_2">After the Product Owner (PO) defined the next Sprint, the PBIs (Product Backlog Items) that will be developed in said Sprint were identified, building the Sprint Backlog:
+    </string>
+    <string name="planning_poker_game_intro_product_backlog">Sprint Backlog</string>
+    <string name="planning_poker_bus_cv">Bus</string>
+    <string name="planning_poker_game_pivot_title">Pivot</string>
+    <string name="planning_poker_game_pivot_description">It is important to define a reference US (or pivot), that is, a US that is simple and its resolution is known to all. Said US will be valued with a certain Story Point and used as a reference to estimate the rest of the USs.</string>
+    <string name="planning_poker_game_pivote_description_2">In this case, the following US is taken
+    </string>
+    <string name="planning_poker_game_pivote_item">As a driver I want the car to have a steering wheel so that I can handle it easily
+</string>
+    <string name="planning_poker_game_pivote_item_points">To which a value of 1 (one) is assigned to its Story Point</string>
+    <string name="steering_wheel_bus_cv">Steering wheel bus</string>
+    <string name="planning_poker_game_user_story_title">User Stories estimation</string>
+    <string name="planning_poker_game_user_story_description">Then they begin to estimate the rest of the US by assigning it a Story Point comparing
+with which it was used as reference.
+    </string>
+    <string name="planning_poker_game_chassis">As a driver I want the car to have a chassis to hold all the parts of the car</string>
+    <string name="planning_poker_game_user_story_description_2">Select the "card" that you consider should have the US:
+\ nAs a driver I want the car to have a chassis to support all the parts of the car. \n\nRemember to take into account the US taken as a reference.
+    </string>
+    <string name="team_member_3_cv">Team\n Member 3</string>
+    <string name="team_member_2_cv">Team\n Member 2</string>
+    <string name="team_member_1_cv">Team\n Member 1</string>
+    <string name="user_cv">You</string>
+    <string name="planning_poker_game_conclusion_title">It was decided:</string>
+    <string name="planning_poker_game_conclusion_description">After the iterations that the Scrum Master or moderator considers, a
+Story Point agreement for said US.
+    </string>
+    <string name="planning_poker_game_confrontation_team_member_estimation">El Team Member\n 3 chose:</string>
+    <string name="planning_poker_game_confrontation_user_estimation">and you chose:</string>
+    <string name="planning_poker_game_confrontation_description">Boundary cards are drawn and the Development Team members who selected those cards explain the reason for this decision.\n\nOnce the arguments are presented, cards are chosen again. </string>
+    <string name="planning_poker_game_sprint_backlog_title">Sprint Backlog</string>
+    <string name="story_points">Story Points: %s</string>
+    <string name="exception_invalid_credentials">Mail and/or password are incorrect</string>
+    <string name="confirmation">Confirmation</string>
+    <string name="logout_confirmation">Do you want to log out?</string>
+    <string name="logout">Log out</string>
+    <string name="quit_application_confirmation">Do you want to exit the app?</string>
+    <string name="quit">Exit</string>
+    <string name="exit_game">Do you want to quit the game?</string>
+    <string name="version">Version %s</string>
+    <string name="back">Back</string>
+    <string name="como_cd">As</string>
+    <string name="comprador_cd">Buyer</string>
+    <string name="quiero_cd">want</string>
+    <string name="pago_cd">"make the payment of my purchase</string>
+    <string name="producto_cd">find the product I need more easily</string>
+    <string name="busqueda_cd">filter the results of a search</string>
+    <string name="duenio_cd">Company owner</string>
+    <string name="para_cd">to</string>
+    <string name="invaders_instructions">Use the cell phone\'s accelerometer (left / right) to move the ship. To trigger, press on the ship.</string>
+    <string name="login_forgot_password">Reset password</string>
+    <string name="reset_password_alert">Reset password</string>
+    <string name="reset_password_success">We\'ve sent a link to reset your password to %s. Check your inbox.</string>
+    <string name="reset_password_input_hint">Email</string>
+    <string-array name="fibonacci_sequence">
+        <item>0</item>
+        <item tools:ignore="TypographyFractions">1/2</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>5</item>
+        <item>8</item>
+        <item>13</item>
+        <item>20</item>
+        <item>40</item>
+        <item>∞</item>
+        <item>\?</item>
+    </string-array>
+    <string-array name="planning_poker_product_backlog_items">
+        <item>Chassis</item>
+        <item>Brake</item>
+        <item>Engine</item>
+        <item>Steering wheel</item>
+    </string-array>
+    <string-array name="progress_status">
+        <item>BLOQUEADO</item>
+        <item>LOCKED</item>
+        <item>INICIAR</item>
+        <item>AVAILABLE</item>
+        <item>EN CURSO</item>
+        <item>STARTED</item>
+        <item>COMPLETO</item>
+        <item>FINISHED</item>
+    </string-array>
+    <string-array name="level_status">
+        <item>BLOQUEADO</item>
+        <item>LOCKED</item>
+        <item>EN CURSO</item>
+        <item>STARTED</item>
+        <item>NO INICIADO</item>
+        <item>NOT STARTED</item>
+    </string-array>
+    <string-array name="gender">
+        <item>Male</item>
+        <item>Masculino</item>
+        <item>Female</item>
+        <item>Femenino</item>
+    </string-array>
+</resources>

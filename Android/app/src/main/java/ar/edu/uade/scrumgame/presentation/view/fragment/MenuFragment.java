@@ -113,7 +113,7 @@ public class MenuFragment extends BaseFragment implements LevelListView {
     @Override
     public void profileLoaded(UserModel loggedInUser) {
         if (loggedInUser != null) {
-            UserGenderConstant gender = UserGenderConstant.getGender(loggedInUser.getGender());
+            UserGenderConstant gender = UserGenderConstant.getGender(loggedInUser.getGender(), this.context());
             int placeholderDrawable = gender.equals(UserGenderConstant.FEMALE) ? R.drawable.female_avatar : R.drawable.male_avatar;
             Picasso.get().load(placeholderDrawable).into(profilePicture);
             profilePicture.setOnClickListener(v -> {

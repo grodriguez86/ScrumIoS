@@ -70,7 +70,7 @@ public class LevelFragment extends BaseFragment implements LevelView {
     public void loadLevel(LevelModel level) {
         currentLevelName = level.getName();
         levelTitle.setText(currentLevelName);
-        levelSubtitle.setText(String.format("%d subniveles", level.getSublevels().size()));
+        levelSubtitle.setText(String.format(getString(R.string.menu_level_row_sublevels), level.getSublevels().size()));
     }
 
     @Override

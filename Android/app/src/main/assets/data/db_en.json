@@ -1,0 +1,1035 @@
+{
+  "levels": [
+    {
+      "name": "Systems Development Life Cycle",
+      "code": 1,
+      "sublevels": [
+        {
+          "name": "Waterfall cycle model",
+          "code": "1.1",
+		  "info_theory": [],
+          "info_games": [
+            {
+              "code": "1.1.1",
+              "title": "In the waterfall model: When can a phase start?",
+              "type": "textChoiceQuiz",
+              "content": [
+                {
+                  "type": "textAnswer",
+                  "isCorrect": true,
+                  "data": "When the previous phase was completed"
+                },
+                {
+                  "type": "textAnswer",
+                  "isCorrect": false,
+                  "data": "When the previous phase was checked"
+                },
+                {
+                  "type": "textAnswer",
+                  "isCorrect": false,
+                  "data": "All together at the beginning of the development"
+                },
+                {
+                  "type": "textAnswer",
+                  "isCorrect": false,
+                  "data": "None of the above"
+                }
+              ]
+            },
+            {
+              "code": "1.1.2",
+              "title": "When the domain is unknown or changes constantly, the waterfall model has to be used.",
+              "type": "trueFalseQuiz",
+              "content": [
+                {
+                  "type": "textAnswer",
+                  "isCorrect": false,
+                  "data": "True"
+                },
+                {
+                  "type": "textAnswer",
+                  "isCorrect": true,
+                  "data": "False"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Scrum",
+          "code": "1.2",
+		  "info_theory": [],
+          "info_games": [
+            {
+              "code": "1.2.1",
+              "title": "Scrum should be used if the problem is:",
+              "type": "textChoiceQuiz",
+              "content": [
+                {
+                  "type": "textAnswer",
+                  "isCorrect": false,
+                  "data": "Simple, predictable, static"
+                },
+                {
+                  "type": "textAnswer",
+                  "isCorrect": true,
+                  "data": "Complex, unpredictable, changeable"
+                }
+              ]
+            },
+            {
+              "code": "1.2.2",
+              "title": "Which is the Scrum system development life cycle?",
+              "type": "imageQuiz",
+              "content": [
+                {
+                  "type": "imageAnswer",
+                  "isCorrect": true,
+                  "data": "https://i.imgur.com/rX23Rd5.png"
+                },
+                {
+                  "type": "imageAnswer",
+                  "isCorrect": false,
+                  "data": "https://i.imgur.com/AUqZVy3.png"
+                }
+              ]
+            },
+            {
+              "code": "1.2.3",
+              "title": "Complete the Scrum lifecycle",
+              "type": "scrumFlowDraggable"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Roles and artifacts\n in Scrum",
+      "code": 2,
+      "sublevels": [
+        {
+          "name": "Roles",
+          "code": "2.1",
+		  "info_theory": [],
+          "info_games": [
+            {
+              "code": "2.1.1",
+              "title": "The Scrum Master tells team members what to do.",
+              "type": "trueFalseQuiz",
+              "content": [
+                {
+                  "type": "textAnswer",
+                  "isCorrect": false,
+                  "data": "True"
+                },
+                {
+                  "type": "textAnswer",
+                  "isCorrect": true,
+                  "data": "False"
+                }
+              ]
+            },
+            {
+              "code": "2.1.2",
+              "title": "Who has the final decision on the order of the Product Backlog?",
+              "type": "textQuiz",
+              "content": [
+                {
+                  "type": "textAnswer",
+                  "isCorrect": false,
+                  "data": "Scrum Master"
+                },
+                {
+                  "type": "textAnswer",
+                  "isCorrect": false,
+                  "data": "Development Team"
+                },
+                {
+                  "type": "textAnswer",
+                  "isCorrect": false,
+                  "data": "Client"
+                },
+                {
+                  "type": "textAnswer",
+                  "isCorrect": true,
+                  "data": "Product Owner"
+                }
+              ]
+            },
+            {
+              "code": "2.1.3",
+              "title": "Who is responsible for requirements estimation in the Sprint Planning?",
+              "type": "textQuiz",
+              "content": [
+                {
+                  "type": "textAnswer",
+                  "isCorrect": false,
+                  "data": "Scrum Master"
+                },
+                {
+                  "type": "textAnswer",
+                  "isCorrect": true,
+                  "data": "Development Team"
+                },
+                {
+                  "type": "textAnswer",
+                  "isCorrect": false,
+                  "data": "Scrum Team"
+                },
+                {
+                  "type": "textAnswer",
+                  "isCorrect": false,
+                  "data": "Product Owner"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Scrum artifacts",
+          "code": "2.2",
+		  "info_theory": [],
+          "info_games": [
+            {
+              "code": "2.2.1",
+              "title": "All Product Backlog Items (PBIs) in the Product Backlog are estimated.",
+              "type": "trueFalseQuiz",
+              "content": [
+                {
+                  "type": "textAnswer",
+                  "isCorrect": false,
+                  "data": "True"
+                },
+                {
+                  "type": "textAnswer",
+                  "isCorrect": true,
+                  "data": "False"
+                }
+              ]
+            },
+            {
+              "code": "2.2.2",
+              "title": "Who is responsible for managing the working progress during the Sprint?",
+              "type": "textQuiz",
+              "content": [
+                {
+                  "type": "textAnswer",
+                  "isCorrect": false,
+                  "data": "Scrum Master"
+                },
+                {
+                  "type": "textAnswer",
+                  "isCorrect": true,
+                  "data": "Development Team"
+                },
+                {
+                  "type": "textAnswer",
+                  "isCorrect": false,
+                  "data": "Product Owner"
+                },
+                {
+                  "type": "textAnswer",
+                  "isCorrect": false,
+                  "data": "Someone assigned by the Development Team"
+                }
+              ]
+            },
+            {
+              "code": "2.2.3",
+              "title": "During the development of the Sprint, the Product Owner can add tasks to the Sprint Backlog.",
+              "type": "trueFalseQuiz",
+              "content": [
+                {
+                  "type": "textAnswer",
+                  "isCorrect": false,
+                  "data": "True"
+                },
+                {
+                  "type": "textAnswer",
+                  "isCorrect": true,
+                  "data": "False"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Scrum Events",
+      "code": 3,
+      "sublevels": [
+        {
+          "name": "Backlog Estimation",
+          "code": "3.1",
+		  "info_theory": [],
+          "info_games": [
+            {
+              "code": "3.1.1",
+              "type": "pokerPlanning",
+              "content": [
+                {
+                  "data": "As a driver I want the car to have a chassis to support all car's parts.",
+                  "isCorrect": true,
+                  "type": "text"
+                },
+                {
+                  "data": "As a driver I want the car to have brakes to avoid accidents.",
+                  "isCorrect": true,
+                  "type": "text"
+                },
+                {
+                  "data": "As a driver I want the car to have an engine to make it work.",
+                  "isCorrect": true,
+                  "type": "text"
+                },
+                {
+                  "data": "As a driver, I want the car to have a body so as not to show all the components of the car.",
+                  "isCorrect": true,
+                  "type": "text"
+                },
+                {
+                  "data": "As a driver I want the car to have a steering wheel so that I can handle it easily.",
+                  "isCorrect": true,
+                  "type": "text"
+                }
+              ]
+            },
+            {
+              "code": "3.1.2",
+              "title": "Every time a User Story is refined, it is included in the Sprint Backlog of the next Sprint.",
+              "type": "trueFalseQuiz",
+              "content": [
+                {
+                  "type": "textAnswer",
+                  "isCorrect": false,
+                  "data": "True"
+                },
+                {
+                  "type": "textAnswer",
+                  "isCorrect": true,
+                  "data": "False"
+                }
+              ]
+            },
+            {
+              "code": "3.1.3",
+              "title": "What are the objectives of Sprint Planning?",
+              "type": "selection",
+              "content": [
+                {
+                  "type": "textAnswer",
+                  "isCorrect": true,
+                  "data": "Have high precision estimated PBIs"
+                },
+                {
+                  "type": "textAnswer",
+                  "isCorrect": false,
+                  "data": "Have a better understanding of the work and combine the PBIs to generate larger items"
+                },
+                {
+                  "type": "textAnswer",
+                  "isCorrect": true,
+                  "data": "Have a better understanding of the work and divide the GDPs to generate smaller items."
+                },
+                {
+                  "type": "textAnswer",
+                  "isCorrect": false,
+                  "data": "Have a better understanding of the work and create a design document"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Daily Meeting",
+          "code": "3.2",
+		  "info_theory": [],
+          "info_games": [
+            {
+              "code": "3.2.1",
+              "title": "Why does the Daily Meeting always take place in the same place and time?",
+              "type": "textChoiceQuiz",
+              "content": [
+                {
+                  "type": "textAnswer",
+                  "isCorrect": true,
+                  "data": "To avoid the complexity of organizing it and generating habit"
+                },
+                {
+                  "type": "textAnswer",
+                  "isCorrect": false,
+                  "data": "It is a requirement of the Scrum Master"
+                },
+                {
+                  "type": "textAnswer",
+                  "isCorrect": false,
+                  "data": "To not forget"
+                }
+              ]
+            },
+            {
+              "code": "3.2.2",
+              "title": "What is the duration of the Daily Meeting?",
+              "type": "textQuiz",
+              "content": [
+                {
+                  "type": "textAnswer",
+                  "isCorrect": false,
+                  "data": "30 minutes"
+                },
+                {
+                  "type": "textAnswer",
+                  "isCorrect": true,
+                  "data": "15 minutes"
+                },
+                {
+                  "type": "textAnswer",
+                  "isCorrect": false,
+                  "data": "Whatever it takes"
+                },
+                {
+                  "type": "textAnswer",
+                  "isCorrect": false,
+                  "data": "2 minutes by person"
+                }
+              ]
+            },
+            {
+              "code": "3.2.3",
+              "title": "The impediments exposed in the Daily Meeting are solved at the moment, taking advantage of the team presence.",
+              "type": "trueFalseQuiz",
+              "content": [
+                {
+                  "type": "textAnswer",
+                  "isCorrect": false,
+                  "data": "True"
+                },
+                {
+                  "type": "textAnswer",
+                  "isCorrect": true,
+                  "data": "False"
+                }
+              ]
+            },
+            {
+              "code": "3.2.4",
+              "title": "Who attends/can attend the Daily Meeting?",
+              "type": "selection",
+              "content": [
+                {
+                  "type": "textAnswer",
+                  "isCorrect": false,
+                  "data": "Product Owner"
+                },
+                {
+                  "type": "textAnswer",
+                  "isCorrect": true,
+                  "data": "Development Team"
+                },
+                {
+                  "type": "textAnswer",
+                  "isCorrect": false,
+                  "data": "Any stakeholder"
+                },
+                {
+                  "type": "textAnswer",
+                  "isCorrect": false,
+                  "data": "Sponsors"
+                },
+                {
+                  "type": "textAnswer",
+                  "isCorrect": false,
+                  "data": "The client"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Sprint Planning I",
+          "code": "3.3",
+		  "info_theory": [],
+          "info_games": [
+            {
+              "code": "3.3.1",
+              "title": "What is the Product Owner's responsibility during Sprint Planning?",
+              "type": "textChoiceQuiz",
+              "content": [
+                {
+                  "type": "textAnswer",
+                  "isCorrect": false,
+                  "data": "Decide together with the Scrum Master which tasks are priority"
+                },
+                {
+                  "type": "textAnswer",
+                  "isCorrect": true,
+                  "data": "Describe the tasks with high priority to the rest of the team and answer any questions about them"
+                },
+                {
+                  "type": "textAnswer",
+                  "isCorrect": false,
+                  "data": "Check the development of the previous Sprint and give feedback to the scrum team"
+                },
+                {
+                  "type": "textAnswer",
+                  "isCorrect": false,
+                  "data": "Does not participate"
+                }
+              ]
+            },
+            {
+              "code": "3.3.2",
+              "title": "Who can/should attend the Sprint Planning?",
+              "type": "selection",
+              "content": [
+                {
+                  "type": "textAnswer",
+                  "isCorrect": true,
+                  "data": "Product Owner"
+                },
+                {
+                  "type": "textAnswer",
+                  "isCorrect": true,
+                  "data": "Development Team"
+                },
+                {
+                  "type": "textAnswer",
+                  "isCorrect": false,
+                  "data": "Any Stakeholder"
+                },
+                {
+                  "type": "textAnswer",
+                  "isCorrect": true,
+                  "data": "Scrum Master"
+                },
+                {
+                  "type": "textAnswer",
+                  "isCorrect": false,
+                  "data": "The client"
+                }
+              ]
+            },
+            {
+              "code": "3.3.3",
+              "title": "In a 2 week Sprint, what is the maximum length of the Sprint Planning?",
+              "type": "textQuiz",
+              "content": [
+                {
+                  "type": "textAnswer",
+                  "isCorrect": true,
+                  "data": "4 hours"
+                },
+                {
+                  "type": "textAnswer",
+                  "isCorrect": false,
+                  "data": "1 hour"
+                },
+                {
+                  "type": "textAnswer",
+                  "isCorrect": false,
+                  "data": "Whatever is necessary"
+                },
+                {
+                  "type": "textAnswer",
+                  "isCorrect": false,
+                  "data": "All day"
+                }
+              ]
+            },
+            {
+              "code": "3.3.4",
+              "title": "The Product Owner selects the task that has to develop a member of the Development Team",
+              "type": "trueFalseQuiz",
+              "content": [
+                {
+                  "type": "textAnswer",
+                  "isCorrect": false,
+                  "data": "True"
+                },
+                {
+                  "type": "textAnswer",
+                  "isCorrect": true,
+                  "data": "False"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Sprint Planning II",
+          "code": "3.4",
+		  "info_theory": [],
+          "info_games": [
+            {
+              "code": "3.4.1",
+              "type": "velocity"
+            },
+            {
+              "code": "3.4.2",
+              "title": "Why is velocity considered in the Sprint Planning?",
+              "type": "textChoiceQuiz",
+              "content": [
+                {
+                  "type": "textAnswer",
+                  "isCorrect": false,
+                  "data": "To specify how much work the team should do in the next Sprint."
+                },
+                {
+                  "type": "textAnswer",
+                  "isCorrect": true,
+                  "data": "To estimate how many user story points the Development Team commits to perform in the next sprint."
+                },
+                {
+                  "type": "textAnswer",
+                  "isCorrect": false,
+                  "data": "To give rewards to team members."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Sprint Review",
+          "code": "3.5",
+		  "info_theory": [],
+          "info_games": [
+            {
+              "code": "3.5.1",
+              "title": "What is done first in a Sprint Review?",
+              "type": "textChoiceQuiz",
+              "content": [
+                {
+                  "type": "textAnswer",
+                  "isCorrect": true,
+                  "data": "A presentation of the status of the project"
+                },
+                {
+                  "type": "textAnswer",
+                  "isCorrect": false,
+                  "data": "A demo of the increment developed"
+                },
+                {
+                  "type": "textAnswer",
+                  "isCorrect": false,
+                  "data": "News regarding the project by the client and other stakeholders"
+                },
+                {
+                  "type": "textAnswer",
+                  "isCorrect": false,
+                  "data": "A report of everything that happened in the Sprint"
+                }
+              ]
+            },
+            {
+              "code": "3.5.2",
+              "title": "If priorities about the Product Backlog are identified, who should it be directed to?",
+              "type": "shortTextQuiz",
+              "content": [
+                {
+                  "type": "textAnswer",
+                  "isCorrect": true,
+                  "data": "Product Owner"
+                },
+                {
+                  "type": "textAnswer",
+                  "isCorrect": false,
+                  "data": "Development Team"
+                }
+              ]
+            },
+            {
+              "code": "3.5.3",
+              "title": "When is the best time to give feedback during the Sprint Review?",
+              "type": "textQuiz",
+              "content": [
+                {
+                  "type": "textAnswer",
+                  "isCorrect": true,
+                  "data": "When needed"
+                },
+                {
+                  "type": "textAnswer",
+                  "isCorrect": false,
+                  "data": "At the beginning"
+                },
+                {
+                  "type": "textAnswer",
+                  "isCorrect": false,
+                  "data": "When the Scrum Master decides"
+                },
+                {
+                  "type": "textAnswer",
+                  "isCorrect": false,
+                  "data": "At the end"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Sprint Retrospective",
+          "code": "3.6",
+          "info_theory": [],
+          "info_games": [
+            {
+              "code": "3.6.1",
+              "title": "The Sprint Retrospective is an event used to rank the performance of the Team members.",
+              "type": "trueFalseQuiz",
+              "content": [
+                {
+                  "type": "textAnswer",
+                  "isCorrect": false,
+                  "data": "True"
+                },
+                {
+                  "type": "textAnswer",
+                  "isCorrect": true,
+                  "data": "False"
+                }
+              ]
+            },
+            {
+              "code": "3.6.2",
+              "title": "What is the goal of the Sprint Retrospective?",
+              "type": "textChoiceQuiz",
+              "content": [
+                {
+                  "type": "textAnswer",
+                  "isCorrect": true,
+                  "data": "Continuous process improvement followed by team members"
+                },
+                {
+                  "type": "textAnswer",
+                  "isCorrect": false,
+                  "data": "Document the strengths and weaknesses, to be transmitted to the managers of the company"
+                },
+                {
+                  "type": "textAnswer",
+                  "isCorrect": false,
+                  "data": "Prepare a list with all the completed PBIs and recommendations for the incomplete ones"
+                }
+              ]
+            },
+            {
+              "code": "3.6.3",
+              "title": "Who can/should attend the Sprint Retrospective?",
+              "type": "selection",
+              "content": [
+                {
+                  "type": "textAnswer",
+                  "isCorrect": true,
+                  "data": "Product Owner"
+                },
+                {
+                  "type": "textAnswer",
+                  "isCorrect": true,
+                  "data": "Development Team"
+                },
+                {
+                  "type": "textAnswer",
+                  "isCorrect": false,
+                  "data": "Any stakeholder"
+                },
+                {
+                  "type": "textAnswer",
+                  "isCorrect": true,
+                  "data": "Scrum Master"
+                },
+                {
+                  "type": "textAnswer",
+                  "isCorrect": false,
+                  "data": "The client"
+                }
+              ]
+            },
+            {
+              "code": "3.6.4",
+              "title": "At what point in the Spring does the Sprint Retrospective take place?",
+              "type": "textQuiz",
+              "content": [
+                {
+                  "type": "textAnswer",
+                  "isCorrect": true,
+                  "data": "At no time"
+                },
+                {
+                  "type": "textAnswer",
+                  "isCorrect": false,
+                  "data": "At the beginning"
+                },
+                {
+                  "type": "textAnswer",
+                  "isCorrect": false,
+                  "data": "When the Scrum Master needs"
+                },
+                {
+                  "type": "textAnswer",
+                  "isCorrect": false,
+                  "data": "At the end"
+                }
+              ]
+            },
+            {
+              "code": "3.6.5",
+              "title": "What happens if a member of the Development Team is late for the Daily Meeting?",
+              "type": "textQuiz",
+              "content": [
+                {
+                  "type": "textAnswer",
+                  "isCorrect": false,
+                  "data": "Nothing happens"
+                },
+                {
+                  "type": "textAnswer",
+                  "isCorrect": false,
+                  "data": "The Daily meeting is postponed"
+                },
+                {
+                  "type": "textAnswer",
+                  "isCorrect": true,
+                  "data": "She/he can be penalized"
+                },
+                {
+                  "type": "textAnswer",
+                  "isCorrect": false,
+                  "data": "Wait until the member arrives"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "PBIs specification",
+      "code": 4,
+      "sublevels": [
+        {
+          "name": "User Stories (US) Part I",
+          "code": "4.1",
+          "info_theory": [],
+          "info_games": [
+            {
+              "code": "4.1.1",
+              "title": "What technique does Scrum propose to specify PBIs?",
+              "type": "textChoiceQuiz",
+              "content": [
+                {
+                  "type": "textAnswer",
+                  "isCorrect": false,
+                  "data": "Use Cases"
+                },
+                {
+                  "type": "textAnswer",
+                  "isCorrect": false,
+                  "data": "User Stories"
+                },
+                {
+                  "type": "textAnswer",
+                  "isCorrect": false,
+                  "data": "Templates"
+                },
+                {
+                  "type": "textAnswer",
+                  "isCorrect": true,
+                  "data": "No technique"
+                }
+              ]
+            },
+            {
+              "code": "4.1.2",
+              "title": "According to the User Story template, the elements to complete are: role, required functionality, functionality benefit, and ...",
+              "type": "textChoiceQuiz",
+              "content": [
+                {
+                  "type": "textAnswer",
+                  "isCorrect": false,
+                  "data": "Done Criteria"
+                },
+                {
+                  "type": "textAnswer",
+                  "isCorrect": true,
+                  "data": "Acceptance Criteria"
+                },
+                {
+                  "type": "textAnswer",
+                  "isCorrect": false,
+                  "data": "Suggestions and comments"
+                },
+                {
+                  "type": "textAnswer",
+                  "isCorrect": false,
+                  "data": "Nothing else"
+                }
+              ]
+            },
+            {
+              "code": "4.1.3",
+              "title": "From lowest to highest level of detail, the following order of PBIs is correct: 1) Task, 2) User Story, 3) Feature and 4) Epic",
+              "type": "trueFalseQuiz",
+              "content": [
+                {
+                  "type": "textAnswer",
+                  "isCorrect": false,
+                  "data": "True"
+                },
+                {
+                  "type": "textAnswer",
+                  "isCorrect": true,
+                  "data": "False"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "User Stories(US) Part II",
+          "code": "4.2",
+          "info_theory": [],
+          "info_games": [
+            {
+              "code": "4.2.1",
+              "title": "",
+              "type": "userStoryDraggable"
+            },
+            {
+              "code": "4.2.2",
+              "title": "What is missing from the following User Story?\nAs a potential client I want to be able to upload my personal data to receive advice. Acceptance criteria: Verify that the data is sent correctly to the seller. Check that each request for advice is assigned an ID. Verify that the client receives an email with the ID and confirming the reception of its order.",
+              "type": "textChoiceQuiz",
+              "content": [
+                {
+                  "type": "textAnswer",
+                  "isCorrect": false,
+                  "data": "The Done Criteria"
+                },
+                {
+                  "type": "textAnswer",
+                  "isCorrect": true,
+                  "data": "The client's personal data"
+                },
+                {
+                  "type": "textAnswer",
+                  "isCorrect": false,
+                  "data": "Testing details"
+                },
+                {
+                  "type": "textAnswer",
+                  "isCorrect": false,
+                  "data": "Company CEO point of view"
+                }
+              ]
+            },
+            {
+              "code": "4.2.3",
+              "title": "The following User Story is correctly stated: \nAs a tennis player I want to be able to reserve a court",
+              "type": "trueFalseQuiz",
+              "content": [
+                {
+                  "type": "textAnswer",
+                  "isCorrect": false,
+                  "data": "True"
+                },
+                {
+                  "type": "textAnswer",
+                  "isCorrect": true,
+                  "data": "False"
+                }
+              ]
+            },
+            {
+              "code": "4.2.4",
+              "title": "The following epic is correctly stated: \nSearch product",
+              "type": "trueFalseQuiz",
+              "content": [
+                {
+                  "type": "textAnswer",
+                  "isCorrect": false,
+                  "data": "True"
+                },
+                {
+                  "type": "textAnswer",
+                  "isCorrect": true,
+                  "data": "False"
+                }
+              ]
+            },
+            {
+              "code": "4.2.5",
+              "title": "User Story A was refined in User Story B. Why is it wrong?\nA-As an employer I want to be able to register in the system to be able to upload job offers\nB-As an employer I want to be able to register in the system using my CUIT to be able to upload job offers",
+              "type": "textChoiceQuiz",
+              "content": [
+                {
+                  "type": "textAnswer",
+                  "isCorrect": true,
+                  "data": "It does not make sense to refine a user story in a single user story (in that case the original must be modified)"
+                },
+                {
+                  "type": "textAnswer",
+                  "isCorrect": false,
+                  "data": "User Story B is too long"
+                },
+                {
+                  "type": "textAnswer",
+                  "isCorrect": false,
+                  "data": "The benefit of the User Story is unclear"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Done Criteria",
+          "code": "4.3",
+          "info_theory": [],
+          "info_games": [
+            {
+              "code": "4.3.1",
+              "title": "The Done Criteria is per User Story, while the Acceptance Criteria is per project.",
+              "type": "trueFalseQuiz",
+              "content": [
+                {
+                  "type": "textAnswer",
+                  "isCorrect": false,
+                  "data": "True"
+                },
+                {
+                  "type": "textAnswer",
+                  "isCorrect": true,
+                  "data": "False"
+                }
+              ]
+            },
+            {
+              "code": "4.3.2",
+              "title": "What information can we find in the Done Criteria?",
+              "type": "selection",
+              "content": [
+                {
+                  "type": "textAnswer",
+                  "isCorrect": true,
+                  "data": "Test coverage percentage"
+                },
+                {
+                  "type": "textAnswer",
+                  "isCorrect": true,
+                  "data": "Maintainability index"
+                },
+                {
+                  "type": "textAnswer",
+                  "isCorrect": true,
+                  "data": "Peer review"
+                },
+                {
+                  "type": "textAnswer",
+                  "isCorrect": false,
+                  "data": "Daily meeting decisions"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
