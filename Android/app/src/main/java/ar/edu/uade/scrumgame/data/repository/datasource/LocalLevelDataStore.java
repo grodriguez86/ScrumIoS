@@ -10,6 +10,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import ar.edu.uade.scrumgame.R;
 import ar.edu.uade.scrumgame.data.entity.ContentEntity;
 import ar.edu.uade.scrumgame.data.entity.InfoGameEntity;
 import ar.edu.uade.scrumgame.data.entity.LevelEntity;
@@ -18,7 +19,6 @@ import io.reactivex.Observable;
 import io.reactivex.ObservableEmitter;
 
 public class LocalLevelDataStore implements LevelDataStore {
-    private static final String LEVELS_FILE_NAME = "data/db.json";
     private Context context;
 
     @Inject
@@ -29,7 +29,7 @@ public class LocalLevelDataStore implements LevelDataStore {
     @Override
     public Observable<List<LevelEntity>> levelList() {
         return Observable.create(emitter -> {
-            ContentEntity databaseContent = new Gson().fromJson(getAssetsFileContent(LEVELS_FILE_NAME, emitter), ContentEntity.class);
+            ContentEntity databaseContent = new Gson().fromJson(getAssetsFileContent(this.context.getString(R.string.game_file), emitter), ContentEntity.class);
             emitter.onNext(databaseContent.getLevels());
             emitter.onComplete();
         });
@@ -38,7 +38,7 @@ public class LocalLevelDataStore implements LevelDataStore {
     @Override
     public Observable<LevelEntity> levelByCode(Integer code) {
         return Observable.create(emitter -> {
-            ContentEntity databaseContent = new Gson().fromJson(getAssetsFileContent(LEVELS_FILE_NAME, emitter), ContentEntity.class);
+            ContentEntity databaseContent = new Gson().fromJson(getAssetsFileContent(this.context.getString(R.string.game_file), emitter), ContentEntity.class);
             for (LevelEntity levelEntity : databaseContent.getLevels()) {
                 if (levelEntity.getCode().equals(code)) {
                     emitter.onNext(levelEntity);

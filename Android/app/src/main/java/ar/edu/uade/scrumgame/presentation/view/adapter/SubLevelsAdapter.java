@@ -39,6 +39,7 @@ public class SubLevelsAdapter extends RecyclerView.Adapter<SubLevelsAdapter.SubL
     private ProgressModel progressModel;
     private LayoutInflater layoutInflater;
     private OnItemClickListener onItemClickListener;
+    private Context context;
 
     @Inject
     SubLevelsAdapter(Context context) {
@@ -46,6 +47,7 @@ public class SubLevelsAdapter extends RecyclerView.Adapter<SubLevelsAdapter.SubL
                 (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         this.subLevelsCollection = Collections.emptyList();
         this.progressModel = null;
+        this.context = context;
     }
 
     @Override
@@ -67,7 +69,7 @@ public class SubLevelsAdapter extends RecyclerView.Adapter<SubLevelsAdapter.SubL
         ProgressStatusModel progressStatusModel = subLevelModel.getStatus(progressModel);
         holder.progressBar.setProgress(progressStatusModel.getProgress());
         holder.progressBarText.setText(Integer.toString(progressStatusModel.getProgress()));
-        holder.progressText.setText(progressStatusModel.getStatus());
+        holder.progressText.setText(progressStatusModel.getStatusText(SubLevelsAdapter.this.context));
         holder.itemView.setOnClickListener(v -> {
             if (!progressStatusModel.getStatus().equals(ProgressStatusConstant.LOCKED) &&
                     SubLevelsAdapter.this.onItemClickListener != null)

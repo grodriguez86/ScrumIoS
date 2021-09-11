@@ -173,7 +173,7 @@ public class ProfileFragment extends BaseFragment implements ProfileView {
         this.location.setText(String.format(getString(R.string.location), userProfile.getCity(), userProfile.getState(), userProfile.getCountry()));
         this.gameTaste.setText(userProfile.getGameTasteLevel());
         this.gameTime.setText(userProfile.getGameTimeLevel());
-        UserGenderConstant gender = UserGenderConstant.getGender(userProfile.getGender());
+        UserGenderConstant gender = UserGenderConstant.getGender(userProfile.getGender(), this.context());
         int placeholderDrawable = gender.equals(UserGenderConstant.FEMALE) ? R.drawable.female_avatar : R.drawable.male_avatar;
         Picasso.get().load(placeholderDrawable).into(profilePicture);
         this.appVersion.setText(String.format(getString(R.string.version),BuildConfig.VERSION_NAME));

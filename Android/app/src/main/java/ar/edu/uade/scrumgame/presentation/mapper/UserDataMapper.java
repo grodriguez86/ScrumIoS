@@ -2,20 +2,14 @@ package ar.edu.uade.scrumgame.presentation.mapper;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.LinkedList;
 import java.util.List;
 
 import javax.inject.Inject;
 
-import ar.edu.uade.scrumgame.data.entity.UserEntity;
-import ar.edu.uade.scrumgame.domain.GameContent;
-import ar.edu.uade.scrumgame.domain.InfoGame;
 import ar.edu.uade.scrumgame.domain.Progress;
 import ar.edu.uade.scrumgame.domain.User;
 import ar.edu.uade.scrumgame.domain.UserOverallData;
 import ar.edu.uade.scrumgame.presentation.di.PerActivity;
-import ar.edu.uade.scrumgame.presentation.models.GameContentModel;
-import ar.edu.uade.scrumgame.presentation.models.InfoGameModel;
 import ar.edu.uade.scrumgame.presentation.models.ProgressModel;
 import ar.edu.uade.scrumgame.presentation.models.UserModel;
 import ar.edu.uade.scrumgame.presentation.models.UserOverallDataModel;

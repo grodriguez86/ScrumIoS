@@ -1,5 +1,5 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <string name="game_file">data/db.json</string>
+    <string name="game_file">data/db_es.json</string>
     <string name="app_name">Scrum Game</string>
     <string name="exception_message_generic">Se ha producido un error, intente nuevamente</string>
     <string name="exception_message_file_not_found">El archivo de niveles no se ha encontrado</string>
